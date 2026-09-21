@@ -134,8 +134,10 @@ struct NameMaskingTests {
         let result = RedactionEngine.redact(fixture.text, countryHint: fixture.country)
         #expect(RedactionEngine.restore(result.redactedText, map: result.map) == fixture.text)
 
-        let block = try? #require(result.map.first { $0.value == fixture.recipient })
-        #expect(block?.value.contains("\n") == true, "The block should span lines")
+        #expect(
+            result.map.values.contains { $0 == fixture.recipient && $0.contains("\n") },
+            "\(fixture.id): the block should be masked as one multi-line value"
+        )
     }
 
     // MARK: - Recurrence
