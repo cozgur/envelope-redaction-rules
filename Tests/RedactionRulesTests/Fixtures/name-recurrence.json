@@ -1,0 +1,23 @@
+[
+  {
+    "id": "recurrence-en",
+    "country": "GB",
+    "name": "Yilmaz",
+    "occurrences": 3,
+    "text": "HM Revenue & Customs\nPay As You Earn\nBX9 1AS\n\nMs A. Yilmaz\n12 High Street, Flat 4\nLondon SW1A 1AA\n\nDate: October 1, 2026\nReference: SA-2026-11-0042\n\nDear Ms Yilmaz,\n\nWe have reviewed Ms Yilmaz's application and require further information.\nA decision on Yilmaz's account will follow within 30 days.\n\nYours sincerely,\n\nOfficer of Revenue and Customs\n"
+  },
+  {
+    "id": "recurrence-nl",
+    "country": "NL",
+    "name": "Yilmaz",
+    "occurrences": 3,
+    "text": "Gemeente Amsterdam\nAmstel 1\n1011 PN Amsterdam\n\nMw. A. Yilmaz\nHoofdstraat 1\n1011 AA Amsterdam\n\nDatum: 1 oktober 2026\nZaaknummer: BRP-2026-44810\n\nGeachte mevrouw Yilmaz,\n\nHet dossier van mevrouw Yilmaz is in behandeling genomen.\nWij verzoeken mevrouw Yilmaz voor 3 november 2026 te reageren.\n\nMet vriendelijke groet,\n\nAfdeling Burgerzaken\n"
+  },
+  {
+    "id": "recurrence-de",
+    "country": "DE",
+    "name": "Yilmaz",
+    "occurrences": 3,
+    "text": "Finanzamt Berlin-Mitte\nNeue Jakobstraße 6\n10179 Berlin\n\nFrau A. Yilmaz\nHauptstraße 12\n10115 Berlin\n\nDatum: 1. Oktober 2026\nAktenzeichen: FA-2026-11-0042\n\nSehr geehrte Frau Yilmaz,\n\nder Vorgang von Frau Yilmaz wurde geprüft. Frau Yilmaz wird gebeten,\nbis zum 3. November 2026 zu antworten.\n\nMit freundlichen Grüßen\n\nIm Auftrag\n"
+  }
+]

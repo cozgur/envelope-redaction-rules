@@ -1,0 +1,17 @@
+name: Tests
+
+# The README tells a stranger to run `swift test` and trust the result.
+# This runs the same command on every push, so that claim is checked rather
+# than asserted.
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run the rule suite
+        run: swift test

@@ -1,0 +1,86 @@
+[
+  {
+    "id": "generic-nl-1",
+    "language": "nl",
+    "salutation": "Geachte heer/mevrouw,",
+    "text": "Belastingdienst\nPostbus 2508\n6401 DA Heerlen\n\nDatum: 1 oktober 2026\n\nGeachte heer/mevrouw,\n\nWij verzoeken u het bedrag van EUR 1.240,00 te betalen voor 3 november 2026.\n"
+  },
+  {
+    "id": "generic-nl-2",
+    "language": "nl",
+    "salutation": "Geachte heer of mevrouw,",
+    "text": "Belastingdienst\nPostbus 2508\n6401 DA Heerlen\n\nDatum: 1 oktober 2026\n\nGeachte heer of mevrouw,\n\nWij verzoeken u het bedrag van EUR 1.240,00 te betalen voor 3 november 2026.\n"
+  },
+  {
+    "id": "generic-de-1",
+    "language": "de",
+    "salutation": "Sehr geehrte Damen und Herren,",
+    "text": "Belastingdienst\nPostbus 2508\n6401 DA Heerlen\n\nDatum: 1 oktober 2026\n\nSehr geehrte Damen und Herren,\n\nBitte zahlen Sie den Betrag von 1.240,00 EUR bis zum 3. November 2026.\n"
+  },
+  {
+    "id": "generic-de-2",
+    "language": "de",
+    "salutation": "Sehr geehrte Damen und Herren,",
+    "text": "Belastingdienst\nPostbus 2508\n6401 DA Heerlen\n\nDatum: 1 oktober 2026\n\nSehr geehrte Damen und Herren,\n\nBitte zahlen Sie den Betrag von 1.240,00 EUR bis zum 3. November 2026.\n"
+  },
+  {
+    "id": "generic-fr-1",
+    "language": "fr",
+    "salutation": "Madame, Monsieur,",
+    "text": "Belastingdienst\nPostbus 2508\n6401 DA Heerlen\n\nDatum: 1 oktober 2026\n\nMadame, Monsieur,\n\nNous vous prions de régler la somme de 1.240,00 EUR avant le 3 novembre 2026.\n"
+  },
+  {
+    "id": "generic-fr-2",
+    "language": "fr",
+    "salutation": "Madame,",
+    "text": "Belastingdienst\nPostbus 2508\n6401 DA Heerlen\n\nDatum: 1 oktober 2026\n\nMadame,\n\nNous vous prions de régler la somme de 1.240,00 EUR avant le 3 novembre 2026.\n"
+  },
+  {
+    "id": "generic-es-1",
+    "language": "es",
+    "salutation": "Estimados señores:",
+    "text": "Belastingdienst\nPostbus 2508\n6401 DA Heerlen\n\nDatum: 1 oktober 2026\n\nEstimados señores:\n\nLe rogamos abone el importe de 1.240,00 EUR antes del 3 noviembre 2026.\n"
+  },
+  {
+    "id": "generic-es-2",
+    "language": "es",
+    "salutation": "Muy señores míos:",
+    "text": "Belastingdienst\nPostbus 2508\n6401 DA Heerlen\n\nDatum: 1 oktober 2026\n\nMuy señores míos:\n\nLe rogamos abone el importe de 1.240,00 EUR antes del 3 noviembre 2026.\n"
+  },
+  {
+    "id": "generic-pl-1",
+    "language": "pl",
+    "salutation": "Szanowni Państwo,",
+    "text": "Belastingdienst\nPostbus 2508\n6401 DA Heerlen\n\nDatum: 1 oktober 2026\n\nSzanowni Państwo,\n\nProsimy o wpłatę kwoty 1.240,00 PLN do dnia 3 listopada 2026.\n"
+  },
+  {
+    "id": "generic-pl-2",
+    "language": "pl",
+    "salutation": "Szanowna Pani,",
+    "text": "Belastingdienst\nPostbus 2508\n6401 DA Heerlen\n\nDatum: 1 oktober 2026\n\nSzanowna Pani,\n\nProsimy o wpłatę kwoty 1.240,00 PLN do dnia 3 listopada 2026.\n"
+  },
+  {
+    "id": "generic-tr-1",
+    "language": "tr",
+    "salutation": "Sayın İlgili,",
+    "text": "Belastingdienst\nPostbus 2508\n6401 DA Heerlen\n\nDatum: 1 oktober 2026\n\nSayın İlgili,\n\n1.240,00 TRY tutarındaki borcu 3 Kasım 2026 tarihine kadar ödeyiniz.\n"
+  },
+  {
+    "id": "generic-tr-2",
+    "language": "tr",
+    "salutation": "Sayın Yetkili,",
+    "text": "Belastingdienst\nPostbus 2508\n6401 DA Heerlen\n\nDatum: 1 oktober 2026\n\nSayın Yetkili,\n\n1.240,00 TRY tutarındaki borcu 3 Kasım 2026 tarihine kadar ödeyiniz.\n"
+  },
+  {
+    "id": "generic-en-1",
+    "language": "en",
+    "salutation": "Dear Sir or Madam,",
+    "text": "Belastingdienst\nPostbus 2508\n6401 DA Heerlen\n\nDatum: 1 oktober 2026\n\nDear Sir or Madam,\n\nPlease pay the sum of $1,240.00 by November 3, 2026.\n"
+  },
+  {
+    "id": "generic-en-2",
+    "language": "en",
+    "salutation": "To whom it may concern,",
+    "text": "Belastingdienst\nPostbus 2508\n6401 DA Heerlen\n\nDatum: 1 oktober 2026\n\nTo whom it may concern,\n\nPlease pay the sum of $1,240.00 by November 3, 2026.\n"
+  }
+]

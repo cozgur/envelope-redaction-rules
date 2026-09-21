@@ -1,0 +1,26 @@
+[
+  {
+    "id": "letterhead-nl",
+    "country": "NL",
+    "letterhead": "Belastingdienst\nPostbus 2508\n6401 DA Heerlen",
+    "recipient": "Mw. A. Yilmaz\nHoofdstraat 1\n1011 AA Amsterdam",
+    "rest": "Datum: 1 oktober 2026\nKenmerk: 1234.56.789\n\nGeachte mevrouw Yilmaz,\n\nU moet EUR 1.240,00 betalen voor 3 november 2026.\n",
+    "text": "Belastingdienst\nPostbus 2508\n6401 DA Heerlen\n\nMw. A. Yilmaz\nHoofdstraat 1\n1011 AA Amsterdam\n\nDatum: 1 oktober 2026\nKenmerk: 1234.56.789\n\nGeachte mevrouw Yilmaz,\n\nU moet EUR 1.240,00 betalen voor 3 november 2026.\n"
+  },
+  {
+    "id": "letterhead-de",
+    "country": "DE",
+    "letterhead": "Finanzamt München\nDeroystraße 20\n80335 München",
+    "recipient": "Frau A. Yilmaz\nHauptstraße 12\n10115 Berlin",
+    "rest": "Datum: 1. Oktober 2026\nAktenzeichen: FA-2026-11-0042\n\nSehr geehrte Frau Yilmaz,\n\nBitte zahlen Sie 1.240,00 EUR bis zum 3. November 2026.\n",
+    "text": "Finanzamt München\nDeroystraße 20\n80335 München\n\nFrau A. Yilmaz\nHauptstraße 12\n10115 Berlin\n\nDatum: 1. Oktober 2026\nAktenzeichen: FA-2026-11-0042\n\nSehr geehrte Frau Yilmaz,\n\nBitte zahlen Sie 1.240,00 EUR bis zum 3. November 2026.\n"
+  },
+  {
+    "id": "letterhead-pl",
+    "country": "PL",
+    "letterhead": "Urząd Skarbowy Warszawa\nul. Lindleya 14\n02-013 Warszawa",
+    "recipient": "Pani A. Yilmaz\nul. Główna 12\n00-950 Warszawa",
+    "rest": "Data: 1 października 2026\nNumer sprawy: US-2026-11-0042\n\nSzanowna Pani Yilmaz,\n\nProsimy o wpłatę 1.240,00 PLN do dnia 3 listopada 2026.\n",
+    "text": "Urząd Skarbowy Warszawa\nul. Lindleya 14\n02-013 Warszawa\n\nPani A. Yilmaz\nul. Główna 12\n00-950 Warszawa\n\nData: 1 października 2026\nNumer sprawy: US-2026-11-0042\n\nSzanowna Pani Yilmaz,\n\nProsimy o wpłatę 1.240,00 PLN do dnia 3 listopada 2026.\n"
+  }
+]
