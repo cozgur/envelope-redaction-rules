@@ -7,6 +7,8 @@ They are published so the claim can be checked rather than believed. No part of
 this package talks to the network, and it depends on nothing but Foundation.
 
 ```
+git clone https://github.com/cozgur/envelope-redaction-rules.git
+cd envelope-redaction-rules
 swift test
 ```
 
@@ -86,6 +88,14 @@ Three things that have already cost a bug here, so they are worth knowing:
   every authority; their *shape* is not.
 - **A protected span vetoes whatever overlaps it.** If a rule stops firing,
   check whether something it overlaps is protected before rewriting the rule.
+
+## Where this comes from
+
+This repository is a mirror. The rules are developed inside the Envelope app's
+repository and pushed here whenever they change, by a script that refuses to
+publish a tree whose tests do not pass. What is here is what ships.
+
+Licensed under Apache 2.0. See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Layout
 
