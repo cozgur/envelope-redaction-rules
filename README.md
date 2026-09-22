@@ -46,6 +46,30 @@ failure than a leak. These survive every rule:
 - **the sender's letterhead** — masking it deletes the one thing an
   explanation most needs: who wrote
 
+## What the engine hands back
+
+```swift
+let result = RedactionEngine.redact(letter, countryHint: "NL")
+
+result.redactedText   // the only form allowed to leave the device
+result.map            // "[IBAN_1]" -> the real IBAN; never leaves the device
+result.counts         // how many distinct values, by kind
+result.spans          // every replacement, with the offsets it stands at
+```
+
+`spans` is the audit record. The map answers *what does `[IBAN_1]` stand for*;
+`spans` answers *what stands at character 412*, which is the question an audit
+actually asks — a value can be masked correctly in one place and wrongly in
+another, and only position tells the two apart. Each span carries its
+placeholder, the kind the engine decided on, its offsets in the original text
+and its offsets in the redacted text.
+
+The kind matters beyond bookkeeping. A masked value is masked whichever label
+it got, but the app resolves placeholders by kind when it fills a reply header,
+so an identity number labelled `[CARD_NUMBER_1]` produces a wrong letter rather
+than a leak. The golden-set suite asserts the kind of the placeholder standing
+at every known value's position, for exactly that reason.
+
 ## The numbers in the fixtures
 
 The corpus is public, so a fixture that happened to carry a real person's
@@ -170,6 +194,7 @@ Licensed under Apache 2.0. See [CONTRIBUTING.md](CONTRIBUTING.md).
 ```
 Sources/RedactionRules/
   RedactionEngine.swift    rule order, placeholder assignment, restore
+  RedactionResult.swift    the redacted text, the map, the counts, the spans
   LetterStructure.swift    letterhead, recipient block, salutation, body
   ProtectedSpans.swift     what must never be masked
   Rules/                   one file per PIIKind

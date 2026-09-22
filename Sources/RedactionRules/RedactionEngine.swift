@@ -123,6 +123,14 @@ public enum RedactionEngine {
         var map: [String: String] = [:]
         var nextIndex: [PIIKind: Int] = [:]
         var replacements: [(range: Range<String.Index>, placeholder: String)] = []
+        var spans: [RedactionResult.MaskedSpan] = []
+
+        // Walked forward alongside the claims, which are sorted and do not
+        // overlap, so each span's offsets fall out of the one before it
+        // rather than out of a distance measured from the start of the text.
+        var cursor = text.startIndex
+        var originalOffset = 0
+        var drift = 0
 
         for claim in claims {
             let original = String(text[claim.range])
@@ -139,6 +147,20 @@ public enum RedactionEngine {
                 map[placeholder] = original
             }
             replacements.append((claim.range, placeholder))
+
+            let start = originalOffset + text.distance(from: cursor, to: claim.range.lowerBound)
+            let length = original.count
+            spans.append(
+                RedactionResult.MaskedSpan(
+                    placeholder: placeholder,
+                    kind: claim.kind,
+                    originalRange: start..<(start + length),
+                    redactedRange: (start + drift)..<(start + drift + placeholder.count)
+                )
+            )
+            drift += placeholder.count - length
+            cursor = claim.range.upperBound
+            originalOffset = start + length
         }
 
         // Back to front, so earlier ranges stay valid as the string changes.
@@ -150,7 +172,8 @@ public enum RedactionEngine {
         return RedactionResult(
             redactedText: redacted,
             map: map,
-            counts: nextIndex
+            counts: nextIndex,
+            spans: spans
         )
     }
 
