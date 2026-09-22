@@ -77,9 +77,25 @@ public struct PhoneKeywordRule: RedactionRule {
         "için", "arayabilirsiniz", "arayarak", "arayın", "bilgi için",
     ]
 
+    /// The number itself: either a group of three or more digits, or a
+    /// two-digit group followed by a group of at least three.
+    ///
+    /// The second alternative exists for the Dutch municipal short numbers --
+    /// `14 020`, `14 010` -- where the service prefix is two digits and the
+    /// area code follows. Without it the rule claimed the `020` and left the
+    /// `14` beside it, which masks a phone number into something that is
+    /// still recognisably that phone number.
+    ///
+    /// A bare two-digit group leading a two-digit group is deliberately not
+    /// matched: `bereikbaar van 09.00 tot 17.00 uur` is opening hours, and a
+    /// letter that lost its opening hours to the phone rule is worse than one
+    /// that kept a two-digit prefix.
+    private static let numberPattern =
+        #"(\d{3,8}(?:[ .-]\d{2,6}){0,3}|\d{2}[ .-]\d{3,6}(?:[ .-]\d{2,6}){0,2})"#
+
     private static var pattern: String {
         return "(?i)" + KeywordPattern.alternation(keywords)
-            + #"[^\n]{0,24}?(?<![\w./-])(\d{3,8}(?:[ .-]\d{2,6}){0,3})(?![\w/-])"#
+            + #"[^\n]{0,24}?(?<![\w./-])"# + numberPattern + #"(?![\w/-])"#
     }
 
     /// Words that follow the number instead of introducing it.
@@ -94,7 +110,7 @@ public struct PhoneKeywordRule: RedactionRule {
     ]
 
     private static var trailingPattern: String {
-        return #"(?i)(?<![\w./-])(\d{3,8}(?:[ .-]\d{2,6}){0,3})(?![\w/-])[^\n]{0,24}?"#
+        return #"(?i)(?<![\w./-])"# + numberPattern + #"(?![\w/-])[^\n]{0,24}?"#
             + KeywordPattern.alternation(trailingKeywords)
     }
 
