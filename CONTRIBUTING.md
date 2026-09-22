@@ -1,6 +1,7 @@
 # Contributing
 
-The rules in this repository decide what leaves a person's phone. A change
+The rules in this repository decide what leaves a person's phone when they scan
+a letter into Postklar. A change
 here is a change to that, so every one lands with fixtures that prove both
 directions.
 

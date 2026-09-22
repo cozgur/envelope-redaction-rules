@@ -1,7 +1,8 @@
 # RedactionRules
 
-The deterministic rules Envelope uses to remove personal data from a letter
-**on the device**, before any text is sent anywhere.
+The deterministic rules **Postklar** uses to remove personal data from a letter
+**on the device**, before any text is sent anywhere. (The app's repository and
+this package still carry its codename, Envelope.)
 
 They are published so the claim can be checked rather than believed. No part of
 this package talks to the network, and it depends on nothing but Foundation.
@@ -158,7 +159,7 @@ Three things that have already cost a bug here, so they are worth knowing:
 
 ## Where this comes from
 
-This repository is a mirror. The rules are developed inside the Envelope app's
+This repository is a mirror. The rules are developed inside the Postklar app's
 repository and pushed here whenever they change, by a script that refuses to
 publish a tree whose tests do not pass. What is here is what ships.
 
