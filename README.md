@@ -45,6 +45,46 @@ failure than a leak. These survive every rule:
 - **the sender's letterhead** — masking it deletes the one thing an
   explanation most needs: who wrote
 
+## The numbers in the fixtures
+
+The corpus is public, so a fixture that happened to carry a real person's
+identity number would be exactly the harm this engine exists to prevent.
+Wherever an issuing authority sets a range aside for test data, the fixtures
+use it — those ranges exist because nothing in them can belong to anyone.
+
+| | Source |
+|---|---|
+| **NL** BSN | RvIG's `999xxxxxx` test range, still passing the elfproef |
+| **US** SSN | `987-65-4320`–`987-65-4329`, reserved by the SSA for advertising |
+| **UK** NINO | the `QQ` prefix, which HMRC never issues |
+| **DE** Steuer-IdNr | the BZSt's published example number |
+| **ES** DNI/NIE | the canonical documentation examples |
+| IBANs | the ISO 13616 registry's own example IBANs |
+
+Every one is checked against the same checksum the engine validates with
+before it reaches a letter, so a misremembered digit fails the generator rather
+than shipping quietly.
+
+Two of those ranges are admitted by the rules on purpose. An SSN in the 9xx
+range and a NINO on a Q prefix are never issued, and the general rules reject
+them for that reason — but redaction asks what *looks* identifying, not what an
+authority actually issued. A letter printing `987-65-4320` is printing
+something every reader and every scraper reads as an SSN, and masking a number
+that can belong to nobody costs nothing.
+
+### Where no reserved range exists
+
+**France, Poland and Turkey publish neither a reserved range nor an example
+number.** Those fixtures are fabricated: valid against their country's
+checksum, which is what makes them useful, and generated from a fixed seed so
+the corpus is reproducible.
+
+They are not drawn from any register, but a checksum-valid number is by
+definition one that *could* be issued, so a coincidental match with a real
+number cannot be ruled out. If you believe one of these numbers is yours, open
+an issue naming the country and the file — not the number — and it will be
+rotated.
+
 ## Names, and the limit of doing this without a model
 
 Names are caught in the two places official letters put them:
@@ -62,6 +102,33 @@ Names are caught in the two places official letters put them:
 **A third party named in the body is not masked.** Finding those needs a model,
 and a model that reads the letter is the thing this package exists to avoid.
 That is a real gap, stated here rather than discovered later.
+
+## One value, masked everywhere
+
+Once a rule recognises a value, every other appearance of it in the letter is
+masked too. Official mail repeats a reference three or four times and only the
+first sits beside a label, so without this a letter leaks the reference it
+just masked.
+
+That spreading is guarded, because it is also the most destructive thing the
+engine can do with a false positive. A value is **not** spread when it is:
+
+- **shorter than four characters** — every identifier here is longer, and
+  almost every function word is shorter;
+- **a function word** in any of the seven languages — articles, prepositions
+  and conjunctions, matched without regard to case or diacritics.
+
+The guard exists because it has been needed. A reference pattern once returned
+the Spanish article `de`, and the engine replaced every `de` in the letter.
+Nothing about the result said which words had been ordinary, which is what
+makes this failure worth guarding twice: the pattern was tightened *and* the
+spread was bounded.
+
+The cost is a surname of two or three letters — Li, Ng, Wu — whose
+*recurrences* in the body are left alone. The salutation itself is still
+masked, because that is a direct rule match rather than a repeat. A short name
+surviving in one sentence is a smaller harm than every article in the letter
+being replaced.
 
 ## Contributing a rule
 

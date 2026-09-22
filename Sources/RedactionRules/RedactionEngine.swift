@@ -37,9 +37,20 @@ public enum RedactionEngine {
             identityRules.insert(preferred, at: 0)
         }
 
-        return [EmailRule(), IBANRule(), CardNumberRule()]
+        return [EmailRule(), IBANRule()]
             + identityRules.map { NationalIDRule(format: $0) }
             + [
+                // After the identity formats, not before. Luhn is the whole of
+                // a card number's validation and one random digit string in
+                // ten passes it, so a fifteen-digit French NIR is a card
+                // number one time in ten -- masked either way, but labelled
+                // with a kind the reply header would then resolve wrongly. An
+                // identity format is far more specific: a leading 1 or 2, a
+                // real month, a department, a two-digit key. Nothing goes the
+                // other way, because no identity pattern can match a card:
+                // a sixteen-digit run offers no word boundary at nine or
+                // eleven digits, and a fifteen-digit Amex starts with a 3.
+                CardNumberRule(),
                 DigitRunFallbackRule(),
                 AccountNumberFallbackRule(),
                 ReferenceNumberRule(),
@@ -173,6 +184,11 @@ public enum RedactionEngine {
         // occurrences before the shorter value can split them.
         let distinct = Set(claims.map { PlaceholderKey(kind: $0.kind, value: String(text[$0.range])) })
         for key in distinct.sorted(by: { $0.value.count > $1.value.count }) {
+            // A value too short, or an ordinary function word, is never spread
+            // across the letter. Spreading one replaces every article in the
+            // prose, and nothing about the result says which words used to be
+            // ordinary.
+            guard !Stopwords.blocksRepeat(key.value) else { continue }
             var searchStart = text.startIndex
             while let range = text.range(of: key.value, range: searchStart..<text.endIndex) {
                 searchStart = range.upperBound
@@ -186,6 +202,26 @@ public enum RedactionEngine {
             }
         }
         return found
+    }
+
+    /// How many *additional* occurrences of `value` the repeat pass would
+    /// mask in `text`.
+    ///
+    /// Exposed for the guard's tests: asserting on the redacted output alone
+    /// cannot distinguish "the guard blocked it" from "no rule claimed it in
+    /// the first place".
+    static func repeatableOccurrenceCount(
+        of value: String,
+        kind: PIIKind,
+        in text: String
+    ) -> Int {
+        guard let first = text.range(of: value) else { return 0 }
+        let protected = ProtectedSpans.compute(in: text)
+        return repeatedOccurrences(
+            of: [Claim(kind: kind, range: first)],
+            in: text,
+            avoiding: protected
+        ).count
     }
 
     private struct Claim {
