@@ -43,7 +43,14 @@ struct NLRecallTests {
             .split(whereSeparator: { $0.isWhitespace || $0 == "," })
             .map { $0.trimmingCharacters(in: .punctuationCharacters) }
             .filter { $0.count >= 4 && !isYear($0) }
-            .contains { redacted.contains($0) }
+            .contains { containsWord($0, in: redacted) }
+    }
+
+    /// As a whole word: "Spaarne" of a masked street is not left in the
+    /// sender's name "Woonstichting Spaarnestad".
+    private static func containsWord(_ piece: String, in text: String) -> Bool {
+        let pattern = #"(?<![\p{L}\d])"# + NSRegularExpression.escapedPattern(for: piece) + #"(?![\p{L}\d])"#
+        return text.range(of: pattern, options: .regularExpression) != nil
     }
 
     private static func isYear(_ piece: String) -> Bool {

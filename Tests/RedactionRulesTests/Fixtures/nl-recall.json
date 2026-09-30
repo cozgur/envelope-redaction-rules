@@ -565,5 +565,51 @@
       "Waterschap Voorbeeld"
     ],
     "oneToken": []
+  },
+  {
+    "id": "block-merged-onto-one-line",
+    "text": "Waterschap Voorbeeld\nPostbus 5, 3300 AA Dordrecht\nDe heer B. Mulders Hoofdweg 12 9611 AB Sappemeer\nDatum 4 oktober 2026\nGeachte heer/mevrouw,\nU kunt langskomen op Stadhuisplein 1 in Dordrecht.\n",
+    "masked": [
+      {
+        "value": "B. Mulders",
+        "category": "name"
+      },
+      {
+        "value": "Hoofdweg 12",
+        "category": "address"
+      },
+      {
+        "value": "9611 AB",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Postbus 5, 3300 AA Dordrecht",
+      "U kunt langskomen op Stadhuisplein 1 in Dordrecht."
+    ],
+    "oneToken": []
+  },
+  {
+    "id": "labels-polis-contract-zaak",
+    "text": "Stichting Voorbeeld\nPostbus 12\n1000 AA Amsterdam\n\nPolis: ZN/2027/118830\nContract WS-2024-0911\nZaak 27/DUO/001293\nDatum 2 oktober 2026\n",
+    "masked": [
+      {
+        "value": "ZN/2027/118830",
+        "category": "reference"
+      },
+      {
+        "value": "WS-2024-0911",
+        "category": "reference"
+      },
+      {
+        "value": "27/DUO/001293",
+        "category": "reference"
+      }
+    ],
+    "kept": [
+      "Stichting Voorbeeld",
+      "2 oktober 2026"
+    ],
+    "oneToken": []
   }
 ]
