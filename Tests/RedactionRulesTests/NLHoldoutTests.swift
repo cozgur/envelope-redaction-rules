@@ -22,11 +22,11 @@ import Testing
 struct NLHoldoutTests {
 
     /// The set Gate A is measured on.
-    static let file = "nl-holdout-3"
+    static let file = "nl-holdout-4"
     /// Earlier held-out sets. Each was retired when the rules were fixed
     /// against its misses; they stay as regression tests and no longer
     /// count for the gate.
-    static let retired = ["nl-holdout-1", "nl-holdout-2"]
+    static let retired = ["nl-holdout-1", "nl-holdout-2", "nl-holdout-3"]
 
     static func load(_ name: String) -> [NLRecallTests.Case] {
         guard let url = Bundle.module.url(forResource: "Fixtures/\(name)", withExtension: "json"),

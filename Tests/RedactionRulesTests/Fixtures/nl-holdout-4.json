@@ -1,0 +1,593 @@
+[
+  {
+    "id": "belastingdienst-aangetekend",
+    "text": "Belastingdienst\nPostbus 9007\n7300 GJ Apeldoorn\n\nAangetekend\nMevrouw mr. S.K. Wiersma\nNieuwe Binnenweg 1a\n3014 GA Rotterdam\n\nDatum 14 oktober 2026\nUw kenmerk: SKW/2026/03\nOns kenmerk: IB-26-0073311\n\nGeachte mevrouw Wiersma,\n\nWij leggen u een vergrijpboete op van € 2.500,00.\n",
+    "masked": [
+      {
+        "value": "S.K. Wiersma",
+        "category": "name"
+      },
+      {
+        "value": "Nieuwe Binnenweg 1a",
+        "category": "address"
+      },
+      {
+        "value": "3014 GA",
+        "category": "postcode"
+      },
+      {
+        "value": "IB-26-0073311",
+        "category": "reference"
+      }
+    ],
+    "kept": [
+      "Belastingdienst",
+      "Postbus 9007",
+      "Aangetekend",
+      "€ 2.500,00"
+    ],
+    "oneToken": []
+  },
+  {
+    "id": "belastingdienst-bsn-spaced",
+    "text": "Belastingdienst\nPostbus 1470\n6400 BL Heerlen\n\nDe heer I. Kowalczyk\nKade 3-a\n1011  AX  Amsterdam\n\nDatum 2 oktober 2026\nBSN 237 812 630\n\nGeachte heer Kowalczyk,\n\nU heeft recht op een teruggave van € 412,00.\n",
+    "masked": [
+      {
+        "value": "I. Kowalczyk",
+        "category": "name"
+      },
+      {
+        "value": "Kade 3-a",
+        "category": "address"
+      },
+      {
+        "value": "1011  AX",
+        "category": "postcode"
+      },
+      {
+        "value": "237 812 630",
+        "category": "bsn"
+      }
+    ],
+    "kept": [
+      "Belastingdienst",
+      "Postbus 1470",
+      "€ 412,00"
+    ],
+    "oneToken": []
+  },
+  {
+    "id": "belastingdienst-name-in-body",
+    "text": "Belastingdienst\nPostbus 3050\n6401 DN Heerlen\n\nMevrouw A.F. Doornbos\nVismarkt 22 A-2\n9711 KV Groningen\n\nDatum 6 oktober 2026\nKenmerk 2026.40.118.93\n\nGeachte heer/mevrouw,\n\nWij hebben de aangifte van A.F. Doornbos over 2025 ontvangen en verwerkt.\n",
+    "masked": [
+      {
+        "value": "A.F. Doornbos",
+        "category": "name"
+      },
+      {
+        "value": "Vismarkt 22 A-2",
+        "category": "address"
+      },
+      {
+        "value": "9711 KV",
+        "category": "postcode"
+      },
+      {
+        "value": "2026.40.118.93",
+        "category": "reference"
+      }
+    ],
+    "kept": [
+      "Belastingdienst",
+      "Postbus 3050",
+      "6401 DN Heerlen"
+    ],
+    "oneToken": []
+  },
+  {
+    "id": "ind-english",
+    "text": "Immigration and Naturalisation Service (IND)\nPostbus 287\n7600 AG Almelo\n\nMr. P. Nakamura\nBoschdijk 180\n5612 HB EINDHOVEN\n\nDate 3 October 2026\nCase number 2610-5541-JPN\n\nDear Mr Nakamura,\n\nYour residence permit for highly skilled migrants has been granted.\n",
+    "masked": [
+      {
+        "value": "P. Nakamura",
+        "category": "name"
+      },
+      {
+        "value": "Boschdijk 180",
+        "category": "address"
+      },
+      {
+        "value": "5612 HB",
+        "category": "postcode"
+      },
+      {
+        "value": "2610-5541-JPN",
+        "category": "reference"
+      }
+    ],
+    "kept": [
+      "Postbus 287",
+      "7600 AG Almelo",
+      "highly skilled migrants"
+    ],
+    "oneToken": []
+  },
+  {
+    "id": "ind-uppercase-city",
+    "text": "IND\nPostbus 5800\n2280 HV Rijswijk\n\nMEVROUW Z. AHMADI\nVUGHTERSTRAAT 12 B\n5211 GJ  'S-HERTOGENBOSCH\n\nDatum 29 september 2026\nV-nummer 5520 1144 88\n\nGeachte mevrouw Ahmadi,\n\nU krijgt binnen 8 weken een beslissing.\n",
+    "masked": [
+      {
+        "value": "Z. AHMADI",
+        "category": "name"
+      },
+      {
+        "value": "VUGHTERSTRAAT 12 B",
+        "category": "address"
+      },
+      {
+        "value": "5211 GJ",
+        "category": "postcode"
+      },
+      {
+        "value": "5520 1144 88",
+        "category": "reference"
+      }
+    ],
+    "kept": [
+      "IND",
+      "Postbus 5800",
+      "8 weken"
+    ],
+    "oneToken": [
+      "5520 1144 88"
+    ]
+  },
+  {
+    "id": "cak-company-and-person",
+    "text": "CAK\nPostbus 84030\n2508 AA Den Haag\n\nBewindvoering Voorbeeld B.V.\nT.a.v. mevrouw H. Tjon-A-Fong\nPostbus 1234\n3500 BC Utrecht\n\nDatum 10 oktober 2026\nInzake: de heer R.M. Kwakernaak\nKlantnummer 80 1177 4402\n\nGeachte mevrouw Tjon-A-Fong,\n\nDe eigen bijdrage van uw cliënt is € 38,20 per maand.\n",
+    "masked": [
+      {
+        "value": "H. Tjon-A-Fong",
+        "category": "name"
+      },
+      {
+        "value": "R.M. Kwakernaak",
+        "category": "name"
+      },
+      {
+        "value": "80 1177 4402",
+        "category": "reference"
+      }
+    ],
+    "kept": [
+      "CAK",
+      "Postbus 84030",
+      "Bewindvoering Voorbeeld B.V.",
+      "€ 38,20"
+    ],
+    "oneToken": []
+  },
+  {
+    "id": "cak-bsn-table",
+    "text": "CAK\nPostbus 84006\n2508 AA Den Haag\n\nDhr. L.J. Evers\nLindestraat 2 A\n7511 PH Enschede\n\nDatum 5 oktober 2026\n\nBurgerservicenummer : 959853613\nKlantnummer         : 3009-4471-12\n\nGeachte heer Evers,\n\nWij incasseren € 17,80 van NL36 INGB 0007 6543 21.\n",
+    "masked": [
+      {
+        "value": "L.J. Evers",
+        "category": "name"
+      },
+      {
+        "value": "Lindestraat 2 A",
+        "category": "address"
+      },
+      {
+        "value": "7511 PH",
+        "category": "postcode"
+      },
+      {
+        "value": "959853613",
+        "category": "bsn"
+      },
+      {
+        "value": "3009-4471-12",
+        "category": "reference"
+      },
+      {
+        "value": "NL36 INGB 0007 6543 21",
+        "category": "iban"
+      }
+    ],
+    "kept": [
+      "CAK",
+      "Postbus 84006",
+      "€ 17,80"
+    ],
+    "oneToken": []
+  },
+  {
+    "id": "duo-debt-overview",
+    "text": "DUO\nPostbus 50061\n9702 AB Groningen\n\nMevrouw K.E. van Wijk-Oosterhuis\nBurgemeester de Withstraat 5 zwart\n8081 CB Elburg\n\nDatum 11 oktober 2026\nRelatienummer 2210 0198 45\n\nGeachte mevrouw Van Wijk,\n\nUw openstaande studieschuld is € 24.113,90.\n",
+    "masked": [
+      {
+        "value": "K.E. van Wijk-Oosterhuis",
+        "category": "name"
+      },
+      {
+        "value": "Burgemeester de Withstraat 5 zwart",
+        "category": "address"
+      },
+      {
+        "value": "8081 CB",
+        "category": "postcode"
+      },
+      {
+        "value": "2210 0198 45",
+        "category": "reference"
+      }
+    ],
+    "kept": [
+      "DUO",
+      "Postbus 50061",
+      "€ 24.113,90"
+    ],
+    "oneToken": [
+      "2210 0198 45"
+    ]
+  },
+  {
+    "id": "duo-examen",
+    "text": "Dienst Uitvoering Onderwijs\nExamens\nPostbus 30158\n9700 LK Groningen\n\nDhr. Q. Pham\nAchter de Hoven 88\n8933 AH Leeuwarden\n\nDatum 1 oktober 2026\nKandidaatnummer EX-26-00917\nOnderwijsnummer 586195233\n\nBeste heer Pham,\n\nUw staatsexamen Nederlands als tweede taal is op 3 november 2026.\n",
+    "masked": [
+      {
+        "value": "Q. Pham",
+        "category": "name"
+      },
+      {
+        "value": "Achter de Hoven 88",
+        "category": "address"
+      },
+      {
+        "value": "8933 AH",
+        "category": "postcode"
+      },
+      {
+        "value": "EX-26-00917",
+        "category": "reference"
+      },
+      {
+        "value": "586195233",
+        "category": "bsn"
+      }
+    ],
+    "kept": [
+      "Examens",
+      "Postbus 30158",
+      "3 november 2026"
+    ],
+    "oneToken": []
+  },
+  {
+    "id": "uwv-toeslag",
+    "text": "UWV\nPostbus 1000\n1000 BA Amsterdam\n\nMevrouw B. Sahin-Kaya\nWillem Barentszstraat 12 hs\n3572 PC Utrecht\n\nDatum 8 oktober 2026\nOns kenmerk: UWV/TW/26-4410\nBSN: 262978210\n\nGeachte mevrouw Sahin,\n\nU ontvangt een toeslag van € 96,21 per maand op NL30 ABNA 0512 3456 78.\n",
+    "masked": [
+      {
+        "value": "B. Sahin-Kaya",
+        "category": "name"
+      },
+      {
+        "value": "Willem Barentszstraat 12 hs",
+        "category": "address"
+      },
+      {
+        "value": "3572 PC",
+        "category": "postcode"
+      },
+      {
+        "value": "UWV/TW/26-4410",
+        "category": "reference"
+      },
+      {
+        "value": "262978210",
+        "category": "bsn"
+      },
+      {
+        "value": "NL30 ABNA 0512 3456 78",
+        "category": "iban"
+      }
+    ],
+    "kept": [
+      "UWV",
+      "Postbus 1000",
+      "€ 96,21"
+    ],
+    "oneToken": []
+  },
+  {
+    "id": "uwv-werkgever",
+    "text": "UWV\nPostbus 58285\n1040 HG Amsterdam\n\nBakkerij De Korenaar V.O.F.\nAttn. de heer M. Dekker\nKerkstraat 44\n7201 JK Zutphen\n\nDatum 30 september 2026\nLoonheffingennummer 8123.45.678.L01\n\nGeachte heer Dekker,\n\nUw ziekmelding van een werknemer is ontvangen.\n",
+    "masked": [
+      {
+        "value": "M. Dekker",
+        "category": "name"
+      },
+      {
+        "value": "Kerkstraat 44",
+        "category": "address"
+      },
+      {
+        "value": "7201 JK",
+        "category": "postcode"
+      },
+      {
+        "value": "8123.45.678.L01",
+        "category": "reference"
+      }
+    ],
+    "kept": [
+      "UWV",
+      "Postbus 58285",
+      "Bakkerij De Korenaar V.O.F."
+    ],
+    "oneToken": []
+  },
+  {
+    "id": "zorgverzekeraar-premiebrief",
+    "text": "Zorgverzekeraar Delta Zorg\nAntwoordnummer 555\n6800 VB Arnhem\n\nDe heer J.D. Hofstede\nKleine Kerkstraat 1-3\n6741 AG Lunteren\n\nDatum 16 september 2026\nKlantnummer DZ 1022 8871\n\nGeachte heer Hofstede,\n\nUw premie voor 2027 is € 149,50 per maand.\n",
+    "masked": [
+      {
+        "value": "J.D. Hofstede",
+        "category": "name"
+      },
+      {
+        "value": "Kleine Kerkstraat 1-3",
+        "category": "address"
+      },
+      {
+        "value": "6741 AG",
+        "category": "postcode"
+      },
+      {
+        "value": "DZ 1022 8871",
+        "category": "reference"
+      }
+    ],
+    "kept": [
+      "Zorgverzekeraar Delta Zorg",
+      "Antwoordnummer 555",
+      "6800 VB Arnhem",
+      "€ 149,50"
+    ],
+    "oneToken": []
+  },
+  {
+    "id": "zorgverzekeraar-dental",
+    "text": "Zorgverzekeraar Delta Zorg\nPostbus 900, 6800 GC Arnhem\nMevrouw N. Rasool\nGraafseweg 404\n6532 ZT Nijmegen\nDatum 4 oktober 2026\nDeclaratie DZ-TAND-2026-00413\nGeachte mevrouw Rasool,\nWij vergoeden € 180,00 van uw tandartsrekening.\n",
+    "masked": [
+      {
+        "value": "N. Rasool",
+        "category": "name"
+      },
+      {
+        "value": "Graafseweg 404",
+        "category": "address"
+      },
+      {
+        "value": "6532 ZT",
+        "category": "postcode"
+      },
+      {
+        "value": "DZ-TAND-2026-00413",
+        "category": "reference"
+      }
+    ],
+    "kept": [
+      "Postbus 900, 6800 GC Arnhem",
+      "€ 180,00"
+    ],
+    "oneToken": []
+  },
+  {
+    "id": "woningcorporatie-mutatie",
+    "text": "Woonbedrijf Maasoever\nPostbus 400\n6200 AK Maastricht\n\nMevrouw G.C. Lemmens\nBoschstraat 70 a\n6211 AX Maastricht\n\nDatum 3 oktober 2026\nHuurdernummer 0010.44.713\n\nGeachte mevrouw Lemmens,\n\nUw huuropzegging per 31 oktober 2026 is ontvangen.\n",
+    "masked": [
+      {
+        "value": "G.C. Lemmens",
+        "category": "name"
+      },
+      {
+        "value": "Boschstraat 70 a",
+        "category": "address"
+      },
+      {
+        "value": "6211 AX",
+        "category": "postcode"
+      },
+      {
+        "value": "0010.44.713",
+        "category": "reference"
+      }
+    ],
+    "kept": [
+      "Woonbedrijf Maasoever",
+      "Postbus 400",
+      "31 oktober 2026"
+    ],
+    "oneToken": []
+  },
+  {
+    "id": "woningcorporatie-same-row",
+    "text": "Woonbedrijf Maasoever                         Dhr. T.W. Frissen\nKlantcontact                                  Tongersestraat 12 C\nPostbus 400, 6200 AK Maastricht               6211 LM Maastricht\nDatum 9 oktober 2026\nKlantnummer WM-2291-0045\nGeachte heer/mevrouw,\nUw verzoek om een nieuwe keuken is goedgekeurd.\n",
+    "masked": [
+      {
+        "value": "T.W. Frissen",
+        "category": "name"
+      },
+      {
+        "value": "Tongersestraat 12 C",
+        "category": "address"
+      },
+      {
+        "value": "6211 LM",
+        "category": "postcode"
+      },
+      {
+        "value": "WM-2291-0045",
+        "category": "reference"
+      }
+    ],
+    "kept": [
+      "Woonbedrijf Maasoever",
+      "Postbus 400, 6200 AK Maastricht"
+    ],
+    "oneToken": []
+  },
+  {
+    "id": "cjib-mulder",
+    "text": "CJIB\nPostbus 1794\n8901 CB Leeuwarden\n\nDhr. E.P. de Bruijn\nSint Pieterstraat 7 bis\n6211 JN Maastricht\n\nDatum 15 september 2026\nBeschikkingsnummer 8803 2214 7710\nKenteken 99-XLT-7\n\nGeachte heer De Bruijn,\n\nU moet € 104,00 betalen vóór 13 oktober 2026 op NL39 SNSB 0877 6655 44.\n",
+    "masked": [
+      {
+        "value": "E.P. de Bruijn",
+        "category": "name"
+      },
+      {
+        "value": "Sint Pieterstraat 7 bis",
+        "category": "address"
+      },
+      {
+        "value": "6211 JN",
+        "category": "postcode"
+      },
+      {
+        "value": "8803 2214 7710",
+        "category": "reference"
+      }
+    ],
+    "kept": [
+      "CJIB",
+      "Postbus 1794",
+      "€ 104,00",
+      "13 oktober 2026"
+    ],
+    "oneToken": [
+      "8803 2214 7710"
+    ]
+  },
+  {
+    "id": "cjib-interleaved",
+    "text": "Centraal Justitieel Incassobureau\nMevrouw S. Okafor-Jansen\nPostbus 50\nHoofdstraat 12 A-1\n8900 AB Leeuwarden\n7902 HB Hoogeveen\nDatum 1 oktober 2026\nCJIB-nummer 1188 4402 0071 2209\nGeachte heer/mevrouw,\nDe vordering is overgedragen aan de deurwaarder.\n",
+    "masked": [
+      {
+        "value": "S. Okafor-Jansen",
+        "category": "name"
+      },
+      {
+        "value": "Hoofdstraat 12 A-1",
+        "category": "address"
+      },
+      {
+        "value": "7902 HB",
+        "category": "postcode"
+      },
+      {
+        "value": "1188 4402 0071 2209",
+        "category": "reference"
+      }
+    ],
+    "kept": [
+      "Postbus 50",
+      "8900 AB Leeuwarden"
+    ],
+    "oneToken": [
+      "1188 4402 0071 2209"
+    ]
+  },
+  {
+    "id": "gemeente-nijmegen-parkeren",
+    "text": "Gemeente Nijmegen\nPostbus 9105\n6500 HG Nijmegen\n\nDe heer F.A. Janssens\nVan Welderenstraat 101-III\n6511 MG Nijmegen\n\nDatum 12 oktober 2026\nZaaknummer 2026-0045581\nBSN 251135081\n\nGeachte heer Janssens,\n\nUw bezwaar tegen de parkeerbon is gegrond.\n",
+    "masked": [
+      {
+        "value": "F.A. Janssens",
+        "category": "name"
+      },
+      {
+        "value": "Van Welderenstraat 101-III",
+        "category": "address"
+      },
+      {
+        "value": "6511 MG",
+        "category": "postcode"
+      },
+      {
+        "value": "2026-0045581",
+        "category": "reference"
+      },
+      {
+        "value": "251135081",
+        "category": "bsn"
+      }
+    ],
+    "kept": [
+      "Gemeente Nijmegen",
+      "Postbus 9105",
+      "6500 HG Nijmegen"
+    ],
+    "oneToken": []
+  },
+  {
+    "id": "gemeente-nijmegen-kwijtschelding",
+    "text": "Gemeente Nijmegen\nBelastingen\nPostbus 9105\n6500 HG Nijmegen\n\nMw. drs. E.L. Verhoef\nGroesbeekseweg 55 bov\n6524 CS Nijmegen\n\nDatum 7 oktober 2026\nAanslagnummer 7710 0321 44\n\nBeste mevrouw Verhoef,\n\nUw verzoek om kwijtschelding is toegekend voor € 287,30.\n",
+    "masked": [
+      {
+        "value": "E.L. Verhoef",
+        "category": "name"
+      },
+      {
+        "value": "Groesbeekseweg 55 bov",
+        "category": "address"
+      },
+      {
+        "value": "6524 CS",
+        "category": "postcode"
+      },
+      {
+        "value": "7710 0321 44",
+        "category": "reference"
+      }
+    ],
+    "kept": [
+      "Gemeente Nijmegen",
+      "Postbus 9105",
+      "€ 287,30"
+    ],
+    "oneToken": [
+      "7710 0321 44"
+    ]
+  },
+  {
+    "id": "gemeente-maastricht-paspoort",
+    "text": "Gemeente Maastricht\nBurgerzaken\nPostbus 1992\n6201 BZ Maastricht\n\nMevrouw R. Hermans-Vliegen\nWycker Brugstraat 2-4\n6221 EC Maastricht\n\nDatum 28 september 2026\nAanvraagnummer BZ/26/33192\n\nGeachte mevrouw Hermans,\n\nUw rijbewijs ligt klaar bij de balie van Burgerzaken.\n",
+    "masked": [
+      {
+        "value": "R. Hermans-Vliegen",
+        "category": "name"
+      },
+      {
+        "value": "Wycker Brugstraat 2-4",
+        "category": "address"
+      },
+      {
+        "value": "6221 EC",
+        "category": "postcode"
+      },
+      {
+        "value": "BZ/26/33192",
+        "category": "reference"
+      }
+    ],
+    "kept": [
+      "Gemeente Maastricht",
+      "Postbus 1992",
+      "6201 BZ Maastricht"
+    ],
+    "oneToken": []
+  }
+]
