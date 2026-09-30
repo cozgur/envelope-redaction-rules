@@ -50,7 +50,7 @@ public struct RecipientBlockRule: RedactionRule {
 
     /// Lines that mark a block as an address even when the detector is silent.
     private static let postcodeShapes = [
-        #"(?<![\w./-])[1-9]\d{3}\s?(?!SA|SD|SS)[A-Z]{2}(?![\w./-])"#,       // NL
+        #"(?<![\w./-])[1-9]\d{3} {0,2}(?!SA|SD|SS)[A-Z]{2}(?![\w./-])"#,     // NL
         #"(?<![\w./-])\d{2}-\d{3}(?![\w./-])"#,                             // PL
         #"(?<![\w./-])\d{5}(?:-\d{4})?(?![\w./-])"#,                        // DE/ES/FR/TR/US
         #"(?i)(?<![\w./-])[A-Z]{1,2}\d[A-Z\d]?\s?\d[A-Z]{2}(?![\w./-])"#,  // UK
@@ -67,8 +67,24 @@ public struct RecipientBlockRule: RedactionRule {
                 if detected.contains(where: { $0.overlaps(range) }) { return true }
                 return Self.looksLikeAnAddressBlock(block)
             }
-            .map(\.range)
+            .compactMap { Self.withoutAnnotations($0) }
             + Self.postcodeAnchoredBlocks(in: structure, text: text)
+    }
+
+    /// How the letter was sent, printed above the name: *Aangetekend*,
+    /// *Per e-mail en per post*. It says something about the letter -- a
+    /// registered letter matters -- and nothing about the person.
+    static let postalAnnotation =
+        #"(?i)^\s*(?:aangetekend|per aangetekende post|per (?:e-?mail|post|koerier)(?: en (?:per )?(?:e-?mail|post))?|spoed|vertrouwelijk|persoonlijk|registered|recommandé|einschreiben)\s*:?\s*$"#
+
+    static func isPostalAnnotation(_ text: String) -> Bool {
+        !RegexScanner.ranges(of: postalAnnotation, in: text).isEmpty
+    }
+
+    /// A recipient block's range without the annotation lines at its top.
+    private static func withoutAnnotations(_ block: LetterStructure.Block) -> Range<String.Index>? {
+        guard let first = block.lines.firstIndex(where: { !isPostalAnnotation($0.text) }) else { return nil }
+        return block.lines[first].range.lowerBound..<block.range.upperBound
     }
 
     // MARK: - A block found from its postcode line
@@ -79,7 +95,7 @@ public struct RecipientBlockRule: RedactionRule {
     /// `1000 AA` to `9999 ZZ`: no leading zero, and never SA, SD or SS, which
     /// PostNL does not issue.
     private static let postcodeCityLine =
-        #"^\s*(?:(\S.*?),\s*)?[1-9][0-9]{3} ?(?!SA|SD|SS)[A-Z]{2}\s+['\p{L}][\p{L} .'-]*\s*$"#
+        #"^\s*(?:(\S.*?),\s*)?[1-9][0-9]{3} {0,2}(?!SA|SD|SS)[A-Z]{2}\s+['\p{L}][\p{L} .'-]*\s*$"#
 
     /// A mailing address that belongs to an office, never to a person.
     private static let officeMailbox = #"(?i)(?<!\p{L})(?:postbus|antwoordnummer|postfach|bo[iî]te postale)(?!\p{L})"#
@@ -154,6 +170,7 @@ public struct RecipientBlockRule: RedactionRule {
         guard let cell else { return true }
         return cell.isBlank || LetterStructure.isFieldLine(cell.text) || isOfficeMailbox(cell.text)
             || LetterStructure.isDateLine(cell.text) || isPostcodeLine(cell) != nil
+            || isPostalAnnotation(cell.text)
     }
 
     /// The postcode walk, over one column.

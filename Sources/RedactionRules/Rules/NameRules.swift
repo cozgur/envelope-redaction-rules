@@ -37,3 +37,51 @@ public struct SalutationNameRule: RedactionRule {
         return []
     }
 }
+
+/// A person named in a field line about someone other than the addressee:
+/// *Inzake: mevrouw J.P. Zwart-Hendriks*, *Cliënt: de heer R. Visser*.
+///
+/// Guardianship firms, lawyers and insurers write about a client this way.
+/// Only a name with initials is taken -- "Betreft: aanslag 2026" has none --
+/// so the field's other uses are left alone.
+public struct FieldLineNameRule: RedactionRule {
+    public let kind = PIIKind.name
+
+    public init() {}
+
+    private static let pattern =
+        #"(?im)^[ \t]*(?:inzake|betreft|cli[eë]nt|verzekerde|aanvrager|pati[eë]nt|namens|re)[ \t]*:[ \t]*(?:(?:de[ \t]+)?(?:heer|mevrouw|mw\.|dhr\.|mr\.|mrs\.|ms\.)[ \t]+)?("#
+        + PersonName.initialsAndSurname + #")[ \t]*$"#
+
+    public func matches(in text: String) -> [Range<String.Index>] {
+        RegexScanner.ranges(of: Self.pattern, captureGroup: 1, in: text)
+    }
+}
+
+/// The shape of a person's name as Dutch mail prints it: initials, then a
+/// surname with its tussenvoegsels, hyphenated or double -- "J.P.
+/// Zwart-Hendriks", "K.E. van Wijk-Oosterhuis", "D.C. van 't Hof".
+enum PersonName {
+    static let initialsAndSurname =
+        #"\p{Lu}\.(?:[ ]?\p{Lu}\.)*[ \t]+(?:(?:van|de|der|den|het|ten|ter|te|el|al|'t|von|du|la|le)[ \t]+)*\p{Lu}[\p{L}'-]+(?:[ -]\p{Lu}[\p{L}'-]+)?"#
+
+    /// The surname in a name: everything after the initials, tussenvoegsels
+    /// included, with the first letter as the letter itself capitalises
+    /// it mid-sentence ("van Wijk" → matched case-insensitively anyway).
+    static func surname(of name: String) -> String? {
+        guard let range = RegexScanner.ranges(of: #"^(?:\p{Lu}\.(?:[ ]?\p{Lu}\.)*)[ \t]+(.+)$"#, captureGroup: 1, in: name).first
+        else { return nil }
+        return String(name[range])
+    }
+
+    /// The name on a recipient block's first line, without the honorific
+    /// and titles before it: "Mevrouw mr. S.K. Wiersma" → "S.K. Wiersma".
+    static func onFirstLine(of block: String) -> String? {
+        guard let first = block.split(separator: "\n", omittingEmptySubsequences: true).first else { return nil }
+        let pattern = #"(?i:^\s*(?:t\.a\.v\.|attn\.?|aan:?|de heer en mevrouw|de heer|dhr\.(?:/mevr\.)?|heer|mevrouw|mevr\.|mw\.|mr\.|mrs\.|ms\.)?\s*(?:(?:mr|dr|drs|ir|ing|prof)\.\s*)*)("#
+            + initialsAndSurname + #")\s*$"#
+        let line = String(first)
+        guard let range = RegexScanner.ranges(of: pattern, captureGroup: 1, in: line).first else { return nil }
+        return String(line[range])
+    }
+}

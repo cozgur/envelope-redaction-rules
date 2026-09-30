@@ -63,6 +63,7 @@ public enum RedactionEngine {
                 // answer wherever both apply.
                 RecipientBlockRule(),
                 SalutationNameRule(),
+                FieldLineNameRule(),
                 DataDetectorRule.phone,
                 PhoneNumberPatternRule(),
                 PhoneKeywordRule(),
@@ -115,7 +116,16 @@ public enum RedactionEngine {
         // instruction -- and only the first mention sits beside a label. Once
         // a rule has recognised the value, the rest are the same secret and
         // are masked on sight rather than re-detected.
-        claims += repeatedOccurrences(of: claims, in: text, avoiding: protected)
+        //
+        // The recipient's name is one of those values even though no rule
+        // claims it alone: it is inside the address block, which is claimed
+        // whole. It is read back out of the block's first line so that "the
+        // application of K.L. Brandsma" further down is masked too.
+        let seeds = claims
+            .filter { $0.kind == .address }
+            .compactMap { PersonName.onFirstLine(of: String(text[$0.range])) }
+        claims += repeatedOccurrences(of: claims, seeds: seeds, in: text, avoiding: protected)
+        claims += surnamesAfterHonorifics(of: seeds, in: text, taken: claims.map(\.range), avoiding: protected)
 
         claims.sort { $0.range.lowerBound < $1.range.lowerBound }
 
@@ -197,6 +207,7 @@ public enum RedactionEngine {
     /// Every further occurrence of a value some rule already claimed.
     private static func repeatedOccurrences(
         of claims: [Claim],
+        seeds: [String] = [],
         in text: String,
         avoiding protected: [ProtectedSpans.Span]
     ) -> [Claim] {
@@ -206,6 +217,7 @@ public enum RedactionEngine {
         // Longest first, so a value that contains a shorter one claims its own
         // occurrences before the shorter value can split them.
         let distinct = Set(claims.map { PlaceholderKey(kind: $0.kind, value: String(text[$0.range])) })
+            .union(seeds.map { PlaceholderKey(kind: .name, value: $0) })
         for key in distinct.sorted(by: { $0.value.count > $1.value.count }) {
             // A value too short, or an ordinary function word, is never spread
             // across the letter. Spreading one replaces every article in the
@@ -221,6 +233,34 @@ public enum RedactionEngine {
                       })
                 else { continue }
                 found.append(Claim(kind: key.kind, range: range))
+                taken.append(range)
+            }
+        }
+        return found
+    }
+
+    /// The recipient's surname where the letter uses it alone, after an
+    /// honorific: "wij nemen contact op met mevrouw Brandsma".
+    ///
+    /// Only after an honorific. A surname on its own is too often an
+    /// ordinary word -- Bakker, Visser, De Groot -- to be masked on sight;
+    /// after *mevrouw* it is only ever a name.
+    private static func surnamesAfterHonorifics(
+        of names: [String],
+        in text: String,
+        taken: [Range<String.Index>],
+        avoiding protected: [ProtectedSpans.Span]
+    ) -> [Claim] {
+        var found: [Claim] = []
+        var taken = taken
+        for name in names {
+            guard let surname = PersonName.surname(of: name), surname.count >= 3 else { continue }
+            let pattern = #"(?i:(?<!\p{L})(?:heer|mevrouw|meneer|mw\.|dhr\.|mr\.|mrs\.|ms\.)[ \t]+)("#
+                + NSRegularExpression.escapedPattern(for: surname) + #")(?!\p{L})"#
+            for range in RegexScanner.ranges(of: pattern, captureGroup: 1, in: text)
+            where !taken.contains(where: { $0.overlaps(range) })
+                && !protected.contains(where: { $0.vetoes(.name) && $0.range.overlaps(range) }) {
+                found.append(Claim(kind: .name, range: range))
                 taken.append(range)
             }
         }

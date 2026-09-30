@@ -48,7 +48,9 @@ public enum ProtectedSpans {
             #"(?i)(?:EUR|USD|GBP|TRY|PLN|CHF|€|\$|£|₺|zł)\s?\d[\d.,]*"#,
             #"(?i)\d[\d.,]*\s?(?:EUR|USD|GBP|TRY|PLN|CHF|€|\$|£|₺|zł)\b"#,
             // Decimal amounts written without a symbol: 1.240,00 / 1,240.00
-            #"(?<![\w/-])\d{1,3}(?:[.,]\d{3})*[.,]\d{2}(?![\w/-])"#,
+            // Not when a separator runs on either side of it: 40.118.93 inside
+            // 2026.40.118.93 is the tail of a reference, not an amount.
+            #"(?<![\w/.,-])\d{1,3}(?:[.,]\d{3})*[.,]\d{2}(?![\w/-]|[.,]\d)"#,
             // Percentages.
             #"\b\d+(?:[.,]\d+)?\s?%"#,
         ]
