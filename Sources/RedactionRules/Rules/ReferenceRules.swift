@@ -27,6 +27,7 @@ public struct ReferenceNumberRule: RedactionRule {
         "zeichen", "kenmerk", "dossier", "sprawy", "sygnatura",
         "expediente", "procedimiento", "matricule", "matrikel",
         "albumu", "album", "esas", "id", "werkorder",
+        "polis", "contract", "zaak",
     ]
 
     /// Labels worth matching mid-sentence, where there is no field line to

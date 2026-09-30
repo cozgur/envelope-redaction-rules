@@ -97,6 +97,13 @@ public struct RecipientBlockRule: RedactionRule {
     private static let postcodeCityLine =
         #"^\s*(?:(\S.*?),\s*)?[1-9][0-9]{3} {0,2}(?!SA|SD|SS)[A-Z]{2}\s+['\p{L}][\p{L} .'-]*\s*$"#
 
+    /// A whole recipient block that OCR ran onto one line without commas:
+    /// `Mevrouw K. Smit Dorpsstraat 5 7461 AB Rijssen`. Taken only when the
+    /// line opens with a person -- an honorific or initials -- so a sentence
+    /// that happens to give an address is not.
+    private static let mergedBlockLine =
+        #"^\s*(\S.*?\p{L}{2,}[ \t]+\d+[\p{L}\d/-]*(?:[ \t]+\p{L}{1,3})?)[ \t]+[1-9][0-9]{3} {0,2}(?!SA|SD|SS)[A-Z]{2}\s+['\p{L}][\p{L} .'-]*\s*$"#
+
     /// A mailing address that belongs to an office, never to a person.
     private static let officeMailbox = #"(?i)(?<!\p{L})(?:postbus|antwoordnummer|postfach|bo[iî]te postale)(?!\p{L})"#
 
@@ -156,6 +163,13 @@ public struct RecipientBlockRule: RedactionRule {
         return Cell(text: right, range: start..<line.range.upperBound)
     }
 
+    /// An honorific, whatever follows it.
+    private static func opensWithAnHonorific(_ text: String) -> Bool {
+        !RegexScanner.ranges(
+            of: #"^\s*(?i:mevrouw|mevr\.|mw\.|de heer|dhr\.|heer|t\.a\.v\.)(?!\p{L})"#, in: text
+        ).isEmpty
+    }
+
     private static func opensWithAPerson(_ cell: Cell?) -> Bool {
         cell.map { LetterStructure.opensWithAPerson($0.text) } ?? false
     }
@@ -177,7 +191,14 @@ public struct RecipientBlockRule: RedactionRule {
     private static func walk(_ column: [Cell?], firstLineIsLetterhead: Bool, skipping: Set<Int>) -> [Range<String.Index>] {
         var found: [Range<String.Index>] = []
         for (position, cell) in column.enumerated() where position >= 1 && !skipping.contains(position) {
-            guard let cell, let match = isPostcodeLine(cell), !isOfficeMailbox(cell.text) else { continue }
+            guard let cell, !isOfficeMailbox(cell.text) else { continue }
+            guard let match = isPostcodeLine(cell) else {
+                if let merged = RegexScanner.firstMatch(of: mergedBlockLine, in: cell.text),
+                   let prefix = merged.prefix, LetterStructure.opensWithAPerson(prefix) || opensWithAnHonorific(prefix) {
+                    found.append(cell.range)
+                }
+                continue
+            }
 
             if let prefix = match.prefix, !prefix.isEmpty {
                 // The whole address on one line. It needs a street -- a word
