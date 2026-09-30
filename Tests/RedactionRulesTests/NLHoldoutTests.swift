@@ -18,15 +18,19 @@ import Testing
 /// `NLRecallTests`, the rules are fixed against that, and a new held-out set
 /// replaces this one: a set the rules have been tuned to is no longer
 /// held out.
+///
+/// From set 6 the held-out set is written by a separate agent that has not
+/// seen the rules or any earlier fixture, given only the senders, the kinds
+/// of layout to vary and this file's format.
 @Suite("NL held-out recall (Gate A)")
 struct NLHoldoutTests {
 
     /// The set Gate A is measured on.
-    static let file = "nl-holdout-5"
+    static let file = "nl-holdout-6"
     /// Earlier held-out sets. Each was retired when the rules were fixed
     /// against its misses; they stay as regression tests and no longer
     /// count for the gate.
-    static let retired = ["nl-holdout-1", "nl-holdout-2", "nl-holdout-3", "nl-holdout-4"]
+    static let retired = ["nl-holdout-1", "nl-holdout-2", "nl-holdout-3", "nl-holdout-4", "nl-holdout-5"]
 
     static func load(_ name: String) -> [NLRecallTests.Case] {
         guard let url = Bundle.module.url(forResource: "Fixtures/\(name)", withExtension: "json"),

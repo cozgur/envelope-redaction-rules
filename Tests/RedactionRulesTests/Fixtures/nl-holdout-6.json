@@ -1,0 +1,823 @@
+[
+  {
+    "id": "belastingdienst-voorlopige-aanslag-left-window",
+    "text": "Belastingdienst\n\nRetouradres Postbus 2503 6401 DA Heerlen\n\nDhr. R.A. van der Meulen\nKromme Lindenlaan 44-II\n3581 KT  UTRECHT\n\nDatum 12 augustus 2026\nAanslagnummer 2361.58.740.H.66\nBurgerservicenummer 236158740\nBelastingjaar 2026\n\nVoorlopige aanslag inkomstenbelasting 2026\n\nGeachte heer Van der Meulen,\n\nU krijgt een voorlopige aanslag van € 1.284,00. Dit bedrag moet u betalen in 5 termijnen.",
+    "masked": [
+      {
+        "value": "R.A. van der Meulen",
+        "category": "name"
+      },
+      {
+        "value": "Van der Meulen",
+        "category": "name"
+      },
+      {
+        "value": "Kromme Lindenlaan 44-II",
+        "category": "address"
+      },
+      {
+        "value": "3581 KT",
+        "category": "postcode"
+      },
+      {
+        "value": "236158740",
+        "category": "bsn"
+      },
+      {
+        "value": "2361.58.740.H.66",
+        "category": "reference"
+      }
+    ],
+    "kept": [
+      "Belastingdienst",
+      "Postbus 2503 6401 DA Heerlen",
+      "€ 1.284,00",
+      "12 augustus 2026"
+    ],
+    "oneToken": []
+  },
+  {
+    "id": "toeslagen-interleaved-columns",
+    "text": "Belastingdienst/Toeslagen\nMevrouw S. el Amrani-de Vries\nPostbus 8024\nZeeburgerdijk 118-3hg\n6710 KB Ede\n1019WN Amsterdam\nDatum 3 september 2026\nUw BSN 1734.09.258\nOns kenmerk TSL/2026/0048811\nOnderwerp Beschikking huurtoeslag 2026\nGeachte mevrouw El Amrani-de Vries,\nWij hebben uw huurtoeslag opnieuw berekend. U krijgt vanaf 1 oktober 2026 € 287 per maand. We betalen de toeslag op rekeningnummer NL41 RABO 0318 2746 50.\nHebt u vragen? Bel de BelastingTelefoon Toeslagen.",
+    "masked": [
+      {
+        "value": "S. el Amrani-de Vries",
+        "category": "name"
+      },
+      {
+        "value": "El Amrani-de Vries",
+        "category": "name"
+      },
+      {
+        "value": "Zeeburgerdijk 118-3hg",
+        "category": "address"
+      },
+      {
+        "value": "1019WN",
+        "category": "postcode"
+      },
+      {
+        "value": "1734.09.258",
+        "category": "bsn"
+      },
+      {
+        "value": "TSL/2026/0048811",
+        "category": "reference"
+      },
+      {
+        "value": "NL41 RABO 0318 2746 50",
+        "category": "iban"
+      }
+    ],
+    "kept": [
+      "Belastingdienst/Toeslagen",
+      "Postbus 8024",
+      "6710 KB Ede",
+      "€ 287 per maand"
+    ],
+    "oneToken": []
+  },
+  {
+    "id": "belastingdienst-erfbelasting-no-blank-lines-pa",
+    "text": "Belastingdienst\nPostbus 9050 7300 GM Apeldoorn\nDe erven van de heer M.J. Hoekstra\np/a mr. drs. P.C. Koster-Brandsma\nHofstraat 33bis\n8911BC LEEUWARDEN\nDatum: 21 juli 2026\nAanslagnummer: 7730.412.88.F.61\nOnderwerp: Aanslag erfbelasting\nGeachte mevrouw Koster-Brandsma,\nHierbij ontvangt u de aanslag erfbelasting over de nalatenschap van de heer Hoekstra. Het te betalen bedrag is € 4.617,00.\nBetaal vóór 1 september 2026 onder vermelding van betalingskenmerk 5123 4567 8901 2345.",
+    "masked": [
+      {
+        "value": "M.J. Hoekstra",
+        "category": "name"
+      },
+      {
+        "value": "P.C. Koster-Brandsma",
+        "category": "name"
+      },
+      {
+        "value": "Koster-Brandsma",
+        "category": "name"
+      },
+      {
+        "value": "heer Hoekstra",
+        "category": "name"
+      },
+      {
+        "value": "Hofstraat 33bis",
+        "category": "address"
+      },
+      {
+        "value": "8911BC",
+        "category": "postcode"
+      },
+      {
+        "value": "7730.412.88.F.61",
+        "category": "reference"
+      },
+      {
+        "value": "5123 4567 8901 2345",
+        "category": "reference"
+      }
+    ],
+    "kept": [
+      "Belastingdienst",
+      "Postbus 9050 7300 GM Apeldoorn",
+      "€ 4.617,00",
+      "1 september 2026"
+    ],
+    "oneToken": []
+  },
+  {
+    "id": "ind-verblijf-right-window-indented",
+    "text": "Immigratie- en Naturalisatiedienst\nMinisterie van Justitie en Veiligheid\n\n> Retouradres Postbus 287 7600 AG Almelo\n                                            Aan\n                                            de heer M. el Khatib\n                                            Van Heemskerckstraat 7 zw\n                                            7541 GH ENSCHEDE\n\nDatum          14 september 2026\nOns kenmerk    2607-18-00931 / KDW\nV-nummer       30 12 45 678\nBSN            3042 87 167\n\nOnderwerp: beslissing op uw aanvraag verblijfsvergunning regulier\n\nGeachte heer El Khatib,\n\nOp 2 mei 2026 hebt u een aanvraag ingediend. Wij willigen uw aanvraag in. De leges van € 228 hebt u al betaald.",
+    "masked": [
+      {
+        "value": "M. el Khatib",
+        "category": "name"
+      },
+      {
+        "value": "El Khatib",
+        "category": "name"
+      },
+      {
+        "value": "Van Heemskerckstraat 7 zw",
+        "category": "address"
+      },
+      {
+        "value": "7541 GH",
+        "category": "postcode"
+      },
+      {
+        "value": "2607-18-00931 / KDW",
+        "category": "reference"
+      },
+      {
+        "value": "30 12 45 678",
+        "category": "reference"
+      },
+      {
+        "value": "3042 87 167",
+        "category": "bsn"
+      }
+    ],
+    "kept": [
+      "Immigratie- en Naturalisatiedienst",
+      "Postbus 287 7600 AG Almelo",
+      "14 september 2026",
+      "€ 228"
+    ],
+    "oneToken": []
+  },
+  {
+    "id": "ind-naturalisatie-same-row-columns",
+    "text": "Immigratie- en Naturalisatiedienst                 Ir. A.K. Oyelaran\nPostbus 17                                         Rijnkade 4 A\n9560 AA Ter Apel                                   6811 HA  Arnhem\n\nDatum\n28 augustus 2026\nVreemdelingennummer\n2918 334 106\nZaaknummer\nNAT.26.0073.5519\n\nGeachte heer Oyelaran,\n\nU hebt samen met uw echtgenote, mevrouw F.O. Oyelaran-Bakare, een verzoek om naturalisatie ingediend. Wij hebben de leges van € 1.439 ontvangen.",
+    "masked": [
+      {
+        "value": "Ir. A.K. Oyelaran",
+        "category": "name"
+      },
+      {
+        "value": "heer Oyelaran",
+        "category": "name"
+      },
+      {
+        "value": "F.O. Oyelaran-Bakare",
+        "category": "name"
+      },
+      {
+        "value": "Rijnkade 4 A",
+        "category": "address"
+      },
+      {
+        "value": "6811 HA",
+        "category": "postcode"
+      },
+      {
+        "value": "2918 334 106",
+        "category": "reference"
+      },
+      {
+        "value": "NAT.26.0073.5519",
+        "category": "reference"
+      }
+    ],
+    "kept": [
+      "Immigratie- en Naturalisatiedienst",
+      "Postbus 17",
+      "9560 AA Ter Apel",
+      "€ 1.439"
+    ],
+    "oneToken": []
+  },
+  {
+    "id": "cak-wlz-co-reference-table",
+    "text": "CAK\nPostbus 84006\n2508 AA Den Haag\n\nMevrouw W.H. Brouwer-Tjoa\nc/o Zorgcentrum De Linde\nLindelaan 118-3\n7414  ZK  DEVENTER\n\nKlantnummer        Factuurnummer        Factuurdatum\n44018723           2026-0917-5521       15 september 2026\n\nFactuur eigen bijdrage Wet langdurige zorg\n\nGeachte mevrouw Brouwer-Tjoa,\n\nUw eigen bijdrage voor de maand augustus 2026 is € 892,15. Wij schrijven dit bedrag af van rekening NL86INGB0007462913.",
+    "masked": [
+      {
+        "value": "W.H. Brouwer-Tjoa",
+        "category": "name"
+      },
+      {
+        "value": "Brouwer-Tjoa",
+        "category": "name"
+      },
+      {
+        "value": "Lindelaan 118-3",
+        "category": "address"
+      },
+      {
+        "value": "7414  ZK",
+        "category": "postcode"
+      },
+      {
+        "value": "44018723",
+        "category": "reference"
+      },
+      {
+        "value": "2026-0917-5521",
+        "category": "reference"
+      },
+      {
+        "value": "NL86INGB0007462913",
+        "category": "iban"
+      }
+    ],
+    "kept": [
+      "CAK",
+      "Postbus 84006",
+      "€ 892,15",
+      "15 september 2026"
+    ],
+    "oneToken": []
+  },
+  {
+    "id": "cak-wmo-bewindvoerder-tav",
+    "text": "CAK | Postbus 84006 | 2508 AA Den Haag\n\nBewindvoering Dijkstra & Partners\nT.a.v. mr. H.G. Dijkstra\nStationsweg 18\n3e etage\n9401 KL Assen\n\nUw kenmerk    BW-0412\nOns kenmerk   CAK/WMO/26/118204\nDatum         2 september 2026\nBetreft       de heer K.L. Visser, BSN 219573402\n\nGeachte heer Dijkstra,\n\nNamens uw cliënt, de heer Visser, ontvangt u het overzicht eigen bijdrage Wmo 2026. De eigen bijdrage is € 21,80 per periode.",
+    "masked": [
+      {
+        "value": "mr. H.G. Dijkstra",
+        "category": "name"
+      },
+      {
+        "value": "heer Dijkstra",
+        "category": "name"
+      },
+      {
+        "value": "K.L. Visser",
+        "category": "name"
+      },
+      {
+        "value": "heer Visser",
+        "category": "name"
+      },
+      {
+        "value": "Stationsweg 18",
+        "category": "address"
+      },
+      {
+        "value": "9401 KL",
+        "category": "postcode"
+      },
+      {
+        "value": "BW-0412",
+        "category": "reference"
+      },
+      {
+        "value": "CAK/WMO/26/118204",
+        "category": "reference"
+      },
+      {
+        "value": "219573402",
+        "category": "bsn"
+      }
+    ],
+    "kept": [
+      "CAK | Postbus 84006 | 2508 AA Den Haag",
+      "€ 21,80",
+      "2 september 2026"
+    ],
+    "oneToken": []
+  },
+  {
+    "id": "duo-studiefinanciering-pa-aan",
+    "text": "Dienst Uitvoering Onderwijs\nMinisterie van Onderwijs, Cultuur en Wetenschap\nPostbus 50061, 9702 AB Groningen\n\nAan: A. Bouzid\np/a fam. Bouzid\nVan Speijkstraat 12 hs\n2518EV  's-Gravenhage\n\nDatum: 1 september 2026\nBurgerservicenummer: 1608.34.272\nKenmerk: DUO-SF-2026-331870\n\nOnderwerp: Toekenning studiefinanciering\n\nBeste Amira Bouzid,\n\nJe krijgt vanaf september 2026 een basisbeurs van € 312,47 per maand. Wij maken dit bedrag over op NL39ABNA0529183746.",
+    "masked": [
+      {
+        "value": "A. Bouzid",
+        "category": "name"
+      },
+      {
+        "value": "fam. Bouzid",
+        "category": "name"
+      },
+      {
+        "value": "Amira Bouzid",
+        "category": "name"
+      },
+      {
+        "value": "Van Speijkstraat 12 hs",
+        "category": "address"
+      },
+      {
+        "value": "2518EV",
+        "category": "postcode"
+      },
+      {
+        "value": "1608.34.272",
+        "category": "bsn"
+      },
+      {
+        "value": "DUO-SF-2026-331870",
+        "category": "reference"
+      },
+      {
+        "value": "NL39ABNA0529183746",
+        "category": "iban"
+      }
+    ],
+    "kept": [
+      "Dienst Uitvoering Onderwijs",
+      "Postbus 50061, 9702 AB Groningen",
+      "€ 312,47",
+      "1 september 2026"
+    ],
+    "oneToken": []
+  },
+  {
+    "id": "duo-terugbetaling-merged-line-footer",
+    "text": "Mw. drs. L.M. Tjin-A-Koeng, Graaf Florislaan 4 A, 1215 LB Hilversum\nHilversum, 9 september 2026\nDebiteurnummer 8812-004-55-1\nBetreft Terugbetaling studieschuld\nGeachte mevrouw Tjin-A-Koeng,\nVanaf 1 januari 2027 gaat u terugbetalen. Uw maandbedrag is € 64,19. Het bedrag wordt geïncasseerd van NL97 TRIO 0212 4873 65.\nMet vriendelijke groet,\nDienst Uitvoering Onderwijs\nPostbus 50061 | 9702 AB Groningen | duo.nl",
+    "masked": [
+      {
+        "value": "L.M. Tjin-A-Koeng",
+        "category": "name"
+      },
+      {
+        "value": "Tjin-A-Koeng",
+        "category": "name"
+      },
+      {
+        "value": "Graaf Florislaan 4 A",
+        "category": "address"
+      },
+      {
+        "value": "1215 LB",
+        "category": "postcode"
+      },
+      {
+        "value": "8812-004-55-1",
+        "category": "reference"
+      },
+      {
+        "value": "NL97 TRIO 0212 4873 65",
+        "category": "iban"
+      }
+    ],
+    "kept": [
+      "Dienst Uitvoering Onderwijs",
+      "Postbus 50061 | 9702 AB Groningen",
+      "€ 64,19",
+      "9 september 2026"
+    ],
+    "oneToken": []
+  },
+  {
+    "id": "uwv-ww-sender-right-values-next-line",
+    "text": "                                                UWV\n                                                Postbus 58285\n                                                1040 HG Amsterdam\n  De heer drs. J.P. de Wit-Oosterhuis\n  Bredaseweg 212 - B\n  5038 NK  TILBURG\nDatum\n16 september 2026\nUw BSN\n284710933\nOns kenmerk\nWW/2026/09/0077413\nOnderwerp\nUw WW-uitkering\nGeachte heer De Wit-Oosterhuis,\nU hebt recht op een WW-uitkering vanaf 3 augustus 2026. Uw uitkering is € 2.104,66 bruto per maand.",
+    "masked": [
+      {
+        "value": "J.P. de Wit-Oosterhuis",
+        "category": "name"
+      },
+      {
+        "value": "De Wit-Oosterhuis",
+        "category": "name"
+      },
+      {
+        "value": "Bredaseweg 212 - B",
+        "category": "address"
+      },
+      {
+        "value": "5038 NK",
+        "category": "postcode"
+      },
+      {
+        "value": "284710933",
+        "category": "bsn"
+      },
+      {
+        "value": "WW/2026/09/0077413",
+        "category": "reference"
+      }
+    ],
+    "kept": [
+      "UWV",
+      "Postbus 58285",
+      "1040 HG Amsterdam",
+      "€ 2.104,66"
+    ],
+    "oneToken": []
+  },
+  {
+    "id": "uwv-wia-interleaved-name-first",
+    "text": "Mevrouw P.J.M. van den Heuvel-Ruijs\nUWV\nAchter de Hoven 3 A\nPostbus 58285\n8933AL Leeuwarden\n1040 HG Amsterdam\nDatum 22 augustus 2026\nKlantnummer 1180 2273 94\nBurgerservicenummer 1926 50 385\nOnderwerp Beslissing WIA-uitkering\nGeachte mevrouw Van den Heuvel-Ruijs,\nWij hebben beoordeeld of u recht hebt op een WIA-uitkering. U krijgt een WGA-loongerelateerde uitkering van € 1.877,03 per maand, uitbetaald op NL54 SNSB 0918 2736 45.",
+    "masked": [
+      {
+        "value": "P.J.M. van den Heuvel-Ruijs",
+        "category": "name"
+      },
+      {
+        "value": "Van den Heuvel-Ruijs",
+        "category": "name"
+      },
+      {
+        "value": "Achter de Hoven 3 A",
+        "category": "address"
+      },
+      {
+        "value": "8933AL",
+        "category": "postcode"
+      },
+      {
+        "value": "1180 2273 94",
+        "category": "reference"
+      },
+      {
+        "value": "1926 50 385",
+        "category": "bsn"
+      },
+      {
+        "value": "NL54 SNSB 0918 2736 45",
+        "category": "iban"
+      }
+    ],
+    "kept": [
+      "UWV",
+      "Postbus 58285",
+      "1040 HG Amsterdam",
+      "€ 1.877,03"
+    ],
+    "oneToken": []
+  },
+  {
+    "id": "zorgverzekeraar-polis-coinsured",
+    "text": "Lindeborg Zorgverzekeringen\nPostbus 7210, 3430 JE Nieuwegein\n\nDe heer E.C. Hazelhoff\nBoschdijk 740-hs\n5624 CM Eindhoven\n\nRelatienummer: 55.108.227\nPolisnummer: LB-2026-0719884\nDatum: 4 september 2026\n\nWijziging van uw zorgverzekering\n\nGeachte heer Hazelhoff,\n\nPer 1 oktober 2026 is uw dochter N.E. Hazelhoff meeverzekerd op uw polis. Uw premie blijft € 148,95 per maand en wordt maandelijks afgeschreven van NL15 ASNB 0706 1529 38.",
+    "masked": [
+      {
+        "value": "E.C. Hazelhoff",
+        "category": "name"
+      },
+      {
+        "value": "heer Hazelhoff",
+        "category": "name"
+      },
+      {
+        "value": "N.E. Hazelhoff",
+        "category": "name"
+      },
+      {
+        "value": "Boschdijk 740-hs",
+        "category": "address"
+      },
+      {
+        "value": "5624 CM",
+        "category": "postcode"
+      },
+      {
+        "value": "55.108.227",
+        "category": "reference"
+      },
+      {
+        "value": "LB-2026-0719884",
+        "category": "reference"
+      },
+      {
+        "value": "NL15 ASNB 0706 1529 38",
+        "category": "iban"
+      }
+    ],
+    "kept": [
+      "Lindeborg Zorgverzekeringen",
+      "Postbus 7210, 3430 JE Nieuwegein",
+      "€ 148,95"
+    ],
+    "oneToken": []
+  },
+  {
+    "id": "zorgverzekeraar-declaration-table",
+    "text": "                                   Lindeborg Zorgverzekeringen\n                                   Afdeling Declaraties\n                                   Postbus 7210\n                                   3430 JE Nieuwegein\nFam. T. Ramdin\nMauritskade 7-B\n3011 VR ROTTERDAM\nRotterdam, 18 september 2026\nKlantnr. 60-4471-2208\nDeclaratieoverzicht\nDeclaratienummer   Verzekerde        Behandeldatum    Bedrag      Vergoed\nD26-8830142        T. Ramdin         02-08-2026       € 96,40     € 96,40\nD26-8830143        S.R. Ramdin       09-08-2026       € 245,00    € 0,00\nGeachte heer Ramdin,\nHet bedrag van € 245,00 valt onder uw eigen risico.",
+    "masked": [
+      {
+        "value": "T. Ramdin",
+        "category": "name"
+      },
+      {
+        "value": "S.R. Ramdin",
+        "category": "name"
+      },
+      {
+        "value": "heer Ramdin",
+        "category": "name"
+      },
+      {
+        "value": "Mauritskade 7-B",
+        "category": "address"
+      },
+      {
+        "value": "3011 VR",
+        "category": "postcode"
+      },
+      {
+        "value": "60-4471-2208",
+        "category": "reference"
+      },
+      {
+        "value": "D26-8830142",
+        "category": "reference"
+      },
+      {
+        "value": "D26-8830143",
+        "category": "reference"
+      }
+    ],
+    "kept": [
+      "Lindeborg Zorgverzekeringen",
+      "Postbus 7210",
+      "€ 245,00",
+      "18 september 2026"
+    ],
+    "oneToken": []
+  },
+  {
+    "id": "woningcorporatie-huurverhoging-two-tenants",
+    "text": "De Vaart Wonen\nPostbus 1120 | 1380 AC Weesp\n\nDe heer B. Çelik en mevrouw E. Çelik-Yıldız\nVaartsestraat 91-III\n1382 JV Weesp\n\nDatum             1 juni 2026\nContractnummer    0412/88317/01\nBetreft           Huurverhoging per 1 juli 2026\n\nBeste heer Çelik en mevrouw Çelik-Yıldız,\n\nUw kale huur gaat per 1 juli 2026 omhoog van € 712,34 naar € 752,23. Dat is een verhoging van 5,6 procent.",
+    "masked": [
+      {
+        "value": "B. Çelik",
+        "category": "name"
+      },
+      {
+        "value": "E. Çelik-Yıldız",
+        "category": "name"
+      },
+      {
+        "value": "heer Çelik",
+        "category": "name"
+      },
+      {
+        "value": "mevrouw Çelik-Yıldız",
+        "category": "name"
+      },
+      {
+        "value": "Vaartsestraat 91-III",
+        "category": "address"
+      },
+      {
+        "value": "1382 JV",
+        "category": "postcode"
+      },
+      {
+        "value": "0412/88317/01",
+        "category": "reference"
+      }
+    ],
+    "kept": [
+      "De Vaart Wonen",
+      "Postbus 1120 | 1380 AC Weesp",
+      "€ 752,23",
+      "1 juli 2026"
+    ],
+    "oneToken": []
+  },
+  {
+    "id": "woningcorporatie-achterstand-caps",
+    "text": "DE VAART WONEN\nPostbus 1120 1380 AC Weesp - 0294 700 700\nMw. G. Kwakman\nZuiderstraat 2 rood\n1382JV WEESP\nHuurdernummer 700.418.33\nObject 1382-VAA-0091\nWeesp, 11 september 2026\nOnderwerp: huurachterstand\nBeste mevrouw Kwakman,\nUit onze administratie blijkt dat uw huurachterstand € 1.412,50 bedraagt. Wij spreken u graag, mevrouw Kwakman. Neem vóór 25 september 2026 contact met ons op.",
+    "masked": [
+      {
+        "value": "G. Kwakman",
+        "category": "name"
+      },
+      {
+        "value": "mevrouw Kwakman",
+        "category": "name"
+      },
+      {
+        "value": "Zuiderstraat 2 rood",
+        "category": "address"
+      },
+      {
+        "value": "1382JV",
+        "category": "postcode"
+      },
+      {
+        "value": "700.418.33",
+        "category": "reference"
+      },
+      {
+        "value": "1382-VAA-0091",
+        "category": "reference"
+      }
+    ],
+    "kept": [
+      "DE VAART WONEN",
+      "Postbus 1120 1380 AC Weesp",
+      "€ 1.412,50",
+      "25 september 2026"
+    ],
+    "oneToken": []
+  },
+  {
+    "id": "cjib-beschikking-same-row-header",
+    "text": "Centraal Justitieel Incassobureau              Datum 10 september 2026\nPostbus 1794                                   CJIB-nummer 2026 0123 4567 8901\n8901 CB Leeuwarden                             Betalingskenmerk 3200 9918 7736 5021\n\ning. S.T. Wijnberg\nKerkewijk 118 bis\n3904 JC  VEENENDAAL\n\nBeschikking verkeersovertreding\n\nGeachte heer Wijnberg,\n\nMet het voertuig met kenteken XK-482-B is op 29 juli 2026 te hard gereden. U moet € 114,00 betalen, inclusief € 9,00 administratiekosten.",
+    "masked": [
+      {
+        "value": "S.T. Wijnberg",
+        "category": "name"
+      },
+      {
+        "value": "heer Wijnberg",
+        "category": "name"
+      },
+      {
+        "value": "Kerkewijk 118 bis",
+        "category": "address"
+      },
+      {
+        "value": "3904 JC",
+        "category": "postcode"
+      },
+      {
+        "value": "2026 0123 4567 8901",
+        "category": "reference"
+      },
+      {
+        "value": "3200 9918 7736 5021",
+        "category": "reference"
+      },
+      {
+        "value": "XK-482-B",
+        "category": "reference"
+      }
+    ],
+    "kept": [
+      "Centraal Justitieel Incassobureau",
+      "Postbus 1794",
+      "€ 114,00",
+      "10 september 2026"
+    ],
+    "oneToken": []
+  },
+  {
+    "id": "cjib-terugbetaling-co-no-blank-lines",
+    "text": "CJIB Postbus 1794 8901 CB Leeuwarden\nAan de heer D. Oudshoorn\nc/o mevrouw H.A. Oudshoorn-Blok\nParkweg 22 H\n2271 AK VOORBURG\nDatum 24 augustus 2026\nZaaknummer: 7119/2026/004-82\nBSN: 3271.64.050\nTerugbetaling van teveel betaald bedrag\nGeachte heer Oudshoorn,\nU hebt € 50,00 te veel betaald. Wij storten dit bedrag binnen 10 werkdagen terug op rekening NL18 BUNQ 2093 8475 61 ten name van D. Oudshoorn.",
+    "masked": [
+      {
+        "value": "D. Oudshoorn",
+        "category": "name"
+      },
+      {
+        "value": "H.A. Oudshoorn-Blok",
+        "category": "name"
+      },
+      {
+        "value": "heer Oudshoorn",
+        "category": "name"
+      },
+      {
+        "value": "Parkweg 22 H",
+        "category": "address"
+      },
+      {
+        "value": "2271 AK",
+        "category": "postcode"
+      },
+      {
+        "value": "7119/2026/004-82",
+        "category": "reference"
+      },
+      {
+        "value": "3271.64.050",
+        "category": "bsn"
+      },
+      {
+        "value": "NL18 BUNQ 2093 8475 61",
+        "category": "iban"
+      }
+    ],
+    "kept": [
+      "CJIB Postbus 1794 8901 CB Leeuwarden",
+      "€ 50,00",
+      "24 augustus 2026"
+    ],
+    "oneToken": []
+  },
+  {
+    "id": "gemeente-utrecht-parkeervergunning",
+    "text": "gemeente Utrecht\nRetouradres: Postbus 16200, 3500 CE Utrecht\nDhr. ir. W.J. ten Brink\nBiltstraat 33bis\n3572BC  Utrecht\nOns kenmerk: PV-2026-UT-004417\nZaaknummer: Z/26/2281937\nDatum: 7 september 2026\nOnderwerp: uw aanvraag bewonersparkeervergunning\nGeachte heer Ten Brink,\nWij hebben uw aanvraag voor een bewonersparkeervergunning voor de Biltstraat ontvangen. De kosten zijn € 187,20 per jaar.",
+    "masked": [
+      {
+        "value": "W.J. ten Brink",
+        "category": "name"
+      },
+      {
+        "value": "Ten Brink",
+        "category": "name"
+      },
+      {
+        "value": "Biltstraat 33bis",
+        "category": "address"
+      },
+      {
+        "value": "3572BC",
+        "category": "postcode"
+      },
+      {
+        "value": "PV-2026-UT-004417",
+        "category": "reference"
+      },
+      {
+        "value": "Z/26/2281937",
+        "category": "reference"
+      }
+    ],
+    "kept": [
+      "gemeente Utrecht",
+      "Postbus 16200, 3500 CE Utrecht",
+      "€ 187,20",
+      "7 september 2026"
+    ],
+    "oneToken": []
+  },
+  {
+    "id": "gemeente-utrecht-woz-same-row-table",
+    "text": "Gemeente Utrecht                                     De heer Y. el Haddouchi\nBelastingen                                          Amsterdamsestraatweg 412-A\nPostbus 16200                                        3551 CZ UTRECHT\n3500 CE Utrecht\nAanslagbiljet gemeentelijke belastingen 2026 en WOZ-beschikking\nAanslagnummer             Subjectnummer         Dagtekening\n2026.0418.8872            3302 118 45           28 februari 2026\nWOZ-object: Amsterdamsestraatweg 412-A, WOZ-objectnummer 0344 0001 2345 6789\nVastgestelde waarde per 1 januari 2025: € 389.000\nTotaal te betalen: € 1.062,58",
+    "masked": [
+      {
+        "value": "Y. el Haddouchi",
+        "category": "name"
+      },
+      {
+        "value": "Amsterdamsestraatweg 412-A",
+        "category": "address"
+      },
+      {
+        "value": "3551 CZ",
+        "category": "postcode"
+      },
+      {
+        "value": "2026.0418.8872",
+        "category": "reference"
+      },
+      {
+        "value": "3302 118 45",
+        "category": "reference"
+      },
+      {
+        "value": "0344 0001 2345 6789",
+        "category": "reference"
+      }
+    ],
+    "kept": [
+      "Gemeente Utrecht",
+      "Postbus 16200",
+      "€ 1.062,58",
+      "28 februari 2026"
+    ],
+    "oneToken": []
+  },
+  {
+    "id": "gemeente-den-haag-bijstand",
+    "text": "Gemeente Den Haag\nDienst Sociale Zaken en Werkgelegenheid\nPostbus 12600, 2500 DJ Den Haag\n\nMevrouw drs. R. van 't Hof\nWeimarstraat 214 C\n2562 HX  DEN HAAG\n\nDen Haag, 15 september 2026\nDossiernummer: SZW.DH/26/55817\nBurgerservicenummer: 2483 01 706\n\nOnderwerp: Besluit op uw aanvraag bijstandsuitkering\n\nGeachte mevrouw Van 't Hof,\n\nU krijgt vanaf 1 september 2026 een bijstandsuitkering van € 1.401,80 netto per maand. Wij betalen dit bedrag uit op rekening NL71KNAB0419283746.",
+    "masked": [
+      {
+        "value": "R. van 't Hof",
+        "category": "name"
+      },
+      {
+        "value": "Van 't Hof",
+        "category": "name"
+      },
+      {
+        "value": "Weimarstraat 214 C",
+        "category": "address"
+      },
+      {
+        "value": "2562 HX",
+        "category": "postcode"
+      },
+      {
+        "value": "SZW.DH/26/55817",
+        "category": "reference"
+      },
+      {
+        "value": "2483 01 706",
+        "category": "bsn"
+      },
+      {
+        "value": "NL71KNAB0419283746",
+        "category": "iban"
+      }
+    ],
+    "kept": [
+      "Gemeente Den Haag",
+      "Postbus 12600, 2500 DJ Den Haag",
+      "€ 1.401,80",
+      "15 september 2026"
+    ],
+    "oneToken": []
+  }
+]

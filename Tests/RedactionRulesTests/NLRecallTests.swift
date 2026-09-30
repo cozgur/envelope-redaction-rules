@@ -42,7 +42,7 @@ struct NLRecallTests {
         return value
             .split(whereSeparator: { $0.isWhitespace || $0 == "," })
             .map { $0.trimmingCharacters(in: .punctuationCharacters) }
-            .filter { $0.count >= 4 && !isYear($0) }
+            .filter { $0.count >= 4 && !isYear($0) && !isHonorific($0) }
             .contains { containsWord($0, in: redacted) }
     }
 
@@ -51,6 +51,13 @@ struct NLRecallTests {
     private static func containsWord(_ piece: String, in text: String) -> Bool {
         let pattern = #"(?<![\p{L}\d])"# + NSRegularExpression.escapedPattern(for: piece) + #"(?![\p{L}\d])"#
         return text.range(of: pattern, options: .regularExpression) != nil
+    }
+
+    /// "heer" of a value written as "heer Hoekstra" is the honorific, which
+    /// every salutation keeps; only the name after it is the secret.
+    private static func isHonorific(_ piece: String) -> Bool {
+        ["heer", "mevrouw", "meneer", "fam", "familie", "mevr", "dhr", "drs", "prof"]
+            .contains(piece.lowercased().trimmingCharacters(in: .punctuationCharacters))
     }
 
     private static func isYear(_ piece: String) -> Bool {
