@@ -47,4 +47,24 @@ public enum RegexScanner {
             return Range($0.range(at: group), in: text)
         }
     }
+
+    /// The first match, and the text of its first capture group when that
+    /// group took part.
+    struct Match {
+        let range: Range<String.Index>
+        let prefix: String?
+    }
+
+    static func firstMatch(of pattern: String, in text: String) -> Match? {
+        guard let expression = cache.expression(for: pattern) else { return nil }
+        let full = NSRange(text.startIndex..., in: text)
+        guard let found = expression.firstMatch(in: text, range: full),
+              let range = Range(found.range, in: text)
+        else { return nil }
+        var prefix: String?
+        if found.numberOfRanges > 1, let group = Range(found.range(at: 1), in: text) {
+            prefix = String(text[group])
+        }
+        return Match(range: range, prefix: prefix)
+    }
 }

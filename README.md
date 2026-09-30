@@ -46,6 +46,11 @@ failure than a leak. These survive every rule:
 - **the sender's letterhead** — masking it deletes the one thing an
   explanation most needs: who wrote
 
+A reference printed as spaced digit groups after its label
+(`kenmerk 5021 8834 1107`, `Aanslagnummer 5021 8834 1107`) is masked as one
+value. Groups have three digits or more, so a date or an amount after it
+stays.
+
 ## What the engine hands back
 
 ```swift
@@ -120,6 +125,17 @@ Names are caught in the two places official letters put them:
    name. `NSDataDetector` is treated as evidence rather than as the answer: it
    finds no address at all in Dutch or Polish blocks, and where it does hit it
    returns the street and postcode without the name line above them.
+
+   When OCR returns the top of the letter with no blank lines, there are no
+   blocks to choose from, so a Dutch block is also found from its **postcode
+   line** up: a line that is a postcode (`1000 AA`–`9999 ZZ`, never SA, SD
+   or SS) and a city, and the one to three lines of name and street above
+   it, within the first twenty lines. The walk stops at a blank line, a
+   field line, a date, an office mailbox (*Postbus*, *Antwoordnummer*) or
+   another postcode line, and a walk that reaches the letter's first line is
+   the sender's letterhead and is left alone. A line carrying the whole
+   address before a comma (`A. Yilmaz, Voorbeeldstraat 00, 1011 AB
+   Amsterdam`) is masked as one.
 2. **The salutation.** Per-language patterns keep the honorific and mask the
    name: *Geachte mevrouw [NAME_1],*. Once the name is known, every other
    occurrence of it in the letter is masked too.
