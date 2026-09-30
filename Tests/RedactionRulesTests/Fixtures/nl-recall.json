@@ -425,5 +425,16 @@
       "3500 WB Utrecht"
     ],
     "oneToken": []
+  },
+  {
+    "id": "letterhead-opening-with-initials-kept",
+    "text": "U.S. Department of Labor\n200 Constitution Ave NW\nWashington, DC 20210\n\nMs. A. Yilmaz\n12 Main Street\nBrooklyn, NY 11201\n\nDate: October 1, 2026\n\nDear Ms. Yilmaz,\n",
+    "masked": [],
+    "kept": [
+      "U.S. Department of Labor",
+      "200 Constitution Ave NW",
+      "Washington, DC 20210"
+    ],
+    "oneToken": []
   }
 ]

@@ -118,7 +118,10 @@ public struct LetterStructure: Sendable {
     /// or initials -- which no office's name opens with.
     static func opensWithAPerson(_ text: String) -> Bool {
         !RegexScanner.ranges(
-            of: #"^\s*(?:(?i:mevrouw|mevr\.|mw\.|de heer|dhr\.|heer|t\.a\.v\.)(?!\p{L})|\p{Lu}\.(?:\p{Lu}\.)*\s)"#,
+            // Initials only when a surname -- tussenvoegsels allowed, at
+            // most two words -- is all that follows: "K. Veldman", not
+            // "U.S. Citizenship and Immigration Services".
+            of: #"^\s*(?:(?i:mevrouw|mevr\.|mw\.|de heer|dhr\.|heer|t\.a\.v\.)(?!\p{L})|\p{Lu}\.(?:\p{Lu}\.)*\s+(?:(?:van|de|der|den|het|ten|ter|te|el|al|'t)\s+)*\p{Lu}[\p{L}'-]+(?:[ -]\p{Lu}[\p{L}'-]+)?\s*$)"#,
             in: text
         ).isEmpty
     }
