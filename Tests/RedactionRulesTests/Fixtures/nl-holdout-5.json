@@ -1,0 +1,588 @@
+[
+  {
+    "id": "belastingdienst-ls-salutation",
+    "text": "Belastingdienst\nPostbus 2004\n6401 DA Heerlen\n\nDhr. Th.A. Verbeek\nKanaalstraat 12/3\n3531 CJ Utrecht\n\nDatum 2 oktober 2026\nKenmerk: 12/34567/AB-CD\n\nL.S.,\n\nUw verzoek om uitstel is toegekend tot 1 mei 2027.\n",
+    "masked": [
+      {
+        "value": "Th.A. Verbeek",
+        "category": "name"
+      },
+      {
+        "value": "Kanaalstraat 12/3",
+        "category": "address"
+      },
+      {
+        "value": "3531 CJ",
+        "category": "postcode"
+      },
+      {
+        "value": "12/34567/AB-CD",
+        "category": "reference"
+      }
+    ],
+    "kept": [
+      "Belastingdienst",
+      "Postbus 2004",
+      "1 mei 2027"
+    ],
+    "oneToken": []
+  },
+  {
+    "id": "belastingdienst-sofinummer",
+    "text": "Belastingdienst\nPostbus 9014\n7300 GN Apeldoorn\n\nMevrouw Ş. Güneş\nRijnlaan 8 2e verdieping\n3522 BL Utrecht\n\nDatum 9 oktober 2026\nBSN/sofinummer 197327825\n\nGeachte mevrouw Güneş,\n\nU ontvangt een definitieve aanslag. U hoeft niets te betalen.\n",
+    "masked": [
+      {
+        "value": "Ş. Güneş",
+        "category": "name"
+      },
+      {
+        "value": "Rijnlaan 8 2e verdieping",
+        "category": "address"
+      },
+      {
+        "value": "3522 BL",
+        "category": "postcode"
+      },
+      {
+        "value": "197327825",
+        "category": "bsn"
+      }
+    ],
+    "kept": [
+      "Belastingdienst",
+      "Postbus 9014",
+      "U hoeft niets te betalen."
+    ],
+    "oneToken": []
+  },
+  {
+    "id": "belastingdienst-merged-line",
+    "text": "Belastingdienst\nPostbus 100, 6400 AC Heerlen\nMevrouw K. Smit Dorpsstraat 5 7461 AB Rijssen\nDatum 30 september 2026\nAanslagnummer 9031.72.448.A.66\nGeachte heer/mevrouw,\nDe aanslag is verminderd met € 144,00.\n",
+    "masked": [
+      {
+        "value": "K. Smit",
+        "category": "name"
+      },
+      {
+        "value": "Dorpsstraat 5",
+        "category": "address"
+      },
+      {
+        "value": "7461 AB",
+        "category": "postcode"
+      },
+      {
+        "value": "9031.72.448.A.66",
+        "category": "reference"
+      }
+    ],
+    "kept": [
+      "Postbus 100, 6400 AC Heerlen",
+      "€ 144,00"
+    ],
+    "oneToken": []
+  },
+  {
+    "id": "ind-no-dot-initials",
+    "text": "IND\nPostbus 30125\n2500 GC Den Haag\n\nDe heer J P de Vries\nLigplaats 3\n1016 AB Amsterdam\n\nDatum 5 oktober 2026\nReferentienummer 00012345678901\n\nGeachte heer De Vries,\n\nUw partner mag in Nederland blijven.\n",
+    "masked": [
+      {
+        "value": "J P de Vries",
+        "category": "name"
+      },
+      {
+        "value": "Ligplaats 3",
+        "category": "address"
+      },
+      {
+        "value": "1016 AB",
+        "category": "postcode"
+      },
+      {
+        "value": "00012345678901",
+        "category": "reference"
+      }
+    ],
+    "kept": [
+      "IND",
+      "Postbus 30125",
+      "Uw partner mag in Nederland blijven."
+    ],
+    "oneToken": []
+  },
+  {
+    "id": "ind-hooggeachte",
+    "text": "Immigratie- en Naturalisatiedienst\nPostbus 17\n9560 AA Ter Apel\n\nMr. Chr. Obi\nWoonboot bij 14\n1017 CX Amsterdam\n\nDatum 2 oktober 2026\nDossier: 2026-000912\n\nHooggeachte heer Obi,\n\nWij nodigen u uit voor een gehoor op 19 oktober 2026.\n",
+    "masked": [
+      {
+        "value": "Chr. Obi",
+        "category": "name"
+      },
+      {
+        "value": "Woonboot bij 14",
+        "category": "address"
+      },
+      {
+        "value": "1017 CX",
+        "category": "postcode"
+      },
+      {
+        "value": "2026-000912",
+        "category": "reference"
+      }
+    ],
+    "kept": [
+      "Immigratie- en Naturalisatiedienst",
+      "Postbus 17",
+      "19 oktober 2026"
+    ],
+    "oneToken": []
+  },
+  {
+    "id": "cak-iban-no-spaces",
+    "text": "CAK\nPostbus 84030\n2508 AA Den Haag\n\nMevrouw E. van Kampen\nBerkenlaan 6\n1403 GK Bussum\n\nDatum 13 oktober 2026\nKlantnummer 55-0012-9911\n\nGeachte mevrouw Van Kampen,\n\nWij schrijven € 22,10 af van NL64RABO0344556677.\n",
+    "masked": [
+      {
+        "value": "E. van Kampen",
+        "category": "name"
+      },
+      {
+        "value": "Berkenlaan 6",
+        "category": "address"
+      },
+      {
+        "value": "1403 GK",
+        "category": "postcode"
+      },
+      {
+        "value": "55-0012-9911",
+        "category": "reference"
+      },
+      {
+        "value": "NL64RABO0344556677",
+        "category": "iban"
+      }
+    ],
+    "kept": [
+      "CAK",
+      "Postbus 84030",
+      "€ 22,10"
+    ],
+    "oneToken": []
+  },
+  {
+    "id": "cak-bsn-in-table-right",
+    "text": "CAK                                       Datum      11 oktober 2026\nPostbus 84006                             BSN        923002637\n2508 AA Den Haag                          Kenmerk    CAK-WLZ-7781\n\nDe heer H. Brouwers\nOude Delft 88\n2611 CE Delft\n\nGeachte heer Brouwers,\n\nUw eigen bijdrage gaat omlaag naar € 180,30.\n",
+    "masked": [
+      {
+        "value": "H. Brouwers",
+        "category": "name"
+      },
+      {
+        "value": "Oude Delft 88",
+        "category": "address"
+      },
+      {
+        "value": "2611 CE",
+        "category": "postcode"
+      },
+      {
+        "value": "923002637",
+        "category": "bsn"
+      },
+      {
+        "value": "CAK-WLZ-7781",
+        "category": "reference"
+      }
+    ],
+    "kept": [
+      "CAK",
+      "Postbus 84006",
+      "€ 180,30"
+    ],
+    "oneToken": []
+  },
+  {
+    "id": "duo-reisproduct",
+    "text": "DUO\nPostbus 30155\n9700 LJ Groningen\n\nMevrouw Ö. Çelik\nLaan van Nieuw Oost-Indië 12 A\n2593 BM Den Haag\n\nDatum 1 oktober 2026\nOnderwijsnummer 946938258\n\nGeachte mevrouw Çelik,\n\nUw studentenreisproduct stopt op 31 december 2026.\n",
+    "masked": [
+      {
+        "value": "Ö. Çelik",
+        "category": "name"
+      },
+      {
+        "value": "Laan van Nieuw Oost-Indië 12 A",
+        "category": "address"
+      },
+      {
+        "value": "2593 BM",
+        "category": "postcode"
+      },
+      {
+        "value": "946938258",
+        "category": "bsn"
+      }
+    ],
+    "kept": [
+      "DUO",
+      "Postbus 30155",
+      "31 december 2026"
+    ],
+    "oneToken": []
+  },
+  {
+    "id": "duo-long-reference",
+    "text": "Dienst Uitvoering Onderwijs\nPostbus 50061\n9702 AB Groningen\n\nDhr. Ph. Lambermont\nStationsplein 1 kamer 204\n6221 BT Maastricht\n\nDatum 3 oktober 2026\nBetalingskenmerk 4210 7788 0012 3456\n\nGeachte heer Lambermont,\n\nBetaal € 311,00 voor 31 oktober 2026.\n",
+    "masked": [
+      {
+        "value": "Ph. Lambermont",
+        "category": "name"
+      },
+      {
+        "value": "Stationsplein 1 kamer 204",
+        "category": "address"
+      },
+      {
+        "value": "6221 BT",
+        "category": "postcode"
+      },
+      {
+        "value": "4210 7788 0012 3456",
+        "category": "reference"
+      }
+    ],
+    "kept": [
+      "Dienst Uitvoering Onderwijs",
+      "Postbus 50061",
+      "€ 311,00"
+    ],
+    "oneToken": [
+      "4210 7788 0012 3456"
+    ]
+  },
+  {
+    "id": "uwv-sickness",
+    "text": "UWV\nPostbus 58285\n1040 HG Amsterdam\n\nMevrouw drs. M.A.C. Terpstra\nKerkstraat 77-hs\n1017 GC Amsterdam\n\nDatum 22 september 2026\nBurgerservicenummer 296592080\nKenmerk: UWV-ZW-2026-004418\n\nGeachte mevrouw Terpstra,\n\nU moet op 6 oktober 2026 op spreekuur komen bij de verzekeringsarts.\n",
+    "masked": [
+      {
+        "value": "M.A.C. Terpstra",
+        "category": "name"
+      },
+      {
+        "value": "Kerkstraat 77-hs",
+        "category": "address"
+      },
+      {
+        "value": "1017 GC",
+        "category": "postcode"
+      },
+      {
+        "value": "296592080",
+        "category": "bsn"
+      },
+      {
+        "value": "UWV-ZW-2026-004418",
+        "category": "reference"
+      }
+    ],
+    "kept": [
+      "UWV",
+      "Postbus 58285",
+      "6 oktober 2026"
+    ],
+    "oneToken": []
+  },
+  {
+    "id": "uwv-iban",
+    "text": "UWV\nPostbus 1000\n1000 BA Amsterdam\n\nDe heer W. el Idrissi\nPieter de Hoochweg 123 B\n3024 BG Rotterdam\n\nDatum 29 september 2026\nUitkeringsnummer 2026/WW/55012\n\nGeachte heer El Idrissi,\n\nWij betalen € 1.140,55 op NL60 INGB 0009 9887 76.\n",
+    "masked": [
+      {
+        "value": "W. el Idrissi",
+        "category": "name"
+      },
+      {
+        "value": "Pieter de Hoochweg 123 B",
+        "category": "address"
+      },
+      {
+        "value": "3024 BG",
+        "category": "postcode"
+      },
+      {
+        "value": "2026/WW/55012",
+        "category": "reference"
+      },
+      {
+        "value": "NL60 INGB 0009 9887 76",
+        "category": "iban"
+      }
+    ],
+    "kept": [
+      "UWV",
+      "Postbus 1000",
+      "€ 1.140,55"
+    ],
+    "oneToken": []
+  },
+  {
+    "id": "zorgverzekeraar-buitenland",
+    "text": "Zorgverzekeraar Het Noorden\nPostbus 3\n9700 AA Groningen\n\nMevrouw Y. Zhang\nHerestraat 10 3e etage\n9711 LH Groningen\n\nDatum 15 september 2026\nPolis: HN/2026/773120\n\nGeachte mevrouw Zhang,\n\nUw declaratie uit het buitenland van € 612,00 wordt vergoed.\n",
+    "masked": [
+      {
+        "value": "Y. Zhang",
+        "category": "name"
+      },
+      {
+        "value": "Herestraat 10 3e etage",
+        "category": "address"
+      },
+      {
+        "value": "9711 LH",
+        "category": "postcode"
+      },
+      {
+        "value": "HN/2026/773120",
+        "category": "reference"
+      }
+    ],
+    "kept": [
+      "Zorgverzekeraar Het Noorden",
+      "Postbus 3",
+      "€ 612,00"
+    ],
+    "oneToken": []
+  },
+  {
+    "id": "zorgverzekeraar-right-window-blank",
+    "text": "Zorgverzekeraar Het Noorden\nPostbus 3\n9700 AA Groningen\n\n                                      De heer D.J. Bos\n                                      Emmasingel 5\n                                      9726 AH Groningen\n\nDatum 20 september 2026\nRelatienummer 1100-4471-02\n\nGeachte heer Bos,\n\nUw eigen risico voor 2026 is volledig verbruikt.\n",
+    "masked": [
+      {
+        "value": "D.J. Bos",
+        "category": "name"
+      },
+      {
+        "value": "Emmasingel 5",
+        "category": "address"
+      },
+      {
+        "value": "9726 AH",
+        "category": "postcode"
+      },
+      {
+        "value": "1100-4471-02",
+        "category": "reference"
+      }
+    ],
+    "kept": [
+      "Zorgverzekeraar Het Noorden",
+      "Postbus 3",
+      "eigen risico"
+    ],
+    "oneToken": []
+  },
+  {
+    "id": "woningcorporatie-servicekosten",
+    "text": "Woonstichting Spaarnestad\nPostbus 1100\n2001 BC Haarlem\n\nMevrouw J. van der Heijden-Koç\nSpaarne 44 zw\n2011 CJ Haarlem\n\nDatum 18 september 2026\nContract 2011-HA-0044\n\nGeachte mevrouw Van der Heijden,\n\nDe afrekening servicekosten 2025 geeft een tegoed van € 76,40.\n",
+    "masked": [
+      {
+        "value": "J. van der Heijden-Koç",
+        "category": "name"
+      },
+      {
+        "value": "Spaarne 44 zw",
+        "category": "address"
+      },
+      {
+        "value": "2011 CJ",
+        "category": "postcode"
+      },
+      {
+        "value": "2011-HA-0044",
+        "category": "reference"
+      }
+    ],
+    "kept": [
+      "Woonstichting Spaarnestad",
+      "Postbus 1100",
+      "€ 76,40"
+    ],
+    "oneToken": []
+  },
+  {
+    "id": "woningcorporatie-overlast",
+    "text": "Woonstichting Spaarnestad\nPostbus 1100, 2001 BC Haarlem\nDhr. R.A. Kalloe\nZijlweg 200 rd\n2015 BH Haarlem\nHaarlem, 2 oktober 2026\nOnze referentie: SPA/2026/OVL/19\nGeachte heer Kalloe,\nWij hebben een klacht over geluidsoverlast ontvangen.\n",
+    "masked": [
+      {
+        "value": "R.A. Kalloe",
+        "category": "name"
+      },
+      {
+        "value": "Zijlweg 200 rd",
+        "category": "address"
+      },
+      {
+        "value": "2015 BH",
+        "category": "postcode"
+      },
+      {
+        "value": "SPA/2026/OVL/19",
+        "category": "reference"
+      }
+    ],
+    "kept": [
+      "Postbus 1100, 2001 BC Haarlem",
+      "geluidsoverlast"
+    ],
+    "oneToken": []
+  },
+  {
+    "id": "cjib-tweede-aanmaning",
+    "text": "Centraal Justitieel Incassobureau\nPostbus 1794\n8901 CB Leeuwarden\n\nMevrouw L. Nkosi\nMolenpad 1-C\n8011 GA Zwolle\n\nDatum 7 oktober 2026\nBeschikkingsnummer 6610 4402 7719\nBetalingskenmerk 7000 3311 2204 9913\n\nGeachte mevrouw Nkosi,\n\nHet bedrag is verhoogd naar € 217,00. Betaal op NL10 ABNA 0411 2233 44.\n",
+    "masked": [
+      {
+        "value": "L. Nkosi",
+        "category": "name"
+      },
+      {
+        "value": "Molenpad 1-C",
+        "category": "address"
+      },
+      {
+        "value": "8011 GA",
+        "category": "postcode"
+      },
+      {
+        "value": "6610 4402 7719",
+        "category": "reference"
+      },
+      {
+        "value": "7000 3311 2204 9913",
+        "category": "reference"
+      }
+    ],
+    "kept": [
+      "Centraal Justitieel Incassobureau",
+      "Postbus 1794",
+      "€ 217,00"
+    ],
+    "oneToken": [
+      "6610 4402 7719",
+      "7000 3311 2204 9913"
+    ]
+  },
+  {
+    "id": "cjib-bsn-dotted-no-blank",
+    "text": "CJIB\nPostbus 50, 8900 AB Leeuwarden\nDe heer A.K. Soekhoe\nAssendorperstraat 160\n8012 DN Zwolle\nLeeuwarden, 12 oktober 2026\nBSN 2228.49.988\nZaak 26/CJIB/004471\nGeachte heer/mevrouw,\nUw betalingsregeling is beëindigd.\n",
+    "masked": [
+      {
+        "value": "A.K. Soekhoe",
+        "category": "name"
+      },
+      {
+        "value": "Assendorperstraat 160",
+        "category": "address"
+      },
+      {
+        "value": "8012 DN",
+        "category": "postcode"
+      },
+      {
+        "value": "2228.49.988",
+        "category": "bsn"
+      },
+      {
+        "value": "26/CJIB/004471",
+        "category": "reference"
+      }
+    ],
+    "kept": [
+      "Postbus 50, 8900 AB Leeuwarden",
+      "Uw betalingsregeling is beëindigd."
+    ],
+    "oneToken": []
+  },
+  {
+    "id": "gemeente-haarlem-verhuizing",
+    "text": "Gemeente Haarlem\nPostbus 511\n2003 PB Haarlem\n\nMevrouw F. Pereira da Silva\nKruisweg 71 rood\n2011 LB Haarlem\n\nDatum 21 september 2026\nZaaknummer 2026/19/4410\n\nGeachte mevrouw Pereira da Silva,\n\nUw verhuizing is verwerkt in de Basisregistratie Personen.\n",
+    "masked": [
+      {
+        "value": "F. Pereira da Silva",
+        "category": "name"
+      },
+      {
+        "value": "Kruisweg 71 rood",
+        "category": "address"
+      },
+      {
+        "value": "2011 LB",
+        "category": "postcode"
+      },
+      {
+        "value": "2026/19/4410",
+        "category": "reference"
+      }
+    ],
+    "kept": [
+      "Gemeente Haarlem",
+      "Postbus 511",
+      "Basisregistratie Personen"
+    ],
+    "oneToken": []
+  },
+  {
+    "id": "gemeente-haarlem-interleaved",
+    "text": "Gemeente Haarlem\nMevrouw I. Brink\nPostbus 511\nLange Herenvest 12 A\n2003 PB Haarlem\n2011 BT Haarlem\nDatum 8 oktober 2026\nKenmerk HLM-26-771\nGeachte heer/mevrouw,\nUw aanvraag voor een afvalpas is verwerkt.\n",
+    "masked": [
+      {
+        "value": "I. Brink",
+        "category": "name"
+      },
+      {
+        "value": "Lange Herenvest 12 A",
+        "category": "address"
+      },
+      {
+        "value": "2011 BT",
+        "category": "postcode"
+      },
+      {
+        "value": "HLM-26-771",
+        "category": "reference"
+      }
+    ],
+    "kept": [
+      "Gemeente Haarlem",
+      "Postbus 511",
+      "2003 PB Haarlem"
+    ],
+    "oneToken": []
+  },
+  {
+    "id": "gemeente-zwolle-wmo",
+    "text": "Gemeente Zwolle\nPostbus 10007\n8000 GA Zwolle\n\nDe heer en mevrouw P. Hoekman\nThomas a Kempisstraat 3\n8021 BM Zwolle\n\nDatum 16 september 2026\nKenmerk WMO-ZW-2026-3310\n\nGeachte heer en mevrouw Hoekman,\n\nU krijgt een traplift in bruikleen.\n",
+    "masked": [
+      {
+        "value": "P. Hoekman",
+        "category": "name"
+      },
+      {
+        "value": "Thomas a Kempisstraat 3",
+        "category": "address"
+      },
+      {
+        "value": "8021 BM",
+        "category": "postcode"
+      },
+      {
+        "value": "WMO-ZW-2026-3310",
+        "category": "reference"
+      }
+    ],
+    "kept": [
+      "Gemeente Zwolle",
+      "Postbus 10007",
+      "traplift"
+    ],
+    "oneToken": []
+  }
+]

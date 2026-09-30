@@ -108,7 +108,22 @@ public struct LetterStructure: Sendable {
     public var letterheadRange: Range<String.Index>? {
         guard let headerBoundary, let first = blocks.first else { return nil }
         guard first.lines.allSatisfy({ $0.index < headerBoundary }) else { return nil }
+        // A letter that opens with the recipient, its letterhead in the
+        // footer: the first block is a person's address, not the sender's.
+        guard !LetterStructure.opensWithAPerson(first.lines[0].text) else { return nil }
         return first.range
+    }
+
+    /// The first line of an address that is a person's: an honorific, T.a.v.,
+    /// or initials -- which no office's name opens with.
+    static func opensWithAPerson(_ text: String) -> Bool {
+        !RegexScanner.ranges(
+            // Initials only when a surname -- tussenvoegsels allowed, at
+            // most two words -- is all that follows: "K. Veldman", not
+            // "U.S. Citizenship and Immigration Services".
+            of: #"^\s*(?:(?i:mevrouw|mevr\.|mw\.|de heer|dhr\.|heer|t\.a\.v\.)(?!\p{L})|\p{Lu}\.(?:\p{Lu}\.)*\s+(?:(?:van|de|der|den|het|ten|ter|te|el|al|'t)\s+)*\p{Lu}[\p{L}'-]+(?:[ -]\p{Lu}[\p{L}'-]+)?\s*$)"#,
+            in: text
+        ).isEmpty
     }
 
     /// A line that is nothing but a date, or a labelled date.

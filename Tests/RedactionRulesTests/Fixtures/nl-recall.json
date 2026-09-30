@@ -235,5 +235,381 @@
       "Postbus 0000, 1000 AA Amsterdam"
     ],
     "oneToken": []
+  },
+  {
+    "id": "reference-label-without-colon",
+    "text": "Waternet\nPostbus 94370\n1090 GJ Amsterdam\n\nContractnummer WN-7781-2024\nKlantnummer KL-2201-0093\nDatum 5 oktober 2026\n",
+    "masked": [
+      {
+        "value": "WN-7781-2024",
+        "category": "reference"
+      },
+      {
+        "value": "KL-2201-0093",
+        "category": "reference"
+      }
+    ],
+    "kept": [
+      "Waternet",
+      "Postbus 94370",
+      "5 oktober 2026"
+    ],
+    "oneToken": []
+  },
+  {
+    "id": "recipient-same-row-columns",
+    "text": "Sociale Verzekeringsbank              Mevrouw N. Bakker-Smit\nPostbus 1100                          Julianastraat 20-I\n1180 BH Amstelveen                    6511 JD Nijmegen\nDatum 2 oktober 2026\nGeachte heer/mevrouw,\n",
+    "masked": [
+      {
+        "value": "N. Bakker-Smit",
+        "category": "name"
+      },
+      {
+        "value": "Julianastraat 20-I",
+        "category": "address"
+      },
+      {
+        "value": "6511 JD",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Sociale Verzekeringsbank",
+      "Postbus 1100",
+      "1180 BH Amstelveen"
+    ],
+    "oneToken": []
+  },
+  {
+    "id": "recipient-interleaved-columns",
+    "text": "Sociale Verzekeringsbank\nDe heer O. Demir\nPostbus 1100\nMarkt 7 bis\n1180 BH Amstelveen\n4811 WJ Breda\nDatum 2 oktober 2026\nGeachte heer/mevrouw,\n",
+    "masked": [
+      {
+        "value": "O. Demir",
+        "category": "name"
+      },
+      {
+        "value": "Markt 7 bis",
+        "category": "address"
+      },
+      {
+        "value": "4811 WJ",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Sociale Verzekeringsbank",
+      "Postbus 1100",
+      "1180 BH Amstelveen"
+    ],
+    "oneToken": []
+  },
+  {
+    "id": "salutation-beste",
+    "text": "Gemeente Gorinchem\nPostbus 108\n4200 AC Gorinchem\n\nAan: de heer P. van Leeuwen\nDorpsstraat 3\n4201 AB Gorinchem\n\nDatum 6 oktober 2026\n\nBeste meneer Van Leeuwen,\n\nUw aanvraag is goedgekeurd. Beste Kees, zo begon uw eigen brief ook.\n",
+    "masked": [
+      {
+        "value": "P. van Leeuwen",
+        "category": "name"
+      },
+      {
+        "value": "Van Leeuwen",
+        "category": "name"
+      },
+      {
+        "value": "Dorpsstraat 3",
+        "category": "address"
+      },
+      {
+        "value": "4201 AB",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Gemeente Gorinchem",
+      "Postbus 108",
+      "4200 AC Gorinchem",
+      "Uw aanvraag is goedgekeurd."
+    ],
+    "oneToken": []
+  },
+  {
+    "id": "recipient-on-the-first-line",
+    "text": "Dhr. K. Veldman\nMolenstraat 14\n7411 GG Deventer\n\nDatum 4 oktober 2026\nOnderwerp: omgevingsvergunning\n\nGeachte heer/mevrouw,\n\nUw vergunning is verleend.\n\nMet vriendelijke groet,\nGemeente Deventer\nPostbus 5000, 7400 GC Deventer\n",
+    "masked": [
+      {
+        "value": "K. Veldman",
+        "category": "name"
+      },
+      {
+        "value": "Molenstraat 14",
+        "category": "address"
+      },
+      {
+        "value": "7411 GG",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Gemeente Deventer",
+      "Postbus 5000, 7400 GC Deventer",
+      "Uw vergunning is verleend."
+    ],
+    "oneToken": []
+  },
+  {
+    "id": "reference-letter-prefix-spaced",
+    "text": "Stichting Voorbeeld\nPostbus 12\n1000 AA Amsterdam\n\nDossiernummer AB 2026 3141 59\nPolisnummer ZK-NL 4410 2208 17\nDatum 2 oktober 2026\n",
+    "masked": [
+      {
+        "value": "AB 2026 3141 59",
+        "category": "reference"
+      },
+      {
+        "value": "ZK-NL 4410 2208 17",
+        "category": "reference"
+      }
+    ],
+    "kept": [
+      "Stichting Voorbeeld",
+      "2 oktober 2026"
+    ],
+    "oneToken": [
+      "AB 2026 3141 59",
+      "ZK-NL 4410 2208 17"
+    ]
+  },
+  {
+    "id": "reference-short-last-group",
+    "text": "Incassobureau Voorbeeld\nPostbus 34\n2500 AA Den Haag\n\nVorderingsnummer 2026 1188 0042 17\nDatum 1 oktober 2026\n",
+    "masked": [
+      {
+        "value": "2026 1188 0042 17",
+        "category": "reference"
+      }
+    ],
+    "kept": [
+      "Incassobureau Voorbeeld",
+      "1 oktober 2026"
+    ],
+    "oneToken": [
+      "2026 1188 0042 17"
+    ]
+  },
+  {
+    "id": "reference-werkorder-label",
+    "text": "Woonbedrijf Voorbeeld\nPostbus 77\n5600 AA Eindhoven\n\nWerkorder WK-2611-0081\nDatum 3 oktober 2026\n",
+    "masked": [
+      {
+        "value": "WK-2611-0081",
+        "category": "reference"
+      }
+    ],
+    "kept": [
+      "Woonbedrijf Voorbeeld",
+      "3 oktober 2026"
+    ],
+    "oneToken": []
+  },
+  {
+    "id": "freepost-address-kept",
+    "text": "Woonbedrijf Voorbeeld\nAntwoordnummer 4512\n3500 WB Utrecht\n\nKlantnummer KB-3310-0072\nDatum 3 oktober 2026\n",
+    "masked": [
+      {
+        "value": "KB-3310-0072",
+        "category": "reference"
+      }
+    ],
+    "kept": [
+      "Antwoordnummer 4512",
+      "3500 WB Utrecht"
+    ],
+    "oneToken": []
+  },
+  {
+    "id": "letterhead-opening-with-initials-kept",
+    "text": "U.S. Department of Labor\n200 Constitution Ave NW\nWashington, DC 20210\n\nMs. A. Yilmaz\n12 Main Street\nBrooklyn, NY 11201\n\nDate: October 1, 2026\n\nDear Ms. Yilmaz,\n",
+    "masked": [],
+    "kept": [
+      "U.S. Department of Labor",
+      "200 Constitution Ave NW",
+      "Washington, DC 20210"
+    ],
+    "oneToken": []
+  },
+  {
+    "id": "salutation-couple",
+    "text": "Waterschap Voorbeeld\nPostbus 5\n3300 AA Dordrecht\n\nDe heer en mevrouw J. van Beek-Sluis\nDijkweg 44\n3311 KK Dordrecht\n\nDatum 3 oktober 2026\n\nGeachte heer en mevrouw Van Beek-Sluis,\n\nUw aanslag is verminderd.\n",
+    "masked": [
+      {
+        "value": "J. van Beek-Sluis",
+        "category": "name"
+      },
+      {
+        "value": "Van Beek-Sluis",
+        "category": "name"
+      },
+      {
+        "value": "Dijkweg 44",
+        "category": "address"
+      },
+      {
+        "value": "3311 KK",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Waterschap Voorbeeld",
+      "Postbus 5",
+      "3300 AA Dordrecht",
+      "Uw aanslag is verminderd."
+    ],
+    "oneToken": []
+  },
+  {
+    "id": "postcode-double-space",
+    "text": "Waterschap Voorbeeld\nPostbus 5\n3300 AA Dordrecht\n\nDe heer T. Visscher\nWaalkade 12\n6511  XR  Nijmegen\n\nDatum 4 oktober 2026\n\nGeachte heer/mevrouw,\n",
+    "masked": [
+      {
+        "value": "T. Visscher",
+        "category": "name"
+      },
+      {
+        "value": "Waalkade 12",
+        "category": "address"
+      },
+      {
+        "value": "6511  XR",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Waterschap Voorbeeld",
+      "Postbus 5"
+    ],
+    "oneToken": []
+  },
+  {
+    "id": "name-repeated-in-body",
+    "text": "Waterschap Voorbeeld\nPostbus 5\n3300 AA Dordrecht\n\nMevrouw K.L. Brandsma\nZeedijk 3\n8881 AB West-Terschelling\n\nDatum 4 oktober 2026\n\nGeachte heer/mevrouw,\n\nHet verzoek van K.L. Brandsma is ontvangen. Wij nemen contact op met mevrouw Brandsma.\n",
+    "masked": [
+      {
+        "value": "K.L. Brandsma",
+        "category": "name"
+      },
+      {
+        "value": "Zeedijk 3",
+        "category": "address"
+      },
+      {
+        "value": "8881 AB",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Waterschap Voorbeeld",
+      "Het verzoek van",
+      "is ontvangen."
+    ],
+    "oneToken": []
+  },
+  {
+    "id": "subject-names-a-person",
+    "text": "Stichting Bewind Voorbeeld\nPostbus 9\n1000 AA Amsterdam\n\nDatum 4 oktober 2026\nInzake: mevrouw J.P. Zwart-Hendriks\n\nGeachte heer/mevrouw,\n\nWij beheren de financiën van onze cliënt.\n",
+    "masked": [
+      {
+        "value": "J.P. Zwart-Hendriks",
+        "category": "name"
+      }
+    ],
+    "kept": [
+      "Stichting Bewind Voorbeeld",
+      "Wij beheren de financiën van onze cliënt."
+    ],
+    "oneToken": []
+  },
+  {
+    "id": "reference-that-looks-like-an-amount",
+    "text": "Waterschap Voorbeeld\nPostbus 5\n3300 AA Dordrecht\n\nKenmerk 2031.55.204.17\nDatum 4 oktober 2026\n\nU betaalt € 1.204,17 in termijnen.\n",
+    "masked": [
+      {
+        "value": "2031.55.204.17",
+        "category": "reference"
+      }
+    ],
+    "kept": [
+      "€ 1.204,17",
+      "4 oktober 2026"
+    ],
+    "oneToken": []
+  },
+  {
+    "id": "postal-annotation-kept",
+    "text": "Waterschap Voorbeeld\nPostbus 5\n3300 AA Dordrecht\n\nAangetekend\nDe heer B. Hazelaar\nRijksstraatweg 9\n3316 EA Dordrecht\n\nDatum 4 oktober 2026\n\nGeachte heer/mevrouw,\n",
+    "masked": [
+      {
+        "value": "B. Hazelaar",
+        "category": "name"
+      },
+      {
+        "value": "Rijksstraatweg 9",
+        "category": "address"
+      },
+      {
+        "value": "3316 EA",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Aangetekend",
+      "Waterschap Voorbeeld"
+    ],
+    "oneToken": []
+  },
+  {
+    "id": "block-merged-onto-one-line",
+    "text": "Waterschap Voorbeeld\nPostbus 5, 3300 AA Dordrecht\nDe heer B. Mulders Hoofdweg 12 9611 AB Sappemeer\nDatum 4 oktober 2026\nGeachte heer/mevrouw,\nU kunt langskomen op Stadhuisplein 1 in Dordrecht.\n",
+    "masked": [
+      {
+        "value": "B. Mulders",
+        "category": "name"
+      },
+      {
+        "value": "Hoofdweg 12",
+        "category": "address"
+      },
+      {
+        "value": "9611 AB",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Postbus 5, 3300 AA Dordrecht",
+      "U kunt langskomen op Stadhuisplein 1 in Dordrecht."
+    ],
+    "oneToken": []
+  },
+  {
+    "id": "labels-polis-contract-zaak",
+    "text": "Stichting Voorbeeld\nPostbus 12\n1000 AA Amsterdam\n\nPolis: ZN/2027/118830\nContract WS-2024-0911\nZaak 27/DUO/001293\nDatum 2 oktober 2026\n",
+    "masked": [
+      {
+        "value": "ZN/2027/118830",
+        "category": "reference"
+      },
+      {
+        "value": "WS-2024-0911",
+        "category": "reference"
+      },
+      {
+        "value": "27/DUO/001293",
+        "category": "reference"
+      }
+    ],
+    "kept": [
+      "Stichting Voorbeeld",
+      "2 oktober 2026"
+    ],
+    "oneToken": []
   }
 ]

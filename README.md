@@ -136,9 +136,21 @@ Names are caught in the two places official letters put them:
    the sender's letterhead and is left alone. A line carrying the whole
    address before a comma (`A. Yilmaz, Voorbeeldstraat 00, 1011 AB
    Amsterdam`) is masked as one.
+   The block's first line also gives up the recipient's name (without
+   honorific or titles), which is then masked wherever else the letter
+   prints it -- whole ("the application of K.L. Brandsma") or as a surname
+   after an honorific ("mevrouw Brandsma"), never as a bare surname, which
+   is too often an ordinary word. Everything in the block is the
+   recipient's, an organisation's name included: *Bakkerij De Korenaar
+   V.O.F.* above *Attn. de heer M. Dekker* identifies him. How the letter
+   was sent (*Aangetekend*, *Per e-mail en per post*) is not part of the
+   block and survives.
 2. **The salutation.** Per-language patterns keep the honorific and mask the
    name: *Geachte mevrouw [NAME_1],*. Once the name is known, every other
    occurrence of it in the letter is masked too.
+
+3. **A field line about a person** -- *Inzake: mevrouw J.P. Zwart-Hendriks*,
+   *Cliënt: de heer R. Visser* -- when the name carries initials.
 
 **A third party named in the body is not masked.** Finding those needs a model,
 and a model that reads the letter is the thing this package exists to avoid.
