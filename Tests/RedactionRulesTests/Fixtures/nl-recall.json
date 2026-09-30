@@ -465,5 +465,105 @@
       "Uw aanslag is verminderd."
     ],
     "oneToken": []
+  },
+  {
+    "id": "postcode-double-space",
+    "text": "Waterschap Voorbeeld\nPostbus 5\n3300 AA Dordrecht\n\nDe heer T. Visscher\nWaalkade 12\n6511  XR  Nijmegen\n\nDatum 4 oktober 2026\n\nGeachte heer/mevrouw,\n",
+    "masked": [
+      {
+        "value": "T. Visscher",
+        "category": "name"
+      },
+      {
+        "value": "Waalkade 12",
+        "category": "address"
+      },
+      {
+        "value": "6511  XR",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Waterschap Voorbeeld",
+      "Postbus 5"
+    ],
+    "oneToken": []
+  },
+  {
+    "id": "name-repeated-in-body",
+    "text": "Waterschap Voorbeeld\nPostbus 5\n3300 AA Dordrecht\n\nMevrouw K.L. Brandsma\nZeedijk 3\n8881 AB West-Terschelling\n\nDatum 4 oktober 2026\n\nGeachte heer/mevrouw,\n\nHet verzoek van K.L. Brandsma is ontvangen. Wij nemen contact op met mevrouw Brandsma.\n",
+    "masked": [
+      {
+        "value": "K.L. Brandsma",
+        "category": "name"
+      },
+      {
+        "value": "Zeedijk 3",
+        "category": "address"
+      },
+      {
+        "value": "8881 AB",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Waterschap Voorbeeld",
+      "Het verzoek van",
+      "is ontvangen."
+    ],
+    "oneToken": []
+  },
+  {
+    "id": "subject-names-a-person",
+    "text": "Stichting Bewind Voorbeeld\nPostbus 9\n1000 AA Amsterdam\n\nDatum 4 oktober 2026\nInzake: mevrouw J.P. Zwart-Hendriks\n\nGeachte heer/mevrouw,\n\nWij beheren de financiën van onze cliënt.\n",
+    "masked": [
+      {
+        "value": "J.P. Zwart-Hendriks",
+        "category": "name"
+      }
+    ],
+    "kept": [
+      "Stichting Bewind Voorbeeld",
+      "Wij beheren de financiën van onze cliënt."
+    ],
+    "oneToken": []
+  },
+  {
+    "id": "reference-that-looks-like-an-amount",
+    "text": "Waterschap Voorbeeld\nPostbus 5\n3300 AA Dordrecht\n\nKenmerk 2031.55.204.17\nDatum 4 oktober 2026\n\nU betaalt € 1.204,17 in termijnen.\n",
+    "masked": [
+      {
+        "value": "2031.55.204.17",
+        "category": "reference"
+      }
+    ],
+    "kept": [
+      "€ 1.204,17",
+      "4 oktober 2026"
+    ],
+    "oneToken": []
+  },
+  {
+    "id": "postal-annotation-kept",
+    "text": "Waterschap Voorbeeld\nPostbus 5\n3300 AA Dordrecht\n\nAangetekend\nDe heer B. Hazelaar\nRijksstraatweg 9\n3316 EA Dordrecht\n\nDatum 4 oktober 2026\n\nGeachte heer/mevrouw,\n",
+    "masked": [
+      {
+        "value": "B. Hazelaar",
+        "category": "name"
+      },
+      {
+        "value": "Rijksstraatweg 9",
+        "category": "address"
+      },
+      {
+        "value": "3316 EA",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Aangetekend",
+      "Waterschap Voorbeeld"
+    ],
+    "oneToken": []
   }
 ]
