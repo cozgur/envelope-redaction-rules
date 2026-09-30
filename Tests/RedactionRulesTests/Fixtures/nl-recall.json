@@ -1,0 +1,239 @@
+[
+  {
+    "id": "reference-kenmerk-inline-spaced",
+    "text": "Gemeente Amsterdam\nBelastingen\n\nVermeld bij betaling altijd het kenmerk 5021 8834 1107.\n",
+    "masked": [
+      {
+        "value": "5021 8834 1107",
+        "category": "reference"
+      }
+    ],
+    "kept": [
+      "Gemeente Amsterdam"
+    ],
+    "oneToken": [
+      "5021 8834 1107"
+    ]
+  },
+  {
+    "id": "reference-aanslagnummer-line",
+    "text": "Gemeente Amsterdam\n\nAanslagnummer 5021 8834 1107\nDagtekening 14 oktober 2026\n",
+    "masked": [
+      {
+        "value": "5021 8834 1107",
+        "category": "reference"
+      }
+    ],
+    "kept": [
+      "14 oktober 2026"
+    ],
+    "oneToken": [
+      "5021 8834 1107"
+    ]
+  },
+  {
+    "id": "reference-aanslagnummer-sentence",
+    "text": "Uw aanslagnummer is 5021 8834 1107. Het bedrag van € 284,00 moet uiterlijk 30 november 2026 zijn betaald.\n",
+    "masked": [
+      {
+        "value": "5021 8834 1107",
+        "category": "reference"
+      }
+    ],
+    "kept": [
+      "€ 284,00",
+      "30 november 2026"
+    ],
+    "oneToken": [
+      "5021 8834 1107"
+    ]
+  },
+  {
+    "id": "reference-kenmerk-field",
+    "text": "Kenmerk: 5021 8834 1107\nDatum: 14 oktober 2026\n",
+    "masked": [
+      {
+        "value": "5021 8834 1107",
+        "category": "reference"
+      }
+    ],
+    "kept": [
+      "14 oktober 2026"
+    ],
+    "oneToken": [
+      "5021 8834 1107"
+    ]
+  },
+  {
+    "id": "reference-does-not-swallow-amount",
+    "text": "Betaal onder vermelding van kenmerk 5021 8834 1107 het bedrag van € 284,00.\n",
+    "masked": [
+      {
+        "value": "5021 8834 1107",
+        "category": "reference"
+      }
+    ],
+    "kept": [
+      "€ 284,00"
+    ],
+    "oneToken": [
+      "5021 8834 1107"
+    ]
+  },
+  {
+    "id": "recipient-block-blank-lines",
+    "text": "Gemeente Amsterdam\nBelastingen\nPostbus 0000\n1000 AA Amsterdam\n\nA. Yilmaz\nVoorbeeldstraat 00\n1011 AB Amsterdam\n\nDatum 14 oktober 2026\nKenmerk: 5021 8834 1107\n\nGeachte heer/mevrouw,\n\nHierbij ontvangt u de aanslag.\n",
+    "masked": [
+      {
+        "value": "A. Yilmaz",
+        "category": "name"
+      },
+      {
+        "value": "Voorbeeldstraat 00",
+        "category": "address"
+      },
+      {
+        "value": "1011 AB",
+        "category": "postcode"
+      },
+      {
+        "value": "5021 8834 1107",
+        "category": "reference"
+      }
+    ],
+    "kept": [
+      "Gemeente Amsterdam",
+      "Postbus 0000",
+      "1000 AA Amsterdam",
+      "14 oktober 2026"
+    ],
+    "oneToken": []
+  },
+  {
+    "id": "recipient-block-no-blank-lines",
+    "text": "Gemeente Amsterdam\nPostbus 0000, 1000 AA Amsterdam\nA. Yilmaz\nVoorbeeldstraat 00\n1011 AB Amsterdam\nGeachte heer/mevrouw,\nHierbij ontvangt u de aanslag gemeentelijke belastingen over 2026.\n",
+    "masked": [
+      {
+        "value": "A. Yilmaz",
+        "category": "name"
+      },
+      {
+        "value": "Voorbeeldstraat 00",
+        "category": "address"
+      },
+      {
+        "value": "1011 AB",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Gemeente Amsterdam",
+      "Postbus 0000, 1000 AA Amsterdam",
+      "2026"
+    ],
+    "oneToken": []
+  },
+  {
+    "id": "recipient-block-one-line",
+    "text": "Gemeente Amsterdam\nBelastingen · Postbus 0000 · 1000 AA Amsterdam\nA. Yilmaz, Voorbeeldstraat 00, 1011 AB Amsterdam\nKenmerk 5021 8834 1107\nGeachte heer/mevrouw,\n",
+    "masked": [
+      {
+        "value": "A. Yilmaz",
+        "category": "name"
+      },
+      {
+        "value": "Voorbeeldstraat 00",
+        "category": "address"
+      },
+      {
+        "value": "1011 AB",
+        "category": "postcode"
+      },
+      {
+        "value": "5021 8834 1107",
+        "category": "reference"
+      }
+    ],
+    "kept": [
+      "Gemeente Amsterdam",
+      "Postbus 0000",
+      "1000 AA Amsterdam"
+    ],
+    "oneToken": []
+  },
+  {
+    "id": "recipient-block-with-date-after",
+    "text": "Belastingdienst\nPostbus 2508\n6401 DA Heerlen\nDe heer B. de Vries\nKerkweg 12 A\n3512 JE Utrecht\n14 oktober 2026\nGeachte heer De Vries,\n",
+    "masked": [
+      {
+        "value": "B. de Vries",
+        "category": "name"
+      },
+      {
+        "value": "Kerkweg 12 A",
+        "category": "address"
+      },
+      {
+        "value": "3512 JE",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Belastingdienst",
+      "Postbus 2508",
+      "6401 DA Heerlen",
+      "14 oktober 2026"
+    ],
+    "oneToken": []
+  },
+  {
+    "id": "bsn-and-iban",
+    "text": "Gemeente Utrecht\n\nA. Yilmaz\nVoorbeeldstraat 00\n3511 AA Utrecht\n\nDatum: 2 oktober 2026\n\nGeachte heer/mevrouw,\n\nUw burgerservicenummer 111222333 is bij ons bekend. Betaal op IBAN NL91 ABNA 0417 1643 00.\n",
+    "masked": [
+      {
+        "value": "A. Yilmaz",
+        "category": "name"
+      },
+      {
+        "value": "Voorbeeldstraat 00",
+        "category": "address"
+      },
+      {
+        "value": "3511 AA",
+        "category": "postcode"
+      },
+      {
+        "value": "111222333",
+        "category": "bsn"
+      },
+      {
+        "value": "NL91 ABNA 0417 1643 00",
+        "category": "iban"
+      }
+    ],
+    "kept": [
+      "Gemeente Utrecht",
+      "2 oktober 2026"
+    ],
+    "oneToken": []
+  },
+  {
+    "id": "excluded-letter-pair-is-not-a-postcode",
+    "text": "Waterschap\nOnze referentie staat hieronder.\nVergunning 1234 SS verleend\nDatum 3 oktober 2026\nGeachte heer/mevrouw,\n",
+    "masked": [],
+    "kept": [
+      "Onze referentie staat hieronder.",
+      "Vergunning 1234 SS verleend"
+    ],
+    "oneToken": []
+  },
+  {
+    "id": "postcode-in-a-sentence-survives",
+    "text": "Gemeente Amsterdam\n\nDatum 3 oktober 2026\n\nGeachte heer/mevrouw,\n\nU kunt uw bezwaar sturen naar Postbus 0000, 1000 AA Amsterdam.\n",
+    "masked": [],
+    "kept": [
+      "Postbus 0000, 1000 AA Amsterdam"
+    ],
+    "oneToken": []
+  }
+]

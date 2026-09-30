@@ -33,6 +33,7 @@ public struct ReferenceNumberRule: RedactionRule {
     /// anchor to.
     private static let inlineKeywords = [
         "kenmerk", "referentie", "zaaknummer", "dossiernummer",
+        "aanslagnummer", "betalingskenmerk",
         "aktenzeichen", "kassenzeichen", "kundennummer", "personalnummer",
         "référence", "numéro de dossier",
         "referencia", "expediente",
@@ -82,8 +83,15 @@ public struct ReferenceNumberRule: RedactionRule {
         // "Número de expediente:" line yielded the word "de" as a reference.
         // The engine then masked every "de" in the letter. A reference always
         // has a digit in it; ordinary words do not.
+        //
+        // Or digit groups separated by single spaces -- `5021 8834 1107`, the
+        // way Dutch municipalities print an assessment number. Taken as one
+        // value: stopping at the first space masked `5021` and sent the rest.
+        // Groups of three digits or more, so a date or an amount that follows
+        // the reference (`… 1107 14 oktober`, `… 1107 € 284,00`) is not
+        // swallowed into it.
         return "(?i)" + keywords
-            + #"[^\n]{0,20}?[:\s]\s*((?=[A-Z0-9./-]*\d)[A-Z0-9][A-Z0-9./-]{2,}[A-Z0-9])"#
+            + #"[^\n]{0,20}?[:\s]\s*(\d{3,6}(?: \d{3,6}){1,4}(?!\d|[,.]\d)|(?=[A-Z0-9./-]*\d)[A-Z0-9][A-Z0-9./-]{2,}[A-Z0-9])"#
     }
 
     public func matches(in text: String) -> [Range<String.Index>] {
