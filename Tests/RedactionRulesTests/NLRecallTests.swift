@@ -51,7 +51,7 @@ struct NLRecallTests {
 
     @Test("The fixtures are present, and cover every category")
     func fixturesLoad() {
-        #expect(Self.cases.count >= 12)
+        #expect(Self.cases.count >= 16)
         let categories = Set(Self.cases.flatMap { $0.masked.map(\.category) })
         #expect(categories == ["name", "address", "postcode", "bsn", "iban", "reference"])
     }

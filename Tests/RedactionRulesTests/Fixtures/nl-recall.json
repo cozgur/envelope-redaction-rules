@@ -235,5 +235,102 @@
       "Postbus 0000, 1000 AA Amsterdam"
     ],
     "oneToken": []
+  },
+  {
+    "id": "reference-label-without-colon",
+    "text": "Waternet\nPostbus 94370\n1090 GJ Amsterdam\n\nContractnummer WN-7781-2024\nKlantnummer KL-2201-0093\nDatum 5 oktober 2026\n",
+    "masked": [
+      {
+        "value": "WN-7781-2024",
+        "category": "reference"
+      },
+      {
+        "value": "KL-2201-0093",
+        "category": "reference"
+      }
+    ],
+    "kept": [
+      "Waternet",
+      "Postbus 94370",
+      "5 oktober 2026"
+    ],
+    "oneToken": []
+  },
+  {
+    "id": "recipient-same-row-columns",
+    "text": "Sociale Verzekeringsbank              Mevrouw N. Bakker-Smit\nPostbus 1100                          Julianastraat 20-I\n1180 BH Amstelveen                    6511 JD Nijmegen\nDatum 2 oktober 2026\nGeachte heer/mevrouw,\n",
+    "masked": [
+      {
+        "value": "N. Bakker-Smit",
+        "category": "name"
+      },
+      {
+        "value": "Julianastraat 20-I",
+        "category": "address"
+      },
+      {
+        "value": "6511 JD",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Sociale Verzekeringsbank",
+      "Postbus 1100",
+      "1180 BH Amstelveen"
+    ],
+    "oneToken": []
+  },
+  {
+    "id": "recipient-interleaved-columns",
+    "text": "Sociale Verzekeringsbank\nDe heer O. Demir\nPostbus 1100\nMarkt 7 bis\n1180 BH Amstelveen\n4811 WJ Breda\nDatum 2 oktober 2026\nGeachte heer/mevrouw,\n",
+    "masked": [
+      {
+        "value": "O. Demir",
+        "category": "name"
+      },
+      {
+        "value": "Markt 7 bis",
+        "category": "address"
+      },
+      {
+        "value": "4811 WJ",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Sociale Verzekeringsbank",
+      "Postbus 1100",
+      "1180 BH Amstelveen"
+    ],
+    "oneToken": []
+  },
+  {
+    "id": "salutation-beste",
+    "text": "Gemeente Gorinchem\nPostbus 108\n4200 AC Gorinchem\n\nAan: de heer P. van Leeuwen\nDorpsstraat 3\n4201 AB Gorinchem\n\nDatum 6 oktober 2026\n\nBeste meneer Van Leeuwen,\n\nUw aanvraag is goedgekeurd. Beste Kees, zo begon uw eigen brief ook.\n",
+    "masked": [
+      {
+        "value": "P. van Leeuwen",
+        "category": "name"
+      },
+      {
+        "value": "Van Leeuwen",
+        "category": "name"
+      },
+      {
+        "value": "Dorpsstraat 3",
+        "category": "address"
+      },
+      {
+        "value": "4201 AB",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Gemeente Gorinchem",
+      "Postbus 108",
+      "4200 AC Gorinchem",
+      "Uw aanvraag is goedgekeurd."
+    ],
+    "oneToken": []
   }
 ]
