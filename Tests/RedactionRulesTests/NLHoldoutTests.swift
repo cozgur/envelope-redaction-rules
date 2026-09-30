@@ -45,7 +45,7 @@ struct NLHoldoutTests {
         for letter in letters {
             let redacted = RedactionEngine.redact(letter.text, countryHint: "NL").redactedText
             for item in letter.masked {
-                #expect(!NLRecallTests.leaks(item.value, in: redacted), "\(name) \(letter.id): \(item.category) \(item.value)")
+                #expect(!NLRecallTests.leaks(item.value, in: redacted, original: letter.text), "\(name) \(letter.id): \(item.category) \(item.value)")
             }
             for value in letter.kept {
                 #expect(redacted.contains(value), "\(name) \(letter.id): “\(value)” was masked")
@@ -68,7 +68,7 @@ struct NLHoldoutTests {
             for item in letter.masked {
                 var entry = tally[item.category] ?? (0, 0, [])
                 entry.total += 1
-                if NLRecallTests.leaks(item.value, in: redacted) {
+                if NLRecallTests.leaks(item.value, in: redacted, original: letter.text) {
                     entry.missed.append("\(letter.id): \(item.value)")
                 } else {
                     entry.masked += 1

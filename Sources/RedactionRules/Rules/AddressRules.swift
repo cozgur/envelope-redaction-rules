@@ -140,6 +140,10 @@ public struct RecipientBlockRule: RedactionRule {
         return Cell(text: right, range: start..<line.range.upperBound)
     }
 
+    private static func opensWithAPerson(_ cell: Cell?) -> Bool {
+        cell.map { LetterStructure.opensWithAPerson($0.text) } ?? false
+    }
+
     private static func isPostcodeLine(_ cell: Cell?) -> RegexScanner.Match? {
         guard let cell else { return nil }
         return RegexScanner.firstMatch(of: postcodeCityLine, in: cell.text)
@@ -170,7 +174,7 @@ public struct RecipientBlockRule: RedactionRule {
             var reachedLetterhead = false
             for candidate in stride(from: position - 1, through: max(0, position - 3), by: -1) {
                 if endsAnAddress(column[candidate]) { break }
-                if candidate == 0 && firstLineIsLetterhead {
+                if candidate == 0 && firstLineIsLetterhead && !opensWithAPerson(column[0]) {
                     reachedLetterhead = true
                     break
                 }
