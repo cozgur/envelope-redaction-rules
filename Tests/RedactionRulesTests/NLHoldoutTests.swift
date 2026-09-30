@@ -21,15 +21,37 @@ import Testing
 @Suite("NL held-out recall (Gate A)")
 struct NLHoldoutTests {
 
-    static let file = "nl-holdout-1"
+    /// The set Gate A is measured on.
+    static let file = "nl-holdout-2"
+    /// Earlier held-out sets. Each was retired when the rules were fixed
+    /// against its misses; they stay as regression tests and no longer
+    /// count for the gate.
+    static let retired = ["nl-holdout-1"]
 
-    static let cases: [NLRecallTests.Case] = {
-        guard let url = Bundle.module.url(forResource: "Fixtures/\(file)", withExtension: "json"),
+    static func load(_ name: String) -> [NLRecallTests.Case] {
+        guard let url = Bundle.module.url(forResource: "Fixtures/\(name)", withExtension: "json"),
               let data = try? Data(contentsOf: url),
               let decoded = try? JSONDecoder().decode([NLRecallTests.Case].self, from: data)
         else { return [] }
         return decoded
-    }()
+    }
+
+    static let cases = load(file)
+
+    @Test("Retired held-out sets stay at 100%", arguments: retired)
+    func retiredSetsHold(_ name: String) {
+        let letters = Self.load(name)
+        #expect(letters.count == 20)
+        for letter in letters {
+            let redacted = RedactionEngine.redact(letter.text, countryHint: "NL").redactedText
+            for item in letter.masked {
+                #expect(!NLRecallTests.leaks(item.value, in: redacted), "\(name) \(letter.id): \(item.category) \(item.value)")
+            }
+            for value in letter.kept {
+                #expect(redacted.contains(value), "\(name) \(letter.id): “\(value)” was masked")
+            }
+        }
+    }
 
     @Test("The held-out set is present: 20 letters, every category")
     func fixturesLoad() {
