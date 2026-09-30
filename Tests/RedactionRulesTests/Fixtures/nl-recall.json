@@ -436,5 +436,34 @@
       "Washington, DC 20210"
     ],
     "oneToken": []
+  },
+  {
+    "id": "salutation-couple",
+    "text": "Waterschap Voorbeeld\nPostbus 5\n3300 AA Dordrecht\n\nDe heer en mevrouw J. van Beek-Sluis\nDijkweg 44\n3311 KK Dordrecht\n\nDatum 3 oktober 2026\n\nGeachte heer en mevrouw Van Beek-Sluis,\n\nUw aanslag is verminderd.\n",
+    "masked": [
+      {
+        "value": "J. van Beek-Sluis",
+        "category": "name"
+      },
+      {
+        "value": "Van Beek-Sluis",
+        "category": "name"
+      },
+      {
+        "value": "Dijkweg 44",
+        "category": "address"
+      },
+      {
+        "value": "3311 KK",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Waterschap Voorbeeld",
+      "Postbus 5",
+      "3300 AA Dordrecht",
+      "Uw aanslag is verminderd."
+    ],
+    "oneToken": []
   }
 ]
