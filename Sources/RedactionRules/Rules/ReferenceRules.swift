@@ -73,6 +73,21 @@ public struct ReferenceNumberRule: RedactionRule {
             + #")\b[^\n:]{0,24}[ \t]*:[ \t]*([\p{L}\d][\p{L}\d ./-]{2,}[\p{L}\d])[ \t]*$"#
     }
 
+    /// A one-word label ending in a reference stem, no colon, then the value
+    /// to the end of the line: `Contractnummer WN-7781-2024`,
+    /// `Klantnummer 7710 4402 19`.
+    ///
+    /// One word, so a sentence cannot pass for a label; never a telephone
+    /// or fax label, whose number is the phone rule's to claim.
+    private static var bareLabelLinePattern: String {
+        let stems = labelStems
+            .filter { $0.count > 2 }
+            .map { NSRegularExpression.escapedPattern(for: $0) }
+            .joined(separator: "|")
+        return #"(?im)^[ \t]*(?!\S*(?:telefoon|telefon|phone|fax))[\p{L}][\p{L}-]{0,38}(?:"# + stems
+            + #")[ \t]+(\d{3,6}(?: \d{3,6}){1,4}|(?=[\p{L}\d./-]*\d)[\p{L}\d][\p{L}\d./-]{2,}[\p{L}\d])[ \t]*$"#
+    }
+
     /// A known label mid-sentence, then the token that follows it.
     private static var inlinePattern: String {
         let keywords = KeywordPattern.alternation(inlineKeywords)
@@ -98,5 +113,6 @@ public struct ReferenceNumberRule: RedactionRule {
         RegexScanner.ranges(of: Self.fieldLinePattern, captureGroup: 1, in: text)
             + RegexScanner.ranges(of: Self.wordStemLinePattern, captureGroup: 1, in: text)
             + RegexScanner.ranges(of: Self.inlinePattern, captureGroup: 1, in: text)
+            + RegexScanner.ranges(of: Self.bareLabelLinePattern, captureGroup: 1, in: text)
     }
 }

@@ -68,7 +68,7 @@ public struct RecipientBlockRule: RedactionRule {
                 return Self.looksLikeAnAddressBlock(block)
             }
             .map(\.range)
-            + Self.postcodeAnchoredBlocks(in: structure)
+            + Self.postcodeAnchoredBlocks(in: structure, text: text)
     }
 
     // MARK: - A block found from its postcode line
@@ -102,46 +102,134 @@ public struct RecipientBlockRule: RedactionRule {
     /// A postcode line with the rest of the address before a comma
     /// (`A. Yilmaz, Voorbeeldstraat 00, 1011 AB Amsterdam`) is the whole
     /// block on one line.
-    static func postcodeAnchoredBlocks(in structure: LetterStructure) -> [Range<String.Index>] {
+    static func postcodeAnchoredBlocks(in structure: LetterStructure, text: String) -> [Range<String.Index>] {
         let limit = min(structure.headerBoundary ?? addressWindow, addressWindow)
         let window = structure.lines.prefix(while: { $0.index < limit })
-        var found: [Range<String.Index>] = []
+        let lines: [Cell?] = window.map { Cell(text: $0.text, range: $0.range) }
 
-        for line in window where line.index >= 1 {
-            guard let match = RegexScanner.firstMatch(of: postcodeCityLine, in: line.text) else { continue }
-            if isOfficeMailbox(line.text) { continue }
+        var found: [Range<String.Index>] = []
+        let (interleaved, paired) = interleavedColumns(lines)
+        found += interleaved
+        found += walk(lines, firstLineIsLetterhead: true, skipping: paired)
+        // A window printed on the same rows as the letterhead: the right-hand
+        // column, read on its own. Its first line is the recipient's, not the
+        // sender's -- the letterhead is the other column.
+        found += walk(window.map { rightColumn($0, in: text) }, firstLineIsLetterhead: false, skipping: [])
+        return found
+    }
+
+    /// One line of a column: all of a line, or the part of it right of a wide
+    /// gap.
+    struct Cell {
+        let text: String
+        let range: Range<String.Index>
+
+        var isBlank: Bool { text.trimmingCharacters(in: .whitespaces).isEmpty }
+    }
+
+    /// The text right of the last run of three or more spaces, when the line
+    /// has text on both sides of one. Its range is in the letter's own text,
+    /// counted from where the line starts.
+    private static func rightColumn(_ line: LetterStructure.Line, in text: String) -> Cell? {
+        guard let gap = RegexScanner.firstMatch(of: #"^.*\S {3,}(\S.*)$"#, in: line.text),
+              let right = gap.prefix, let found = line.text.range(of: right, options: .backwards)
+        else { return nil }
+        let offset = line.text.distance(from: line.text.startIndex, to: found.lowerBound)
+        guard let start = text.index(line.range.lowerBound, offsetBy: offset, limitedBy: line.range.upperBound)
+        else { return nil }
+        return Cell(text: right, range: start..<line.range.upperBound)
+    }
+
+    private static func isPostcodeLine(_ cell: Cell?) -> RegexScanner.Match? {
+        guard let cell else { return nil }
+        return RegexScanner.firstMatch(of: postcodeCityLine, in: cell.text)
+    }
+
+    /// A line above a postcode that cannot be part of the same address.
+    private static func endsAnAddress(_ cell: Cell?) -> Bool {
+        guard let cell else { return true }
+        return cell.isBlank || LetterStructure.isFieldLine(cell.text) || isOfficeMailbox(cell.text)
+            || LetterStructure.isDateLine(cell.text) || isPostcodeLine(cell) != nil
+    }
+
+    /// The postcode walk, over one column.
+    private static func walk(_ column: [Cell?], firstLineIsLetterhead: Bool, skipping: Set<Int>) -> [Range<String.Index>] {
+        var found: [Range<String.Index>] = []
+        for (position, cell) in column.enumerated() where position >= 1 && !skipping.contains(position) {
+            guard let cell, let match = isPostcodeLine(cell), !isOfficeMailbox(cell.text) else { continue }
 
             if let prefix = match.prefix, !prefix.isEmpty {
                 // The whole address on one line. It needs a street -- a word
                 // and a number -- before the postcode, or it is a sentence.
                 guard prefix.contains(where: \.isNumber) else { continue }
-                found.append(line.range)
+                found.append(cell.range)
                 continue
             }
 
-            var top = line.index
+            var top = position
             var reachedLetterhead = false
-            for candidate in stride(from: line.index - 1, through: max(0, line.index - 3), by: -1) {
-                let above = structure.lines[candidate]
-                if above.isBlank || LetterStructure.isFieldLine(above.text) || isOfficeMailbox(above.text)
-                    || LetterStructure.isDateLine(above.text)
-                    || RegexScanner.firstMatch(of: postcodeCityLine, in: above.text) != nil {
-                    break
-                }
-                if candidate == 0 {
+            for candidate in stride(from: position - 1, through: max(0, position - 3), by: -1) {
+                if endsAnAddress(column[candidate]) { break }
+                if candidate == 0 && firstLineIsLetterhead {
                     reachedLetterhead = true
                     break
                 }
                 top = candidate
             }
             // Nothing above it, or the sender's letterhead: not a recipient.
-            guard top < line.index, !reachedLetterhead else { continue }
+            guard top < position, !reachedLetterhead else { continue }
             // The line directly above the postcode is the street, and a
             // street has a house number.
-            guard structure.lines[line.index - 1].text.contains(where: \.isNumber) else { continue }
-            found.append(structure.lines[top].range.lowerBound..<line.range.upperBound)
+            guard column[position - 1]?.text.contains(where: \.isNumber) == true else { continue }
+            if firstLineIsLetterhead, let first = column[top], let last = column[position] {
+                found.append(first.range.lowerBound..<last.range.upperBound)
+            } else {
+                found += (top...position).compactMap { column[$0]?.range }
+            }
         }
         return found
+    }
+
+    /// Two columns that OCR has read line by line in turn: sender name,
+    /// recipient name, sender mailbox, recipient street, sender postcode,
+    /// recipient postcode.
+    ///
+    /// The tell is two postcode lines one above the other. Each is the foot
+    /// of a column that runs up every other line; the column holding an
+    /// office mailbox or the letter's first line is the sender's and is left
+    /// alone, and the other is masked line by line. When neither or both
+    /// look like the sender, nothing is claimed here and the plain walk has
+    /// its turn.
+    private static func interleavedColumns(_ lines: [Cell?]) -> ([Range<String.Index>], Set<Int>) {
+        var found: [Range<String.Index>] = []
+        var paired: Set<Int> = []
+        for position in lines.indices.dropLast() {
+            guard let upper = isPostcodeLine(lines[position]), upper.prefix == nil,
+                  let lower = isPostcodeLine(lines[position + 1]), lower.prefix == nil
+            else { continue }
+            let columnA = stride(from: position, through: max(0, position - 4), by: -2).map { $0 }
+            let columnB = stride(from: position + 1, through: max(0, position - 3), by: -2).map { $0 }
+            func isSender(_ column: [Int]) -> Bool {
+                column.dropFirst().contains { $0 == 0 || lines[$0].map { isOfficeMailbox($0.text) } == true }
+            }
+            let recipient: [Int]
+            switch (isSender(columnA), isSender(columnB)) {
+            case (true, false): recipient = columnB
+            case (false, true): recipient = columnA
+            default: continue
+            }
+            var masked = [recipient[0]]
+            for candidate in recipient.dropFirst() {
+                if endsAnAddress(lines[candidate]) { break }
+                masked.append(candidate)
+            }
+            guard masked.count > 1,
+                  lines[masked[1]]?.text.contains(where: \.isNumber) == true
+            else { continue }
+            found += masked.compactMap { lines[$0]?.range }
+            paired.formUnion([position, position + 1])
+        }
+        return (found, paired)
     }
 
     private static func isOfficeMailbox(_ text: String) -> Bool {
