@@ -77,6 +77,23 @@ public enum RedactionEngine {
     /// letter, so a reference quoted three times reads as one reference rather
     /// than three.
     public static func redact(_ text: String, countryHint: String? = nil) -> RedactionResult {
+        redact(text, countryHint: countryHint, known: [])
+    }
+
+    /// The same, with claims made outside the rules: the address window the
+    /// app found on the page (L2) and the reader's own details (L1).
+    ///
+    /// Merge order (redaction v2 plan §1, owner, 6 Oct 2026): **window claims
+    /// first**, so the whole window is one `[ADDRESS_n]` with the recipient's
+    /// name inside it; then profile claims, which win everywhere outside the
+    /// window; then the rules. An earlier claim wins an overlap. The
+    /// letterhead guard applies to profile claims and rules, never to a
+    /// window claim: the window's position is the evidence.
+    public static func redact(
+        _ text: String,
+        countryHint: String? = nil,
+        known: [KnownClaim]
+    ) -> RedactionResult {
         guard !text.isEmpty else { return RedactionResult(redactedText: text, map: [:]) }
 
         var protected = ProtectedSpans.compute(in: text)
@@ -100,15 +117,30 @@ public enum RedactionEngine {
         }
         var claims: [Claim] = []
 
-        for rule in rules(countryHint: countryHint) {
+        for claim in known where claim.source == .window && !claim.ranges.isEmpty {
+            guard !claims.contains(where: { $0.overlaps(claim.ranges) }) else { continue }
+            claims.append(Claim(kind: claim.kind, ranges: claim.ranges, rank: Claim.windowRank))
+        }
+        for claim in known where claim.source == .profile {
+            for range in claim.ranges {
+                guard !protected.contains(where: { $0.vetoes(claim.kind) && $0.range.overlaps(range) }),
+                      !claims.contains(where: { $0.overlaps(range) })
+                else { continue }
+                claims.append(Claim(kind: claim.kind, ranges: [range], rank: Claim.profileRank))
+            }
+        }
+
+        for (index, rule) in rules(countryHint: countryHint).enumerated() {
             for range in rule.matches(in: text) {
                 guard !protected.contains(where: {
                     $0.vetoes(rule.kind) && $0.range.overlaps(range)
                 }) else { continue }
-                guard !claims.contains(where: { $0.range.overlaps(range) }) else { continue }
-                claims.append(Claim(kind: rule.kind, range: range))
+                guard !claims.contains(where: { $0.overlaps(range) }) else { continue }
+                claims.append(Claim(kind: rule.kind, ranges: [range], rank: Claim.firstRuleRank + index))
             }
         }
+
+        claims = wholeTokens(claims, in: text)
 
         // A value identified anywhere in the letter is that value everywhere
         // in it. Official mail repeats a reference three or four times -- in
@@ -123,43 +155,56 @@ public enum RedactionEngine {
         // application of K.L. Brandsma" further down is masked too.
         let seeds = claims
             .filter { $0.kind == .address }
-            .compactMap { PersonName.onFirstLine(of: String(text[$0.range])) }
-        claims += repeatedOccurrences(of: claims, seeds: seeds, in: text, avoiding: protected)
-        claims += surnamesAfterHonorifics(of: seeds, in: text, taken: claims.map(\.range), avoiding: protected)
+            .compactMap { PersonName.onFirstLine(of: $0.value(in: text)) }
+        claims = withRepeatedOccurrences(of: claims, seeds: seeds, in: text, avoiding: protected)
+        claims += surnamesAfterHonorifics(
+            of: seeds, in: text, taken: claims.flatMap(\.ranges), avoiding: protected
+        )
+        claims = oneLabelPerValue(claims, in: text)
 
-        claims.sort { $0.range.lowerBound < $1.range.lowerBound }
+        // Every range in text order, each knowing its claim, so placeholders
+        // are numbered in the order a reader meets them.
+        let pieces = claims.indices
+            .flatMap { index in claims[index].ranges.map { (range: $0, claim: index) } }
+            .sorted { $0.range.lowerBound < $1.range.lowerBound }
 
         var placeholderForValue: [PlaceholderKey: String] = [:]
+        var placeholderForClaim: [Int: String] = [:]
         var map: [String: String] = [:]
         var nextIndex: [PIIKind: Int] = [:]
         var replacements: [(range: Range<String.Index>, placeholder: String)] = []
         var spans: [RedactionResult.MaskedSpan] = []
 
-        // Walked forward alongside the claims, which are sorted and do not
+        // Walked forward alongside the ranges, which are sorted and do not
         // overlap, so each span's offsets fall out of the one before it
         // rather than out of a distance measured from the start of the text.
         var cursor = text.startIndex
         var originalOffset = 0
         var drift = 0
 
-        for claim in claims {
-            let original = String(text[claim.range])
-            let key = PlaceholderKey(kind: claim.kind, value: original)
-
+        for piece in pieces {
+            let claim = claims[piece.claim]
             let placeholder: String
-            if let existing = placeholderForValue[key] {
+            if let existing = placeholderForClaim[piece.claim] {
                 placeholder = existing
             } else {
-                let index = (nextIndex[claim.kind] ?? 0) + 1
-                nextIndex[claim.kind] = index
-                placeholder = claim.kind.placeholder(index: index)
-                placeholderForValue[key] = placeholder
-                map[placeholder] = original
+                let value = claim.value(in: text)
+                let key = PlaceholderKey(kind: claim.kind, value: value)
+                if let existing = placeholderForValue[key] {
+                    placeholder = existing
+                } else {
+                    let index = (nextIndex[claim.kind] ?? 0) + 1
+                    nextIndex[claim.kind] = index
+                    placeholder = claim.kind.placeholder(index: index)
+                    placeholderForValue[key] = placeholder
+                    map[placeholder] = value
+                }
+                placeholderForClaim[piece.claim] = placeholder
             }
-            replacements.append((claim.range, placeholder))
+            replacements.append((piece.range, placeholder))
 
-            let start = originalOffset + text.distance(from: cursor, to: claim.range.lowerBound)
-            let length = original.count
+            let length = text[piece.range].count
+            let start = originalOffset + text.distance(from: cursor, to: piece.range.lowerBound)
             spans.append(
                 RedactionResult.MaskedSpan(
                     placeholder: placeholder,
@@ -169,7 +214,7 @@ public enum RedactionEngine {
                 )
             )
             drift += placeholder.count - length
-            cursor = claim.range.upperBound
+            cursor = piece.range.upperBound
             originalOffset = start + length
         }
 
@@ -204,21 +249,104 @@ public enum RedactionEngine {
 
     // MARK: - Internals
 
-    /// Every further occurrence of a value some rule already claimed.
-    private static func repeatedOccurrences(
+    /// The whole token, for a number the phone or reference rule caught part
+    /// of.
+    ///
+    /// `STU-2026-11842` is one token; a phone pattern finds `2026-11842` in
+    /// it and the `STU-` stays in the clear (redaction v2 plan §1 L3). A
+    /// claim is widened to the token it sits in -- letters and digits joined
+    /// by `-` or `/`, never across whitespace or other punctuation -- and a
+    /// phone claim whose token carries a letter is a reference: a letter
+    /// prefix or suffix is what a reference looks like and what a phone
+    /// number never has. Widened only where nothing else is claimed in the
+    /// token.
+    private static func wholeTokens(_ claims: [Claim], in text: String) -> [Claim] {
+        var result = claims
+        for index in result.indices {
+            let claim = result[index]
+            guard claim.ranges.count == 1, claim.rank >= Claim.firstRuleRank,
+                  claim.kind == .phone || claim.kind == .reference,
+                  let range = claim.ranges.first
+            else { continue }
+            let token = tokenRange(around: range, in: text)
+            guard token != range,
+                  !result.indices.contains(where: { $0 != index && result[$0].overlaps(token) })
+            else { continue }
+            let hasLetter = text[token].contains { $0.isLetter }
+            result[index] = Claim(
+                kind: claim.kind == .phone && hasLetter ? .reference : claim.kind,
+                ranges: [token],
+                rank: claim.rank
+            )
+        }
+        return result
+    }
+
+    /// The run of letters and digits, joined by single `-` or `/`, that
+    /// `range` sits in.
+    private static func tokenRange(around range: Range<String.Index>, in text: String) -> Range<String.Index> {
+        let isPart: (Character) -> Bool = { $0.isLetter || $0.isNumber }
+        let isJoiner: (Character) -> Bool = { $0 == "-" || $0 == "/" }
+        var lower = range.lowerBound
+        while lower > text.startIndex {
+            let previous = text.index(before: lower)
+            if isPart(text[previous]) {
+                lower = previous
+            } else if isJoiner(text[previous]), previous > text.startIndex,
+                      isPart(text[text.index(before: previous)]) {
+                lower = text.index(before: previous)
+            } else {
+                break
+            }
+        }
+        var upper = range.upperBound
+        while upper < text.endIndex {
+            if isPart(text[upper]) {
+                upper = text.index(after: upper)
+            } else if isJoiner(text[upper]) {
+                let next = text.index(after: upper)
+                guard next < text.endIndex, isPart(text[next]) else { break }
+                upper = text.index(after: next)
+            } else {
+                break
+            }
+        }
+        return lower..<upper
+    }
+
+    /// The claims, with every further occurrence of a claimed value added.
+    ///
+    /// An occurrence that already holds a smaller claim -- the phone rule's
+    /// `2026-11842` inside the body's `STU-2026-11842` -- is not skipped: the
+    /// whole value replaces what is inside it. An occurrence that another
+    /// claim crosses, or that sits inside a larger claim, is left alone.
+    private static func withRepeatedOccurrences(
         of claims: [Claim],
         seeds: [String] = [],
         in text: String,
         avoiding protected: [ProtectedSpans.Span]
     ) -> [Claim] {
-        var found: [Claim] = []
-        var taken = claims.map(\.range)
+        var result = claims
+
+        var distinct: [PlaceholderKey: Int] = [:]
+        for claim in claims where claim.ranges.count == 1 {
+            let key = PlaceholderKey(kind: claim.kind, value: claim.value(in: text))
+            distinct[key] = min(distinct[key] ?? .max, claim.rank)
+        }
+        for seed in seeds {
+            let key = PlaceholderKey(kind: .name, value: seed)
+            distinct[key] = distinct[key] ?? Claim.seedRank
+        }
 
         // Longest first, so a value that contains a shorter one claims its own
-        // occurrences before the shorter value can split them.
-        let distinct = Set(claims.map { PlaceholderKey(kind: $0.kind, value: String(text[$0.range])) })
-            .union(seeds.map { PlaceholderKey(kind: .name, value: $0) })
-        for key in distinct.sorted(by: { $0.value.count > $1.value.count }) {
+        // occurrences before the shorter value can split them. Ties by text,
+        // so the order -- and the output -- never depends on hashing.
+        let ordered = distinct.sorted {
+            $0.key.value.count != $1.key.value.count
+                ? $0.key.value.count > $1.key.value.count
+                : ($0.key.value, $0.key.kind.rawValue) < ($1.key.value, $1.key.kind.rawValue)
+        }
+        for (key, rank) in ordered {
             // A value too short, or an ordinary function word, is never spread
             // across the letter. Spreading one replaces every article in the
             // prose, and nothing about the result says which words used to be
@@ -227,16 +355,50 @@ public enum RedactionEngine {
             var searchStart = text.startIndex
             while let range = text.range(of: key.value, range: searchStart..<text.endIndex) {
                 searchStart = range.upperBound
-                guard !taken.contains(where: { $0.overlaps(range) }),
-                      !protected.contains(where: {
-                          $0.vetoes(key.kind) && $0.range.overlaps(range)
-                      })
-                else { continue }
-                found.append(Claim(kind: key.kind, range: range))
-                taken.append(range)
+                guard !protected.contains(where: {
+                    $0.vetoes(key.kind) && $0.range.overlaps(range)
+                }) else { continue }
+                let overlapping = result.indices.filter { result[$0].overlaps(range) }
+                if overlapping.isEmpty {
+                    result.append(Claim(kind: key.kind, ranges: [range], rank: rank))
+                    continue
+                }
+                // Replace only rule claims lying wholly inside this occurrence;
+                // anything else keeps its place.
+                let replaceable = overlapping.allSatisfy { index in
+                    let claim = result[index]
+                    guard claim.ranges.count == 1, claim.rank >= Claim.firstRuleRank else { return false }
+                    let inner = claim.ranges[0]
+                    return inner != range
+                        && inner.lowerBound >= range.lowerBound
+                        && inner.upperBound <= range.upperBound
+                }
+                guard replaceable else { continue }
+                for index in overlapping.sorted(by: >) { result.remove(at: index) }
+                result.append(Claim(kind: key.kind, ranges: [range], rank: rank))
             }
         }
-        return found
+        return result
+    }
+
+    /// One value, one kind: the kind its most certain claim gave it.
+    ///
+    /// The same digits claimed as a reference on the field line and as a
+    /// phone number in a sentence are one secret with two labels -- and the
+    /// reply header resolves labels by kind. Rank is rule order, which runs
+    /// from most certain to least, so a keyword-anchored reference outranks a
+    /// pattern-matched phone number.
+    private static func oneLabelPerValue(_ claims: [Claim], in text: String) -> [Claim] {
+        var best: [String: (kind: PIIKind, rank: Int)] = [:]
+        for claim in claims where claim.ranges.count == 1 {
+            let value = claim.value(in: text)
+            if let current = best[value], current.rank <= claim.rank { continue }
+            best[value] = (claim.kind, claim.rank)
+        }
+        return claims.map { claim in
+            guard claim.ranges.count == 1, let chosen = best[claim.value(in: text)] else { return claim }
+            return Claim(kind: chosen.kind, ranges: claim.ranges, rank: claim.rank)
+        }
     }
 
     /// The recipient's surname where the letter uses it alone, after an
@@ -260,7 +422,7 @@ public enum RedactionEngine {
             for range in RegexScanner.ranges(of: pattern, captureGroup: 1, in: text)
             where !taken.contains(where: { $0.overlaps(range) })
                 && !protected.contains(where: { $0.vetoes(.name) && $0.range.overlaps(range) }) {
-                found.append(Claim(kind: .name, range: range))
+                found.append(Claim(kind: .name, ranges: [range], rank: Claim.seedRank))
                 taken.append(range)
             }
         }
@@ -280,16 +442,40 @@ public enum RedactionEngine {
     ) -> Int {
         guard let first = text.range(of: value) else { return 0 }
         let protected = ProtectedSpans.compute(in: text)
-        return repeatedOccurrences(
-            of: [Claim(kind: kind, range: first)],
+        return withRepeatedOccurrences(
+            of: [Claim(kind: kind, ranges: [first], rank: Claim.firstRuleRank)],
             in: text,
             avoiding: protected
-        ).count
+        ).count - 1
     }
 
+    /// One claim: a kind and the ranges it covers, all under one placeholder.
+    ///
+    /// Several ranges only for a window claim, whose lines OCR may serialise
+    /// apart. Rank is where the claim came from and decides the kind when one
+    /// value is claimed twice: the window, then the profile, then the rules in
+    /// their order, then the values spread from the recipient's name.
     private struct Claim {
+        static let windowRank = 0
+        static let profileRank = 1
+        static let firstRuleRank = 2
+        static let seedRank = Int.max - 1
+
         var kind: PIIKind
-        var range: Range<String.Index>
+        var ranges: [Range<String.Index>]
+        var rank: Int
+
+        func overlaps(_ others: [Range<String.Index>]) -> Bool {
+            ranges.contains { mine in others.contains { $0.overlaps(mine) } }
+        }
+
+        func overlaps(_ other: Range<String.Index>) -> Bool { overlaps([other]) }
+
+        /// The text the map keeps: the ranges' text joined by newlines, in
+        /// the order the claim lists them (reading order, for a window).
+        func value(in text: String) -> String {
+            ranges.map { String(text[$0]) }.joined(separator: "\n")
+        }
     }
 
     /// Identity of a masked value. Keyed by kind as well as text so the same
