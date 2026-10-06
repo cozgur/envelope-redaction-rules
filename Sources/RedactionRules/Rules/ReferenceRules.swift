@@ -171,22 +171,34 @@ public struct LabelledReferenceRule: RedactionRule {
         "sygnatury akt", "znak sprawy", "l.dz.", "l. dz.", "dosya no", "dosya numarası", "sayı",
         "our ref", "your ref", "our reference", "your reference", "case no", "case number",
         "claim no", "claim number", "policy no", "policy number", "account no", "account number",
-        "paye reference", "reference",
+        "paye reference", "reference", "penalty charge notice", "pcn", "pcn number", "factuur",
+        "factuurnr.", "rechnung", "invoice", "facture", "factura", "verwendungszweck",
     ]
 
+    /// A value whose label comes after it: the Turkish court file "2026/44713
+    /// Esas" (owner, 6 Oct 2026).
+    private static let trailingLabelPattern = #"(?<![\p{L}\d/])\d{4}/\d{1,7}[ \t]+(?:Esas|Karar|E\.|K\.)(?![\p{L}])"#
+
     private static var pattern: String {
-        "(?i:" + KeywordPattern.alternation(labels) + ")"
-            + #"[ \t]*(?:\.)?[ \t]*:?[ \t]*"#
-            + #"([\p{L}\d\[][\p{L}\d./\[\]-]*(?:[ ](?:/[ ])?[\p{L}\d\[][\p{L}\d./\[\]-]*){0,6})"#
+        // Longest first, so "pcn number" wins over "pcn".
+        "(?i:" + KeywordPattern.alternation(labels.sorted { $0.count > $1.count }) + ")"
+            + #"[ \t]*(?:\.)?[ \t]*:?[ \t]*(?:\n[ \t]*)?"#
+            + #"([\p{L}\d\[][\p{L}\d./\[\]-]*(?:[ ](?:[/–—-][ ])?[\p{L}\d\[][\p{L}\d./\[\]-]*){0,6})"#
     }
 
     public func matches(in text: String) -> [Range<String.Index>] {
-        RegexScanner.ranges(of: Self.pattern, captureGroup: 1, in: text).compactMap { range in
+        let labelled = RegexScanner.ranges(of: Self.pattern, captureGroup: 1, in: text).compactMap { range -> Range<String.Index>? in
             var kept: [Substring] = []
             for token in text[range].split(separator: " ") {
                 let core = token.trimmingCharacters(in: CharacterSet(charactersIn: ".,;:"))
-                let isCode = token == "/" || token.contains(where: \.isNumber)
+                // A group with a digit, a short capital code ("I", "C", "HA",
+                // "E."), a short court register ("Nc"), a dash between groups
+                // ("IV B 2 – 4471/26"), or the Turkish file words after it.
+                let isCode = token == "/" || token == "–" || token == "—" || token == "-"
+                    || token.contains(where: \.isNumber)
                     || (!core.isEmpty && core.count <= 4 && core.allSatisfy(\.isUppercase))
+                    || (!core.isEmpty && core.count <= 3 && core.first?.isUppercase == true && core.allSatisfy(\.isLetter))
+                    || ["Esas", "Karar"].contains(core)
                 guard isCode else { break }
                 kept.append(token)
                 if token.hasSuffix(",") || token.hasSuffix(";") { break }
@@ -203,5 +215,6 @@ public struct LabelledReferenceRule: RedactionRule {
             guard value.contains(where: \.isNumber) else { return nil }
             return range.lowerBound..<text.index(range.lowerBound, offsetBy: value.count)
         }
+        return ReferenceNumberRule.merged(labelled + RegexScanner.ranges(of: Self.trailingLabelPattern, in: text))
     }
 }

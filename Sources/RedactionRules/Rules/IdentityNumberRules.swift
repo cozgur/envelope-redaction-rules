@@ -80,13 +80,14 @@ public struct LabelledIdentityRule: RedactionRule {
         "kimlik no", "pasaport no", "nir", "n° de sécurité sociale", "numéro de sécurité sociale",
         "sécurité sociale", "numéro de passeport", "ssn", "social security number", "ni number",
         "national insurance number", "national insurance", "passport number", "passport no",
-        "document number",
+        "document number", "nip", "kartennummer", "aufenthaltstitel", "aufenthaltserlaubnis",
+        "eat", "eat-nummer", "reisepass", "personalausweis",
     ]
 
     private static var pattern: String {
-        "(?i:" + KeywordPattern.alternation(labels) + ")"
+        "(?i:" + KeywordPattern.alternation(labels.sorted { $0.count > $1.count }) + ")"
             // The value may start on the next line: "Rentenversicherungsnummer\n49 120378 N 513".
-            + #"[ \t]*(?:\(|:|-)?[ \t]*(?:(?i:nummer|nr\.?|no\.?|n°|number|numéro|número|numer)[ \t]*:?[ \t]*)?\n?[ \t]*"#
+            + #"[ \t]*(?:\(|:|-)?[ \t]*(?:(?i:met|mit|with|avec|con|z)[ \t]+)?(?:(?i:nummer|nr\.?|no\.?|n°|number|numéro|número|numer)[ \t]*:?[ \t]*)?\n?[ \t]*"#
             + #"((?=[A-Z0-9 ./-]*\d)[A-Z0-9](?:[A-Z0-9./-]|[ ](?=[A-Z0-9]))*[A-Z0-9])"#
     }
 

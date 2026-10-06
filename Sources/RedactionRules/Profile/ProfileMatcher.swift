@@ -121,7 +121,7 @@ public enum ProfileMatcher {
     /// Words that, right before a surname, make it a name and nothing else.
     static let honorifics: Set<String> = [
         "dhr", "heer", "mevr", "mw", "mevrouw", "meneer", "fam", "familie", "tav", "aan",
-        "herr", "herrn", "frau", "hd", "m", "mme", "mlle", "monsieur", "madame",
+        "herr", "herrn", "frau", "hd", "eheleute", "ehepaar", "ehel", "m", "mme", "mlle", "monsieur", "madame",
         "mr", "mrs", "ms", "miss", "dr", "drs", "prof", "ir", "mr.",
         "sayin", "bay", "bayan", "hanim", "bey",
         "pan", "pani", "panie", "pana", "panu", "pania", "panem", "panstwo",
@@ -309,6 +309,12 @@ public enum ProfileMatcher {
         for (ending, form) in changes where word.count > ending.count + 1 && word.hasSuffix(ending) {
             if token == String(word.dropLast(ending.count)) + form { return true }
         }
+        // A masculine name with a mobile e: Marek → Marka, Markowi, Markiem,
+        // Marku; Paweł → Pawła (owner, 6 Oct 2026).
+        for ending in ["ek", "el", "ec"] where word.count > 3 && word.hasSuffix(ending) {
+            let stem = String(word.dropLast(2)) + String(ending.last!)
+            if ["a", "owi", "iem", "em", "u", "ie"].contains(where: { token == stem + $0 }) { return true }
+        }
         return false
     }
 
@@ -356,6 +362,9 @@ public enum ProfileMatcher {
             let token = tokens[cursor]
             if isGiven(token, given, polish: polish) {
                 givenBefore = true
+            } else if particles.contains(token.folded), given.contains(token.folded) {
+                // A particle inside the given names the reader typed: "María
+                // del Carmen" (owner, 6 Oct 2026).
             } else if !token.isInitial {
                 break
             }
@@ -655,7 +664,7 @@ public enum ProfileMatcher {
                 var ok = true
                 for (offset, word) in sub.enumerated() {
                     let token = tokens[index + offset]
-                    if offset > 0, !Token.adjacent(tokens[index + offset - 1], token, in: text, allowing: " \t./-") { ok = false; break }
+                    if offset > 0, !Token.adjacent(tokens[index + offset - 1], token, in: text, allowing: " \t./-'’") { ok = false; break }
                     // "Pr. Irenelaan" for "Prinses Irenelaan", "Laan v.
                     // Meerdervoort": a street word cut to one to three
                     // letters and a dot.
@@ -695,7 +704,7 @@ public enum ProfileMatcher {
                     var offset = head.distance(from: head.startIndex, to: whole.lowerBound)
                     // A building part before the number on the same line:
                     // "Résidence Les Pins, esc. 2, 7 boulevard Victor Hugo".
-                    let building = #"(?:(?:Résidence|Rés\.|Bât\.?|Bâtiment|Immeuble)(?![\p{L}])[^,\n]{0,30}(?:,[ \t]*(?:esc\.?|escalier|bât\.?|appt\.?|porte)[ \t]*[\p{L}\d]{1,4})*|(?:Apartment|Flat|Apt\.?|Unit|Suite)[ \t]*[\p{L}\d]{1,4}(?:,[ \t]*[\p{L}][\p{L} '’-]{1,40})?),[ \t]*$"#
+                    let building = #"(?<![\p{L}])(?:(?:Résidence|Rés\.|Bât\.?|Bâtiment|Immeuble)(?![\p{L}])[^,\n]{0,30}(?:,[ \t]*(?:esc\.?|escalier|bât\.?|appt\.?|porte)[ \t]*[\p{L}\d]{1,4})*|(?<![\p{L}])(?:Apartment|Flat|Apt\.?|Unit|Suite)[ \t]*[\p{L}\d]{1,4}(?:,[ \t]*[\p{L}][\p{L} '’-]{1,40})?),[ \t]*$"#
                     let beforeNumber = String(head[..<whole.lowerBound])
                     if let found = beforeNumber.range(of: building, options: [.regularExpression, .caseInsensitive]) {
                         offset = beforeNumber.distance(from: beforeNumber.startIndex, to: found.lowerBound)
@@ -752,8 +761,16 @@ public enum ProfileMatcher {
     private static func dutchJoinedLength(at index: Int, wanted: [String], tokens: [Token], text: String) -> Int? {
         let target = dutchJoined(wanted)
         for length in 1...(wanted.count + 2) where index + length <= tokens.count {
-            if length > 1, !Token.adjacent(tokens[index + length - 2], tokens[index + length - 1], in: text, allowing: " \t./-") { return nil }
-            let found = dutchJoined(tokens[index..<(index + length)].map(\.folded))
+            if length > 1, !Token.adjacent(tokens[index + length - 2], tokens[index + length - 1], in: text, allowing: " \t./-'’") { return nil }
+            // A word cut to one to three letters and a dot stands for the
+            // wanted word it begins: "Th." for "Theodor" (owner, 6 Oct 2026).
+            let found = dutchJoined(tokens[index..<(index + length)].map { token in
+                let dotted = token.range.upperBound < text.endIndex && text[token.range.upperBound] == "."
+                guard dotted, token.folded.count <= 3, dutchStreetAbbreviations[token.folded] == nil,
+                      let word = wanted.first(where: { $0.count > token.folded.count && $0.hasPrefix(token.folded) })
+                else { return token.folded }
+                return word
+            })
             if !found.isDisjoint(with: target) { return length }
         }
         return nil

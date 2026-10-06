@@ -40,9 +40,14 @@ public enum RedactionEngine {
         // The labelled and shape-tolerant IBANs before the identity and card
         // rules: an IBAN whose checksum fails is still a bank account, and
         // the card rule's Luhn check would otherwise take its digits.
-        return [EmailRule(), IBANRule(), AccountNumberFallbackRule(), IBANShapeRule()]
+        // The labelled values before the validated formats: a label says what
+        // a value is, and a reference that begins with nine digits that
+        // happen to pass the BSN check ("Aanslagnummer 187654311.H.66.01")
+        // is still the reference (owner, 6 Oct 2026).
+        return [EmailRule(), IBANRule(), AccountNumberFallbackRule(), IBANShapeRule(),
+                LabelledIdentityRule(), LabelledReferenceRule()]
             + identityRules.map { NationalIDRule(format: $0) }
-            + [LabelledIdentityRule(), IdentityPatternRule()]
+            + [IdentityPatternRule()]
             + [
                 // After the identity formats, not before. Luhn is the whole of
                 // a card number's validation and one random digit string in
@@ -56,7 +61,6 @@ public enum RedactionEngine {
                 // eleven digits, and a fifteen-digit Amex starts with a 3.
                 CardNumberRule(),
                 DigitRunFallbackRule(),
-                LabelledReferenceRule(),
                 ReferenceNumberRule(),
                 // The recipient block runs before the salutation, and before
                 // the general address detector. Before the salutation because
