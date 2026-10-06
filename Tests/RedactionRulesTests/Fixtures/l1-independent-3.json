@@ -1,0 +1,2339 @@
+[
+  {
+    "id": "nl-belasting-voorlopige-aanslag",
+    "country": "NL",
+    "profile": {
+      "person": {
+        "givenNames": "Pieter Hendrik",
+        "surname": "Jansen"
+      },
+      "household": [],
+      "street": "Kerkstraat",
+      "houseNumber": "12-A",
+      "postcode": "3512 KL",
+      "city": "Utrecht"
+    },
+    "text": "Belastingdienst\nPostbus 9050\n7300 GR  Apeldoorn\n\nP.H. Jansen\nKerkstraat 12 A\n3512 KL  UTRECHT\n\nDatum            14 september 2026\nBetreft          Voorlopige aanslag inkomstenbelasting 2027\n\nGeachte heer Jansen,\n\nU ontvangt hierbij de voorlopige aanslag inkomstenbelasting 2027. Wij hebben deze aanslag berekend met de gegevens die wij van u hebben over 2025. U moet in totaal € 1.284,00 betalen. U kunt dit bedrag betalen in 11 maandelijkse termijnen van € 116,73.\n\nUw gegevens\nNaam: P.H. Jansen\nAdres: Kerkstraat 12A, 3512KL Utrecht\n\nKlopt uw adres niet, of woont u niet meer in Utrecht? Geef uw nieuwe adres dan door aan uw gemeente. Wij krijgen uw nieuwe adres dan automatisch.\n\nMet vriendelijke groet,\n\nde inspecteur van de Belastingdienst",
+    "masked": [
+      {
+        "value": "P.H. Jansen",
+        "category": "name"
+      },
+      {
+        "value": "Jansen",
+        "category": "name"
+      },
+      {
+        "value": "Kerkstraat 12 A",
+        "category": "address"
+      },
+      {
+        "value": "Kerkstraat 12A",
+        "category": "address"
+      },
+      {
+        "value": "3512 KL  UTRECHT",
+        "category": "postcode"
+      },
+      {
+        "value": "3512KL Utrecht",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Postbus 9050",
+      "7300 GR  Apeldoorn",
+      "14 september 2026",
+      "€ 1.284,00",
+      "€ 116,73"
+    ]
+  },
+  {
+    "id": "nl-amsterdam-naheffing-parkeren",
+    "country": "NL",
+    "profile": {
+      "person": {
+        "givenNames": "Noor",
+        "surname": "van Dijk"
+      },
+      "household": [],
+      "street": "Javastraat",
+      "houseNumber": "88-2",
+      "postcode": "1094HJ",
+      "city": "Amsterdam"
+    },
+    "text": "Gemeente Amsterdam\nN. van Dijk\nBelastingen\nJavastraat 88 2\nPostbus 1830\n1094HJ AMSTERDAM\n1000 BV Amsterdam\n\nDatum: 9 september 2026\nOnderwerp: Naheffingsaanslag parkeerbelasting\n\nGeachte mevrouw Van Dijk,\n\nOp 2 september 2026 om 14.12 uur stond uw auto geparkeerd aan de Sumatrastraat zonder dat er parkeerbelasting was betaald. Daarom krijgt u deze naheffingsaanslag van € 74,63. Dit bedrag bestaat uit € 4,63 parkeerbelasting en € 70,00 kosten.\n\nDe aanslag is opgelegd aan de kentekenhouder:\nN. van Dijk, Javastraat 88-2, 1094 HJ Amsterdam\n\nBetaal het bedrag binnen 14 dagen na de datum van deze brief. Bent u het niet eens met de naheffingsaanslag? Dan kunt u binnen 6 weken bezwaar maken.\n\nMet vriendelijke groet,\n\nDirectie Belastingen\nGemeente Amsterdam",
+    "masked": [
+      {
+        "value": "N. van Dijk",
+        "category": "name"
+      },
+      {
+        "value": "Van Dijk",
+        "category": "name"
+      },
+      {
+        "value": "Javastraat 88 2",
+        "category": "address"
+      },
+      {
+        "value": "Javastraat 88-2",
+        "category": "address"
+      },
+      {
+        "value": "1094HJ AMSTERDAM",
+        "category": "postcode"
+      },
+      {
+        "value": "1094 HJ Amsterdam",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Gemeente Amsterdam",
+      "Postbus 1830",
+      "1000 BV Amsterdam",
+      "€ 74,63",
+      "2 september 2026"
+    ]
+  },
+  {
+    "id": "nl-zorgverzekeraar-polis-2027",
+    "country": "NL",
+    "profile": {
+      "person": {
+        "givenNames": "Mark",
+        "surname": "de Boer"
+      },
+      "household": [
+        {
+          "givenNames": "Lotte",
+          "surname": "de Boer"
+        }
+      ],
+      "street": "Dorpsstraat",
+      "houseNumber": "3b",
+      "postcode": "1741 AB",
+      "city": "Schagen"
+    },
+    "text": "ZorgSamen Verzekeringen\nPostbus 2120\n8000 CC  Zwolle\n\nDe heer M. de Boer en mevrouw L. de Boer\nDorpsstraat 3-b\n1741 AB  SCHAGEN\n\nZwolle, 28 september 2026\nOnderwerp: Uw zorgverzekering in 2027\n\nGeachte heer en mevrouw De Boer,\n\nHierbij ontvangt u het overzicht van uw zorgverzekering voor 2027. De premie voor de basisverzekering wordt € 148,25 per persoon per maand. Het verplicht eigen risico blijft € 385,00.\n\nVerzekerden op deze polis:\nM. de Boer, geboren 12-03-1979\nL. de Boer, geboren 30-07-1981\n\nWerkt u als zelfstandige, bijvoorbeeld als boer of tuinder? Dan kunt u misschien gebruikmaken van onze collectiviteitskorting.\n\nWij sturen uw polisblad naar Dorpsstraat 3B, 1741AB Schagen. Klopt dit adres niet? Laat het ons binnen 14 dagen weten.\n\nMet vriendelijke groet,\n\nZorgSamen Verzekeringen\nAfdeling Klantenservice",
+    "masked": [
+      {
+        "value": "M. de Boer",
+        "category": "name"
+      },
+      {
+        "value": "L. de Boer",
+        "category": "name"
+      },
+      {
+        "value": "De Boer",
+        "category": "name"
+      },
+      {
+        "value": "Dorpsstraat 3-b",
+        "category": "address"
+      },
+      {
+        "value": "Dorpsstraat 3B",
+        "category": "address"
+      },
+      {
+        "value": "1741 AB  SCHAGEN",
+        "category": "postcode"
+      },
+      {
+        "value": "1741AB Schagen",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "ZorgSamen Verzekeringen",
+      "Postbus 2120",
+      "8000 CC  Zwolle",
+      "€ 148,25",
+      "€ 385,00"
+    ],
+    "keptOrdinary": [
+      "als boer of tuinder"
+    ]
+  },
+  {
+    "id": "nl-woonstichting-huuraanpassing",
+    "country": "NL",
+    "profile": {
+      "person": {
+        "givenNames": "Fatma",
+        "surname": "Yılmaz"
+      },
+      "household": [],
+      "street": "Mathenesserlaan",
+      "houseNumber": "210c",
+      "postcode": "3021 HE",
+      "city": "Rotterdam"
+    },
+    "text": "Woonstichting Maaskant\nMevrouw F. Yilmaz\nPostbus 4400\nMathenesserlaan 210 C\n3003 AK Rotterdam\n3021 HE  ROTTERDAM\n\nRotterdam, 1 oktober 2026\nOnderwerp: Huuraanpassing per 1 januari 2027\n\nGeachte mevrouw Yilmaz,\n\nIeder jaar passen wij de huur aan. Per 1 januari 2027 verandert de huur van uw woning. Uw kale huur gaat van € 612,40 naar € 641,18 per maand. De servicekosten blijven € 38,50 per maand.\n\nUw woning: Mathenesserlaan 210C, 3021HE Rotterdam\n\nBent u het niet eens met de huurverhoging? Dan kunt u tot 1 januari 2027 bezwaar maken bij Woonstichting Maaskant. Komen wij er samen niet uit, dan kunt u naar de Huurcommissie.\n\nMet vriendelijke groet,\n\nR. Koster\nWoonconsulent",
+    "masked": [
+      {
+        "value": "F. Yilmaz",
+        "category": "name"
+      },
+      {
+        "value": "Yilmaz",
+        "category": "name"
+      },
+      {
+        "value": "Mathenesserlaan 210 C",
+        "category": "address"
+      },
+      {
+        "value": "Mathenesserlaan 210C",
+        "category": "address"
+      },
+      {
+        "value": "3021 HE  ROTTERDAM",
+        "category": "postcode"
+      },
+      {
+        "value": "3021HE Rotterdam",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Woonstichting Maaskant",
+      "Postbus 4400",
+      "3003 AK Rotterdam",
+      "€ 641,18",
+      "R. Koster",
+      "Huurcommissie"
+    ]
+  },
+  {
+    "id": "nl-ind-ontvangst-aanvraag",
+    "country": "NL",
+    "profile": {
+      "person": {
+        "givenNames": "Oleksandr",
+        "surname": "Kovalenko"
+      },
+      "household": [
+        {
+          "givenNames": "Iryna",
+          "surname": "Kovalenko"
+        }
+      ],
+      "street": "Hoofdweg",
+      "houseNumber": "145-H",
+      "postcode": "1058 BD",
+      "city": "Amsterdam"
+    },
+    "text": "Immigratie- en Naturalisatiedienst\nPostbus 287\n7600 AG  Almelo\n\nDe heer O. Kovalenko\nHoofdweg 145 hs\n1058 BD  AMSTERDAM\n\nDatum       16 september 2026\nOnderwerp   Ontvangstbevestiging aanvraag verblijfsvergunning\n\nGeachte heer Kovalenko,\n\nWij hebben op 3 september 2026 uw aanvraag ontvangen voor een verblijfsvergunning voor uw echtgenote. U betaalde hiervoor € 228,00 aan leges.\n\nGegevens van de aanvraag\nReferent:    Oleksandr Kovalenko\nVreemdeling: Iryna Kovalenko\nAdres:       Hoofdweg 145-H, 1058BD Amsterdam\n\nWij nemen binnen 90 dagen een beslissing. Hebben wij meer informatie nodig van u of van mevrouw I. Kovalenko? Dan krijgt u een brief van ons.\n\nMet vriendelijke groet,\n\nde Minister van Asiel en Migratie,\nnamens deze,\nImmigratie- en Naturalisatiedienst",
+    "masked": [
+      {
+        "value": "O. Kovalenko",
+        "category": "name"
+      },
+      {
+        "value": "Oleksandr Kovalenko",
+        "category": "name"
+      },
+      {
+        "value": "Iryna Kovalenko",
+        "category": "name"
+      },
+      {
+        "value": "I. Kovalenko",
+        "category": "name"
+      },
+      {
+        "value": "Kovalenko",
+        "category": "name"
+      },
+      {
+        "value": "Hoofdweg 145 hs",
+        "category": "address"
+      },
+      {
+        "value": "Hoofdweg 145-H",
+        "category": "address"
+      },
+      {
+        "value": "1058 BD  AMSTERDAM",
+        "category": "postcode"
+      },
+      {
+        "value": "1058BD Amsterdam",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Immigratie- en Naturalisatiedienst",
+      "Postbus 287",
+      "7600 AG  Almelo",
+      "€ 228,00",
+      "3 september 2026"
+    ]
+  },
+  {
+    "id": "nl-oldambt-afval-bewoners",
+    "country": "NL",
+    "profile": {
+      "person": {
+        "givenNames": "Henk",
+        "surname": "Mulder"
+      },
+      "household": [],
+      "street": "Burgemeester Venemastraat",
+      "houseNumber": "22",
+      "postcode": "9671 GH",
+      "city": "Winschoten"
+    },
+    "text": "Gemeente Oldambt\nPostbus 175\n9670 AD  Winschoten\n\nAan de bewoners van\nBurg. Venemastraat 22\n9671 GH  WINSCHOTEN\n\nWinschoten, 21 september 2026\nOnderwerp: Nieuwe ophaaldagen afval vanaf 2027\n\nBeste bewoner,\n\nVanaf 1 januari 2027 verandert de manier waarop wij het afval ophalen. Uw adres, Burgemeester Venemastraat 22 in postcodegebied 9671GH, valt dan onder ophaalroute Oost. De groene container wordt elke twee weken op maandag geleegd, de grijze container eens per vier weken op donderdag.\n\nDe afvalstoffenheffing voor een meerpersoonshuishouden wordt in 2027 € 312,00 per jaar. U ontvangt hiervoor in februari een aanslag.\n\nMet vriendelijke groet,\n\nTeam Afval en Grondstoffen\nGemeente Oldambt",
+    "masked": [
+      {
+        "value": "Burg. Venemastraat 22",
+        "category": "address"
+      },
+      {
+        "value": "Burgemeester Venemastraat 22",
+        "category": "address"
+      },
+      {
+        "value": "9671 GH  WINSCHOTEN",
+        "category": "postcode"
+      },
+      {
+        "value": "9671GH",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Gemeente Oldambt",
+      "Postbus 175",
+      "9670 AD  Winschoten",
+      "€ 312,00",
+      "1 januari 2027"
+    ]
+  },
+  {
+    "id": "nl-hengelsport-vispas",
+    "country": "NL",
+    "profile": {
+      "person": {
+        "givenNames": "Sanne",
+        "surname": "Visser"
+      },
+      "household": [],
+      "street": "Havenkade",
+      "houseNumber": "41-3",
+      "postcode": "1131AJ",
+      "city": "Volendam"
+    },
+    "text": "Hengelsportfederatie Midden-Holland\nPostbus 162\n2800 AD  Gouda\n\nMevrouw S. Visser\nHavenkade 41-3\n1131 AJ  VOLENDAM\n\nGouda, 5 oktober 2026\nOnderwerp: Uw VISpas 2027\n\nBeste Sanne,\n\nBedankt voor het verlengen van je lidmaatschap. Als recreatieve visser mag je met de VISpas vissen in alle wateren op de Lijst van Viswateren. De contributie voor 2027 is € 42,50 en is op 1 oktober 2026 van je rekening afgeschreven.\n\nJe nieuwe VISpas op naam van Sanne Visser wordt in december verstuurd naar Havenkade 41-3, 1131AJ Volendam. Ben je verhuisd? Geef dit dan voor 15 november door, anders komt de pas bij de verkeerde persoon terecht.\n\nNamens het bestuur wensen wij je veel visplezier in 2027!\n\nMet vriendelijke groet,\n\nLedenadministratie\nHengelsportfederatie Midden-Holland",
+    "masked": [
+      {
+        "value": "S. Visser",
+        "category": "name"
+      },
+      {
+        "value": "Sanne Visser",
+        "category": "name"
+      },
+      {
+        "value": "Sanne",
+        "category": "name"
+      },
+      {
+        "value": "Havenkade 41-3",
+        "category": "address"
+      },
+      {
+        "value": "1131 AJ  VOLENDAM",
+        "category": "postcode"
+      },
+      {
+        "value": "1131AJ Volendam",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Hengelsportfederatie Midden-Holland",
+      "Postbus 162",
+      "2800 AD  Gouda",
+      "€ 42,50",
+      "1 oktober 2026"
+    ],
+    "keptOrdinary": [
+      "recreatieve visser"
+    ]
+  },
+  {
+    "id": "nl-cjib-verkeersboete",
+    "country": "NL",
+    "profile": {
+      "person": {
+        "givenNames": "Daan",
+        "surname": "van den Berg"
+      },
+      "household": [],
+      "street": "Stationsweg",
+      "houseNumber": "5a",
+      "postcode": "8401 DK",
+      "city": "Gorredijk"
+    },
+    "text": "Centraal Justitieel Incassobureau\nPostbus 1794\n8901 CB Leeuwarden\n\nDHR D VAN DEN BERG\nSTATI0NSWEG 5 A\n8401DK  GORREDIJK\n\nDatum: 24 september 2026\nOnderwerp: Beschikking verkeersboete\n\nGeachte heer Van den Berg,\n\nOp 11 september 2026 om 08.47 uur is met het voertuig waarvan u de kentekenhouder bent een overtreding begaan op de A7 bij Heerenveen. U reed 14 km/u te hard. De officier van justitie heeft u daarom een boete opgelegd.\n\nBoetebedrag:            € 104,00\nAdministratiekosten:    €   9,00\nTotaal te betalen:      € 113,00\n\nBetaal het totaalbedrag uiterlijk op 5 november 2026. Betaalt u niet op tijd, dan wordt het bedrag verhoogd.\n\nMet vriendelijke groet,\n\nCentraal Justitieel Incassobureau",
+    "masked": [
+      {
+        "value": "D VAN DEN BERG",
+        "category": "name"
+      },
+      {
+        "value": "Van den Berg",
+        "category": "name"
+      },
+      {
+        "value": "STATI0NSWEG 5 A",
+        "category": "address"
+      },
+      {
+        "value": "8401DK  GORREDIJK",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Centraal Justitieel Incassobureau",
+      "Postbus 1794",
+      "8901 CB Leeuwarden",
+      "€ 113,00",
+      "5 november 2026"
+    ]
+  },
+  {
+    "id": "nl-duo-studiefinanciering",
+    "country": "NL",
+    "profile": {
+      "person": {
+        "givenNames": "Anne-Fleur",
+        "surname": "Hoekstra"
+      },
+      "household": [],
+      "street": "Paterswoldseweg",
+      "houseNumber": "806-214",
+      "postcode": "9728 BM",
+      "city": "Groningen"
+    },
+    "text": "DUO\nPostbus 50061\n9702 GB  Groningen\n\nA.F. Hoekstra\nPaterswoldseweg 806-214\n9728 BM  GRONINGEN\n\nDatum 2 oktober 2026\nOnderwerp Uw studiefinanciering vanaf 1 november 2026\n\nBeste Anne-Fleur,\n\nJe hebt studiefinanciering aangevraagd als uitwonende student. Je ontvangt vanaf 1 november 2026 een basisbeurs van € 325,86 per maand en een aanvullende beurs van € 211,40 per maand.\n\nOm de basisbeurs voor uitwonenden te krijgen, moet je in de Basisregistratie Personen (BRP) staan ingeschreven op een ander adres dan je ouders. Wij hebben je adres gecontroleerd: Paterswoldseweg 806-214, 9728 BM Groningen. Volgens de BRP woon je hier sinds 15 augustus 2026.\n\nNaam student: Anne-Fleur Hoekstra\nOpleiding:    Bachelor Geneeskunde, Rijksuniversiteit Groningen\n\nMet vriendelijke groet,\n\nDUO",
+    "masked": [
+      {
+        "value": "A.F. Hoekstra",
+        "category": "name"
+      },
+      {
+        "value": "Anne-Fleur Hoekstra",
+        "category": "name"
+      },
+      {
+        "value": "Anne-Fleur",
+        "category": "name"
+      },
+      {
+        "value": "Paterswoldseweg 806-214",
+        "category": "address"
+      },
+      {
+        "value": "9728 BM  GRONINGEN",
+        "category": "postcode"
+      },
+      {
+        "value": "9728 BM Groningen",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "DUO",
+      "Postbus 50061",
+      "9702 GB  Groningen",
+      "€ 325,86",
+      "Rijksuniversiteit Groningen"
+    ]
+  },
+  {
+    "id": "nl-bank-adreswijziging",
+    "country": "NL",
+    "profile": {
+      "person": {
+        "givenNames": "Willem",
+        "surname": "de Jong"
+      },
+      "household": [],
+      "street": "Lange Nieuwstraat",
+      "houseNumber": "112bis",
+      "postcode": "3811 AA",
+      "city": "Amersfoort"
+    },
+    "text": "Rivierbank N.V.\nPostbus 1400\n3500 BK  Utrecht\n\nDe heer W. de Jong\nLange Nieuwstr. 112-bis\n3811  AA AMERSFOORT\n\nUtrecht, 30 september 2026\nOnderwerp: Bevestiging adreswijziging\n\nGeachte heer De Jong,\n\nU heeft ons laten weten dat u bent verhuisd. Vanaf 15 september 2026 sturen wij uw post naar:\n\nLange Nieuwstraat 112 bis\n3811 AA Amersfoort\n\nUw spaarrekening loopt gewoon door. Wie jong begint met sparen, heeft later meer. Het rentepercentage blijft 1,75%.\n\nHeeft u deze wijziging niet zelf doorgegeven? Neem dan direct contact met ons op.\n\nMet vriendelijke groet,\n\nRivierbank N.V.\nKlantenservice Particulieren",
+    "masked": [
+      {
+        "value": "W. de Jong",
+        "category": "name"
+      },
+      {
+        "value": "De Jong",
+        "category": "name"
+      },
+      {
+        "value": "Lange Nieuwstr. 112-bis",
+        "category": "address"
+      },
+      {
+        "value": "Lange Nieuwstraat 112 bis",
+        "category": "address"
+      },
+      {
+        "value": "3811  AA AMERSFOORT",
+        "category": "postcode"
+      },
+      {
+        "value": "3811 AA Amersfoort",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Rivierbank N.V.",
+      "Postbus 1400",
+      "3500 BK  Utrecht",
+      "1,75%",
+      "15 september 2026"
+    ],
+    "keptOrdinary": [
+      "Wie jong begint"
+    ]
+  },
+  {
+    "id": "nl-rechtbank-oproeping-kanton",
+    "country": "NL",
+    "profile": {
+      "person": {
+        "givenNames": "Jeroen",
+        "surname": "van der Linden"
+      },
+      "household": [],
+      "street": "Biltstraat",
+      "houseNumber": "199 A",
+      "postcode": "3572 AT",
+      "city": "Utrecht"
+    },
+    "text": "Rechtbank Midden-Nederland\nRetouradres Postbus 16005, 3500 DA Utrecht\n\nde heer J. van der Linden                     Sector kanton\nBiltstraat 199A                               Datum 22 september 2026\n3572AT  UTRECHT                               Zaaknummer 11234567 CV EXPL 26-4410\n\nOnderwerp: Oproeping mondelinge behandeling\n\nGeachte heer Van der Linden,\n\nIn de zaak van Stichting Woonbedrijf Stichtse Vecht, eiseres, tegen VAN DER LINDEN, Jeroen, wonende aan de Biltstraat 199-A te Utrecht, gedaagde, bepaalt de kantonrechter dat een mondelinge behandeling plaatsvindt op dinsdag 3 november 2026 om 10.30 uur.\n\nDe eiseres vordert betaling van een huurachterstand van € 2.346,90. U wordt verzocht in persoon te verschijnen. U mag zich laten bijstaan door een advocaat of een andere gemachtigde.\n\nHet adres van de zitting is: Vrouwe Justitiaplein 1, 3511 EX Utrecht.\n\nDe griffier,\nmr. A.M. Wessels",
+    "masked": [
+      {
+        "value": "J. van der Linden",
+        "category": "name"
+      },
+      {
+        "value": "Van der Linden",
+        "category": "name"
+      },
+      {
+        "value": "VAN DER LINDEN, Jeroen",
+        "category": "name"
+      },
+      {
+        "value": "Biltstraat 199A",
+        "category": "address"
+      },
+      {
+        "value": "Biltstraat 199-A",
+        "category": "address"
+      },
+      {
+        "value": "3572AT  UTRECHT",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Rechtbank Midden-Nederland",
+      "Postbus 16005, 3500 DA Utrecht",
+      "Stichting Woonbedrijf Stichtse Vecht",
+      "€ 2.346,90",
+      "Vrouwe Justitiaplein 1, 3511 EX Utrecht",
+      "3 november 2026",
+      "mr. A.M. Wessels"
+    ]
+  },
+  {
+    "id": "nl-pensioenfonds-upo",
+    "country": "NL",
+    "profile": {
+      "person": {
+        "givenNames": "Wouter",
+        "surname": "de Wit"
+      },
+      "household": [
+        {
+          "givenNames": "Ingrid",
+          "surname": "Bos"
+        }
+      ],
+      "street": "Achterweg",
+      "houseNumber": "17A",
+      "postcode": "4191 KL",
+      "city": "Geldermalsen"
+    },
+    "text": "Retouradres: Postbus 2300, 6401 DH Heerlen\n\nDe heer W. de Wit\nAchterweg 17 a\n4191KL  GELDERMALSEN\n\nStichting Pensioenfonds Bouwgilde\nHeerlen, 15 september 2026\nOnderwerp: Uw Uniform Pensioenoverzicht 2026\n\nGeachte heer De Wit,\n\nIn dit overzicht leest u hoeveel pensioen u bij ons heeft opgebouwd tot en met 31 december 2025. Uw opgebouwde ouderdomspensioen is € 8.412,00 bruto per jaar vanaf uw AOW-leeftijd.\n\nPartnerpensioen\nAls u overlijdt, krijgt uw partner, mevrouw I. Bos, een partnerpensioen van € 5.888,00 bruto per jaar.\n\nKlopt er iets niet? Vul dan het formulier in en zet een kruisje in het witte vak bij de gegevens die niet kloppen. Uw adres volgens onze administratie is Achterweg 17a, 4191 KL Geldermalsen.\n\nMet vriendelijke groet,\n\nStichting Pensioenfonds Bouwgilde",
+    "masked": [
+      {
+        "value": "W. de Wit",
+        "category": "name"
+      },
+      {
+        "value": "De Wit",
+        "category": "name"
+      },
+      {
+        "value": "I. Bos",
+        "category": "name"
+      },
+      {
+        "value": "Achterweg 17 a",
+        "category": "address"
+      },
+      {
+        "value": "Achterweg 17a",
+        "category": "address"
+      },
+      {
+        "value": "4191KL  GELDERMALSEN",
+        "category": "postcode"
+      },
+      {
+        "value": "4191 KL Geldermalsen",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Postbus 2300, 6401 DH Heerlen",
+      "Stichting Pensioenfonds Bouwgilde",
+      "€ 8.412,00",
+      "€ 5.888,00",
+      "31 december 2025"
+    ],
+    "keptOrdinary": [
+      "in het witte vak"
+    ]
+  },
+  {
+    "id": "nl-basisschool-excursie",
+    "country": "NL",
+    "profile": {
+      "person": {
+        "givenNames": "Joost",
+        "surname": "Bakker"
+      },
+      "household": [
+        {
+          "givenNames": "Liam",
+          "surname": "Bakker"
+        }
+      ],
+      "street": "Molenweg",
+      "houseNumber": "8",
+      "postcode": "7951 BE",
+      "city": "Staphorst"
+    },
+    "text": "OBS De Regenboog\nKerkweg 4\n7951 AC  Staphorst\n\nDe heer J. Bakker\nMolenweg 8\n7951 BE  STAPHORST\n\nStaphorst, 29 september 2026\nOnderwerp: Excursie groep 5\n\nBeste ouders/verzorgers van Liam Bakker,\n\nOp vrijdag 16 oktober gaat groep 5 op excursie. We bezoeken in de ochtend de bakker in het dorp en 's middags de molen aan de Molenweg. Liam leert zo hoe brood wordt gemaakt, van graan tot boterham.\n\nDe kosten van de excursie zijn € 7,50 per kind. U kunt dit bedrag tot 9 oktober betalen bij juf Annemieke. Wilt u Liam die dag een lunchpakket en goede schoenen meegeven?\n\nMet vriendelijke groet,\n\nA. Dekker\nLeerkracht groep 5",
+    "masked": [
+      {
+        "value": "J. Bakker",
+        "category": "name"
+      },
+      {
+        "value": "Liam Bakker",
+        "category": "name"
+      },
+      {
+        "value": "Liam",
+        "category": "name"
+      },
+      {
+        "value": "Molenweg 8",
+        "category": "address"
+      },
+      {
+        "value": "7951 BE  STAPHORST",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "OBS De Regenboog",
+      "Kerkweg 4",
+      "7951 AC  Staphorst",
+      "€ 7,50",
+      "A. Dekker"
+    ],
+    "keptOrdinary": [
+      "de bakker in het dorp"
+    ]
+  },
+  {
+    "id": "nl-incasso-ster-mobiel",
+    "country": "NL",
+    "profile": {
+      "person": {
+        "givenNames": "Yuen",
+        "surname": "Li"
+      },
+      "household": [],
+      "street": "Prinsengracht",
+      "houseNumber": "455-3",
+      "postcode": "1016 HN"
+    },
+    "text": "Van Rijn & Partners Incasso B.V.\nPostbus 75012\n1070 AA  Amsterdam\n\nDe heer Y. Li\nPrinsengracht 455 lll\n1016  HN AMSTERDAM\n\nAmsterdam, 1 oktober 2026\nBetreft: Ster Mobiel B.V. / Y. Li\n\nGeachte heer Li,\n\nOnze opdrachtgever Ster Mobiel B.V. heeft ons gevraagd een openstaande vordering bij u te innen. Ondanks herinneringen heeft u de onderstaande facturen niet betaald.\n\nHoofdsom:          € 249,95\nIncassokosten:     €  40,00\nTotaal:            € 289,95\n\nWij verzoeken u het totaalbedrag binnen 14 dagen over te maken. Betaalt u niet, dan kan onze opdrachtgever een gerechtelijke procedure starten. Woont u niet meer op Prinsengracht 455-III? Laat het ons dan weten.\n\nMet vriendelijke groet,\n\nVan Rijn & Partners Incasso B.V.",
+    "masked": [
+      {
+        "value": "Y. Li",
+        "category": "name"
+      },
+      {
+        "value": "heer Li",
+        "category": "name"
+      },
+      {
+        "value": "Prinsengracht 455 lll",
+        "category": "address"
+      },
+      {
+        "value": "Prinsengracht 455-III",
+        "category": "address"
+      },
+      {
+        "value": "1016  HN AMSTERDAM",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Van Rijn & Partners Incasso B.V.",
+      "Postbus 75012",
+      "1070 AA  Amsterdam",
+      "Ster Mobiel B.V.",
+      "€ 289,95"
+    ]
+  },
+  {
+    "id": "nl-leeuwarden-bijzondere-bijstand",
+    "country": "NL",
+    "profile": {
+      "person": {
+        "givenNames": "Kimberly Maria",
+        "surname": "Sedney"
+      },
+      "household": [
+        {
+          "givenNames": "Rayen",
+          "surname": "Sedney"
+        }
+      ],
+      "street": "Tesselschadestraat",
+      "houseNumber": "31b",
+      "postcode": "8913 HA",
+      "city": "Leeuwarden"
+    },
+    "text": "Gemeente Leeuwarden\nPostbus 21000\n8900 JA  Leeuwarden\n\nFamilie Sedney\nT.a.v. mevrouw K.M. Sedney\nTesselschadestraat 31-B\n8913HA  LEEUWARDEN\n\nLeeuwarden, 18 september 2026\nOnderwerp: Besluit bijzondere bijstand schoolkosten\n\nGeachte mevrouw Sedney,\n\nU heeft op 1 september 2026 bijzondere bijstand aangevraagd voor de schoolkosten van uw zoon Rayen Sedney. Wij hebben uw aanvraag beoordeeld en kennen u een bedrag toe van € 395,00.\n\nHet bedrag is bedoeld voor een laptop en schoolboeken voor Rayen. Wij maken het geld binnen 10 werkdagen over.\n\nBewaar de bonnen. Wij kunnen u vragen om aan te tonen dat u het geld heeft uitgegeven aan de schoolkosten.\n\nMet vriendelijke groet,\n\nTeam Inkomen\nGemeente Leeuwarden",
+    "masked": [
+      {
+        "value": "K.M. Sedney",
+        "category": "name"
+      },
+      {
+        "value": "Sedney",
+        "category": "name"
+      },
+      {
+        "value": "Rayen Sedney",
+        "category": "name"
+      },
+      {
+        "value": "Rayen",
+        "category": "name"
+      },
+      {
+        "value": "Tesselschadestraat 31-B",
+        "category": "address"
+      },
+      {
+        "value": "8913HA  LEEUWARDEN",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Gemeente Leeuwarden",
+      "Postbus 21000",
+      "8900 JA  Leeuwarden",
+      "€ 395,00",
+      "1 september 2026"
+    ]
+  },
+  {
+    "id": "nl-verhuurder-loodgieter",
+    "country": "NL",
+    "profile": {
+      "person": {
+        "givenNames": "Roos",
+        "surname": "Meijer"
+      },
+      "household": [],
+      "street": "Spoorstraat",
+      "houseNumber": "14 boven",
+      "postcode": "6821AN",
+      "city": "Arnhem"
+    },
+    "text": "H. Brouwer\nRijnkade 3\n6811 HA Arnhem\n\nR. Meijer\nSpoorstraat 14bv\n6821 AN Arnhem\n\nArnhem, 2 oktober 2026\n\nBeste Roos,\n\nZoals besproken komt de loodgieter op dinsdag 13 oktober tussen 9.00 en 12.00 uur de lekkage in de badkamer van Spoorstraat 14-boven repareren. Wil je zorgen dat hij erin kan? Als je niet thuis bent, kan hij de sleutel ophalen bij de benedenburen.\n\nDe kosten van de reparatie (€ 285,00) zijn voor mijn rekening. De huur blijft € 925,00 per maand.\n\nGroet,\n\nHenk Brouwer",
+    "masked": [
+      {
+        "value": "R. Meijer",
+        "category": "name"
+      },
+      {
+        "value": "Roos",
+        "category": "name"
+      },
+      {
+        "value": "Spoorstraat 14bv",
+        "category": "address"
+      },
+      {
+        "value": "Spoorstraat 14-boven",
+        "category": "address"
+      },
+      {
+        "value": "6821 AN Arnhem",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "H. Brouwer",
+      "Rijnkade 3",
+      "6811 HA Arnhem",
+      "€ 285,00",
+      "€ 925,00",
+      "Henk Brouwer"
+    ]
+  },
+  {
+    "id": "nl-toeslagen-voorschot-huurtoeslag",
+    "country": "NL",
+    "profile": {
+      "person": {
+        "givenNames": "Mohamed",
+        "surname": "El Idrissi"
+      },
+      "household": [
+        {
+          "givenNames": "Samira",
+          "surname": "Bouzid"
+        }
+      ],
+      "street": "Van Oldenbarneveltstraat",
+      "houseNumber": "77-B",
+      "postcode": "2593 EG",
+      "city": "Den Haag"
+    },
+    "text": "Dienst Toeslagen\nPostbus 8015\n6710 AA  Ede\n\nDe heer M. El ldrissi\nv. Oldenbarneveltstr. 77b\n2593EG  DEN HAAG\n\nDatum     20 september 2026\nOnderwerp Voorschot huurtoeslag 2027\n\nGeachte heer El Idrissi,\n\nU krijgt in 2027 een voorschot huurtoeslag van € 287,00 per maand. Wij hebben dit voorschot berekend met de gegevens hieronder.\n\nAanvrager:          Mohamed El Idrissi\nToeslagpartner:     Samira Bouzid\nAdres:              Van Oldenbarneveltstraat 77-B, 2593 EG 's-Gravenhage\nHuur per maand:     € 845,00\nGeschat inkomen:    € 31.400,00 (aanvrager en toeslagpartner samen)\n\nVerandert er iets in uw situatie of die van mevrouw S. Bouzid? Geef dit dan binnen 4 weken aan ons door.\n\nMet vriendelijke groet,\n\nDienst Toeslagen",
+    "masked": [
+      {
+        "value": "M. El ldrissi",
+        "category": "name"
+      },
+      {
+        "value": "El Idrissi",
+        "category": "name"
+      },
+      {
+        "value": "Mohamed El Idrissi",
+        "category": "name"
+      },
+      {
+        "value": "Samira Bouzid",
+        "category": "name"
+      },
+      {
+        "value": "S. Bouzid",
+        "category": "name"
+      },
+      {
+        "value": "v. Oldenbarneveltstr. 77b",
+        "category": "address"
+      },
+      {
+        "value": "Van Oldenbarneveltstraat 77-B",
+        "category": "address"
+      },
+      {
+        "value": "2593EG  DEN HAAG",
+        "category": "postcode"
+      },
+      {
+        "value": "2593 EG 's-Gravenhage",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Dienst Toeslagen",
+      "Postbus 8015",
+      "6710 AA  Ede",
+      "€ 287,00",
+      "€ 845,00"
+    ]
+  },
+  {
+    "id": "nl-waterschap-inspectie-kade",
+    "country": "NL",
+    "profile": {
+      "person": {
+        "givenNames": "Bart",
+        "surname": "Vos"
+      },
+      "household": [],
+      "street": "Hoofdstraat",
+      "houseNumber": "102",
+      "postcode": "9531 AH",
+      "city": "Borger"
+    },
+    "text": "Waterschap Veenstromen\nPostbus 30\n9400 AA  Assen\n\nB. Vos\nHoofdstraat 102\n9531 AH  BORGER\n\nAssen, 14 september 2026\nOnderwerp: Inspectie kade achter uw perceel\n\nGeachte heer Vos,\n\nIn oktober inspecteren wij de kade langs het Voorste Diep. Een deel van deze kade ligt achter uw perceel Hoofdstraat 102 (postcode 9531AH) in Borger. Wij hebben gezien dat gravende dieren, zoals de vos en de das, gangen in de kade hebben gemaakt. Die gangen maken de kade zwakker.\n\nOnze medewerkers hebben daarom op 20 en 21 oktober 2026 toegang nodig tot de achterkant van uw perceel. De werkzaamheden kosten u niets.\n\nMet vriendelijke groet,\n\nWaterschap Veenstromen\nAfdeling Keringen",
+    "masked": [
+      {
+        "value": "B. Vos",
+        "category": "name"
+      },
+      {
+        "value": "heer Vos",
+        "category": "name"
+      },
+      {
+        "value": "Hoofdstraat 102",
+        "category": "address"
+      },
+      {
+        "value": "9531 AH  BORGER",
+        "category": "postcode"
+      },
+      {
+        "value": "9531AH",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Waterschap Veenstromen",
+      "Postbus 30",
+      "9400 AA  Assen",
+      "20 en 21 oktober 2026",
+      "Voorste Diep"
+    ],
+    "keptOrdinary": [
+      "de vos en de das"
+    ]
+  },
+  {
+    "id": "nl-werkgever-verlenging-contract",
+    "country": "NL",
+    "profile": {
+      "person": {
+        "givenNames": "Priya",
+        "surname": "Ramdin"
+      },
+      "household": [],
+      "street": "Laan van Meerdervoort",
+      "houseNumber": "1203",
+      "postcode": "2555 CJ",
+      "city": "Den Haag"
+    },
+    "text": "Zorggroep Haaglanden\nPostbus 43100\n2504 AC  Den Haag\n\nMevrouw P. Ramdin\nLaan v. Meerdervoort 1203\n2555 CJ  'S-GRAVENHAGE\n\nDen Haag, 25 september 2026\nOnderwerp: Verlenging arbeidsovereenkomst\n\nBeste Priya,\n\nMet plezier laten wij je weten dat wij je arbeidsovereenkomst als verzorgende IG verlengen. Je nieuwe contract loopt van 1 november 2026 tot en met 31 oktober 2027, voor 28 uur per week. Je salaris wordt € 2.987,00 bruto per maand bij een volledige werkweek (schaal FWG 35).\n\nIn de bijlage vind je twee exemplaren van de overeenkomst op naam van Priya Ramdin. Wil je één exemplaar ondertekend terugsturen? Gebruik daarvoor de antwoordenvelop.\n\nJe loonstroken sturen wij voortaan naar je huisadres: Laan van Meerdervoort 1203, 2555 CJ Den Haag.\n\nMet vriendelijke groet,\n\nM. van Leeuwen\nHR-adviseur, Zorggroep Haaglanden",
+    "masked": [
+      {
+        "value": "P. Ramdin",
+        "category": "name"
+      },
+      {
+        "value": "Priya Ramdin",
+        "category": "name"
+      },
+      {
+        "value": "Priya",
+        "category": "name"
+      },
+      {
+        "value": "Laan v. Meerdervoort 1203",
+        "category": "address"
+      },
+      {
+        "value": "Laan van Meerdervoort 1203",
+        "category": "address"
+      },
+      {
+        "value": "2555 CJ  'S-GRAVENHAGE",
+        "category": "postcode"
+      },
+      {
+        "value": "2555 CJ Den Haag",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Zorggroep Haaglanden",
+      "Postbus 43100",
+      "2504 AC  Den Haag",
+      "€ 2.987,00",
+      "M. van Leeuwen"
+    ]
+  },
+  {
+    "id": "nl-gemeente-best-adresonderzoek",
+    "country": "NL",
+    "profile": {
+      "person": {
+        "givenNames": "Ahmet",
+        "surname": "Doğan"
+      },
+      "household": [],
+      "street": "Prins Bernhardlaan",
+      "houseNumber": "56",
+      "postcode": "5684 CE",
+      "city": "Best"
+    },
+    "text": "Gemeente Best\nPostbus 50\n5680 AB  Best\n\nDe heer A. Dogan\nPr. Bernhardlaan 56\n5684 CE  BEST\n\nBest, 17 september 2026\nOnderwerp: Onderzoek naar uw adres\n\nGeachte heer Dogan,\n\nVolgens de Basisregistratie Personen (BRP) woont u op het adres Prins Bernhardlaan 56 (postcode 5684CE) in Best. Wij hebben aanwijzingen dat u daar niet meer woont. Daarom doen wij een adresonderzoek.\n\nWoont u nog wel op dit adres? Kom dan voor 8 oktober 2026 met uw paspoort of identiteitskaart naar het gemeentehuis aan De Ruysdaelweg 2. Bent u verhuisd, geef uw nieuwe adres dan door. Doet u niets, dan schrijven wij u mogelijk uit. Dit kan gevolgen hebben voor bijvoorbeeld uw toeslagen.\n\nHet is het beste als u snel reageert.\n\nMet vriendelijke groet,\n\nBurgemeester en wethouders van Best",
+    "masked": [
+      {
+        "value": "A. Dogan",
+        "category": "name"
+      },
+      {
+        "value": "Dogan",
+        "category": "name"
+      },
+      {
+        "value": "Pr. Bernhardlaan 56",
+        "category": "address"
+      },
+      {
+        "value": "Prins Bernhardlaan 56",
+        "category": "address"
+      },
+      {
+        "value": "5684 CE  BEST",
+        "category": "postcode"
+      },
+      {
+        "value": "5684CE",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Gemeente Best",
+      "Postbus 50",
+      "5680 AB  Best",
+      "8 oktober 2026",
+      "De Ruysdaelweg 2"
+    ]
+  },
+  {
+    "id": "nl-svb-aow-indexering",
+    "country": "NL",
+    "profile": {
+      "person": {
+        "givenNames": "Cornelis Johannes",
+        "surname": "Wouters"
+      },
+      "household": [
+        {
+          "givenNames": "Maria",
+          "surname": "Wouters-van Leeuwen"
+        }
+      ],
+      "street": "Kloosterlaan",
+      "houseNumber": "3",
+      "postcode": "4711 NB",
+      "city": "Sint Willebrord"
+    },
+    "text": "Sociale Verzekeringsbank\nPostbus 1100\n1180 BH  Amstelveen\n\nDe heer C.J. Wouters en mevrouw M. Wouters-van Leeuwen\nWoonzorgcentrum De Linde, app. 12\nKloosterlaan 3\n4711 N8  SINT WILLEBRORD\n\nDatum: 23 september 2026\nOnderwerp: Uw AOW-pensioen per 1 januari 2027\n\nGeachte heer en mevrouw Wouters,\n\nPer 1 januari 2027 verandert de hoogte van de AOW. Dit komt door de wettelijke indexering. U krijgt allebei een AOW-pensioen voor gehuwden.\n\nWouters, C.J.                          € 1.012,46 bruto per maand\nWouters-van Leeuwen, M.                € 1.012,46 bruto per maand\n\nDaarnaast krijgt u in mei 2027 vakantiegeld van € 56,12 bruto per persoon.\n\nMet vriendelijke groet,\n\nSociale Verzekeringsbank",
+    "masked": [
+      {
+        "value": "C.J. Wouters",
+        "category": "name"
+      },
+      {
+        "value": "M. Wouters-van Leeuwen",
+        "category": "name"
+      },
+      {
+        "value": "Wouters",
+        "category": "name"
+      },
+      {
+        "value": "Wouters, C.J.",
+        "category": "name"
+      },
+      {
+        "value": "Wouters-van Leeuwen, M.",
+        "category": "name"
+      },
+      {
+        "value": "Woonzorgcentrum De Linde, app. 12",
+        "category": "address"
+      },
+      {
+        "value": "Kloosterlaan 3",
+        "category": "address"
+      },
+      {
+        "value": "4711 N8  SINT WILLEBRORD",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Sociale Verzekeringsbank",
+      "Postbus 1100",
+      "1180 BH  Amstelveen",
+      "€ 1.012,46",
+      "€ 56,12"
+    ]
+  },
+  {
+    "id": "nl-energie-jaarafrekening",
+    "country": "NL",
+    "profile": {
+      "person": {
+        "givenNames": "Lars",
+        "surname": "Hendriks"
+      },
+      "household": [],
+      "street": "Wilhelminastraat",
+      "houseNumber": "9-1",
+      "postcode": "6524 AJ",
+      "city": "Nijmegen"
+    },
+    "text": "Stroomlijn Energie B.V.                       Postbus 7120\n                                              5605 JC  Eindhoven\nDe heer L. Hendriks                           Klantnummer 40012877\nWilhelminastraat 9-1                          Datum 30 september 2026\n6524 AJ  NIJMEGEN                             Onderwerp Jaarafrekening\n\nGeachte heer Hendriks,\n\nHierbij ontvangt u de jaarafrekening voor de levering van stroom en gas over de periode 1 september 2025 tot en met 31 augustus 2026.\n\nLeveringsadres: Wilhelminastraat 9 -1, 6524AJ Nijmegen\n\nVerbruik stroom:     2.415 kWh\nVerbruik gas:          982 m³\nTotaal kosten:       € 2.104,37\nBetaalde termijnen:  € 2.220,00\nTerug te ontvangen:  €   115,63\n\nWij maken € 115,63 binnen 10 werkdagen naar u over. Uw nieuwe termijnbedrag wordt € 179,00 per maand.\n\nMet vriendelijke groet,\n\nStroomlijn Energie B.V.",
+    "masked": [
+      {
+        "value": "L. Hendriks",
+        "category": "name"
+      },
+      {
+        "value": "Hendriks",
+        "category": "name"
+      },
+      {
+        "value": "Wilhelminastraat 9-1",
+        "category": "address"
+      },
+      {
+        "value": "Wilhelminastraat 9 -1",
+        "category": "address"
+      },
+      {
+        "value": "6524 AJ  NIJMEGEN",
+        "category": "postcode"
+      },
+      {
+        "value": "6524AJ Nijmegen",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Stroomlijn Energie B.V.",
+      "Postbus 7120",
+      "5605 JC  Eindhoven",
+      "€ 2.104,37",
+      "€ 115,63"
+    ]
+  },
+  {
+    "id": "de-finanzamt-einkommensteuerbescheid",
+    "country": "DE",
+    "profile": {
+      "person": {
+        "givenNames": "Thomas",
+        "surname": "Koch"
+      },
+      "household": [],
+      "street": "Venloer Straße",
+      "houseNumber": "312",
+      "postcode": "50823",
+      "city": "Köln"
+    },
+    "text": "Finanzamt Köln-Mitte\nAm Weidenbach 2-4\n50676 Köln\n\nHerrn\nThomas Koch\nVenloer Str. 312, 3. OG\n50823 Köln\n\nKöln, 22.09.2026\n\nBescheid für 2025 über Einkommensteuer\n\nSehr geehrter Herr Koch,\n\naufgrund Ihrer Einkommensteuererklärung für 2025 wird die Einkommensteuer auf 6.214,00 EUR festgesetzt. Bereits gezahlt wurden 7.032,00 EUR. Es ergibt sich eine Erstattung von 818,00 EUR.\n\nIhre Aufwendungen für Arbeitskleidung als Koch im Restaurant „Zum Goldenen Hahn“ wurden in Höhe von 240,00 EUR als Werbungskosten anerkannt. Die Fahrten von Ihrer Wohnung Venloer Straße 312, 50823 Köln, zur Arbeitsstätte wurden mit der Entfernungspauschale berücksichtigt.\n\nMit freundlichen Grüßen\nIhr Finanzamt",
+    "masked": [
+      {
+        "value": "Thomas Koch",
+        "category": "name"
+      },
+      {
+        "value": "Herr Koch",
+        "category": "name"
+      },
+      {
+        "value": "Venloer Str. 312, 3. OG",
+        "category": "address"
+      },
+      {
+        "value": "Venloer Straße 312",
+        "category": "address"
+      },
+      {
+        "value": "50823 Köln",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Finanzamt Köln-Mitte",
+      "Am Weidenbach 2-4",
+      "50676 Köln",
+      "818,00 EUR",
+      "6.214,00 EUR"
+    ],
+    "keptOrdinary": [
+      "als Koch im Restaurant"
+    ]
+  },
+  {
+    "id": "de-krankenkasse-familienversicherung",
+    "country": "DE",
+    "profile": {
+      "person": {
+        "givenNames": "Lena",
+        "surname": "Schulz-Weber"
+      },
+      "household": [
+        {
+          "givenNames": "Mia",
+          "surname": "Schulz"
+        }
+      ],
+      "street": "Hauptstraße",
+      "houseNumber": "7b",
+      "postcode": "71634",
+      "city": "Ludwigsburg"
+    },
+    "text": "Rheinland Krankenkasse · Postfach 10 11 20 · 70010 Stuttgart\n\nFrau\nLena Schulz-Weber\nHauptstr. 7 b, Hinterhaus\n71634 Ludwigsburg\n\nStuttgart, 29.09.2026\n\nFamilienversicherung für Ihre Tochter\n\nSehr geehrte Frau Schulz-Weber,\n\nvielen Dank für Ihren Antrag vom 14.09.2026. Ihre Tochter Mia Schulz ist ab dem 01.10.2026 bei Ihnen beitragsfrei familienversichert. Die elektronische Gesundheitskarte für Mia Schulz senden wir in den nächsten Tagen an Ihre Anschrift Hauptstraße 7b, 71634 Ludwigsburg.\n\nBitte beachten Sie: Die Familienversicherung ist nur möglich, solange das monatliche Einkommen von Mia unter 535,00 EUR liegt.\n\nMit freundlichen Grüßen\nIhre Rheinland Krankenkasse",
+    "masked": [
+      {
+        "value": "Lena Schulz-Weber",
+        "category": "name"
+      },
+      {
+        "value": "Schulz-Weber",
+        "category": "name"
+      },
+      {
+        "value": "Mia Schulz",
+        "category": "name"
+      },
+      {
+        "value": "Mia",
+        "category": "name"
+      },
+      {
+        "value": "Hauptstr. 7 b, Hinterhaus",
+        "category": "address"
+      },
+      {
+        "value": "Hauptstraße 7b",
+        "category": "address"
+      },
+      {
+        "value": "71634 Ludwigsburg",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Rheinland Krankenkasse",
+      "Postfach 10 11 20 · 70010 Stuttgart",
+      "535,00 EUR",
+      "01.10.2026"
+    ]
+  },
+  {
+    "id": "de-bezirksamt-fischereischein",
+    "country": "DE",
+    "profile": {
+      "person": {
+        "givenNames": "Jonas",
+        "surname": "Fischer"
+      },
+      "household": [],
+      "street": "Sonnenallee",
+      "houseNumber": "154",
+      "postcode": "12059"
+    },
+    "text": "Bezirksamt Neukölln von Berlin\nUmwelt- und Naturschutzamt – Fischereibehörde\nKarl-Marx-Straße 83, 12040 Berlin\n\nHerrn\nJonas Fischer\nSonnenallee 154\nSeitenflügel, 3. OG\n12059 Berlin\n\nBerlin, den 01.10.2026\n\nIhr Antrag auf Erteilung eines Fischereischeins\n\nSehr geehrter Herr Fischer,\n\nIhr Antrag vom 08.09.2026 ist vollständig. Der Fischereischein auf den Namen Jonas Fischer, wohnhaft Sonnenallee 154, 12059 Berlin, kann ab dem 12.10.2026 im Bürgeramt abgeholt werden. Die Gebühr beträgt 24,00 EUR; die Fischereiabgabe für fünf Jahre beträgt weitere 50,00 EUR.\n\nBitte bringen Sie Ihren Personalausweis und das Zeugnis über die bestandene Fischerprüfung mit.\n\nMit freundlichen Grüßen\nim Auftrag\nWeber",
+    "masked": [
+      {
+        "value": "Jonas Fischer",
+        "category": "name"
+      },
+      {
+        "value": "Herr Fischer",
+        "category": "name"
+      },
+      {
+        "value": "Sonnenallee 154",
+        "category": "address"
+      },
+      {
+        "value": "Seitenflügel, 3. OG",
+        "category": "address"
+      },
+      {
+        "value": "12059 Berlin",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Bezirksamt Neukölln von Berlin",
+      "Karl-Marx-Straße 83, 12040 Berlin",
+      "24,00 EUR",
+      "50,00 EUR",
+      "12.10.2026"
+    ],
+    "keptOrdinary": [
+      "Der Fischereischein",
+      "Fischerprüfung"
+    ]
+  },
+  {
+    "id": "de-hausverwaltung-betriebskosten",
+    "country": "DE",
+    "profile": {
+      "person": {
+        "givenNames": "Friedrich-Wilhelm",
+        "surname": "von der Heide"
+      },
+      "household": [],
+      "street": "Eppendorfer Landstraße",
+      "houseNumber": "88",
+      "postcode": "20249",
+      "city": "Hamburg"
+    },
+    "text": "Hanse Immobilienverwaltung GmbH · Mühlenkamp 31 · 22303 Hamburg\n\nHerrn\nDr. F.-W. von der Heide\nEppend0rfer Landstr. 88\n2. Etage rechts\n20249 Hamburg\n\nHamburg, 30.09.2026\n\nBetriebskostenabrechnung 2025\nMietobjekt: Eppendorfer Landstraße 88, 2. OG rechts, 20249 Hamburg\n\nSehr geehrter Herr Dr. von der Heide,\n\nanbei erhalten Sie die Betriebskostenabrechnung für den Zeitraum 01.01.2025 bis 31.12.2025. Den Gesamtkosten von 3.418,52 EUR stehen Ihre Vorauszahlungen von 3.120,00 EUR gegenüber. Es ergibt sich eine Nachzahlung von 298,52 EUR.\n\nBitte überweisen Sie den Betrag bis zum 31.10.2026. Ab dem 01.11.2026 erhöhen wir die monatliche Vorauszahlung auf 285,00 EUR.\n\nMit freundlichen Grüßen\nHanse Immobilienverwaltung GmbH\ni. A. Sabine Krüger",
+    "masked": [
+      {
+        "value": "F.-W. von der Heide",
+        "category": "name"
+      },
+      {
+        "value": "von der Heide",
+        "category": "name"
+      },
+      {
+        "value": "Eppend0rfer Landstr. 88",
+        "category": "address"
+      },
+      {
+        "value": "2. Etage rechts",
+        "category": "address"
+      },
+      {
+        "value": "Eppendorfer Landstraße 88, 2. OG rechts",
+        "category": "address"
+      },
+      {
+        "value": "20249 Hamburg",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Hanse Immobilienverwaltung GmbH",
+      "Mühlenkamp 31 · 22303 Hamburg",
+      "298,52 EUR",
+      "31.10.2026",
+      "Sabine Krüger"
+    ]
+  },
+  {
+    "id": "fr-dgfip-ecart-declaration",
+    "country": "FR",
+    "profile": {
+      "person": {
+        "givenNames": "Jean-Baptiste",
+        "surname": "Petit"
+      },
+      "household": [],
+      "street": "Rue des Marronniers",
+      "houseNumber": "12",
+      "postcode": "69003",
+      "city": "Lyon"
+    },
+    "text": "DIRECTION GÉNÉRALE DES FINANCES PUBLIQUES\nService des impôts des particuliers de Lyon 3e\n165 rue Garibaldi\n69401 LYON CEDEX 03\n\nMONSIEUR PETIT JEAN-BAPTISTE\n12 RUE DES MARRONNIERS\nAPPT 34 BAT C\n69003 LYON\n\nLyon, le 15 septembre 2026\n\nObjet : avis de situation déclarative à l'impôt sur le revenu 2026\n\nMadame, Monsieur,\n\nNous avons examiné la déclaration de revenus 2025 déposée par M. Jean-Baptiste Petit. Un petit écart a été constaté entre les salaires déclarés (31 450 €) et les montants transmis par votre employeur (31 980 €).\n\nLe montant de votre impôt est rectifié à 2 146 €. Le solde de 168 € sera prélevé sur votre compte le 25 novembre 2026.\n\nSi vous avez déménagé, merci de nous signaler votre nouvelle adresse. L'adresse connue de nos services est : 12 rue des Marronniers, appt 34, bât. C, 69003 Lyon.\n\nVeuillez agréer, Madame, Monsieur, l'expression de nos salutations distinguées.\n\nLe chef de service",
+    "masked": [
+      {
+        "value": "PETIT JEAN-BAPTISTE",
+        "category": "name"
+      },
+      {
+        "value": "Jean-Baptiste Petit",
+        "category": "name"
+      },
+      {
+        "value": "12 RUE DES MARRONNIERS",
+        "category": "address"
+      },
+      {
+        "value": "APPT 34 BAT C",
+        "category": "address"
+      },
+      {
+        "value": "12 rue des Marronniers, appt 34, bât. C",
+        "category": "address"
+      },
+      {
+        "value": "69003 LYON",
+        "category": "postcode"
+      },
+      {
+        "value": "69003 Lyon",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Service des impôts des particuliers de Lyon 3e",
+      "165 rue Garibaldi",
+      "69401 LYON CEDEX 03",
+      "2 146 €",
+      "168 €",
+      "25 novembre 2026"
+    ],
+    "keptOrdinary": [
+      "Un petit écart"
+    ]
+  },
+  {
+    "id": "fr-caf-droits-prestations",
+    "country": "FR",
+    "profile": {
+      "person": {
+        "givenNames": "Aïcha",
+        "surname": "Benali"
+      },
+      "household": [
+        {
+          "givenNames": "Yanis",
+          "surname": "Benali"
+        }
+      ],
+      "street": "Avenue Jean Jaurès",
+      "houseNumber": "7",
+      "postcode": "93200",
+      "city": "Saint-Denis"
+    },
+    "text": "Caisse d'allocations familiales de la Seine-Saint-Denis\n93024 BOBIGNY CEDEX\n\nMME BENALI AICHA\nRESIDENCE LES TILLEULS BAT B ESC 2\n7 AV JEAN JAURES\n93200 SAINT-DEN1S\n\nBobigny, le 2 octobre 2026\n\nObjet : vos droits aux prestations familiales\n\nMadame,\n\nSuite à votre déclaration de situation, nous avons réexaminé vos droits. À partir du mois d'octobre 2026, vous percevrez :\n- allocations familiales : 148,52 €\n- allocation de rentrée scolaire pour Yanis BENALI : versée en août\n\nCes montants seront versés sur votre compte le 5 de chaque mois.\n\nNous vous rappelons que vous devez nous signaler tout changement d'adresse. L'adresse enregistrée est : Résidence Les Tilleuls, bât. B, esc. 2, 7 avenue Jean Jaurès, 93200 Saint-Denis.\n\nNous vous prions d'agréer, Madame, l'expression de nos salutations distinguées.\n\nVotre Caf",
+    "masked": [
+      {
+        "value": "BENALI AICHA",
+        "category": "name"
+      },
+      {
+        "value": "BENALI",
+        "category": "name"
+      },
+      {
+        "value": "Yanis BENALI",
+        "category": "name"
+      },
+      {
+        "value": "RESIDENCE LES TILLEULS BAT B ESC 2",
+        "category": "address"
+      },
+      {
+        "value": "7 AV JEAN JAURES",
+        "category": "address"
+      },
+      {
+        "value": "Résidence Les Tilleuls, bât. B, esc. 2, 7 avenue Jean Jaurès",
+        "category": "address"
+      },
+      {
+        "value": "93200 SAINT-DEN1S",
+        "category": "postcode"
+      },
+      {
+        "value": "93200 Saint-Denis",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Caisse d'allocations familiales de la Seine-Saint-Denis",
+      "93024 BOBIGNY CEDEX",
+      "148,52 €",
+      "2 octobre 2026"
+    ]
+  },
+  {
+    "id": "fr-cma-immatriculation",
+    "country": "FR",
+    "profile": {
+      "person": {
+        "givenNames": "Mathieu",
+        "surname": "Boulanger"
+      },
+      "household": [],
+      "street": "Place du Marché",
+      "houseNumber": "3bis",
+      "postcode": "29200",
+      "city": "Brest"
+    },
+    "text": "Chambre de Métiers et de l'Artisanat de Bretagne\nDélégation du Finistère\n24 route de Cuzon\n29000 QUIMPER\n\nMonsieur Mathieu BOULANGER\n3 bis place du Marché\n29200 BREST\n\nQuimper, le 21 septembre 2026\n\nObjet : confirmation d'immatriculation au registre national des entreprises\n\nMonsieur Boulanger,\n\nNous avons le plaisir de vous confirmer l'immatriculation de votre entreprise individuelle au registre national des entreprises en qualité d'artisan boulanger, à compter du 1er octobre 2026.\n\nÉtablissement principal : 3 bis, place du Marché, 29200 Brest\nActivité : fabrication et vente de pain et de viennoiseries\n\nLes frais d'immatriculation de 45 € ont bien été réglés. Nous vous invitons à notre réunion d'accueil des nouveaux artisans le 12 novembre 2026.\n\nNous vous prions d'agréer, Monsieur, nos salutations distinguées.\n\nLe Président",
+    "masked": [
+      {
+        "value": "Mathieu BOULANGER",
+        "category": "name"
+      },
+      {
+        "value": "Monsieur Boulanger",
+        "category": "name"
+      },
+      {
+        "value": "3 bis place du Marché",
+        "category": "address"
+      },
+      {
+        "value": "3 bis, place du Marché",
+        "category": "address"
+      },
+      {
+        "value": "29200 BREST",
+        "category": "postcode"
+      },
+      {
+        "value": "29200 Brest",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Chambre de Métiers et de l'Artisanat de Bretagne",
+      "24 route de Cuzon",
+      "29000 QUIMPER",
+      "45 €",
+      "12 novembre 2026"
+    ],
+    "keptOrdinary": [
+      "artisan boulanger"
+    ]
+  },
+  {
+    "id": "es-aeat-requerimiento-irpf",
+    "country": "ES",
+    "profile": {
+      "person": {
+        "givenNames": "María",
+        "surname": "García López"
+      },
+      "household": [],
+      "street": "Calle Mayor",
+      "houseNumber": "15",
+      "postcode": "28013",
+      "city": "Madrid"
+    },
+    "text": "AGENCIA TRIBUTARIA\nDelegación Especial de Madrid\nC/ Guzmán el Bueno, 139\n28003 MADRID\n\nGARCÍA LÓPEZ MARÍA\nC/ MAYOR, 15, 3º B\n28013 MADRID\n\nMadrid, 24 de septiembre de 2026\n\nAsunto: Requerimiento de documentación – IRPF 2025\n\nEstimada Sra. García López:\n\nEn relación con la declaración del Impuesto sobre la Renta de las Personas Físicas del ejercicio 2025 presentada por Dña. María García López, con domicilio fiscal en calle Mayor 15, 3.º B, 28013 Madrid, se le requiere para que aporte, en el plazo de diez días hábiles, los justificantes de la deducción por alquiler de vivienda habitual por importe de 1.020,00 euros.\n\nLa documentación podrá presentarse en la sede electrónica o en cualquier oficina de la Agencia Tributaria.\n\nAtentamente,\nLa Jefa de la Unidad de Gestión",
+    "masked": [
+      {
+        "value": "GARCÍA LÓPEZ MARÍA",
+        "category": "name"
+      },
+      {
+        "value": "García López",
+        "category": "name"
+      },
+      {
+        "value": "María García López",
+        "category": "name"
+      },
+      {
+        "value": "C/ MAYOR, 15, 3º B",
+        "category": "address"
+      },
+      {
+        "value": "calle Mayor 15, 3.º B",
+        "category": "address"
+      },
+      {
+        "value": "28013 MADRID",
+        "category": "postcode"
+      },
+      {
+        "value": "28013 Madrid",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "AGENCIA TRIBUTARIA",
+      "C/ Guzmán el Bueno, 139",
+      "28003 MADRID",
+      "1.020,00 euros",
+      "24 de septiembre de 2026"
+    ]
+  },
+  {
+    "id": "es-ayuntamiento-denuncia-estacionamiento",
+    "country": "ES",
+    "profile": {
+      "person": {
+        "givenNames": "Lucía",
+        "surname": "Castillo Navarro"
+      },
+      "household": [],
+      "street": "Avenida de Carlos III",
+      "houseNumber": "22",
+      "postcode": "31002",
+      "city": "Pamplona"
+    },
+    "text": "AYUNTAMIENTO DE PAMPLONA\nPolicía Municipal – Sección de Sanciones\nPlaza Consistorial, s/n\n31001 PAMPLONA\n\nCASTILLO NAVARRO LUCÍA\nAVDA. CARLOS III, 22, ESC. IZQ., 4º 1ª\n31002 PAMPLONA\n\nPamplona, 30 de septiembre de 2026\n\nNOTIFICACIÓN DE DENUNCIA\n\nSra. Castillo Navarro:\n\nSe le notifica que el vehículo de su titularidad fue denunciado el día 12 de septiembre de 2026 a las 18:40 horas por estacionar en zona peatonal en la Plaza del Castillo.\n\nImporte de la sanción: 200,00 euros. Si abona la multa en los 20 días naturales siguientes a esta notificación, el importe se reduce un 50 %, a 100,00 euros.\n\nTitular: Lucía Castillo Navarro\nDomicilio: Avenida de Carlos III, 22, esc. izquierda, 4.º 1.ª, 31002 Pamplona\n\nAtentamente,\nEl Jefe de la Sección de Sanciones",
+    "masked": [
+      {
+        "value": "CASTILLO NAVARRO LUCÍA",
+        "category": "name"
+      },
+      {
+        "value": "Castillo Navarro",
+        "category": "name"
+      },
+      {
+        "value": "Lucía Castillo Navarro",
+        "category": "name"
+      },
+      {
+        "value": "AVDA. CARLOS III, 22, ESC. IZQ., 4º 1ª",
+        "category": "address"
+      },
+      {
+        "value": "Avenida de Carlos III, 22, esc. izquierda, 4.º 1.ª",
+        "category": "address"
+      },
+      {
+        "value": "31002 PAMPLONA",
+        "category": "postcode"
+      },
+      {
+        "value": "31002 Pamplona",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "AYUNTAMIENTO DE PAMPLONA",
+      "Plaza Consistorial, s/n",
+      "31001 PAMPLONA",
+      "200,00 euros",
+      "100,00 euros"
+    ],
+    "keptOrdinary": [
+      "Plaza del Castillo"
+    ]
+  },
+  {
+    "id": "es-universitat-matricula",
+    "country": "ES",
+    "profile": {
+      "person": {
+        "givenNames": "Pau",
+        "surname": "Martí Soler"
+      },
+      "household": [],
+      "street": "Carrer de Sants",
+      "houseNumber": "120",
+      "postcode": "08014",
+      "city": "Barcelona"
+    },
+    "text": "Universitat del Llobregat\nSecretaria Acadèmica\nAv. Diagonal, 690\n08034 Barcelona\n\nSr. Pau Martí i Soler\nC/ de Sants, 120, 2n 3a\n08014 BARCELONA\n\nBarcelona, 1 d'octubre de 2026\n\nAssumpte: Confirmació de matrícula – curs 2026-2027\n\nBenvolgut Pau,\n\nUs confirmem que la matrícula de Martí Soler, Pau al Grau en Enginyeria Informàtica ha quedat formalitzada. L'import total de la matrícula és de 1.684,20 euros, que es carregarà en tres terminis: 15 d'octubre, 15 de desembre i 15 de febrer.\n\nRecordeu que qualsevol canvi de domicili s'ha de comunicar a la Secretaria. Domicili actual: C/ de Sants, l20, 2n 3a, 08O14 Barcelona.\n\nAtentament,\n\nSecretaria Acadèmica",
+    "masked": [
+      {
+        "value": "Pau Martí i Soler",
+        "category": "name"
+      },
+      {
+        "value": "Martí Soler, Pau",
+        "category": "name"
+      },
+      {
+        "value": "Pau",
+        "category": "name"
+      },
+      {
+        "value": "C/ de Sants, 120, 2n 3a",
+        "category": "address"
+      },
+      {
+        "value": "C/ de Sants, l20, 2n 3a",
+        "category": "address"
+      },
+      {
+        "value": "08014 BARCELONA",
+        "category": "postcode"
+      },
+      {
+        "value": "08O14 Barcelona",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Universitat del Llobregat",
+      "Av. Diagonal, 690",
+      "08034 Barcelona",
+      "1.684,20 euros"
+    ]
+  },
+  {
+    "id": "pl-urzad-skarbowy-wezwanie",
+    "country": "PL",
+    "profile": {
+      "person": {
+        "givenNames": "Jan",
+        "surname": "Kowalski"
+      },
+      "household": [],
+      "street": "Marszałkowska",
+      "houseNumber": "84/15",
+      "postcode": "00-514",
+      "city": "Warszawa"
+    },
+    "text": "Naczelnik Urzędu Skarbowego Warszawa-Śródmieście\nul. Lindleya 14\n02-013 Warszawa\n\nPan\nJan Kowalski\nul. Marszałkowska 84 m. 15\n00-514 Warszawa\n\nWarszawa, 18 września 2026 r.\n\nWEZWANIE\n\nNa podstawie art. 155 § 1 Ordynacji podatkowej Naczelnik Urzędu Skarbowego wzywa Pana Jana Kowalskiego, zamieszkałego w Warszawie przy ul. Marszałkowskiej 84 m. 15, 00-514 Warszawa, do złożenia wyjaśnień dotyczących zeznania PIT-37 za rok 2025.\n\nRóżnica między kwotą zwrotu wykazaną w zeznaniu (1 240,00 zł) a kwotą wynikającą z informacji od płatnika (860,00 zł) wynosi 380,00 zł.\n\nWyjaśnienia należy złożyć w terminie 7 dni od dnia doręczenia wezwania.\n\nZ poważaniem\nz up. Naczelnika\nEwa Nowicka",
+    "masked": [
+      {
+        "value": "Jan Kowalski",
+        "category": "name"
+      },
+      {
+        "value": "Jana Kowalskiego",
+        "category": "name"
+      },
+      {
+        "value": "ul. Marszałkowska 84 m. 15",
+        "category": "address"
+      },
+      {
+        "value": "ul. Marszałkowskiej 84 m. 15",
+        "category": "address"
+      },
+      {
+        "value": "00-514 Warszawa",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Naczelnik Urzędu Skarbowego Warszawa-Śródmieście",
+      "ul. Lindleya 14",
+      "02-013 Warszawa",
+      "380,00 zł",
+      "Ewa Nowicka"
+    ]
+  },
+  {
+    "id": "pl-rdos-odszkodowanie",
+    "country": "PL",
+    "profile": {
+      "person": {
+        "givenNames": "Anna",
+        "surname": "Wilk"
+      },
+      "household": [],
+      "street": "Osiedle Słoneczne",
+      "houseNumber": "5/12",
+      "postcode": "34-500",
+      "city": "Zakopane"
+    },
+    "text": "Regionalna Dyrekcja Ochrony Środowiska w Krakowie\nul. Mogilska 25\n31-542 Kraków\n\nPani\nAnna Wilk\nos. Słoneczne 5/12\n34-500 Zakopane\n\nKraków, 25 września 2026 r.\n\nDECYZJA\n\nPo rozpatrzeniu wniosku Pani Anny Wilk, zamieszkałej na os. Słonecznym 5/12, 34-500 Zakopane, z dnia 4 sierpnia 2026 r., przyznaje się odszkodowanie za szkody wyrządzone przez wilka w pogłowiu owiec w wysokości 2 750,00 zł.\n\nOdszkodowanie zostanie wypłacone w terminie 14 dni od dnia, w którym decyzja stanie się ostateczna.\n\nOd decyzji przysługuje odwołanie do Generalnego Dyrektora Ochrony Środowiska za pośrednictwem tutejszego organu w terminie 14 dni od dnia jej doręczenia.\n\nZ poważaniem\nRegionalny Dyrektor Ochrony Środowiska w Krakowie",
+    "masked": [
+      {
+        "value": "Anna Wilk",
+        "category": "name"
+      },
+      {
+        "value": "Anny Wilk",
+        "category": "name"
+      },
+      {
+        "value": "os. Słoneczne 5/12",
+        "category": "address"
+      },
+      {
+        "value": "os. Słonecznym 5/12",
+        "category": "address"
+      },
+      {
+        "value": "34-500 Zakopane",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Regionalna Dyrekcja Ochrony Środowiska w Krakowie",
+      "ul. Mogilska 25",
+      "31-542 Kraków",
+      "2 750,00 zł",
+      "4 sierpnia 2026"
+    ],
+    "keptOrdinary": [
+      "przez wilka"
+    ]
+  },
+  {
+    "id": "pl-bank-oprocentowanie",
+    "country": "PL",
+    "profile": {
+      "person": {
+        "givenNames": "Piotr",
+        "surname": "Zieliński"
+      },
+      "household": [],
+      "street": "Aleja Pokoju",
+      "houseNumber": "18/44",
+      "postcode": "31-548",
+      "city": "Kraków"
+    },
+    "text": "Bank Wiślany S.A.\nCentrum Obsługi Klienta\nul. Grzegórzecka 21\n31-532 Kraków\n\nPIOTR ZIELINSKI\nAL. POKOJU 18 M. 44\n31-548 KRAKOW\n\nKraków, 29 września 2026 r.\n\nSzanowny Panie Piotrze,\n\ninformujemy, że od 1 listopada 2026 r. zmienia się oprocentowanie Pana rachunku oszczędnościowego. Nowe oprocentowanie wyniesie 3,10% w skali roku.\n\nUmowa rachunku zawarta jest z Panem Piotrem Zielińskim, zamieszkałym przy al. Pokoju l8 m. 44, 31-548 Kraków. Jeżeli Pana adres uległ zmianie, prosimy o jego aktualizację w bankowości internetowej.\n\nJeżeli nie akceptuje Pan zmiany, może Pan wypowiedzieć umowę do 31 października 2026 r. bez ponoszenia opłat.\n\nZ wyrazami szacunku\nBank Wiślany S.A.",
+    "masked": [
+      {
+        "value": "PIOTR ZIELINSKI",
+        "category": "name"
+      },
+      {
+        "value": "Piotrem Zielińskim",
+        "category": "name"
+      },
+      {
+        "value": "Piotrze",
+        "category": "name"
+      },
+      {
+        "value": "AL. POKOJU 18 M. 44",
+        "category": "address"
+      },
+      {
+        "value": "al. Pokoju l8 m. 44",
+        "category": "address"
+      },
+      {
+        "value": "31-548 KRAKOW",
+        "category": "postcode"
+      },
+      {
+        "value": "31-548 Kraków",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Bank Wiślany S.A.",
+      "ul. Grzegórzecka 21",
+      "31-532 Kraków",
+      "3,10%",
+      "31 października 2026"
+    ]
+  },
+  {
+    "id": "tr-belediye-guclendirme",
+    "country": "TR",
+    "profile": {
+      "person": {
+        "givenNames": "Mehmet",
+        "surname": "Kaya"
+      },
+      "household": [],
+      "street": "Bahariye Sokak",
+      "houseNumber": "12/4",
+      "postcode": "34710",
+      "city": "İstanbul"
+    },
+    "text": "T.C.\nKADIKÖY BELEDİYESİ\nFen İşleri Müdürlüğü\nHasanpaşa Mah. Fahrettin Kerim Gökay Cad. No: 2\n34722 Kadıköy/İSTANBUL\n\nSayın Mehmet KAYA\nCaferağa Mah. Bahariye Sok. No: 12 D: 4\n34710 Kadıköy/İSTANBUL\n\nTarih: 21.09.2026\nKonu: Bina güçlendirme bilgilendirmesi\n\nSayın Mehmet,\n\nBahariye Sok. No: 12 adresindeki binanızda yapılan ön incelemede, arka bahçe duvarının zemin kayması ve kaya düşmesi riskine karşı güçlendirilmesi gerektiği tespit edilmiştir.\n\nMehmet Kaya adına kayıtlı Caferağa Mah. Bahariye Sokak No: 12 Daire: 4 adresindeki bağımsız bölüm için ruhsat harcı 1.850,00 TL olarak hesaplanmıştır. Başvurunuzu 30 gün içinde Fen İşleri Müdürlüğü'ne yapmanız gerekmektedir.\n\nBilgilerinize rica ederim.\n\nFen İşleri Müdürü",
+    "masked": [
+      {
+        "value": "Mehmet KAYA",
+        "category": "name"
+      },
+      {
+        "value": "Mehmet Kaya",
+        "category": "name"
+      },
+      {
+        "value": "Mehmet",
+        "category": "name"
+      },
+      {
+        "value": "Caferağa Mah. Bahariye Sok. No: 12 D: 4",
+        "category": "address"
+      },
+      {
+        "value": "Bahariye Sok. No: 12",
+        "category": "address"
+      },
+      {
+        "value": "Caferağa Mah. Bahariye Sokak No: 12 Daire: 4",
+        "category": "address"
+      },
+      {
+        "value": "34710 Kadıköy/İSTANBUL",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "KADIKÖY BELEDİYESİ",
+      "Hasanpaşa Mah. Fahrettin Kerim Gökay Cad. No: 2",
+      "34722 Kadıköy/İSTANBUL",
+      "1.850,00 TL",
+      "21.09.2026"
+    ],
+    "keptOrdinary": [
+      "kaya düşmesi"
+    ]
+  },
+  {
+    "id": "tr-asm-tahlil-sonucu",
+    "country": "TR",
+    "profile": {
+      "person": {
+        "givenNames": "Elif",
+        "surname": "Demir"
+      },
+      "household": [],
+      "street": "1203. Sokak",
+      "houseNumber": "7/9",
+      "postcode": "06460",
+      "city": "Ankara"
+    },
+    "text": "T.C. SAĞLIK BAKANLIĞI\nAnkara İl Sağlık Müdürlüğü\nÇankaya 14 No'lu Aile Sağlığı Merkezi\nKızılay Mah. Ziya Gökalp Cad. No: 30\n06420 Çankaya/ANKARA\n\nSayın Elif DEMİR\nAtatürk Mah. 1203. Sok. No: 7 D: 9\n06460 Çankaya/ANKARA\n\nTarih: 02.10.2026\nKonu: Tahlil sonucu ve kontrol randevusu\n\nSayın Elif Demir,\n\n15.09.2026 tarihinde verdiğiniz kan tahlilinizin sonuçlarına göre demir eksikliği tespit edilmiştir. Hekiminiz Dr. Selin Arslan sizi 13.10.2026 tarihinde saat 10:30'da kontrol muayenesine davet etmektedir.\n\nKayıtlı adresiniz: Atatürk Mah. 1203. Sokak No: 7 Daire: 9, 06460 Çankaya/Ankara. Adresiniz değiştiyse lütfen e-Devlet üzerinden güncelleyiniz.\n\nSaygılarımızla,\nAile Sağlığı Merkezi",
+    "masked": [
+      {
+        "value": "Elif DEMİR",
+        "category": "name"
+      },
+      {
+        "value": "Elif Demir",
+        "category": "name"
+      },
+      {
+        "value": "Atatürk Mah. 1203. Sok. No: 7 D: 9",
+        "category": "address"
+      },
+      {
+        "value": "Atatürk Mah. 1203. Sokak No: 7 Daire: 9",
+        "category": "address"
+      },
+      {
+        "value": "06460 Çankaya/ANKARA",
+        "category": "postcode"
+      },
+      {
+        "value": "06460 Çankaya/Ankara",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Çankaya 14 No'lu Aile Sağlığı Merkezi",
+      "Kızılay Mah. Ziya Gökalp Cad. No: 30",
+      "06420 Çankaya/ANKARA",
+      "Dr. Selin Arslan",
+      "13.10.2026"
+    ],
+    "keptOrdinary": [
+      "demir eksikliği"
+    ]
+  },
+  {
+    "id": "tr-icra-odeme-emri",
+    "country": "TR",
+    "profile": {
+      "person": {
+        "givenNames": "Hüseyin",
+        "surname": "Çelik"
+      },
+      "household": [
+        {
+          "givenNames": "Zeynep",
+          "surname": "Çelik"
+        }
+      ],
+      "street": "Gazi Bulvarı",
+      "houseNumber": "88/10",
+      "postcode": "35170",
+      "city": "İzmir"
+    },
+    "text": "T.C.\nİZMİR 7. İCRA DAİRESİ\nAdliye Sarayı, Şehit Polis Fethi Sekin Cad. No: 1\n35530 Bayraklı/İZMİR\n\nÖDEME EMRİ\n\nBorçlu: HUSEYIN CELIK\nAdres: Yenişehir Mah. Gazi Bulvarı No: 88 Kat: 5 D: 10\n35170 Konak/İZMİR\n\nAlacaklı: Ege Tüketici Finansman A.Ş.\n\nBorçlu Hüseyin Çelik ve müşterek borçlu Zeynep Çelik'e,\n\nAlacaklıya olan 18.420,50 TL asıl alacak ile 2.115,30 TL işlemiş faizin bu ödeme emrinin tebliğinden itibaren 10 gün içinde ödenmesi; borcun tamamına veya bir kısmına itirazınız varsa 7 gün içinde bildirmeniz gerekmektedir.\n\nTebligat adresi: Yenişehir Mah. Gazi Bulvarı No: 88 Kat: 5 Daire: 1O, 35170 Konak / İzmir\n\nİcra Müdürü",
+    "masked": [
+      {
+        "value": "HUSEYIN CELIK",
+        "category": "name"
+      },
+      {
+        "value": "Hüseyin Çelik",
+        "category": "name"
+      },
+      {
+        "value": "Zeynep Çelik",
+        "category": "name"
+      },
+      {
+        "value": "Yenişehir Mah. Gazi Bulvarı No: 88 Kat: 5 D: 10",
+        "category": "address"
+      },
+      {
+        "value": "Yenişehir Mah. Gazi Bulvarı No: 88 Kat: 5 Daire: 1O",
+        "category": "address"
+      },
+      {
+        "value": "35170 Konak/İZMİR",
+        "category": "postcode"
+      },
+      {
+        "value": "35170 Konak / İzmir",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "İZMİR 7. İCRA DAİRESİ",
+      "35530 Bayraklı/İZMİR",
+      "Ege Tüketici Finansman A.Ş.",
+      "18.420,50 TL",
+      "2.115,30 TL"
+    ]
+  },
+  {
+    "id": "gb-hmrc-self-assessment",
+    "country": "GB",
+    "profile": {
+      "person": {
+        "givenNames": "Oliver James",
+        "surname": "Baker"
+      },
+      "household": [],
+      "street": "Elm Grove",
+      "houseNumber": "14, Flat 2",
+      "postcode": "LS62AB",
+      "city": "Leeds"
+    },
+    "text": "HM Revenue and Customs\nBX9 1AS\n\nMr O J Baker\nFlat 2\n14 Elm Grove\nLEEDS\nLS6 2AB\n\nDate: 18 September 2026\n\nYour Self Assessment tax return for the year ended 5 April 2026\n\nDear Mr Baker\n\nOur records show that you started working for yourself in your trade as a baker on 1 June 2025. You need to send us a Self Assessment tax return for the year ended 5 April 2026 by 31 January 2027.\n\nIf you send your return late, you will have to pay a penalty of £100, even if you have no tax to pay.\n\nWe will send all letters about your return to Flat 2, 14 Elm Grove, Leeds LS6 2AB. If this address is wrong, tell us straight away.\n\nYours sincerely\n\nSelf Assessment\nHM Revenue and Customs",
+    "masked": [
+      {
+        "value": "O J Baker",
+        "category": "name"
+      },
+      {
+        "value": "Mr Baker",
+        "category": "name"
+      },
+      {
+        "value": "Flat 2",
+        "category": "address"
+      },
+      {
+        "value": "14 Elm Grove",
+        "category": "address"
+      },
+      {
+        "value": "LS6 2AB",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "HM Revenue and Customs",
+      "BX9 1AS",
+      "£100",
+      "31 January 2027",
+      "5 April 2026"
+    ],
+    "keptOrdinary": [
+      "your trade as a baker"
+    ]
+  },
+  {
+    "id": "gb-council-tax-garden-waste",
+    "country": "GB",
+    "profile": {
+      "person": {
+        "givenNames": "Grace",
+        "surname": "Wood"
+      },
+      "household": [
+        {
+          "givenNames": "Daniel",
+          "surname": "Okafor"
+        }
+      ],
+      "street": "Hillside Road",
+      "houseNumber": "27",
+      "postcode": "BS7 8QT",
+      "city": "Bristol"
+    },
+    "text": "Bristol City Council\nCouncil Tax\nPO Box 3399\nBristol BS1 9NE\n\nMs G Wood and Mr D Okafor\n27 Hillside Road\nBristol BS7 8OT\n\n12 September 2026\n\nCouncil Tax and garden waste collection 2026/27\n\nDear Ms Wood and Mr Okafor\n\nYour Council Tax for 27 Hillside Road, Bristol BS7 8QT (Band C) for 2026/27 is £2,104.61. You have chosen to pay in 10 monthly instalments of £210.46.\n\nYou have also subscribed to the garden waste service at £68.00 a year. Please remember that we can only collect grass, leaves, hedge cuttings and small pieces of wood. Pieces of wood must be no longer than 1 metre.\n\nIf Grace Wood or Daniel Okafor moves out, you may be entitled to a 25% single person discount.\n\nYours sincerely\n\nRevenues Team\nBristol City Council",
+    "masked": [
+      {
+        "value": "G Wood",
+        "category": "name"
+      },
+      {
+        "value": "Ms Wood",
+        "category": "name"
+      },
+      {
+        "value": "Grace Wood",
+        "category": "name"
+      },
+      {
+        "value": "Okafor",
+        "category": "name"
+      },
+      {
+        "value": "Daniel Okafor",
+        "category": "name"
+      },
+      {
+        "value": "27 Hillside Road",
+        "category": "address"
+      },
+      {
+        "value": "BS7 8OT",
+        "category": "postcode"
+      },
+      {
+        "value": "BS7 8QT",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Bristol City Council",
+      "PO Box 3399",
+      "Bristol BS1 9NE",
+      "£2,104.61",
+      "£68.00"
+    ],
+    "keptOrdinary": [
+      "small pieces of wood"
+    ]
+  },
+  {
+    "id": "gb-hospital-appointment",
+    "country": "GB",
+    "profile": {
+      "person": {
+        "givenNames": "Siobhan",
+        "surname": "O'Neill-Hughes"
+      },
+      "household": [],
+      "street": "Wharf Street",
+      "houseNumber": "3, Apartment 5",
+      "postcode": "M1 2JQ",
+      "city": "Manchester"
+    },
+    "text": "Irwell Valley Hospitals NHS Trust\nOutpatients Department\nOxford Road\nManchester M13 9WL\n\nMs Siobhan O'Neill-Hughes\nApartment 5, Riverside House\n3 Wharf Street\nManchester M1 2JQ\n\nDate: 29 September 2026\n\nDear Ms O'Neill-Hughes\n\nYour appointment with the Dermatology Clinic\n\nYou have been booked an appointment with Dr R. Patel on Tuesday 20 October 2026 at 14:15 in Clinic 3, Outpatients Department.\n\nIf you cannot attend, please let us know at least 48 hours before your appointment so that we can offer it to another patient.\n\nWe have the following address on our records for Siobhan O'Neill-Hughes: Apartment 5, Riverside House, 3 Wharf Street, M1 2JQ.\n\nYours sincerely\n\nOutpatient Booking Team",
+    "masked": [
+      {
+        "value": "Siobhan O'Neill-Hughes",
+        "category": "name"
+      },
+      {
+        "value": "O'Neill-Hughes",
+        "category": "name"
+      },
+      {
+        "value": "Apartment 5, Riverside House",
+        "category": "address"
+      },
+      {
+        "value": "3 Wharf Street",
+        "category": "address"
+      },
+      {
+        "value": "M1 2JQ",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Irwell Valley Hospitals NHS Trust",
+      "Oxford Road",
+      "Manchester M13 9WL",
+      "Dr R. Patel",
+      "20 October 2026"
+    ]
+  },
+  {
+    "id": "us-irs-cp2000",
+    "country": "US",
+    "profile": {
+      "person": {
+        "givenNames": "Robert Allen",
+        "surname": "Green"
+      },
+      "household": [],
+      "street": "Maple Avenue",
+      "houseNumber": "1847 Apt 5B",
+      "postcode": "62704",
+      "city": "Springfield"
+    },
+    "text": "Department of the Treasury\nInternal Revenue Service\nKansas City, MO 64999-0025\n\nROBERT A GREEN JR\n1847 MAPLE AVE APT 58\nSPRINGFIELD IL 62704-3318\n\nNotice date: September 21, 2026\nNotice CP2000\n\nDear Mr. Green,\n\nThe income and payment information we have on file doesn't match the information you reported on your 2024 tax return. If our information is correct, you will owe $1,312.00, including interest of $87.40.\n\nOur records show that you are a lawful permanent resident (a green card holder) residing at 1847 Maple Avenue, Apt. 5B, Springfield, IL 62704. If you disagree with the proposed changes, complete the response form and send it to us by October 21, 2026.\n\nSincerely,\n\nInternal Revenue Service",
+    "masked": [
+      {
+        "value": "ROBERT A GREEN JR",
+        "category": "name"
+      },
+      {
+        "value": "Mr. Green",
+        "category": "name"
+      },
+      {
+        "value": "1847 MAPLE AVE APT 58",
+        "category": "address"
+      },
+      {
+        "value": "1847 Maple Avenue, Apt. 5B",
+        "category": "address"
+      },
+      {
+        "value": "62704-3318",
+        "category": "postcode"
+      },
+      {
+        "value": "62704",
+        "category": "postcode"
+      },
+      {
+        "value": "SPRINGFIELD",
+        "category": "city"
+      },
+      {
+        "value": "Springfield",
+        "category": "city"
+      }
+    ],
+    "kept": [
+      "Internal Revenue Service",
+      "Kansas City, MO 64999-0025",
+      "$1,312.00",
+      "$87.40",
+      "October 21, 2026"
+    ],
+    "keptOrdinary": [
+      "a green card holder"
+    ]
+  },
+  {
+    "id": "us-collection-medical-debt",
+    "country": "US",
+    "profile": {
+      "person": {
+        "givenNames": "María Elena",
+        "surname": "Rodríguez-Vega"
+      },
+      "household": [],
+      "street": "W Sunset Blvd",
+      "houseNumber": "4120 #210",
+      "postcode": "90029",
+      "city": "Los Angeles"
+    },
+    "text": "Pacific Crest Recovery Services, LLC\nP.O. Box 51120\nPhoenix, AZ 85076\n\nMARIA E RODRIGUEZ-VEGA\n4120 W SUNSET BLVD # 210\nLOS ANGELES CA 90029-2245\n\nOctober 1, 2026\n\nRe: Original creditor: Coastline Medical Group\nBalance due: $1,486.20\n\nDear Ms. Rodriguez-Vega:\n\nThis communication is from a debt collector. This is an attempt to collect a debt and any information obtained will be used for that purpose.\n\nOur records show that you, Maria Elena Rodriguez-Vega, owe $1,486.20 to Coastline Medical Group for services provided on March 3, 2026. If you notify us in writing by November 5, 2026 that you dispute this debt, we will stop collection until we send you verification.\n\nPlease confirm that your mailing address is 4120 W. Sunset Blvd., #210, Los Angeles, CA 90029.\n\nSincerely,\n\nAccount Resolution Department",
+    "masked": [
+      {
+        "value": "MARIA E RODRIGUEZ-VEGA",
+        "category": "name"
+      },
+      {
+        "value": "Rodriguez-Vega",
+        "category": "name"
+      },
+      {
+        "value": "Maria Elena Rodriguez-Vega",
+        "category": "name"
+      },
+      {
+        "value": "4120 W SUNSET BLVD # 210",
+        "category": "address"
+      },
+      {
+        "value": "4120 W. Sunset Blvd., #210",
+        "category": "address"
+      },
+      {
+        "value": "90029-2245",
+        "category": "postcode"
+      },
+      {
+        "value": "90029",
+        "category": "postcode"
+      },
+      {
+        "value": "LOS ANGELES",
+        "category": "city"
+      },
+      {
+        "value": "Los Angeles",
+        "category": "city"
+      }
+    ],
+    "kept": [
+      "Pacific Crest Recovery Services, LLC",
+      "P.O. Box 51120",
+      "Phoenix, AZ 85076",
+      "Coastline Medical Group",
+      "$1,486.20"
+    ]
+  },
+  {
+    "id": "us-school-district-attendance",
+    "country": "US",
+    "profile": {
+      "person": {
+        "givenNames": "Kevin",
+        "surname": "O'Brien"
+      },
+      "household": [
+        {
+          "givenNames": "Lisa",
+          "surname": "O'Brien"
+        },
+        {
+          "givenNames": "Ethan",
+          "surname": "O'Brien"
+        }
+      ],
+      "street": "Cedar Lane",
+      "houseNumber": "92",
+      "postcode": "78745",
+      "city": "Austin"
+    },
+    "text": "Travis Heights Independent School District\nOffice of Student Services\n2200 S Congress Ave\nAustin, TX 78704\n\nMr. and Mrs. Kevin O'Brien\n92 Cedar Ln\nAustin, TX 78745-1023\n\nSeptember 28, 2026\n\nDear Mr. and Mrs. O'Brien,\n\nWe are writing about the attendance of your son, Ethan O'Brien, a 7th grade student at Barton Creek Middle School. Ethan has had 6 unexcused absences since the start of the school year on August 18, 2026.\n\nTexas law requires students to attend school. Please contact the school counselor, Ms. Hernandez, to schedule a meeting before October 9, 2026.\n\nOur records list your home address as 92 Cedar Lane, Austin, TX 78745. Please let the school office know if this has changed.\n\nSincerely,\n\nDr. Angela Brooks\nDirector of Student Services",
+    "masked": [
+      {
+        "value": "Kevin O'Brien",
+        "category": "name"
+      },
+      {
+        "value": "O'Brien",
+        "category": "name"
+      },
+      {
+        "value": "Ethan O'Brien",
+        "category": "name"
+      },
+      {
+        "value": "Ethan",
+        "category": "name"
+      },
+      {
+        "value": "92 Cedar Ln",
+        "category": "address"
+      },
+      {
+        "value": "92 Cedar Lane",
+        "category": "address"
+      },
+      {
+        "value": "78745-1023",
+        "category": "postcode"
+      },
+      {
+        "value": "78745",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Travis Heights Independent School District",
+      "2200 S Congress Ave",
+      "Austin, TX 78704",
+      "Barton Creek Middle School",
+      "October 9, 2026",
+      "Dr. Angela Brooks"
+    ]
+  }
+]
