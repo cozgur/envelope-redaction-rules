@@ -50,4 +50,13 @@ struct ProfileGuardTests {
         let result = RedactionEngine.redact("Post voor de bewoners van Villa  Zonnehoek, Amsterdam.", countryHint: "NL", profile: profile)
         #expect(result.map["[ADDRESS_1]"] == "Villa  Zonnehoek")
     }
+
+    @Test("Ranges point at the body's own characters, across case, diacritics and spacing")
+    func ranges() {
+        let profile = RedactionProfile(person: .init(givenNames: "Ayşe", surname: "Yılmaz"), postcode: "3511 AB")
+        let body = "Betreft: AYSE  YILMAZ, postcode 3511AB."
+        let spans = ProfileGuard.ranges(in: body, profile: profile).map { String(body[$0]) }
+        #expect(spans == ["AYSE  YILMAZ", "3511AB"])
+        #expect(ProfileGuard.ranges(in: "de bakker op de hoek", profile: RedactionProfile(person: .init(surname: "Bakker"))).isEmpty)
+    }
 }

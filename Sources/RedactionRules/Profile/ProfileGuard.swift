@@ -74,4 +74,43 @@ public enum ProfileGuard {
             return folded.range(of: pattern, options: .regularExpression) != nil
         }
     }
+
+    /// Where in `body` the hits are, in its own characters: what the app
+    /// masks before taking the reader to the preview (plan §1, a profile hit
+    /// is not an error screen). Longest first where two overlap.
+    public static func ranges(in body: String, profile: RedactionProfile) -> [Range<String.Index>] {
+        // The body folded one character at a time, whitespace runs collapsed,
+        // with each folded character's origin kept.
+        var folded = ""
+        var origins: [String.Index] = []
+        var lastWasSpace = false
+        for index in body.indices {
+            let character = body[index]
+            if character.isWhitespace {
+                if !lastWasSpace { folded.append(" "); origins.append(index) }
+                lastWasSpace = true
+                continue
+            }
+            lastWasSpace = false
+            for piece in ProfileMatcher.fold(String(character)) {
+                folded.append(piece)
+                origins.append(index)
+            }
+        }
+        let characters = Array(folded)
+        var found: [Range<String.Index>] = []
+        for value in hits(in: body, profile: profile).sorted(by: { $0.count > $1.count }) {
+            let pattern = #"(?<![\p{L}\d])"# + NSRegularExpression.escapedPattern(for: value) + #"(?![\p{L}\d])"#
+            var search = folded.startIndex
+            while let match = folded.range(of: pattern, options: .regularExpression, range: search..<folded.endIndex) {
+                let lower = folded.distance(from: folded.startIndex, to: match.lowerBound)
+                let upper = folded.distance(from: folded.startIndex, to: match.upperBound)
+                search = match.upperBound
+                guard upper > lower, upper <= characters.count else { continue }
+                let range = origins[lower]..<body.index(after: origins[upper - 1])
+                if !found.contains(where: { $0.overlaps(range) }) { found.append(range) }
+            }
+        }
+        return found.sorted { $0.lowerBound < $1.lowerBound }
+    }
 }
