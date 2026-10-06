@@ -8,7 +8,7 @@ import Foundation
 /// party named in the body needs a model to find, and a model that reads the
 /// letter is the thing this engine exists to avoid; that is v1.1. The
 /// consequence is stated plainly rather than hidden.
-public enum PIIKind: String, CaseIterable, Sendable {
+public enum PIIKind: String, CaseIterable, Sendable, Codable {
     /// A national identity number: BSN, Steuer-ID, NIR, DNI/NIE, PESEL,
     /// TCKN, SSN, NINO.
     case idNumber

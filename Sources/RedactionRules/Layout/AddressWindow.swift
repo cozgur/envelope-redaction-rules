@@ -39,8 +39,31 @@ public enum AddressWindow {
     /// 0.875–4.375 in from the left and 2.0–3.125 in from the top.
     static let us10 = Rectangle(left: 12, right: 125, top: 35, bottom: 95)
 
+    /// Which window, or the shape alone on a page that is not rectified.
+    public enum Kind: String, Sendable, Hashable {
+        case a4Left = "a4-left"
+        case a4Right = "a4-right"
+        case ukDL = "uk-dl"
+        case ukC5 = "uk-c5"
+        case us10 = "us-10"
+        case shape
+    }
+
+    /// What was found: the claim, which window, and the lines' boxes -- for
+    /// a debug screen that shows where, never what.
+    public struct Detection: Sendable {
+        public var claim: KnownClaim
+        public var kind: Kind
+        public var boxes: [LayoutBox]
+    }
+
     /// The window claim for page 1, or nil when no cluster qualifies.
     public static func find(in text: String, layout: LetterLayout, countryHint: String? = nil) -> KnownClaim? {
+        detect(in: text, layout: layout, countryHint: countryHint)?.claim
+    }
+
+    /// The window, with its kind and boxes, or nil.
+    public static func detect(in text: String, layout: LetterLayout, countryHint: String? = nil) -> Detection? {
         guard let page = layout.pages.first, !page.lines.isEmpty else { return nil }
         let country = countryHint?.uppercased()
         let ratio = (page.heightMM ?? 297) / (page.widthMM ?? 210)
@@ -49,8 +72,10 @@ public enum AddressWindow {
         let heightMM = page.heightMM ?? (usLetter ? 279.4 : 297)
 
         let candidates: [[LayoutLine]]
+        let kinds: [Kind]
         if page.rectified {
             let rectangles: [Rectangle] = usLetter ? [us10] : country == "GB" ? [ukDL, ukC5] : [a4Left, a4Right]
+            kinds = usLetter ? [.us10] : country == "GB" ? [.ukDL, .ukC5] : [.a4Left, .a4Right]
             candidates = rectangles.map { rectangle in
                 page.lines.filter { line in
                     let x = line.box.midX * widthMM
@@ -60,14 +85,15 @@ public enum AddressWindow {
             }
         } else {
             candidates = [page.lines.filter { $0.box.midY > 0.5 }]
+            kinds = [.shape]
         }
 
-        var best: (score: Int, lines: [LayoutLine])?
-        for lines in candidates {
+        var best: (score: Int, lines: [LayoutLine], kind: Kind)?
+        for (lines, kind) in zip(candidates, kinds) {
             for cluster in clusters(of: lines) {
                 guard let block = qualified(cluster, country: country) else { continue }
                 let value = score(block, among: page.lines, rectified: page.rectified)
-                if value > (best?.score ?? Int.min) { best = (value, block) }
+                if value > (best?.score ?? Int.min) { best = (value, block, kind) }
             }
         }
         // The block must also read like a recipient, rectangle or not: a
@@ -93,7 +119,7 @@ public enum AddressWindow {
             return start..<end
         }
         guard ranges.count == block.count else { return nil }
-        return KnownClaim(kind: .address, ranges: ranges, source: .window)
+        return Detection(claim: KnownClaim(kind: .address, ranges: ranges, source: .window), kind: best.kind, boxes: block.map(\.box))
     }
 
     private static func occurrences(of line: String, in text: String) -> Int {

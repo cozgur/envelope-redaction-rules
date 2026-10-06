@@ -23,6 +23,19 @@ public struct RedactionProfile: Sendable, Hashable, Codable {
         }
     }
 
+    /// A span the reader chose to always hide ("Always hide this" after
+    /// "Mask this"): matched wherever its words appear, as the kind it was
+    /// saved with.
+    public struct Alias: Sendable, Hashable, Codable {
+        public var text: String
+        public var kind: PIIKind
+
+        public init(text: String, kind: PIIKind) {
+            self.text = text
+            self.kind = kind
+        }
+    }
+
     public var person: Person
     /// Up to five people the reader also wants hidden; names only.
     public var household: [Person]
@@ -33,6 +46,8 @@ public struct RedactionProfile: Sendable, Hashable, Codable {
     public var postcode: String?
     /// Matched only on the postcode's line, never alone.
     public var city: String?
+    /// The reader's saved aliases.
+    public var aliases: [Alias]
 
     public init(
         person: Person,
@@ -40,7 +55,8 @@ public struct RedactionProfile: Sendable, Hashable, Codable {
         street: String? = nil,
         houseNumber: String? = nil,
         postcode: String? = nil,
-        city: String? = nil
+        city: String? = nil,
+        aliases: [Alias] = []
     ) {
         self.person = person
         self.household = household
@@ -48,5 +64,21 @@ public struct RedactionProfile: Sendable, Hashable, Codable {
         self.houseNumber = houseNumber
         self.postcode = postcode
         self.city = city
+        self.aliases = aliases
+    }
+
+    enum CodingKeys: String, CodingKey { case person, household, street, houseNumber, postcode, city, aliases }
+
+    /// Every field but the person may be absent: a profile saved before
+    /// aliases existed, or a test fixture, decodes with none.
+    public init(from decoder: any Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        person = try container.decode(Person.self, forKey: .person)
+        household = try container.decodeIfPresent([Person].self, forKey: .household) ?? []
+        street = try container.decodeIfPresent(String.self, forKey: .street)
+        houseNumber = try container.decodeIfPresent(String.self, forKey: .houseNumber)
+        postcode = try container.decodeIfPresent(String.self, forKey: .postcode)
+        city = try container.decodeIfPresent(String.self, forKey: .city)
+        aliases = try container.decodeIfPresent([Alias].self, forKey: .aliases) ?? []
     }
 }

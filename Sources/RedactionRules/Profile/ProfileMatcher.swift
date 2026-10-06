@@ -57,6 +57,19 @@ public enum ProfileMatcher {
         if let postcode = profile.postcode {
             addresses += postcodeMatches(postcode, city: profile.city, in: text)
         }
+        // The reader's aliases: their words, whole, in any case, with any
+        // spacing between them. Exact otherwise -- the reader chose this
+        // text, so it is not stretched.
+        var aliases: [(kind: PIIKind, range: Range<String.Index>)] = []
+        for alias in profile.aliases {
+            let words = alias.text.split(whereSeparator: { $0.isWhitespace }).map { NSRegularExpression.escapedPattern(for: String($0)) }
+            guard !words.isEmpty, alias.text.count >= 3 else { continue }
+            let pattern = #"(?<![\p{L}\d])"# + words.joined(separator: #"\s+"#) + #"(?![\p{L}\d])"#
+            guard let regex = try? NSRegularExpression(pattern: pattern, options: [.caseInsensitive]) else { continue }
+            for match in regex.matches(in: text, range: NSRange(text.startIndex..., in: text)) {
+                if let range = Range(match.range, in: text) { aliases.append((alias.kind, range)) }
+            }
+        }
         var claims: [KnownClaim] = []
         // Longest first, and no two claims overlap: "A. Yilmaz" before the
         // "Yilmaz" inside it.
@@ -67,6 +80,7 @@ public enum ProfileMatcher {
         // read into the letterhead (deviation 4, plan §1).
         let all = names.map { (kind: PIIKind.name, range: $0.range, strong: $0.strong) }
             + addresses.map { (kind: PIIKind.address, range: $0, strong: readerStrong) }
+            + aliases.map { (kind: $0.kind, range: $0.range, strong: true) }
         let length = { (range: Range<String.Index>) in text.distance(from: range.lowerBound, to: range.upperBound) }
         for candidate in all.sorted(by: { length($0.range) > length($1.range) }) {
             guard !taken.contains(where: { $0.overlaps(candidate.range) }) else { continue }
