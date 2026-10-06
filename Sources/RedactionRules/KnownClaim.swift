@@ -20,10 +20,18 @@ public struct KnownClaim: Sendable {
     /// For a window: its lines in reading order, which may not be text order.
     public var ranges: [Range<String.Index>]
     public var source: Source
+    /// A profile name matched in a form only a person's name takes: with
+    /// initials or a given name, or after an honorific. Such a claim is not
+    /// held back by the letterhead guard, which exists for the sender's
+    /// details: when OCR misses the sender's block, the recipient's block is
+    /// the first one, and the guard would otherwise keep the reader's own
+    /// name in the clear. Addresses and a surname alone are still held back.
+    public var strongContext: Bool
 
-    public init(kind: PIIKind, ranges: [Range<String.Index>], source: Source) {
+    public init(kind: PIIKind, ranges: [Range<String.Index>], source: Source, strongContext: Bool = false) {
         self.kind = kind
         self.ranges = ranges
         self.source = source
+        self.strongContext = strongContext
     }
 }

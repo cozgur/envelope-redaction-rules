@@ -122,8 +122,9 @@ public enum RedactionEngine {
             claims.append(Claim(kind: claim.kind, ranges: claim.ranges, rank: Claim.windowRank))
         }
         for claim in known where claim.source == .profile {
+            let guarded = !(claim.kind == .name && claim.strongContext)
             for range in claim.ranges {
-                guard !protected.contains(where: { $0.vetoes(claim.kind) && $0.range.overlaps(range) }),
+                guard !guarded || !protected.contains(where: { $0.vetoes(claim.kind) && $0.range.overlaps(range) }),
                       !claims.contains(where: { $0.overlaps(range) })
                 else { continue }
                 claims.append(Claim(kind: claim.kind, ranges: [range], rank: Claim.profileRank))
@@ -135,7 +136,21 @@ public enum RedactionEngine {
                 guard !protected.contains(where: {
                     $0.vetoes(rule.kind) && $0.range.overlaps(range)
                 }) else { continue }
-                guard !claims.contains(where: { $0.overlaps(range) }) else { continue }
+                let overlapping = claims.indices.filter { claims[$0].overlaps(range) }
+                if !overlapping.isEmpty {
+                    // A rule's address block that wholly contains profile
+                    // matches is the better answer where the app found no
+                    // window: the block masks the flat number and the city
+                    // line too, which the profile does not know. It takes
+                    // their place. Anything else that overlaps wins.
+                    let absorbs = rule.kind == .address && overlapping.allSatisfy { index in
+                        let claim = claims[index]
+                        return claim.rank == Claim.profileRank
+                            && claim.ranges.allSatisfy { range.contains($0.lowerBound) && $0.upperBound <= range.upperBound }
+                    }
+                    guard absorbs else { continue }
+                    for index in overlapping.sorted(by: >) { claims.remove(at: index) }
+                }
                 claims.append(Claim(kind: rule.kind, ranges: [range], rank: Claim.firstRuleRank + index))
             }
         }
@@ -230,6 +245,24 @@ public enum RedactionEngine {
             counts: nextIndex,
             spans: spans
         )
+    }
+
+    /// The same, with the reader's own details matched first (L1).
+    ///
+    /// The profile's matches join `known` as profile claims; a window claim
+    /// in `known` also gives the matcher its strong context (a surname
+    /// inside the window may be two edits off). With no profile this is
+    /// `redact(_:countryHint:known:)`.
+    public static func redact(
+        _ text: String,
+        countryHint: String? = nil,
+        known: [KnownClaim] = [],
+        profile: RedactionProfile?
+    ) -> RedactionResult {
+        guard let profile else { return redact(text, countryHint: countryHint, known: known) }
+        let window = known.filter { $0.source == .window }.flatMap(\.ranges)
+        let matched = ProfileMatcher.claims(in: text, profile: profile, window: window)
+        return redact(text, countryHint: countryHint, known: known + matched)
     }
 
     /// Puts the original values back.
@@ -329,7 +362,10 @@ public enum RedactionEngine {
         var result = claims
 
         var distinct: [PlaceholderKey: Int] = [:]
-        for claim in claims where claim.ranges.count == 1 {
+        // Not a profile match: the matcher has already found every occurrence
+        // its precision guards allow, and spreading its value here would mask
+        // "der Koch" because "Frau Koch" was the reader.
+        for claim in claims where claim.ranges.count == 1 && claim.rank != Claim.profileRank {
             let key = PlaceholderKey(kind: claim.kind, value: claim.value(in: text))
             distinct[key] = min(distinct[key] ?? .max, claim.rank)
         }
@@ -352,6 +388,11 @@ public enum RedactionEngine {
             // prose, and nothing about the result says which words used to be
             // ordinary.
             guard !Stopwords.blocksRepeat(key.value) else { continue }
+            // Nor a name that is one ordinary word or place (Bakker, Koch,
+            // Zwolle) or under four letters: masked where a rule found it,
+            // never on sight elsewhere (redaction v2 plan §1, precision
+            // guards).
+            if key.kind == .name, ProfileMatcher.isAmbiguousAlone(key.value) { continue }
             var searchStart = text.startIndex
             while let range = text.range(of: key.value, range: searchStart..<text.endIndex) {
                 searchStart = range.upperBound

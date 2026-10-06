@@ -1,0 +1,225 @@
+[
+  {
+    "id": "bakker-the-baker",
+    "country": "NL",
+    "profile": {
+      "person": {
+        "givenNames": "Anne",
+        "surname": "Bakker"
+      },
+      "household": []
+    },
+    "text": "Mw. A. Bakker\n\nGeachte mevrouw Bakker,\n\nUw brood kunt u voortaan ophalen bij de bakker op de hoek. Een bakker die wil uitbreiden heeft een vergunning nodig.",
+    "masked": [
+      {
+        "value": "A. Bakker",
+        "category": "name"
+      },
+      {
+        "value": "Bakker",
+        "category": "name"
+      }
+    ],
+    "kept": [
+      "Geachte mevrouw"
+    ],
+    "keptOrdinary": [
+      "de bakker op de hoek",
+      "Een bakker die wil uitbreiden"
+    ]
+  },
+  {
+    "id": "de-groot-and-a-large-amount",
+    "country": "NL",
+    "profile": {
+      "person": {
+        "givenNames": "Pieter",
+        "surname": "de Groot"
+      },
+      "household": []
+    },
+    "text": "Dhr. P. de Groot\n\nGeachte heer De Groot,\n\nHet gaat om een groot bedrag. De Groot Handelsonderneming is niet betrokken bij deze zaak.",
+    "masked": [
+      {
+        "value": "P. de Groot",
+        "category": "name"
+      },
+      {
+        "value": "heer De Groot",
+        "category": "name"
+      }
+    ],
+    "kept": [
+      "Geachte heer"
+    ],
+    "keptOrdinary": [
+      "een groot bedrag",
+      "De Groot Handelsonderneming"
+    ]
+  },
+  {
+    "id": "zwolle-the-town",
+    "country": "NL",
+    "profile": {
+      "person": {
+        "givenNames": "Erik",
+        "surname": "Zwolle"
+      },
+      "household": []
+    },
+    "text": "Dhr. E. Zwolle\n\nGeachte heer Zwolle,\n\nDe zitting vindt plaats in Zwolle, in het gerechtsgebouw aan de Luttenbergstraat.",
+    "masked": [
+      {
+        "value": "E. Zwolle",
+        "category": "name"
+      },
+      {
+        "value": "heer Zwolle",
+        "category": "name"
+      }
+    ],
+    "kept": [
+      "Geachte heer"
+    ],
+    "keptOrdinary": [
+      "plaats in Zwolle"
+    ]
+  },
+  {
+    "id": "visser-the-fisherman",
+    "country": "NL",
+    "profile": {
+      "person": {
+        "givenNames": "Jan",
+        "surname": "Visser"
+      },
+      "household": []
+    },
+    "text": "Dhr. J. Visser\n\nU vraagt een vergunning aan als beroepsvisser. Een visser zonder vergunning krijgt een boete.",
+    "masked": [
+      {
+        "value": "J. Visser",
+        "category": "name"
+      }
+    ],
+    "kept": [],
+    "keptOrdinary": [
+      "Een visser zonder vergunning",
+      "beroepsvisser"
+    ]
+  },
+  {
+    "id": "koch-the-cook",
+    "country": "DE",
+    "profile": {
+      "person": {
+        "givenNames": "Sabine",
+        "surname": "Koch"
+      },
+      "household": []
+    },
+    "text": "Frau S. Koch\n\nSehr geehrte Frau Koch,\n\nder Koch Ihrer Kantine benötigt ein Gesundheitszeugnis. Koch und Küchenhilfe sind gesondert anzumelden.",
+    "masked": [
+      {
+        "value": "S. Koch",
+        "category": "name"
+      },
+      {
+        "value": "Frau Koch",
+        "category": "name"
+      }
+    ],
+    "kept": [
+      "Sehr geehrte"
+    ],
+    "keptOrdinary": [
+      "der Koch Ihrer Kantine",
+      "Koch und Küchenhilfe"
+    ]
+  },
+  {
+    "id": "green-the-colour",
+    "country": "GB",
+    "profile": {
+      "person": {
+        "givenNames": "Oliver",
+        "surname": "Green"
+      },
+      "household": []
+    },
+    "text": "Mr O. Green\n\nDear Mr Green,\n\nPlease put garden waste in the green bin. Green waste is collected every second Tuesday.",
+    "masked": [
+      {
+        "value": "O. Green",
+        "category": "name"
+      },
+      {
+        "value": "Mr Green",
+        "category": "name"
+      }
+    ],
+    "kept": [
+      "Dear"
+    ],
+    "keptOrdinary": [
+      "the green bin",
+      "Green waste is collected"
+    ]
+  },
+  {
+    "id": "demir-the-iron",
+    "country": "TR",
+    "profile": {
+      "person": {
+        "givenNames": "Ali",
+        "surname": "Demir"
+      },
+      "household": []
+    },
+    "text": "Sayın A. Demir\n\nSayın Demir,\n\nbinanızdaki demir korkulukların onarımı gerekmektedir. Demir ve çelik atıkları ayrıca toplanır.",
+    "masked": [
+      {
+        "value": "A. Demir",
+        "category": "name"
+      },
+      {
+        "value": "Sayın Demir",
+        "category": "name"
+      }
+    ],
+    "kept": [],
+    "keptOrdinary": [
+      "demir korkulukların",
+      "Demir ve çelik atıkları"
+    ]
+  },
+  {
+    "id": "kowal-the-smith",
+    "country": "PL",
+    "profile": {
+      "person": {
+        "givenNames": "Jan",
+        "surname": "Kowal"
+      },
+      "household": []
+    },
+    "text": "Pan J. Kowal\n\nSzanowny Panie Kowal,\n\nzakład prowadzi kowal z uprawnieniami. Kowal musi zgłosić działalność do urzędu.",
+    "masked": [
+      {
+        "value": "J. Kowal",
+        "category": "name"
+      },
+      {
+        "value": "Panie Kowal",
+        "category": "name"
+      }
+    ],
+    "kept": [
+      "Szanowny Panie"
+    ],
+    "keptOrdinary": [
+      "prowadzi kowal z uprawnieniami",
+      "Kowal musi zgłosić"
+    ]
+  }
+]

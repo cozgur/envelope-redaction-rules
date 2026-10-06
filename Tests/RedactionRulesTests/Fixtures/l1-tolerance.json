@@ -1,0 +1,607 @@
+[
+  {
+    "id": "fold-case-and-diacritics",
+    "country": "TR",
+    "profile": {
+      "person": {
+        "givenNames": "Ayşe",
+        "surname": "Yılmaz"
+      },
+      "household": []
+    },
+    "text": "Sayın AYŞE YILMAZ\n\nSayın Yilmaz,\n\nbaşvurunuz alınmıştır. Ayşe Yılmaz adına kayıtlı dosya incelenmektedir.",
+    "masked": [
+      {
+        "value": "AYŞE YILMAZ",
+        "category": "name"
+      },
+      {
+        "value": "Yilmaz",
+        "category": "name"
+      },
+      {
+        "value": "Ayşe Yılmaz",
+        "category": "name"
+      }
+    ],
+    "kept": [
+      "Sayın",
+      "başvurunuz alınmıştır"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "initials-forms",
+    "country": "NL",
+    "profile": {
+      "person": {
+        "givenNames": "Ayşe Nur",
+        "surname": "Yilmaz"
+      },
+      "household": []
+    },
+    "text": "Mw. A. Yilmaz\n\nBetreft: uw aanvraag\n\nDe aanvraag van A Yilmaz is ontvangen. Wij hebben ook post voor A.N. Yilmaz en voor A. N. Yilmaz.",
+    "masked": [
+      {
+        "value": "A. Yilmaz",
+        "category": "name"
+      },
+      {
+        "value": "A Yilmaz",
+        "category": "name"
+      },
+      {
+        "value": "A.N. Yilmaz",
+        "category": "name"
+      },
+      {
+        "value": "A. N. Yilmaz",
+        "category": "name"
+      }
+    ],
+    "kept": [
+      "Mw.",
+      "Betreft: uw aanvraag"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "given-name-and-surname",
+    "country": "DE",
+    "profile": {
+      "person": {
+        "givenNames": "Ayşe",
+        "surname": "Yilmaz"
+      },
+      "household": []
+    },
+    "text": "Frau Ayse Yilmaz\n\nSehr geehrte Frau Yilmaz,\n\nwir bestätigen den Eingang Ihres Antrags.",
+    "masked": [
+      {
+        "value": "Ayse Yilmaz",
+        "category": "name"
+      },
+      {
+        "value": "Yilmaz",
+        "category": "name"
+      }
+    ],
+    "kept": [
+      "Frau",
+      "Sehr geehrte Frau",
+      "wir bestätigen den Eingang"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "tussenvoegsel-every-position",
+    "country": "NL",
+    "profile": {
+      "person": {
+        "givenNames": "Rik Anton",
+        "surname": "van der Meulen"
+      },
+      "household": []
+    },
+    "text": "Dhr. R.A. van der Meulen\n\nGeachte heer Van der Meulen,\n\nIn ons register staat u als Meulen, R.A. van der. Wij vragen de heer Van der Meulen om een reactie.",
+    "masked": [
+      {
+        "value": "R.A. van der Meulen",
+        "category": "name"
+      },
+      {
+        "value": "Van der Meulen",
+        "category": "name"
+      },
+      {
+        "value": "Meulen, R.A. van der",
+        "category": "name"
+      }
+    ],
+    "kept": [
+      "Geachte heer",
+      "In ons register staat u als"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "double-surname-whole-and-parts",
+    "country": "NL",
+    "profile": {
+      "person": {
+        "givenNames": "Ayşe",
+        "surname": "Yılmaz-de Vries"
+      },
+      "household": []
+    },
+    "text": "Mevrouw A. Yilmaz-de Vries\n\nGeachte mevrouw Yilmaz-de Vries,\n\nOok mevrouw De Vries en mevrouw Yilmaz zijn bij ons bekend.",
+    "masked": [
+      {
+        "value": "A. Yilmaz-de Vries",
+        "category": "name"
+      },
+      {
+        "value": "Yilmaz-de Vries",
+        "category": "name"
+      },
+      {
+        "value": "De Vries",
+        "category": "name"
+      },
+      {
+        "value": "Yilmaz",
+        "category": "name"
+      }
+    ],
+    "kept": [
+      "Geachte mevrouw",
+      "zijn bij ons bekend"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "honorifics-kept-outside",
+    "country": "PL",
+    "profile": {
+      "person": {
+        "givenNames": "Anna",
+        "surname": "Kowalczyk"
+      },
+      "household": []
+    },
+    "text": "Pani Anna Kowalczyk\n\nSzanowna Pani Kowalczyk,\n\nuprzejmie informujemy, że wniosek Pani Kowalczyk został przyjęty.",
+    "masked": [
+      {
+        "value": "Anna Kowalczyk",
+        "category": "name"
+      },
+      {
+        "value": "Kowalczyk",
+        "category": "name"
+      }
+    ],
+    "kept": [
+      "Pani",
+      "Szanowna Pani",
+      "uprzejmie informujemy"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "one-edit-out-of-context",
+    "country": "NL",
+    "profile": {
+      "person": {
+        "givenNames": "Ayşe",
+        "surname": "Yilmaz"
+      },
+      "household": []
+    },
+    "text": "Mw. A. Yilmaz\n\nDe stukken van Yilmez zijn compleet; het dossier Yllmaz is gesloten.",
+    "masked": [
+      {
+        "value": "A. Yilmaz",
+        "category": "name"
+      },
+      {
+        "value": "Yilmez",
+        "category": "name"
+      },
+      {
+        "value": "Yllmaz",
+        "category": "name"
+      }
+    ],
+    "kept": [
+      "De stukken van",
+      "zijn compleet"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "two-edit-ocr-in-strong-context",
+    "country": "NL",
+    "profile": {
+      "person": {
+        "givenNames": "Klaas",
+        "surname": "Brandsma"
+      },
+      "household": []
+    },
+    "text": "Dhr. K.L. Brandsma\n\nGeachte heer Brandsrna,\n\nde aanvraag van K.L. Bransdma is ontvangen. Wij nemen contact op met de heer Brandsrma zodra het besluit klaar is.",
+    "masked": [
+      {
+        "value": "K.L. Brandsma",
+        "category": "name"
+      },
+      {
+        "value": "Brandsrna",
+        "category": "name"
+      },
+      {
+        "value": "K.L. Bransdma",
+        "category": "name"
+      },
+      {
+        "value": "Brandsrma",
+        "category": "name"
+      }
+    ],
+    "kept": [
+      "Geachte heer",
+      "de aanvraag van",
+      "zodra het besluit klaar is"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "two-edit-ocr-after-given-name",
+    "country": "DE",
+    "profile": {
+      "person": {
+        "givenNames": "Mehmet",
+        "surname": "Özdemir"
+      },
+      "household": []
+    },
+    "text": "Herrn Mehmet Ozdemlr\n\nSehr geehrter Herr Ozdernir,\n\nIhr Antrag ist eingegangen.",
+    "masked": [
+      {
+        "value": "Mehmet Ozdemlr",
+        "category": "name"
+      },
+      {
+        "value": "Ozdernir",
+        "category": "name"
+      }
+    ],
+    "kept": [
+      "Herrn",
+      "Sehr geehrter Herr",
+      "Ihr Antrag ist eingegangen"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "short-surname-only-in-context",
+    "country": "NL",
+    "profile": {
+      "person": {
+        "givenNames": "Wei",
+        "surname": "Li"
+      },
+      "household": []
+    },
+    "text": "Mw. W. Li\n\nGeachte mevrouw Li,\n\nHet bedrag staat in bijlage II en de stukken liggen bij Li-Ning Sport.",
+    "masked": [
+      {
+        "value": "W. Li",
+        "category": "name"
+      },
+      {
+        "value": "mevrouw Li",
+        "category": "name"
+      }
+    ],
+    "kept": [
+      "Geachte mevrouw",
+      "bijlage II",
+      "Li-Ning Sport"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "street-and-number-suffix-forms",
+    "country": "NL",
+    "profile": {
+      "person": {
+        "givenNames": "Ayşe",
+        "surname": "Yilmaz"
+      },
+      "household": [],
+      "street": "Hoofdstraat",
+      "houseNumber": "12-II",
+      "postcode": "1011 AB",
+      "city": "Amsterdam"
+    },
+    "text": "Mw. A. Yilmaz\nHoofdstraat 12-II\n1011 AB Amsterdam\n\nWij hebben uw adres als Hoofdstraat 12 II genoteerd, eerder als Hoofdstraat 12-2 en ook als Hoofdstraat 12 hs.",
+    "masked": [
+      {
+        "value": "Hoofdstraat 12-II",
+        "category": "address"
+      },
+      {
+        "value": "Hoofdstraat 12 II",
+        "category": "address"
+      },
+      {
+        "value": "Hoofdstraat 12-2",
+        "category": "address"
+      },
+      {
+        "value": "Hoofdstraat 12 hs",
+        "category": "address"
+      },
+      {
+        "value": "1011 AB",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Wij hebben uw adres als",
+      "genoteerd"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "house-number-ocr-digits",
+    "country": "NL",
+    "profile": {
+      "person": {
+        "givenNames": "Ayşe",
+        "surname": "Yilmaz"
+      },
+      "household": [],
+      "street": "Lindenlaan",
+      "houseNumber": "10",
+      "postcode": "3581 KT",
+      "city": "Utrecht"
+    },
+    "text": "Mw. A. Yilmaz\nLindenlaan lO\n3581 KT  UTRECHT\n\nUw adres Lindenlaan 10 is bij ons bekend.",
+    "masked": [
+      {
+        "value": "Lindenlaan lO",
+        "category": "address"
+      },
+      {
+        "value": "Lindenlaan 10",
+        "category": "address"
+      },
+      {
+        "value": "3581 KT",
+        "category": "postcode"
+      },
+      {
+        "value": "UTRECHT",
+        "category": "city"
+      }
+    ],
+    "kept": [
+      "is bij ons bekend"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "street-needs-its-number",
+    "country": "NL",
+    "profile": {
+      "person": {
+        "givenNames": "Joost",
+        "surname": "de Wit"
+      },
+      "household": [],
+      "street": "Kerkstraat",
+      "houseNumber": "5",
+      "postcode": "2011 XA",
+      "city": "Haarlem"
+    },
+    "text": "Gemeente Haarlem\nKerkstraat 120\n2011 KP Haarlem\n\nDhr. J. de Wit\nKerkstraat 5\n2011 XA Haarlem\n\nU kunt langskomen op ons kantoor aan de Kerkstraat 120.",
+    "masked": [
+      {
+        "value": "J. de Wit",
+        "category": "name"
+      },
+      {
+        "value": "Kerkstraat 5",
+        "category": "address"
+      },
+      {
+        "value": "2011 XA",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Gemeente Haarlem",
+      "Kerkstraat 120",
+      "2011 KP Haarlem"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "postcode-spacing-and-ocr",
+    "country": "NL",
+    "profile": {
+      "person": {
+        "givenNames": "Ayşe",
+        "surname": "Yilmaz"
+      },
+      "household": [],
+      "postcode": "1011 AB",
+      "city": "Amsterdam"
+    },
+    "text": "Mw. A. Yilmaz\n1011AB Amsterdam\n\nOok bekend onder 1011  ab en 1O11 AB. Uw bezoek aan Amsterdam is genoteerd.",
+    "masked": [
+      {
+        "value": "1011AB",
+        "category": "postcode"
+      },
+      {
+        "value": "1011  ab",
+        "category": "postcode"
+      },
+      {
+        "value": "1O11 AB",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Uw bezoek aan Amsterdam is genoteerd"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "number-first-addresses",
+    "country": "GB",
+    "profile": {
+      "person": {
+        "givenNames": "Ayse",
+        "surname": "Yilmaz"
+      },
+      "household": [],
+      "street": "High Street",
+      "houseNumber": "12",
+      "postcode": "SW1A 1AA",
+      "city": "London"
+    },
+    "text": "Ms A. Yilmaz\n12 High Street, Flat 4\nLondon SW1A 1AA\n\nWe will write to you at 12 High Street.",
+    "masked": [
+      {
+        "value": "12 High Street",
+        "category": "address"
+      },
+      {
+        "value": "SW1A 1AA",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "We will write to you at"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "number-after-no",
+    "country": "TR",
+    "profile": {
+      "person": {
+        "givenNames": "Ayşe",
+        "surname": "Yılmaz"
+      },
+      "household": [],
+      "street": "Atatürk Caddesi",
+      "houseNumber": "12",
+      "postcode": "34100",
+      "city": "İstanbul"
+    },
+    "text": "Sayın A. Yılmaz\nAtatürk Caddesi No: 12\n34100 İstanbul\n\nAdresiniz Ataturk Caddesi No:12 olarak kayıtlıdır. Telefon: 0212 34100 55",
+    "masked": [
+      {
+        "value": "Atatürk Caddesi No: 12",
+        "category": "address"
+      },
+      {
+        "value": "Ataturk Caddesi No:12",
+        "category": "address"
+      },
+      {
+        "value": "34100 İstanbul",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "olarak kayıtlıdır"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "household-member",
+    "country": "NL",
+    "profile": {
+      "person": {
+        "givenNames": "Ayşe",
+        "surname": "Yilmaz"
+      },
+      "household": [
+        {
+          "givenNames": "Lena",
+          "surname": "Brandt"
+        }
+      ]
+    },
+    "text": "Mw. A. Yilmaz\n\nDe toeslag voor L. Brandt, die bij u woont, wordt ook herzien. Lena Brandt ontvangt een eigen brief.",
+    "masked": [
+      {
+        "value": "A. Yilmaz",
+        "category": "name"
+      },
+      {
+        "value": "L. Brandt",
+        "category": "name"
+      },
+      {
+        "value": "Lena Brandt",
+        "category": "name"
+      }
+    ],
+    "kept": [
+      "die bij u woont",
+      "ontvangt een eigen brief"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "fold-sharp-s-and-street",
+    "country": "DE",
+    "profile": {
+      "person": {
+        "givenNames": "Lukas",
+        "surname": "Großmann"
+      },
+      "household": [],
+      "street": "Hauptstraße",
+      "houseNumber": "12",
+      "postcode": "10115",
+      "city": "Berlin"
+    },
+    "text": "Bezirksamt Mitte von Berlin\nKarl-Marx-Allee 31\n10178 Berlin\n\nHerrn L. Grossmann\nHauptstrasse 12\n10115 Berlin\n\nSehr geehrter Herr Großmann,\n\nIhre Anschrift Hauptstraße Nr. 12 ist gespeichert.",
+    "masked": [
+      {
+        "value": "L. Grossmann",
+        "category": "name"
+      },
+      {
+        "value": "Großmann",
+        "category": "name"
+      },
+      {
+        "value": "Hauptstrasse 12",
+        "category": "address"
+      },
+      {
+        "value": "Hauptstraße Nr. 12",
+        "category": "address"
+      },
+      {
+        "value": "10115 Berlin",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Sehr geehrter Herr",
+      "ist gespeichert",
+      "Bezirksamt Mitte von Berlin",
+      "Karl-Marx-Allee 31"
+    ],
+    "keptOrdinary": []
+  }
+]
