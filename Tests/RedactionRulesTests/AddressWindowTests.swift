@@ -254,4 +254,58 @@ struct AddressWindowTests {
         #expect(found.detection == nil)
         #expect(found.candidates.contains { $0.rejection == .lowScore && $0.poBox && $0.organisation })
     }
+
+    // MARK: - The RDW letter again (owner, 6 Oct 2026): synthetic values, the same signatures
+
+    @Test("An NL postcode line is found whatever the phone's region, with OCR's spacing and misreads", arguments: [
+        ("3016 BE Rotterdam", "TR"), ("3016BE ROTTERDAM", "TR"), ("3016  BE  Rotterdam", "TR"),
+        ("3016\u{00A0}BE Rotterdam", "NL"), ("3016\tBE Rotterdam", "NL"), ("3O16 BE Rotterdam", "NL"),
+        ("3016 BE Rotterdam", nil), ("3016 BE Rotterdam", "DE"),
+    ] as [(String, String?)])
+    func postcodeLineAnyRegion(line: String, region: String?) {
+        #expect(AddressWindow.hasPostcode(line, country: region?.uppercased()))
+    }
+
+    @Test("A person line: one capital in any script, with or without a dot, then capitalised words", arguments: [
+        "Ö Çelik", "O Celik", "Ö. Çelik", "Ş ÖZDEMİR", "Ł Żółkiewski", "É Lefèvre-Durand", "Ž Novák", "Ö Yılmaz-Şahin",
+    ])
+    func personLineAnyScript(line: String) {
+        #expect(AddressWindow.looksLikeRecipient(line))
+    }
+
+    @Test("Not a person line: a street, a postcode line, a sentence", arguments: [
+        "Van Vollenhovenstraat 3 401", "3016 BE Rotterdam", "Postbus 30000", "Datum 1 oktober 2026",
+    ])
+    func notAPersonLine(line: String) {
+        #expect(!AddressWindow.looksLikeRecipient(line))
+    }
+
+    @Test("The RDW page read with a Turkish phone region: the window is found on a full-bleed rectified page")
+    func rdwWithTurkishRegion() {
+        let letter = SyntheticLayout.Letter(
+            sender: [], recipient: ["Ö Çelik", "Van Vollenhovenstraat 3 401", "3016 BE Rotterdam"],
+            body: ["Datum 1 oktober 2026", "Geachte heer Çelik,", "Uw voertuig staat op uw naam."]
+        )
+        let (text, layout) = SyntheticLayout.make(letter, kind: .a4LeftWindow)
+        let found = AddressWindow.detect(in: text, layout: layout, countryHint: "TR")
+        #expect(found?.kind == .a4Left)
+        #expect(found?.boxes.count == 3)
+    }
+
+    @Test("A line's signature: classes only, no text", arguments: [
+        ("Ö Çelik", "A_Aaaaa"), ("3016 BE Rotterdam", "DDDD_AA_Aaaaaaaaa"), ("Van Vollenhovenstraat 3 401", "Aaa_Aaaaaaaaaaaaaaaaa_D_DDD"),
+        ("Postbus 30.000,-", "Aaaaaaa_DD.DDD,-"),
+    ])
+    func lineSignature(line: String, signature: String) {
+        #expect(AddressWindow.signature(of: line) == signature)
+    }
+
+    @Test("The diagnosis carries each candidate's line signatures and postcode matches")
+    func diagnosisLineSignatures() throws {
+        let (text, layout) = SyntheticLayout.make(Self.rdw, kind: .a4LeftWindow)
+        let found = AddressWindow.diagnose(in: text, layout: layout, countryHint: "NL")
+        let accepted = try #require(found.candidates.first { $0.rejection == .accepted })
+        #expect(accepted.lineSignatures == ["A_Aaaaaa", "Aaa_Aaaaaaaaaaaaaaaaa_D_DDD", "DDDD_AA_Aaaaaaaaa"])
+        #expect(accepted.linePostcode == [false, false, true])
+    }
 }

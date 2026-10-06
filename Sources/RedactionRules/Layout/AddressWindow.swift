@@ -103,6 +103,11 @@ public enum AddressWindow {
             /// The recipient score, when it got that far.
             public var score: Int?
             public var rejection: Rejection
+            /// Each line's character-class signature, in reading order
+            /// (``AddressWindow/signature(of:)``): no text.
+            public var lineSignatures: [String] = []
+            /// Whether each line has the postcode's shape.
+            public var linePostcode: [Bool] = []
         }
 
         /// The page as the capture marked it.
@@ -360,6 +365,13 @@ public enum AddressWindow {
     }
 
     // MARK: - Postcodes
+
+    /// A line as character classes (owner, 6 Oct 2026): D a digit, A an
+    /// upper-case letter, a a lower-case one -- diacritics included -- _ a
+    /// space, punctuation as itself. What a DEBUG screen may show of a line.
+    public static func signature(of line: String) -> String {
+        ""
+    }
 
     static func hasPostcode(_ line: String, country: String?) -> Bool {
         let patterns: [String: String] = [
