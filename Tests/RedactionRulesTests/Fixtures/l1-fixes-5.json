@@ -1,0 +1,397 @@
+[
+  {
+    "id": "fix5-es-second-surname",
+    "country": "ES",
+    "profile": {
+      "person": {
+        "givenNames": "Rubén",
+        "surname": "Castillo"
+      },
+      "household": [],
+      "street": "Avenida de Asturias",
+      "houseNumber": "41",
+      "postcode": "24402",
+      "city": "Ponferrada"
+    },
+    "text": "AYUNTAMIENTO DE PONFERRADA\nPlaza del Ayuntamiento, 1\n24401 Ponferrada\nD. RUBEN CASTILLO GARCIA\nAV ASTURIAS 41\n24402 PONFERRADA\nEstimado Sr. Castillo García:\nSe le notifica que el vehículo del Sr. Castillo García fue denunciado junto al castillo el 13/09/2026.\nImporte de la sanción: 200,00 €.",
+    "masked": [
+      {
+        "value": "RUBEN CASTILLO GARCIA",
+        "category": "name"
+      },
+      {
+        "value": "Castillo García",
+        "category": "name"
+      },
+      {
+        "value": "AV ASTURIAS 41",
+        "category": "address"
+      },
+      {
+        "value": "24402 PONFERRADA",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "AYUNTAMIENTO DE PONFERRADA",
+      "200,00 €"
+    ],
+    "keptOrdinary": [
+      "junto al castillo"
+    ]
+  },
+  {
+    "id": "fix5-es-second-surname-de",
+    "country": "ES",
+    "profile": {
+      "person": {
+        "givenNames": "Lucía",
+        "surname": "Moreno"
+      },
+      "household": [],
+      "street": "Calle Mayor",
+      "houseNumber": "5",
+      "postcode": "28013",
+      "city": "Madrid"
+    },
+    "text": "Agencia Tributaria\nCalle Guzmán el Bueno, 139\n28003 Madrid\nDña. LUCÍA MORENO DE LA FUENTE\nCALLE MAYOR 5\n28013 MADRID\nEstimada Sra. Moreno de la Fuente:\nLe comunicamos el resultado de su declaración. Importe: 312,00 €.",
+    "masked": [
+      {
+        "value": "LUCÍA MORENO DE LA FUENTE",
+        "category": "name"
+      },
+      {
+        "value": "Moreno de la Fuente",
+        "category": "name"
+      },
+      {
+        "value": "CALLE MAYOR 5",
+        "category": "address"
+      },
+      {
+        "value": "28013 MADRID",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Agencia Tributaria",
+      "312,00 €"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "fix5-pl-dative-ka",
+    "country": "PL",
+    "profile": {
+      "person": {
+        "givenNames": "Agnieszka",
+        "surname": "Wójcik"
+      },
+      "household": [],
+      "street": "Długa",
+      "houseNumber": "12/4",
+      "postcode": "00-238",
+      "city": "Warszawa"
+    },
+    "text": "Sąd Rejonowy dla Warszawy\nul. Marszałkowska 82\n00-517 Warszawa\nPani Agnieszka Wójcik\nul. Długa 12/4\n00-238 Warszawa\nSzanowna Pani,\nw sprawie przeciwko Agnieszce Wójcik (PESEL 89110301988) termin rozprawy wyznaczono na 14 października 2026.",
+    "masked": [
+      {
+        "value": "Agnieszka Wójcik",
+        "category": "name"
+      },
+      {
+        "value": "Agnieszce Wójcik",
+        "category": "name"
+      },
+      {
+        "value": "ul. Długa 12/4",
+        "category": "address"
+      },
+      {
+        "value": "00-238",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Sąd Rejonowy dla Warszawy",
+      "14 października 2026"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "fix5-pl-locative-na",
+    "country": "PL",
+    "profile": {
+      "person": {
+        "givenNames": "Anna",
+        "surname": "Nowak"
+      },
+      "household": [],
+      "street": "Długa",
+      "houseNumber": "12/4",
+      "postcode": "00-238",
+      "city": "Warszawa"
+    },
+    "text": "Sąd Rejonowy dla Warszawy\nul. Marszałkowska 82\n00-517 Warszawa\nPani Anna Nowak\nul. Długa 12/4\n00-238 Warszawa\nSzanowna Pani,\nw sprawie przeciwko Annie Nowak oraz o termin rozprawy wyznaczono na 14 października 2026.",
+    "masked": [
+      {
+        "value": "Anna Nowak",
+        "category": "name"
+      },
+      {
+        "value": "Annie Nowak",
+        "category": "name"
+      },
+      {
+        "value": "ul. Długa 12/4",
+        "category": "address"
+      },
+      {
+        "value": "00-238",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Sąd Rejonowy dla Warszawy",
+      "14 października 2026"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "fix5-pl-dative-ta",
+    "country": "PL",
+    "profile": {
+      "person": {
+        "givenNames": "Marta",
+        "surname": "Zielińska"
+      },
+      "household": [],
+      "street": "Długa",
+      "houseNumber": "12/4",
+      "postcode": "00-238",
+      "city": "Warszawa"
+    },
+    "text": "Sąd Rejonowy dla Warszawy\nul. Marszałkowska 82\n00-517 Warszawa\nPani Marta Zielińska\nul. Długa 12/4\n00-238 Warszawa\nSzanowna Pani,\nw sprawie przeciwko Marcie Zielińskiej ze skutkiem termin rozprawy wyznaczono na 14 października 2026.",
+    "masked": [
+      {
+        "value": "Marta Zielińska",
+        "category": "name"
+      },
+      {
+        "value": "Marcie Zielińskiej",
+        "category": "name"
+      },
+      {
+        "value": "ul. Długa 12/4",
+        "category": "address"
+      },
+      {
+        "value": "00-238",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Sąd Rejonowy dla Warszawy",
+      "14 października 2026"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "fix5-pl-dative-ga",
+    "country": "PL",
+    "profile": {
+      "person": {
+        "givenNames": "Olga",
+        "surname": "Kowal"
+      },
+      "household": [],
+      "street": "Długa",
+      "houseNumber": "12/4",
+      "postcode": "00-238",
+      "city": "Warszawa"
+    },
+    "text": "Sąd Rejonowy dla Warszawy\nul. Marszałkowska 82\n00-517 Warszawa\nPani Olga Kowal\nul. Długa 12/4\n00-238 Warszawa\nSzanowna Pani,\nw sprawie przeciwko Oldze Kowal jako stronie termin rozprawy wyznaczono na 14 października 2026.",
+    "masked": [
+      {
+        "value": "Olga Kowal",
+        "category": "name"
+      },
+      {
+        "value": "Oldze Kowal",
+        "category": "name"
+      },
+      {
+        "value": "ul. Długa 12/4",
+        "category": "address"
+      },
+      {
+        "value": "00-238",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Sąd Rejonowy dla Warszawy",
+      "14 października 2026"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "fix5-nl-b02",
+    "country": "NL",
+    "profile": {
+      "person": {
+        "givenNames": "Lars",
+        "surname": "Brouwers"
+      },
+      "household": [],
+      "street": "Mozartlaan",
+      "houseNumber": "15B02",
+      "postcode": "5011 ZB",
+      "city": "Tilburg"
+    },
+    "text": "Immigratie- en Naturalisatiedienst\nPostbus 287\n7600 AG Almelo\nDe heer L. Brouwers\nMozartlaan 15 B02\n5011ZB  TILBURG\nGeachte heer Brouwers,\nWij sturen ons besluit naar Mozartlaan 15 B02, 5011ZB Tilburg. Dit gebeurt voor 1 november 2026.",
+    "masked": [
+      {
+        "value": "L. Brouwers",
+        "category": "name"
+      },
+      {
+        "value": "Brouwers",
+        "category": "name"
+      },
+      {
+        "value": "Mozartlaan 15 B02",
+        "category": "address"
+      },
+      {
+        "value": "5011ZB",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Immigratie- en Naturalisatiedienst",
+      "Postbus 287",
+      "1 november 2026"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "fix5-uk-flat-b",
+    "country": "GB",
+    "profile": {
+      "person": {
+        "givenNames": "Daniel",
+        "surname": "Okafor"
+      },
+      "household": [],
+      "street": "Hyde Park Road",
+      "houseNumber": "118",
+      "postcode": "LS6 1AH",
+      "city": "Leeds"
+    },
+    "text": "The Deposit Resolution Service\nPO Box 4471\nHemel Hempstead HP2 7XZ\nMr D. Okafor\nFlat B\n118 Hyde Park Rd\nLeeds LS6 1AH\nDear Daniel,\nYour landlord disputes the return of your deposit of £1,150.00 for the tenancy at Flat B,\n118 Hyde Park Rd, Leeds, which ended on 31 August 2026.",
+    "masked": [
+      {
+        "value": "D. Okafor",
+        "category": "name"
+      },
+      {
+        "value": "Daniel",
+        "category": "name"
+      },
+      {
+        "value": "Flat B",
+        "category": "address"
+      },
+      {
+        "value": "118 Hyde Park Rd",
+        "category": "address"
+      },
+      {
+        "value": "LS6 1AH",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "The Deposit Resolution Service",
+      "PO Box 4471",
+      "£1,150.00",
+      "31 August 2026"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "fix5-es-province",
+    "country": "ES",
+    "profile": {
+      "person": {
+        "givenNames": "María José",
+        "surname": "Ferrándiz Soler"
+      },
+      "household": [],
+      "street": "Calle Mayor",
+      "houseNumber": "23",
+      "postcode": "46500",
+      "city": "Sagunto"
+    },
+    "text": "Agencia Tributaria\nCalle Guillem de Castro, 4\n46001 Valencia\nFERRANDIZ SOLER MARIA JOSE\nC/ MAYOR, 23, 2º 4ª\n46500 SAGUNTO (VALENCIA)\nEstimada Sra. Ferrándiz Soler:\nEn relación con su declaración del ejercicio 2025, importe 1.230,00 €.",
+    "masked": [
+      {
+        "value": "FERRANDIZ SOLER MARIA JOSE",
+        "category": "name"
+      },
+      {
+        "value": "Ferrándiz Soler",
+        "category": "name"
+      },
+      {
+        "value": "C/ MAYOR, 23, 2º 4ª",
+        "category": "address"
+      },
+      {
+        "value": "46500 SAGUNTO (VALENCIA)",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Agencia Tributaria",
+      "1.230,00 €"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "fix5-tr-province",
+    "country": "TR",
+    "profile": {
+      "person": {
+        "givenNames": "Elif",
+        "surname": "Arslan"
+      },
+      "household": [],
+      "street": "Bağdat Caddesi",
+      "houseNumber": "211",
+      "postcode": "34728",
+      "city": "Kadıköy"
+    },
+    "text": "Kadıköy Belediyesi\nHasanpaşa Mah. Fahrettin Kerim Gökay Cad. No: 2\n34722 Kadıköy/İstanbul\nElif Arslan\nCaddebostan Mah. Bağdat Cad. No: 211 D: 4\n34728 Kadıköy (İstanbul)\nSayın Elif Arslan,\nEmlak vergisi borcunuz 1.240,00 TL'dir.",
+    "masked": [
+      {
+        "value": "Elif Arslan",
+        "category": "name"
+      },
+      {
+        "value": "Caddebostan Mah. Bağdat Cad. No: 211 D: 4",
+        "category": "address"
+      },
+      {
+        "value": "34728 Kadıköy (İstanbul)",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Kadıköy Belediyesi",
+      "1.240,00 TL"
+    ],
+    "keptOrdinary": []
+  }
+]

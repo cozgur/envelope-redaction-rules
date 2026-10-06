@@ -424,6 +424,19 @@ struct ProfileRecallTests {
         #expect(tally.senderOverMasked.isEmpty, "kept masked: \(tally.senderOverMasked)")
     }
 
+    static let fixes5 = load("l1-fixes-5")
+
+    @Test("Set 5's misses: ES second surname, PL given-name cases, NL unit suffix, UK flat letter, a bracketed province")
+    func fixesFromSetFive() {
+        #expect(Self.fixes5.count >= 10)
+        let tally = Self.measure(Self.fixes5)
+        Self.report("fixes-5", tally)
+        #expect(tally.missing.isEmpty, "\(tally.missing)")
+        #expect(tally.leaks.isEmpty, "missed: \(tally.leaks)")
+        #expect(tally.senderOverMasked.isEmpty, "kept masked: \(tally.senderOverMasked)")
+        #expect(tally.ordinaryOverMasked.isEmpty, "ordinary: \(tally.ordinaryOverMasked)")
+    }
+
     @Test("Independent set 3, retired: holds Gate A's L1 scope")
     func regressionSetThree() {
         let tally = Self.measure(Self.regression3)
