@@ -191,6 +191,11 @@ struct LabelledValueTests {
         ("Bitte geben Sie bei jeder Antwort das Geschäftszeichen IV B 2 – 4471/26 an.", "an.", "DE"),
         ("Dosya No: 2026/44713 Esas ile ödeme yapınız.", "ödeme yapınız", "TR"),
         ("Factuur: CG-26-55712 van 3 oktober 2026", "3 oktober 2026", "NL"),
+        // The golden set, 6 Oct 2026: a full stop ends the value, and the
+        // next sentence's first word is not a court register.
+        ("Kundennummer EN-2026-338021. Bei erteiltem SEPA-Lastschriftmandat buchen wir.", "Bei erteiltem", "DE"),
+        ("rappelant le numéro de dossier INC-2026-887401. À défaut, le dossier sera transmis.", "À défaut", "FR"),
+        ("przelewu znak sprawy US-2026-11-0042. Po tym terminie naliczane są odsetki.", "Po tym terminie", "PL"),
     ])
     func gateA7Precision(text: String, value: String, country: String) {
         #expect(untouched(value, in: text, country: country), "\(RedactionEngine.redact(text, countryHint: country).redactedText)")

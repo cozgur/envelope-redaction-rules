@@ -189,19 +189,26 @@ public struct LabelledReferenceRule: RedactionRule {
     public func matches(in text: String) -> [Range<String.Index>] {
         let labelled = RegexScanner.ranges(of: Self.pattern, captureGroup: 1, in: text).compactMap { range -> Range<String.Index>? in
             var kept: [Substring] = []
-            for token in text[range].split(separator: " ") {
+            let tokens = text[range].split(separator: " ")
+            for (position, token) in tokens.enumerated() {
                 let core = token.trimmingCharacters(in: CharacterSet(charactersIn: ".,;:"))
+                // A short mixed-case register ("Nc") only between groups of
+                // the value: "I Nc 4471/26", never the next sentence's "Bei".
+                let nextHasDigit = position + 1 < tokens.count && tokens[position + 1].contains(where: \.isNumber)
                 // A group with a digit, a short capital code ("I", "C", "HA",
                 // "E."), a short court register ("Nc"), a dash between groups
                 // ("IV B 2 – 4471/26"), or the Turkish file words after it.
                 let isCode = token == "/" || token == "–" || token == "—" || token == "-"
                     || token.contains(where: \.isNumber)
                     || (!core.isEmpty && core.count <= 4 && core.allSatisfy(\.isUppercase))
-                    || (!core.isEmpty && core.count <= 3 && core.first?.isUppercase == true && core.allSatisfy(\.isLetter))
+                    || (nextHasDigit && !core.isEmpty && core.count <= 3 && core.first?.isUppercase == true && core.allSatisfy(\.isLetter))
                     || ["Esas", "Karar"].contains(core)
                 guard isCode else { break }
                 kept.append(token)
                 if token.hasSuffix(",") || token.hasSuffix(";") { break }
+                // A full stop after a group with a digit ends the sentence
+                // and the value with it ("EN-2026-338021. Bei …").
+                if token.hasSuffix("."), token.dropLast().last?.isNumber == true { break }
             }
             var value = kept.joined(separator: " ")
             while value.hasSuffix(",") || value.hasSuffix(";") || value.hasSuffix(":") || value.hasSuffix("/") || value.hasSuffix(" ") {
