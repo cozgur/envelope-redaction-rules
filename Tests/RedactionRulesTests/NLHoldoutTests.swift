@@ -49,7 +49,9 @@ struct NLHoldoutTests {
     /// taken out. Set 6 was measured on L3 alone; Gate A is now measured on
     /// the full engine (plan §2), on a new set.
     static let knownSet6Misses: Set<String> = ["address", "name", "postcode", "reference"]
-    static let knownSet6Kept: Set<String> = ["ind-verblijf-right-window-indented"]
+    /// Emptied 6 Oct 2026: the L3 sender-address precision fix (PO boxes,
+    /// an organisation's own lines) keeps the string it used to mask.
+    static let knownSet6Kept: Set<String> = []
 
     @Test("Retired held-out sets stay at 100%", arguments: retired)
     func retiredSetsHold(_ name: String) {

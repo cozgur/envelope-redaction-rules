@@ -36,9 +36,25 @@ struct ProfileRecallTests {
         /// step-6 set on). Each is measured as its own text, with its boxes
         /// fed to L2.
         var layouts: [CaseLayout] = []
+        /// From set 5 (owner, 6 Oct 2026): the sender's name or organisation
+        /// and the sender's address, apart -- Gate A gates the first and
+        /// reports the second.
+        var sender: Sender?
         var testDescription: String { id }
 
-        enum CodingKeys: String, CodingKey { case id, country, profile, text, masked, kept, keptOrdinary, layouts }
+        struct Sender: Decodable, Sendable {
+            var name: [String] = []
+            var address: [String] = []
+
+            init(from decoder: any Decoder) throws {
+                let container = try decoder.container(keyedBy: CodingKeys.self)
+                name = try container.decodeIfPresent([String].self, forKey: .name) ?? []
+                address = try container.decodeIfPresent([String].self, forKey: .address) ?? []
+            }
+            enum CodingKeys: String, CodingKey { case name, address }
+        }
+
+        enum CodingKeys: String, CodingKey { case id, country, profile, text, masked, kept, keptOrdinary, layouts, sender }
 
         /// `keptOrdinary` may be left out where a letter has none.
         init(from decoder: any Decoder) throws {
@@ -51,6 +67,7 @@ struct ProfileRecallTests {
             kept = try container.decodeIfPresent([String].self, forKey: .kept) ?? []
             keptOrdinary = try container.decodeIfPresent([String].self, forKey: .keptOrdinary) ?? []
             layouts = try container.decodeIfPresent([CaseLayout].self, forKey: .layouts) ?? []
+            sender = try container.decodeIfPresent(Sender.self, forKey: .sender)
         }
     }
 
@@ -205,7 +222,18 @@ struct ProfileRecallTests {
         var senderOverMasked: [String] = []
         var ordinaryOverMasked: [String] = []
         var missing: [String] = []
+        /// Gate A's sender lines (owner, 6 Oct 2026), as "letter [layout]: value".
+        /// From the `sender` annotation when a set has it; otherwise from
+        /// `kept`, a value with no digit read as a name and one with a digit
+        /// as an address (dates and amounts are never masked, so they do not
+        /// land in either).
+        var senderNameMasked: [String] = []
+        var senderAddressMasked: [String] = []
     }
+
+    /// The Reader's own details (L1) are split NL / non-NL; every other
+    /// category is counted as it is named.
+    static let profileCategories: Set<String> = ["name", "address", "postcode", "city"]
 
     static func measure(_ cases: [Case]) -> Tally {
         // A letter with layouts is measured once per layout, each its own
@@ -227,7 +255,7 @@ struct ProfileRecallTests {
                 // Gate A's scope (owner, 6 Oct 2026): names everywhere, and
                 // NL-format addresses, are 100%; other address formats are
                 // counted apart (≥ 95% for 1.0).
-                let category = item.category == "name" || letter.country == "NL"
+                let category = !Self.profileCategories.contains(item.category) || item.category == "name" || letter.country == "NL"
                     ? item.category : "\(item.category) (non-NL)"
                 var occurrences = offsets(of: item.value, in: letter.text)
                 if occurrences.isEmpty { tally.missing.append("\(letter.id): “\(item.value)” is not in the text") }
@@ -251,6 +279,28 @@ struct ProfileRecallTests {
             for value in letter.kept {
                 for occurrence in offsets(of: value, in: letter.text) where touched(occurrence, by: result.spans) {
                     tally.senderOverMasked.append("\(letter.id): “\(value)”")
+                    if letter.sender == nil {
+                        if value.contains(where: \.isNumber) {
+                            tally.senderAddressMasked.append("\(letter.id): “\(value)”")
+                        } else {
+                            tally.senderNameMasked.append("\(letter.id): “\(value)”")
+                        }
+                    }
+                }
+            }
+            if let sender = letter.sender {
+                for (values, isName) in [(sender.name, true), (sender.address, false)] {
+                    for value in values {
+                        let occurrences = offsets(of: value, in: letter.text)
+                        if occurrences.isEmpty { tally.missing.append("\(letter.id): sender “\(value)” is not in the text") }
+                        for occurrence in occurrences where touched(occurrence, by: result.spans) {
+                            if isName {
+                                tally.senderNameMasked.append("\(letter.id): “\(value)”")
+                            } else {
+                                tally.senderAddressMasked.append("\(letter.id): “\(value)”")
+                            }
+                        }
+                    }
                 }
             }
             for value in letter.keptOrdinary {
@@ -382,37 +432,39 @@ struct ProfileRecallTests {
         #expect(tally.ordinaryOverMasked.isEmpty, "ordinary-word over-masking: \(tally.ordinaryOverMasked)")
     }
 
-    /// Gate A, step 6 (owner, 6 Oct 2026): independent set 4, written from
-    /// the brief with page layouts by an agent that saw nothing else, and
-    /// committed (`024cdc2`) before this first run. Every layout of every
-    /// letter is measured as its own page, full engine, with the letter's
-    /// profile.
+    /// The letters of a measured set over which a list of "letter [layout]:
+    /// value" entries falls, and the share of the set they are.
+    static func letterShare(_ entries: [String], of cases: [Case]) -> (count: Int, total: Int) {
+        let letters = Set(entries.map { $0.components(separatedBy: " [").first?.components(separatedBy: ": ").first ?? $0 })
+        return (letters.count, cases.count)
+    }
+
+    /// Every Gate A line for one set (plan §2, as worded 6 Oct 2026), printed.
+    static func gateAReport(_ name: String, _ cases: [Case], _ tally: Tally) {
+        report(name, tally)
+        let pages = cases.reduce(0) { $0 + max(1, $1.layouts.count) }
+        let senderName = letterShare(tally.senderNameMasked, of: cases)
+        let senderAddress = letterShare(tally.senderAddressMasked, of: cases)
+        print("GATEA \(name) letters \(cases.count), pages \(pages)")
+        print("GATEA \(name) sender name/organisation masked: \(senderName.count)/\(senderName.total) letters (gate ≤ 5%)")
+        print("GATEA \(name) sender address masked: \(senderAddress.count)/\(senderAddress.total) letters (reported; 1.0.x target ≤ 20%)")
+        for one in tally.senderNameMasked { print("GATEA \(name) sender name masked \(one)") }
+        for one in tally.senderAddressMasked { print("GATEA \(name) sender address masked \(one)") }
+        for one in tally.ordinaryOverMasked { print("GATEA \(name) ordinary over-masked \(one)") }
+    }
+
+    /// Gate A, step 6 (6 Oct 2026): independent set 4. Gate A failed on it;
+    /// it is retired (owner, 6 Oct 2026) and holds as a regression test,
+    /// re-scored under the reworded sender line. It does not count as a pass.
     static let gateA = load("l1-independent-4")
 
-    @Test("Gate A on independent set 4: L1 scope, and sender over-masking ≤ 5% of letters")
-    func gateASetFour() {
+    @Test("Independent set 4, retired: holds Gate A's L1 scope; sender lines reported")
+    func regressionSetFour() {
         #expect(Self.gateA.count >= 40)
         let tally = Self.measure(Self.gateA)
-        Self.report("set4", tally)
-        let letters = Set(Self.gateA.map(\.id))
-        let overMaskedLetters = Set(tally.senderOverMasked.map { $0.components(separatedBy: " [").first ?? $0 })
-        let pages = Self.gateA.reduce(0) { $0 + max(1, $1.layouts.count) }
-        let overMaskedPages = Set(tally.senderOverMasked.map { $0.components(separatedBy: ": ").first ?? $0 })
-        print("GATEA set4 letters \(letters.count), pages \(pages)")
-        print("GATEA set4 sender over-masking: \(overMaskedLetters.count)/\(letters.count) letters, \(overMaskedPages.count)/\(pages) pages")
-        for one in tally.senderOverMasked { print("GATEA set4 over-masked \(one)") }
-        for one in tally.ordinaryOverMasked { print("GATEA set4 ordinary over-masked \(one)") }
+        Self.gateAReport("set4", Self.gateA, tally)
         #expect(tally.missing.isEmpty, "\(tally.missing)")
-        // Gate A failed on this set, 6 Oct 2026 (docs/reports in the app
-        // repo: 2026-10-06-gate-a-and-cp6.md): names 439/442, NL addresses
-        // 90/98, sender over-masking 20/46 letters. Strict known issues, so
-        // CI stays green and the run fails the day either line passes.
-        withKnownIssue("Gate A set 4: L1 scope misses (names, NL addresses)", isIntermittent: false) {
-            #expect(Self.scopeFailures(tally).isEmpty, "\(Self.scopeFailures(tally))")
-        }
-        withKnownIssue("Gate A set 4: sender over-masking above 5% of letters", isIntermittent: false) {
-            #expect(Double(overMaskedLetters.count) <= 0.05 * Double(letters.count), "\(tally.senderOverMasked)")
-        }
+        #expect(Self.scopeFailures(tally).isEmpty, "\(Self.scopeFailures(tally))")
     }
 
     @Test("A digit postcode never takes part of a phone number")

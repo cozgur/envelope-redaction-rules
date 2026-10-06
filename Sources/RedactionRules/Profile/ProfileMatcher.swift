@@ -50,9 +50,14 @@ public enum ProfileMatcher {
                 fullNameInLetter: matches.contains(where: \.withGivenName), polish: polish
             ).map { ($0, true) }
         }
+        // Set 4 (owner, 6 Oct 2026): a second surname joined to the
+        // profile's by a hyphen -- "Schouten-Brink", "Brink-Schouten" -- is
+        // part of the same name and is masked with it.
+        names = names.map { (withHyphenatedSurname($0.range, in: text), $0.strong) }
         var addresses: [Range<String.Index>] = []
         if let street = profile.street, let number = profile.houseNumber {
-            addresses += streetMatches(street: street, number: number, in: text, tokens: tokens, polish: polish)
+            let dutch = countryHint == nil || countryHint?.uppercased() == "NL"
+            addresses += streetMatches(street: street, number: number, in: text, tokens: tokens, polish: polish, dutch: dutch)
         }
         if let postcode = profile.postcode {
             addresses += postcodeMatches(postcode, city: profile.city, in: text)
@@ -489,6 +494,29 @@ public enum ProfileMatcher {
         return strong ? 2 : 1
     }
 
+    /// A name match widened over capitalised words hyphenated onto it.
+    private static func withHyphenatedSurname(_ range: Range<String.Index>, in text: String) -> Range<String.Index> {
+        var lower = range.lowerBound
+        var upper = range.upperBound
+        // Forwards: "-Brink".
+        while upper < text.endIndex, text[upper] == "-" {
+            let next = text.index(after: upper)
+            guard next < text.endIndex, text[next].isUppercase else { break }
+            var end = next
+            while end < text.endIndex, text[end].isLetter { end = text.index(after: end) }
+            upper = end
+        }
+        // Backwards: "Brink-".
+        while lower > text.startIndex, text[text.index(before: lower)] == "-" {
+            let hyphen = text.index(before: lower)
+            var start = hyphen
+            while start > text.startIndex, text[text.index(before: start)].isLetter { start = text.index(before: start) }
+            guard start < hyphen, text[start].isUppercase else { break }
+            lower = start
+        }
+        return lower..<upper
+    }
+
     // MARK: - Addresses
 
     /// Street-type words and their abbreviations, folded, to one spelling.
@@ -537,7 +565,7 @@ public enum ProfileMatcher {
         return common >= 6 && common >= max(a.count, b.count) - 3
     }
 
-    private static func streetMatches(street: String, number: String, in text: String, tokens: [Token], polish: Bool) -> [Range<String.Index>] {
+    private static func streetMatches(street: String, number: String, in text: String, tokens: [Token], polish: Bool, dutch: Bool = false) -> [Range<String.Index>] {
         let wanted = street.split(whereSeparator: { $0.isWhitespace || $0 == "." || $0 == "/" || $0 == "-" }).map { fold(String($0)) }.filter { !$0.isEmpty }
         let digits = String(number.prefix { $0.isNumber })
         guard !wanted.isEmpty, !digits.isEmpty else { return [] }
@@ -590,6 +618,14 @@ public enum ProfileMatcher {
                     if !(streetWordMatches(token.folded, word) || abbreviated
                          || (afterPolishType && polishForm(token.folded, of: word))) { ok = false; break }
                 }
+                // Set 4 (owner, 6 Oct 2026): a Dutch street printed with its
+                // title or ordinal abbreviated, or its type shortened, where
+                // the profile spells it out -- or the other way round.
+                var length = sub.count
+                if !ok, dutch, skip == 0, let joined = dutchJoinedLength(at: index, wanted: wanted, tokens: tokens, text: text) {
+                    ok = true
+                    length = joined
+                }
                 guard ok else { continue }
                 var streetStart = tokens[index].range.lowerBound
                 let previousIsType = index > 0
@@ -597,7 +633,7 @@ public enum ProfileMatcher {
                     && Token.adjacent(tokens[index - 1], tokens[index], in: text, allowing: " ./\t")
                 if skip > 0, !previousIsType { continue }
                 if previousIsType { streetStart = tokens[index - 1].range.lowerBound }
-                var streetEnd = tokens[index + sub.count - 1].range.upperBound
+                var streetEnd = tokens[index + length - 1].range.upperBound
 
                 let rest = String(text[streetEnd...].prefix(60))
                 if let match = after.firstMatch(in: rest, range: NSRange(rest.startIndex..., in: rest)),
@@ -629,6 +665,51 @@ public enum ProfileMatcher {
         // A Turkish neighbourhood printed before the street ("Caferağa Mah.
         // Bahariye Sok. No: 12") belongs to the same address.
         return found.map { withNeighbourhood($0, in: text) }
+    }
+
+    /// Dutch street titles, ordinals and particles as letters print them
+    /// (owner, 6 Oct 2026), folded, to the words a reader types.
+    static let dutchStreetAbbreviations: [String: [String]] = [
+        "ds": ["dominee"], "burg": ["burgemeester"], "past": ["pastoor"], "prof": ["professor"],
+        "mr": ["meester"], "dr": ["doctor"], "gen": ["generaal"], "kon": ["koning", "koningin"],
+        "pres": ["president"], "st": ["sint"], "wethr": ["wethouder"], "weth": ["wethouder"],
+        "1e": ["eerste"], "2e": ["tweede"], "3e": ["derde"],
+        "v": ["van"], "vd": ["vande", "vander"], "d": ["de", "der"],
+    ]
+
+    /// A Dutch street word's type ending, shortened as letters print it:
+    /// "-straat" "-str", "-laan" "-ln", "-plein" "-pl", "-gracht" "-gr",
+    /// "-kade" "-kd".
+    private static func dutchShortType(_ word: String) -> String {
+        for (long, short) in [("straat", "str"), ("laan", "ln"), ("plein", "pl"), ("gracht", "gr"), ("kade", "kd")]
+        where word.count > long.count && word.hasSuffix(long) {
+            return String(word.dropLast(long.count)) + short
+        }
+        return word
+    }
+
+    /// Every spelling of a run of street words, joined without spaces.
+    private static func dutchJoined(_ words: [String]) -> Set<String> {
+        var joined: Set<String> = [""]
+        for word in words {
+            let forms = Set(([word] + (dutchStreetAbbreviations[word] ?? [])).map(dutchShortType))
+            joined = Set(joined.flatMap { head in forms.map { head + $0 } })
+            if joined.count > 64 { break }
+        }
+        return joined
+    }
+
+    /// How many tokens from `index` spell the wanted street, comparing both
+    /// sides joined and with abbreviations expanded. Exact: an abbreviation
+    /// is not also stretched by edit distance.
+    private static func dutchJoinedLength(at index: Int, wanted: [String], tokens: [Token], text: String) -> Int? {
+        let target = dutchJoined(wanted)
+        for length in 1...(wanted.count + 2) where index + length <= tokens.count {
+            if length > 1, !Token.adjacent(tokens[index + length - 2], tokens[index + length - 1], in: text, allowing: " \t./-") { return nil }
+            let found = dutchJoined(tokens[index..<(index + length)].map(\.folded))
+            if !found.isDisjoint(with: target) { return length }
+        }
+        return nil
     }
 
     private static func withNeighbourhood(_ range: Range<String.Index>, in text: String) -> Range<String.Index> {

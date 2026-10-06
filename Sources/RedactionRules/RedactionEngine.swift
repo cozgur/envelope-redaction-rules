@@ -131,8 +131,26 @@ public enum RedactionEngine {
             }
         }
 
+        // The sender's PO box and an organisation's own address lines (owner,
+        // 6 Oct 2026): the rules' address and phone matches leave them out.
+        // Profile and window claims above are not checked against them.
+        let sender = ProtectedSpans.senderAddresses(in: text)
         for (index, rule) in rules(countryHint: countryHint).enumerated() {
-            for range in rule.matches(in: text) {
+            for found in rule.matches(in: text) {
+                var range = found
+                if rule.kind == .address || rule.kind == .phone,
+                   sender.contains(where: { $0.range.overlaps(found) }) {
+                    let pieces = Self.subtracting(sender.map(\.range), from: found, in: text)
+                    guard !pieces.isEmpty else { continue }
+                    if pieces.count > 1 || pieces[0] != found {
+                        guard !claims.contains(where: { $0.overlaps(pieces) }),
+                              !protected.contains(where: { span in span.vetoes(rule.kind) && pieces.contains { span.range.overlaps($0) } })
+                        else { continue }
+                        claims.append(Claim(kind: rule.kind, ranges: pieces, rank: Claim.firstRuleRank + index))
+                        continue
+                    }
+                    range = pieces[0]
+                }
                 guard !protected.contains(where: {
                     $0.vetoes(rule.kind) && $0.range.overlaps(range)
                 }) else { continue }
@@ -504,6 +522,29 @@ public enum RedactionEngine {
     /// apart. Rank is where the claim came from and decides the kind when one
     /// value is claimed twice: the window, then the profile, then the rules in
     /// their order, then the values spread from the recipient's name.
+    /// `range` without the parts any of `holes` covers, each piece trimmed of
+    /// whitespace; pieces with no letter or digit left are dropped.
+    static func subtracting(_ holes: [Range<String.Index>], from range: Range<String.Index>, in text: String) -> [Range<String.Index>] {
+        var pieces = [range]
+        for hole in holes where hole.overlaps(range) {
+            pieces = pieces.flatMap { piece -> [Range<String.Index>] in
+                guard piece.overlaps(hole) else { return [piece] }
+                var out: [Range<String.Index>] = []
+                if piece.lowerBound < hole.lowerBound { out.append(piece.lowerBound..<hole.lowerBound) }
+                if hole.upperBound < piece.upperBound { out.append(hole.upperBound..<piece.upperBound) }
+                return out
+            }
+        }
+        return pieces.compactMap { piece in
+            var lower = piece.lowerBound
+            var upper = piece.upperBound
+            while lower < upper, text[lower].isWhitespace || text[lower] == "," { lower = text.index(after: lower) }
+            while lower < upper, text[text.index(before: upper)].isWhitespace || text[text.index(before: upper)] == "," { upper = text.index(before: upper) }
+            guard lower < upper, text[lower..<upper].contains(where: { $0.isLetter || $0.isNumber }) else { return nil }
+            return lower..<upper
+        }
+    }
+
     private struct Claim {
         static let windowRank = 0
         static let profileRank = 1
