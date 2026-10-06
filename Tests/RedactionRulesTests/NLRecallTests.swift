@@ -62,7 +62,7 @@ struct NLRecallTests {
     /// "heer" of a value written as "heer Hoekstra" is the honorific, which
     /// every salutation keeps; only the name after it is the secret.
     private static func isHonorific(_ piece: String) -> Bool {
-        ["heer", "mevrouw", "meneer", "fam", "familie", "mevr", "dhr", "drs", "prof"]
+        ["heer", "mevrouw", "meneer", "fam", "familie", "mevr", "dhr", "drs", "prof", "eheleute", "ehepaar"]
             .contains(piece.lowercased().trimmingCharacters(in: .punctuationCharacters))
     }
 

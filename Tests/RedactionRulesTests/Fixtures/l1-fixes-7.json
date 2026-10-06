@@ -1,0 +1,229 @@
+[
+  {
+    "id": "fix7-fr-surname-first-hyphen-given",
+    "country": "FR",
+    "profile": {
+      "person": {
+        "givenNames": "Jean-Baptiste",
+        "surname": "Lefèvre"
+      },
+      "household": [],
+      "street": "boulevard Voltaire",
+      "houseNumber": "103",
+      "postcode": "75011",
+      "city": "Paris"
+    },
+    "text": "Agence nationale de traitement automatisé des infractions\nCS 41101\n35911 Rennes Cedex 9\n\nAvis de contravention du 2 octobre 2026.\nTitulaire du certificat d'immatriculation : LEFÈVRE Jean-Baptiste, 103 boulevard Voltaire,\n75011 Paris.\nMontant de l'amende : 90 €.",
+    "masked": [
+      {
+        "value": "LEFÈVRE Jean-Baptiste",
+        "category": "name"
+      },
+      {
+        "value": "103 boulevard Voltaire",
+        "category": "address"
+      },
+      {
+        "value": "75011",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "2 octobre 2026",
+      "90 €"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "fix7-es-given-with-particle",
+    "country": "ES",
+    "profile": {
+      "person": {
+        "givenNames": "María del Carmen",
+        "surname": "García López"
+      },
+      "household": [],
+      "street": "Calle Mayor",
+      "houseNumber": "15, 3º B",
+      "postcode": "28013",
+      "city": "Madrid"
+    },
+    "text": "Agencia Tributaria\nCalle Guzmán el Bueno, 139\n28003 Madrid\n\nAsunto: Propuesta de liquidación provisional. IRPF, ejercicio 2025.\nDoña María del Carmen García López, con domicilio fiscal en Calle Mayor 15, 3º B, 28013 Madrid, deberá aportar el contrato antes del 30 de octubre de 2026.",
+    "masked": [
+      {
+        "value": "María del Carmen García López",
+        "category": "name"
+      },
+      {
+        "value": "Calle Mayor 15, 3º B",
+        "category": "address"
+      },
+      {
+        "value": "28013",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Agencia Tributaria",
+      "30 de octubre de 2026"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "fix7-pl-masculine-genitive",
+    "country": "PL",
+    "profile": {
+      "person": {
+        "givenNames": "Marek",
+        "surname": "Kowal"
+      },
+      "household": [],
+      "street": "Osiedle Słoneczne",
+      "houseNumber": "5/23",
+      "postcode": "60-101",
+      "city": "Poznań"
+    },
+    "text": "Powiatowy Urząd Pracy\nul. Szyperska 14\n61-754 Poznań\n\nSzanowny Panie Marku,\nDecyzją z dnia 22.09.2026 uznano Pana Marka Kowala za osobę bezrobotną. Panu Markowi Kowalowi przysługuje zasiłek. Spotkanie z Markiem Kowalem odbędzie się 14 października 2026.\nZ poważaniem",
+    "masked": [
+      {
+        "value": "Marku",
+        "category": "name"
+      },
+      {
+        "value": "Marka Kowala",
+        "category": "name"
+      },
+      {
+        "value": "Markowi Kowalowi",
+        "category": "name"
+      },
+      {
+        "value": "Markiem Kowalem",
+        "category": "name"
+      }
+    ],
+    "kept": [
+      "Powiatowy Urząd Pracy",
+      "14 października 2026"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "fix7-de-eheleute",
+    "country": "DE",
+    "profile": {
+      "person": {
+        "givenNames": "Thomas",
+        "surname": "Koch"
+      },
+      "household": [],
+      "street": "Schillerstraße",
+      "houseNumber": "12",
+      "postcode": "69115",
+      "city": "Heidelberg"
+    },
+    "text": "Finanzamt Heidelberg\nKurfürsten-Anlage 15-17\n69115 Heidelberg\n\nEinkommensteuerbescheid 2025 vom 1. Oktober 2026\nSehr geehrte Eheleute Koch,\nfür das Ehepaar Koch ergibt sich eine Erstattung von 412,00 €. Die Familie Koch wird gebeten, ein Kochbuch beizulegen.",
+    "masked": [
+      {
+        "value": "Eheleute Koch",
+        "category": "name"
+      },
+      {
+        "value": "Ehepaar Koch",
+        "category": "name"
+      },
+      {
+        "value": "Familie Koch",
+        "category": "name"
+      }
+    ],
+    "kept": [
+      "Finanzamt Heidelberg",
+      "412,00 €"
+    ],
+    "keptOrdinary": [
+      "ein Kochbuch"
+    ]
+  },
+  {
+    "id": "fix7-nl-street-internal-particles",
+    "country": "NL",
+    "profile": {
+      "person": {
+        "givenNames": "Emma",
+        "surname": "de Wit"
+      },
+      "household": [],
+      "street": "Oude Kijk in ’t Jatstraat",
+      "houseNumber": "56a",
+      "postcode": "9712 EG",
+      "city": "Groningen"
+    },
+    "text": "Kamerverhuur Noord\nPostbus 401\n9700 AK Groningen\n\nMevrouw E. de Wit\nOude Kijk in 't Jatstraat 56-a\n9712 EG  GRONINGEN\n\nBeste Emma,\nJe hebt de huur van de kamer aan de Oude Kijk in 't Jatstraat 56-a opgezegd per 1 november 2026.",
+    "masked": [
+      {
+        "value": "E. de Wit",
+        "category": "name"
+      },
+      {
+        "value": "Emma",
+        "category": "name"
+      },
+      {
+        "value": "Oude Kijk in 't Jatstraat 56-a",
+        "category": "address"
+      },
+      {
+        "value": "9712 EG",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Kamerverhuur Noord",
+      "Postbus 401",
+      "1 november 2026"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "fix7-nl-initial-inside-street",
+    "country": "NL",
+    "profile": {
+      "person": {
+        "givenNames": "Ahmet",
+        "surname": "Yilmaz"
+      },
+      "household": [],
+      "street": "Dominee Theodor Fliednerstraat",
+      "houseNumber": "22 B",
+      "postcode": "5631 BN",
+      "city": "Eindhoven"
+    },
+    "text": "Woonstichting De Linde\nPostbus 9\n5600 AA Eindhoven\n\nDe heer A. Yilmaz\nDs. Th. Fliednerstraat 22-B\n5631 BN  EINDHOVEN\n\nGeachte heer Yilmaz,\nPer 1 januari 2027 verhogen wij de kale huur van uw woning aan de\nDs. Th. Fliednerstraat 22-B met 4,1%.",
+    "masked": [
+      {
+        "value": "A. Yilmaz",
+        "category": "name"
+      },
+      {
+        "value": "Yilmaz",
+        "category": "name"
+      },
+      {
+        "value": "Ds. Th. Fliednerstraat 22-B",
+        "category": "address"
+      },
+      {
+        "value": "5631 BN",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Woonstichting De Linde",
+      "Postbus 9",
+      "1 januari 2027",
+      "4,1%"
+    ],
+    "keptOrdinary": []
+  }
+]

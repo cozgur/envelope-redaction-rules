@@ -448,6 +448,19 @@ struct ProfileRecallTests {
         #expect(tally.ordinaryOverMasked.isEmpty, "ordinary: \(tally.ordinaryOverMasked)")
     }
 
+    static let fixes7 = load("l1-fixes-7")
+
+    @Test("gate-a-7's cheap misses: surname-first with a hyphenated given name, given names with particles, PL masculine cases, Eheleute, NL streets with particles and initials")
+    func fixesFromSetSeven() {
+        #expect(Self.fixes7.count >= 6)
+        let tally = Self.measure(Self.fixes7)
+        Self.report("fixes-7", tally)
+        #expect(tally.missing.isEmpty, "\(tally.missing)")
+        #expect(tally.leaks.isEmpty, "missed: \(tally.leaks)")
+        #expect(tally.senderOverMasked.isEmpty, "kept masked: \(tally.senderOverMasked)")
+        #expect(tally.ordinaryOverMasked.isEmpty, "ordinary: \(tally.ordinaryOverMasked)")
+    }
+
     @Test("Independent set 3, retired: holds Gate A's L1 scope")
     func regressionSetThree() {
         let tally = Self.measure(Self.regression3)
@@ -560,21 +573,44 @@ struct ProfileRecallTests {
         #expect(failed.isEmpty, "\(failed)")
     }
 
-    /// Gate A, owner's decision 5 (6 Oct 2026): independent set gate-a-7,
-    /// every category annotated (references labelled or not, third parties
-    /// by place), written by an agent that saw nothing else and committed
-    /// before this first run.
+    /// Gate A for 1.0 (owner, 6 Oct 2026, the scope decision): gate-a-7,
+    /// after its last fix round, is a regression set. Every category the
+    /// engine claims holds at 100% and ordinary words at 0; the four non-NL
+    /// address forms it still misses are listed and must stay exactly these
+    /// (a new miss fails, and so does a fixed one, until the list is
+    /// updated). Third parties in the block and salutation, and sender-name
+    /// over-masking, are 1.0.x work (docs/cp6-tasks.md) and are printed only.
     static let gateA7 = load("gate-a-7")
 
-    @Test("Gate A on independent set gate-a-7: every line")
-    func gateASetSeven() {
-        guard !Self.gateA7.isEmpty else { return }
+    static let gateA7KnownNonNL: Set<String> = [
+        "de-lea-aufenthaltserlaubnis-co: “Sonnenallee 211, Seitenflügel, 2. OG”",
+        "de-vermieter-nebenkosten: “Vorderhaus, 3. OG links”",
+        "es-ponferrada-ibi: “Avda. de España, 22, 4º dcha.”",
+        "es-sepe-prestacion-desempleo: “CL PINTOR SOROLLA 14 ESC 2 BJ A”",
+    ]
+
+    @Test("Independent set gate-a-7, retired: every claimed category at 100%, ordinary words 0, the known non-NL misses unchanged")
+    func regressionSetSeven() {
+        #expect(Self.gateA7.count >= 40)
         let tally = Self.measure(Self.gateA7)
         Self.gateAReport("gate-a-7", Self.gateA7, tally)
-        for (line, pass) in Self.gateALines(Self.gateA7, tally) {
+        let lines = Self.gateALines(Self.gateA7, tally)
+        for (line, pass) in lines {
             print("GATEA-LINE gate-a-7 \(line) -> \(pass.map { $0 ? "pass" : "FAIL" } ?? "reported")")
         }
         #expect(tally.missing.isEmpty, "\(tally.missing)")
+        #expect(Self.scopeFailures(tally).filter { !$0.contains("non-NL addresses") }.isEmpty)
+        for category in ["name", "address", "postcode", "iban", "id", "reference"] {
+            let entry = tally.masked[category] ?? (0, 0)
+            #expect(entry.found == entry.total, "\(category) \(entry.found)/\(entry.total)")
+        }
+        #expect(tally.ordinaryOverMasked.isEmpty, "\(tally.ordinaryOverMasked)")
+        let nonNL = Set(tally.leaks.filter { $0.contains("(non-NL)") }.map { leak -> String in
+            let id = leak.components(separatedBy: " [").first ?? leak
+            let value = leak.components(separatedBy: "(non-NL) ").last ?? leak
+            return "\(id): \(value)"
+        })
+        #expect(nonNL == Self.gateA7KnownNonNL, "\(nonNL.symmetricDifference(Self.gateA7KnownNonNL))")
     }
 
     @Test("A digit postcode never takes part of a phone number")

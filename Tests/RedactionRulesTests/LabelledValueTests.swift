@@ -154,4 +154,45 @@ struct LabelledValueTests {
         let phone = text.distance(from: text.startIndex, to: text.range(of: "020 123 4567")!.lowerBound)
         #expect(!result.spans.contains { $0.kind == .reference && $0.originalRange.contains(phone) })
     }
+
+    // MARK: - gate-a-7's cheap misses (owner, 6 Oct 2026)
+
+    @Test("gate-a-7: identity labels -- NIP, a residence card, a passport with filler words", arguments: [
+        ("Neem uw paspoort met nummer\nFK493017 mee.", "FK493017", "NL"),
+        ("Ihre Aufenthaltserlaubnis (Kartennummer Y4K7R2LM9) läuft am 31.12.2026 ab.", "Y4K7R2LM9", "DE"),
+        ("Aufenthaltstitel: Y4K7R2LM9", "Y4K7R2LM9", "DE"),
+        ("eAT-Nummer: Y4K7R2LM9", "Y4K7R2LM9", "DE"),
+        ("Ausweisnummer L01X00T47", "L01X00T47", "DE"),
+        ("Ihren gültigen Reisepass (Nr. U18447302) und eine Meldebescheinigung.", "U18447302", "DE"),
+        ("NIP: 5254471303", "5254471303", "PL"),
+    ])
+    func gateA7Identity(text: String, value: String, country: String) {
+        #expect(masked(value, in: text, country: country, as: .idNumber), "\(RedactionEngine.redact(text, countryHint: country).redactedText)")
+    }
+
+    @Test("gate-a-7: references -- a trailing label, dotted and hyphenated values, an en dash, short court codes", arguments: [
+        ("Dosya No: 2026/44713 Esas", "2026/44713 Esas", "TR"),
+        ("hesabına dosya numarası\n2026/44713 Esas ile ödemeniz gerekmektedir.", "2026/44713 Esas", "TR"),
+        ("Aanslagnummer 187654311.H.66.01", "187654311.H.66.01", "NL"),
+        ("Vermeld daarbij het aanslagnummer 187654311.H.66.01 en uw burgerservicenummer.", "187654311.H.66.01", "NL"),
+        ("Penalty Charge Notice: TF44713020", "TF44713020", "GB"),
+        ("Please send proof of sale, quoting the PCN number TF44713020.", "TF44713020", "GB"),
+        ("Geschäftszeichen: IV B 2 – 4471/26", "IV B 2 – 4471/26", "DE"),
+        ("Bitte geben Sie bei jeder Antwort das Geschäftszeichen IV B 2 – 4471/26 an.", "IV B 2 – 4471/26", "DE"),
+        ("Factuur: CG-26-55712", "CG-26-55712", "NL"),
+        ("Sygn. akt I Nc 4471/26", "I Nc 4471/26", "PL"),
+        ("auf mein Konto mit dem Verwendungszweck NK25-GN7-3L.", "NK25-GN7-3L", "DE"),
+    ])
+    func gateA7References(text: String, value: String, country: String) {
+        #expect(masked(value, in: text, country: country, as: .reference), "\(RedactionEngine.redact(text, countryHint: country).redactedText)")
+    }
+
+    @Test("gate-a-7 precision: the sentence after a value stays", arguments: [
+        ("Bitte geben Sie bei jeder Antwort das Geschäftszeichen IV B 2 – 4471/26 an.", "an.", "DE"),
+        ("Dosya No: 2026/44713 Esas ile ödeme yapınız.", "ödeme yapınız", "TR"),
+        ("Factuur: CG-26-55712 van 3 oktober 2026", "3 oktober 2026", "NL"),
+    ])
+    func gateA7Precision(text: String, value: String, country: String) {
+        #expect(untouched(value, in: text, country: country), "\(RedactionEngine.redact(text, countryHint: country).redactedText)")
+    }
 }
