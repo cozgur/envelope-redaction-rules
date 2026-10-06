@@ -33,6 +33,20 @@ struct ProfileRecallTests {
         var kept: [String]
         var keptOrdinary: [String]
         var testDescription: String { id }
+
+        enum CodingKeys: String, CodingKey { case id, country, profile, text, masked, kept, keptOrdinary }
+
+        /// `keptOrdinary` may be left out where a letter has none.
+        init(from decoder: any Decoder) throws {
+            let container = try decoder.container(keyedBy: CodingKeys.self)
+            id = try container.decode(String.self, forKey: .id)
+            country = try container.decode(String.self, forKey: .country)
+            profile = try container.decode(RedactionProfile.self, forKey: .profile)
+            text = try container.decode(String.self, forKey: .text)
+            masked = try container.decode([NLRecallTests.Masked].self, forKey: .masked)
+            kept = try container.decodeIfPresent([String].self, forKey: .kept) ?? []
+            keptOrdinary = try container.decodeIfPresent([String].self, forKey: .keptOrdinary) ?? []
+        }
     }
 
     static func load(_ name: String) -> [Case] {
