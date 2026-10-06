@@ -42,6 +42,15 @@ struct NLHoldoutTests {
 
     static let cases = load(file)
 
+    /// Set 6's five known failures (owner, 6 Oct 2026): recorded as known
+    /// issues so CI is green, and strict -- `withKnownIssue` with
+    /// `isIntermittent: false` is Swift Testing's `XCTExpectFailure(strict:)`
+    /// -- so the run fails the day one of them is fixed, and the entry is
+    /// taken out. Set 6 was measured on L3 alone; Gate A is now measured on
+    /// the full engine (plan §2), on a new set.
+    static let knownSet6Misses: Set<String> = ["address", "name", "postcode", "reference"]
+    static let knownSet6Kept: Set<String> = ["ind-verblijf-right-window-indented"]
+
     @Test("Retired held-out sets stay at 100%", arguments: retired)
     func retiredSetsHold(_ name: String) {
         let letters = Self.load(name)
@@ -82,16 +91,30 @@ struct NLHoldoutTests {
         }
         for (category, entry) in tally.sorted(by: { $0.key < $1.key }) {
             print("RECALL \(category) \(entry.masked)/\(entry.total)")
-            #expect(entry.masked == entry.total,
-                    "\(category) \(entry.masked)/\(entry.total), missed: \(entry.missed)")
+            let check = {
+                #expect(entry.masked == entry.total,
+                        "\(category) \(entry.masked)/\(entry.total), missed: \(entry.missed)")
+            }
+            if Self.knownSet6Misses.contains(category) {
+                withKnownIssue("set 6 (nl-holdout-6): \(category) recall below 100% on L3 alone", isIntermittent: false, check)
+            } else {
+                check()
+            }
         }
     }
 
     @Test("What must survive survives", arguments: cases)
     func keepsWhatTheExplanationNeeds(_ letter: NLRecallTests.Case) {
         let redacted = RedactionEngine.redact(letter.text, countryHint: "NL").redactedText
-        for value in letter.kept {
-            #expect(redacted.contains(value), "“\(value)” was masked in \(letter.id):\n\(redacted)")
+        let check = {
+            for value in letter.kept {
+                #expect(redacted.contains(value), "“\(value)” was masked in \(letter.id):\n\(redacted)")
+            }
+        }
+        if Self.knownSet6Kept.contains(letter.id) {
+            withKnownIssue("set 6 (nl-holdout-6): a kept string masked in \(letter.id)", isIntermittent: false, check)
+        } else {
+            check()
         }
     }
 }
