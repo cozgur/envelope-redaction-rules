@@ -212,4 +212,46 @@ struct AddressWindowTests {
         #expect(found?.kind == .a4Left)
         #expect(found?.boxes.count == 3)
     }
+
+    // MARK: - The reason, for the DEBUG L2 check
+
+    @Test("The diagnosis gives the reason: page read, bounds, every candidate, the chosen one's components")
+    func diagnosisExplains() throws {
+        let (text, layout) = SyntheticLayout.make(Self.rdw, kind: .a4LeftWindow)
+        let loose = Self.loose(layout, bounds: true)
+        let found = AddressWindow.diagnose(in: text, layout: loose, countryHint: "NL")
+        #expect(found.rectifiedAsGiven && found.rectified)
+        #expect(found.pageBounds == loose.pages[0].pageBounds)
+        #expect(found.candidates.count >= 2)
+        let accepted = try #require(found.candidates.first { $0.rejection == .accepted })
+        #expect(accepted.kind == .a4Left)
+        #expect(accepted.personLine && accepted.postcodeLine && !accepted.poBox && !accepted.organisation)
+        #expect((accepted.score ?? 0) > 0)
+        #expect(found.candidates.contains { $0.rejection == .outsideRectangles })
+        // Boxes are the image's, for drawing over it.
+        #expect(accepted.boxes.first == loose.pages[0].lines.first { $0.text == "Ö Yılmaz" }?.box)
+        #expect(found.detection?.boxes.count == 3)
+    }
+
+    @Test("Without page bounds the diagnosis says the rectified page was read as a photo")
+    func diagnosisWithoutBounds() {
+        let (text, layout) = SyntheticLayout.make(Self.nl, kind: .a4LeftWindow)
+        let found = AddressWindow.diagnose(in: text, layout: Self.loose(layout, bounds: false), countryHint: "NL")
+        #expect(found.rectifiedAsGiven)
+        #expect(!found.rectified)
+        #expect(found.pageBounds == nil)
+        #expect(found.candidates.allSatisfy { $0.kind == .shape })
+    }
+
+    @Test("A sender block scores low and says so")
+    func diagnosisLowScore() {
+        let letter = SyntheticLayout.Letter(
+            sender: [], recipient: ["Gemeente Utrecht", "Postbus 16200", "3500 CE Utrecht"],
+            body: ["Datum 1 oktober 2026", "Geachte heer, mevrouw,"]
+        )
+        let (text, layout) = SyntheticLayout.make(letter, kind: .a4LeftWindow)
+        let found = AddressWindow.diagnose(in: text, layout: layout, countryHint: "NL")
+        #expect(found.detection == nil)
+        #expect(found.candidates.contains { $0.rejection == .lowScore && $0.poBox && $0.organisation })
+    }
 }

@@ -627,8 +627,10 @@ public enum ProfileMatcher {
         // NL suffix words after a hyphen, a space or nothing: "14-boven",
         // "14 bov.", "14bv", "14 hs", "14-III" (owner, 6 Oct 2026). A lone
         // letter after a space is a suffix only in capitals or before
-        // punctuation -- "os. Słoneczne 4 w Kowalach" is a preposition.
-        let suffix = #"(?:(?:[ \t]?-[ \t]?|[ \t])?(?:boven|beneden|bov\.|ben\.|bov|ben|bv|bg|hs|huis|zw|rood|bis|ter|[IVX]{1,4}|\d{1,2}|[A-Za-z]\d{1,3}|(?<=[\d-])[A-Za-z]|(?<=[ \t])(?:(?-i:[A-Z])|[a-z](?=[ \t]*(?:[,.;)\n]|$)|[ \t]{2,}|\t)))(?![\p{L}\d]))"#
+        // punctuation -- "os. Słoneczne 4 w Kowalach" is a preposition. An
+        // apartment number after a space ("3 401", owner 6 Oct 2026), never
+        // the digits of a postcode that follows.
+        let suffix = #"(?:(?:[ \t]?-[ \t]?|[ \t])?(?:boven|beneden|bov\.|ben\.|bov|ben|bv|bg|hs|huis|zw|rood|bis|ter|[IVX]{1,4}|(?<=[ \t])\d{3,4}(?![ \t]{0,2}[A-Za-z]{2}(?![\p{L}\d]))|\d{1,2}|[A-Za-z]\d{1,3}|(?<=[\d-])[A-Za-z]|(?<=[ \t])(?:(?-i:[A-Z])|[a-z](?=[ \t]*(?:[,.;)\n]|$)|[ \t]{2,}|\t)))(?![\p{L}\d]))"#
         // Flat, floor and door parts: "12/4", "m. 4", "lok. 7", "D: 2",
         // "3º B", "PISO 3 PTA B", "pta. 9", "APT 4B", "Flat 4".
         let unit = #"(?:[ \t]?/[ \t]?\d+[A-Za-z]?(?![\p{L}\d])|,?[ \t]*\d{1,2}\.[ \t]?(?:OG|Etage|Stock|EG|DG|UG)(?:[ \t]+(?:links|rechts|mitte|li\.|re\.))?(?![\p{L}\d])|,?[ \t]*(?:EG|DG|UG|Hochparterre)(?:[ \t]+(?:links|rechts|mitte))?(?![\p{L}\d])|,?[ \t]*(?:Bât\.?|Bâtiment|Appt\.?|Appart\.?|Escalier|Porte|Étage|Logement)[ \t]*[\p{L}\d]{1,4}(?![\p{L}\d])|,?[ \t]*(?:esc\.?|escalera)[ \t]*(?:izquierda|derecha|izq\.?|dcha\.?|dch\.?|[A-Za-z\d]{1,3})(?![\p{L}\d])|,?[ \t]*(?:m\.|lok\.|mieszk\.|d[ \t]?:|daire|kat|apt\.?|apartment|unit|ste\.?|suite|flat|piso|planta|pta\.?|puerta|bajo)[.:]?[ \t]*\d*[ \t]?[ºª°]?(?:[ \t]?[A-Za-z](?![\p{L}\d:]))?(?![\p{L}\d])|,?[ \t]*\d{1,2}\.?[ \t]?[ºª°][ \t]?[A-Za-z]?(?![\p{L}\d])|,?[ \t]*\d{1,2}(?:r|n|t|er|on|a)(?:[ \t]+\d{1,2}(?:a|ª|n|r))?(?![\p{L}\d]))"#
