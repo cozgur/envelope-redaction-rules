@@ -261,7 +261,7 @@ public enum RedactionEngine {
     ) -> RedactionResult {
         guard let profile else { return redact(text, countryHint: countryHint, known: known) }
         let window = known.filter { $0.source == .window }.flatMap(\.ranges)
-        let matched = ProfileMatcher.claims(in: text, profile: profile, window: window)
+        let matched = ProfileMatcher.claims(in: text, profile: profile, window: window, countryHint: countryHint)
         return redact(text, countryHint: countryHint, known: known + matched)
     }
 

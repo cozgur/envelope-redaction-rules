@@ -31,23 +31,28 @@ public enum ProfileMatcher {
     public static func claims(
         in text: String,
         profile: RedactionProfile,
-        window: [Range<String.Index>] = []
+        window: [Range<String.Index>] = [],
+        countryHint: String? = nil
     ) -> [KnownClaim] {
         let tokens = Token.all(in: text)
+        // Polish case forms of names and streets are matched in a Polish
+        // letter: the country is PL, or a Polish honorific is in the text.
+        let polish = countryHint?.uppercased() == "PL"
+            || tokens.contains { polishHonorifics.contains($0.folded) }
         var names: [(range: Range<String.Index>, strong: Bool)] = []
         var readerStrong = false
         for (position, person) in ([profile.person] + profile.household).enumerated() {
-            let matches = nameMatches(of: person, in: text, tokens: tokens, window: window)
+            let matches = nameMatches(of: person, in: text, tokens: tokens, window: window, polish: polish)
             if position == 0, matches.contains(where: \.strong) { readerStrong = true }
             names += matches.map { ($0.range, $0.strong) }
             names += givenNameAlone(
                 of: person, in: text, tokens: tokens,
-                fullNameInLetter: matches.contains(where: \.withGivenName)
+                fullNameInLetter: matches.contains(where: \.withGivenName), polish: polish
             ).map { ($0, true) }
         }
         var addresses: [Range<String.Index>] = []
         if let street = profile.street, let number = profile.houseNumber {
-            addresses += streetMatches(street: street, number: number, in: text, tokens: tokens)
+            addresses += streetMatches(street: street, number: number, in: text, tokens: tokens, polish: polish)
         }
         if let postcode = profile.postcode {
             addresses += postcodeMatches(postcode, city: profile.city, in: text)
@@ -75,7 +80,7 @@ public enum ProfileMatcher {
 
     /// Particles kept with the surname and compared exactly (folded).
     static let particles: Set<String> = [
-        "van", "de", "der", "den", "het", "ten", "ter", "te", "t", "von", "zu", "du",
+        "van", "de", "der", "den", "het", "ten", "ter", "te", "t", "in", "von", "zu", "du",
         "la", "le", "el", "al", "da", "di", "del", "dos", "des", "y",
     ]
 
@@ -85,9 +90,34 @@ public enum ProfileMatcher {
         "herr", "herrn", "frau", "hd", "m", "mme", "mlle", "monsieur", "madame",
         "mr", "mrs", "ms", "miss", "dr", "drs", "prof", "ir", "mr.",
         "sayin", "bay", "bayan", "hanim", "bey",
-        "pan", "pani", "panie", "pana", "panu", "panstwo",
+        "pan", "pani", "panie", "pana", "panu", "pania", "panem", "panstwo",
         "sr", "sra", "srta", "don", "dona", "dna",
     ]
+
+    /// The Polish honorifics in their case forms (folded: "Panią" is "pania").
+    static let polishHonorifics: Set<String> = ["pan", "pani", "panu", "pania", "pana", "panem", "panie", "panstwo"]
+
+    /// Polish case endings for names and street names, folded ("-ą" is "-a",
+    /// "-ę" is "-e"); masculine and feminine, the owner's list plus the
+    /// instrumental "-im"/"-iem" and the vocative "-o".
+    private static let polishEndings = ["", "a", "owi", "em", "iem", "u", "ego", "iego", "emu", "iemu", "iej", "ej", "im", "y", "ie", "e", "o", "i"]
+
+    /// The stem a case ending attaches to: "kowalski" and "kowalska" to
+    /// "kowalsk", "anna" to "ann", "jan" stays "jan".
+    private static func polishStem(_ word: String) -> String {
+        for suffix in ["ski", "cki", "dzki", "ska", "cka", "dzka"] where word.hasSuffix(suffix) {
+            return String(word.dropLast())
+        }
+        if let last = word.last, "ayi".contains(last), word.count > 3 { return String(word.dropLast()) }
+        return word
+    }
+
+    /// Whether `token` is `word` in a Polish case form.
+    static func polishForm(_ token: String, of word: String) -> Bool {
+        let stem = polishStem(word)
+        guard stem.count >= 3, token.hasPrefix(stem) else { return false }
+        return polishEndings.contains(String(token.dropFirst(stem.count)))
+    }
 
     /// Words that open a salutation, at the start of a line (owner, 6 Oct
     /// 2026): a given name alone is the reader's there.
@@ -185,7 +215,8 @@ public enum ProfileMatcher {
         of person: RedactionProfile.Person,
         in text: String,
         tokens: [Token],
-        window: [Range<String.Index>]
+        window: [Range<String.Index>],
+        polish: Bool
     ) -> [NameMatch] {
         let surnameParts = parts(of: person.surname)
         guard !surnameParts.isEmpty else { return [] }
@@ -203,7 +234,7 @@ public enum ProfileMatcher {
         for sequence in sequences {
             guard sequence.contains(where: { !particles.contains($0) }) else { continue }
             for index in tokens.indices {
-                if let match = matchSurname(sequence, at: index, tokens: tokens, text: text, given: given, window: window) {
+                if let match = matchSurname(sequence, at: index, tokens: tokens, text: text, given: given, window: window, polish: polish) {
                     found.append(match)
                 }
             }
@@ -213,7 +244,7 @@ public enum ProfileMatcher {
             if leading > 0 {
                 let coreOnly = Array(sequence.dropFirst(leading))
                 for start in tokens.indices {
-                    if let match = matchSurname(coreOnly, at: start, tokens: tokens, text: text, given: given, window: window) {
+                    if let match = matchSurname(coreOnly, at: start, tokens: tokens, text: text, given: given, window: window, polish: polish) {
                         found.append(match)
                     }
                 }
@@ -223,9 +254,12 @@ public enum ProfileMatcher {
     }
 
     /// Whether a token is one of the person's given names.
-    private static func isGiven(_ token: Token, _ given: [String]) -> Bool {
+    private static func isGiven(_ token: Token, _ given: [String], polish: Bool = false) -> Bool {
         !given.isEmpty && token.text.first?.isUppercase == true
-            && given.contains { within(token.folded, $0, maxEdits: tolerance($0.count, strong: false)) }
+            && given.contains { word in
+                within(token.folded, word, maxEdits: tolerance(word.count, strong: false))
+                    || (polish && polishForm(token.folded, of: word))
+            }
     }
 
     /// The name span when the surname `sequence` starts at token `index`, or
@@ -239,13 +273,15 @@ public enum ProfileMatcher {
         tokens: [Token],
         text: String,
         given: [String],
-        window: [Range<String.Index>]
+        window: [Range<String.Index>],
+        polish: Bool
     ) -> NameMatch? {
         guard index + sequence.count <= tokens.count else { return nil }
         // Tokens must be consecutive words: only spaces between them, or a
         // hyphen inside a double surname.
         for offset in 1..<max(1, sequence.count) {
-            guard Token.adjacent(tokens[index + offset - 1], tokens[index + offset], in: text, allowing: " -\t") else { return nil }
+            // "In 't Veld": the apostrophe of "'t" stands between particles.
+            guard Token.adjacent(tokens[index + offset - 1], tokens[index + offset], in: text, allowing: " -\t'’") else { return nil }
         }
 
         // Before the surname: initials and given names -- "Anna-Lena" is two
@@ -256,7 +292,7 @@ public enum ProfileMatcher {
         var cursor = index - 1
         while cursor >= 0, Token.adjacent(tokens[cursor], tokens[cursor + 1], in: text, allowing: " .\t\n-") {
             let token = tokens[cursor]
-            if isGiven(token, given) {
+            if isGiven(token, given, polish: polish) {
                 givenBefore = true
             } else if !token.isInitial {
                 break
@@ -282,16 +318,21 @@ public enum ProfileMatcher {
         if peekEnd < tokens.count {
             let gap = text[tokens[peekEnd - 1].range.upperBound..<tokens[peekEnd].range.lowerBound]
             if gap.count <= 3, gap.allSatisfy({ $0 == " " || $0 == "\t" || $0 == "," }),
-               isGiven(tokens[peekEnd], given) {
+               isGiven(tokens[peekEnd], given, polish: polish) {
                 trailingGivenStrong = true
             }
         }
         for (offset, wanted) in sequence.enumerated() {
             let token = tokens[index + offset]
+            // An honorific or a salutation word is never the surname, however
+            // close it is: "Sayın" is two edits from "Aydın".
+            if honorifics.contains(token.folded) || salutations.contains(token.folded) { return nil }
             if particles.contains(wanted) {
                 guard token.folded == wanted else { return nil }
             } else {
-                guard within(token.folded, wanted, maxEdits: tolerance(wanted.count, strong: strongBefore || trailingGivenStrong)) else { return nil }
+                guard within(token.folded, wanted, maxEdits: tolerance(wanted.count, strong: strongBefore || trailingGivenStrong))
+                    || (polish && polishForm(token.folded, of: wanted))
+                else { return nil }
             }
         }
         let cores = sequence.filter { !particles.contains($0) }
@@ -313,7 +354,7 @@ public enum ProfileMatcher {
                 while cursor < tokens.count {
                     if cursor > after, !Token.adjacent(tokens[cursor - 1], tokens[cursor], in: text, allowing: " .\t-") { break }
                     let token = tokens[cursor]
-                    if isGiven(token, given) {
+                    if isGiven(token, given, polish: polish) {
                         givenAfter = true
                     } else if token.isInitial, initials.isEmpty || initials.contains(token.folded.first ?? " ") {
                         // an initial
@@ -368,7 +409,8 @@ public enum ProfileMatcher {
         of person: RedactionProfile.Person,
         in text: String,
         tokens: [Token],
-        fullNameInLetter: Bool
+        fullNameInLetter: Bool,
+        polish: Bool
     ) -> [Range<String.Index>] {
         let names = (person.givenNames ?? "").split(whereSeparator: { $0.isWhitespace })
             .map { $0.split(separator: "-").map { fold(String($0)) } }
@@ -376,14 +418,17 @@ public enum ProfileMatcher {
         for parts in names where !parts.isEmpty {
             let ambiguous = parts.count == 1 && ambiguousGivenNames.contains(parts[0])
             for index in tokens.indices where index + parts.count <= tokens.count {
-                var ok = tokens[index].text.first?.isUppercase == true
+                // "d'Inès", "l'Anne": an elided article joined to the name.
+                let firstToken = tokens[index].elided ?? tokens[index]
+                var ok = firstToken.text.first?.isUppercase == true
                 for (offset, part) in parts.enumerated() where ok {
-                    let token = tokens[index + offset]
+                    let token = offset == 0 ? firstToken : tokens[index + offset]
                     if offset > 0, !Token.adjacent(tokens[index + offset - 1], token, in: text, allowing: "-") { ok = false }
-                    if !within(token.folded, part, maxEdits: tolerance(part.count, strong: false)) { ok = false }
+                    if !within(token.folded, part, maxEdits: tolerance(part.count, strong: false))
+                        && !(polish && polishForm(token.folded, of: part)) { ok = false }
                 }
                 guard ok else { continue }
-                let range = tokens[index].range.lowerBound..<tokens[index + parts.count - 1].range.upperBound
+                let range = firstToken.range.lowerBound..<tokens[index + parts.count - 1].range.upperBound
                 if inSalutation(tokenAt: index, tokens: tokens, text: text)
                     || (fullNameInLetter && !ambiguous) {
                     found.append(range)
@@ -433,6 +478,8 @@ public enum ProfileMatcher {
         "strasse": "str", "str": "str", "straat": "str",
     ]
 
+    private static let polishStreetTypes: Set<String> = ["ulica", "aleja", "osiedle", "plac"]
+
     /// Street types that may stand in front of a street the reader typed
     /// without them ("ul. Długa" for "Długa"), and are masked with it.
     private static let prefixTypes: Set<String> = [
@@ -460,15 +507,15 @@ public enum ProfileMatcher {
         return common >= 6 && common >= max(a.count, b.count) - 3
     }
 
-    private static func streetMatches(street: String, number: String, in text: String, tokens: [Token]) -> [Range<String.Index>] {
-        let wanted = street.split(whereSeparator: { $0.isWhitespace || $0 == "." || $0 == "/" }).map { fold(String($0)) }.filter { !$0.isEmpty }
+    private static func streetMatches(street: String, number: String, in text: String, tokens: [Token], polish: Bool) -> [Range<String.Index>] {
+        let wanted = street.split(whereSeparator: { $0.isWhitespace || $0 == "." || $0 == "/" || $0 == "-" }).map { fold(String($0)) }.filter { !$0.isEmpty }
         let digits = String(number.prefix { $0.isNumber })
         guard !wanted.isEmpty, !digits.isEmpty else { return [] }
         let numberCore = digitPattern(digits) + #"(?![\dOolI])"#
         let suffix = #"(?:(?:[ \t]?-[ \t]?|[ \t])?(?:[IVX]{1,4}|\d{1,2}|hs|bis|zw|bg|[A-Za-z])(?![\p{L}\d]))"#
         // Flat, floor and door parts: "12/4", "m. 4", "lok. 7", "D: 2",
         // "3º B", "PISO 3 PTA B", "pta. 9", "APT 4B", "Flat 4".
-        let unit = #"(?:[ \t]?/[ \t]?\d+[A-Za-z]?(?![\p{L}\d])|,?[ \t]*(?:m\.|lok\.|mieszk\.|d[ \t]?:|daire|apt\.?|apartment|unit|ste\.?|suite|flat|piso|planta|pta\.?|puerta|esc\.?|bajo)[ \t]*\d*[ \t]?[ºª°]?[ \t]?[A-Za-z]?(?![\p{L}\d])|,?[ \t]*\d{1,2}[ \t]?[ºª°][ \t]?[A-Za-z]?(?![\p{L}\d]))"#
+        let unit = #"(?:[ \t]?/[ \t]?\d+[A-Za-z]?(?![\p{L}\d])|,?[ \t]*\d{1,2}\.[ \t]?(?:OG|Etage|Stock|EG|DG|UG)(?:[ \t]+(?:links|rechts|mitte|li\.|re\.))?(?![\p{L}\d])|,?[ \t]*(?:EG|DG|UG|Hochparterre)(?:[ \t]+(?:links|rechts|mitte))?(?![\p{L}\d])|,?[ \t]*(?:Bât\.?|Bâtiment|Appt\.?|Appart\.?|Escalier|Porte|Étage|Logement)[ \t]*[\p{L}\d]{1,4}(?![\p{L}\d])|,?[ \t]*(?:m\.|lok\.|mieszk\.|d[ \t]?:|daire|apt\.?|apartment|unit|ste\.?|suite|flat|piso|planta|pta\.?|puerta|esc\.?|bajo)[ \t]*\d*[ \t]?[ºª°]?[ \t]?[A-Za-z]?(?![\p{L}\d])|,?[ \t]*\d{1,2}[ \t]?[ºª°][ \t]?[A-Za-z]?(?![\p{L}\d]))"#
         guard let after = try? NSRegularExpression(
             // A unit is tried before a one-letter suffix, so the "m" of
             // "5 m. 2" and the "D" of "No: 5 D: 2" open their unit rather
@@ -489,11 +536,22 @@ public enum ProfileMatcher {
             let sub = Array(wanted[skip...])
             if skip > 0, sub[0].count < 5 { break }
             for index in tokens.indices where index + sub.count <= tokens.count {
+                // After a Polish street type, a street word may be in a case
+                // form ("ul. Długiej" for "Długa").
+                let afterPolishType = polish && index > 0
+                    && polishStreetTypes.contains(canonicalStreet(tokens[index - 1].folded))
                 var ok = true
                 for (offset, word) in sub.enumerated() {
                     let token = tokens[index + offset]
-                    if offset > 0, !Token.adjacent(tokens[index + offset - 1], token, in: text, allowing: " \t./") { ok = false; break }
-                    if !streetWordMatches(token.folded, word) { ok = false; break }
+                    if offset > 0, !Token.adjacent(tokens[index + offset - 1], token, in: text, allowing: " \t./-") { ok = false; break }
+                    // "Pr. Irenelaan" for "Prinses Irenelaan", "Laan v.
+                    // Meerdervoort": a street word cut to one to three
+                    // letters and a dot.
+                    let abbreviated = token.folded.count <= 3 && token.folded.count < word.count
+                        && word.hasPrefix(token.folded)
+                        && token.range.upperBound < text.endIndex && text[token.range.upperBound] == "."
+                    if !(streetWordMatches(token.folded, word) || abbreviated
+                         || (afterPolishType && polishForm(token.folded, of: word))) { ok = false; break }
                 }
                 guard ok else { continue }
                 var streetStart = tokens[index].range.lowerBound
@@ -507,24 +565,79 @@ public enum ProfileMatcher {
                 let rest = String(text[streetEnd...].prefix(60))
                 if let match = after.firstMatch(in: rest, range: NSRange(rest.startIndex..., in: rest)),
                    let whole = Range(match.range, in: rest) {
-                    found.append(streetStart..<text.index(streetEnd, offsetBy: rest.distance(from: rest.startIndex, to: whole.upperBound)))
+                    found.append(contentsOf: withBuildingLines(streetStart..<text.index(streetEnd, offsetBy: rest.distance(from: rest.startIndex, to: whole.upperBound)), in: text))
                     continue
                 }
                 let lineStart = text[..<streetStart].lastIndex(of: "\n").map { text.index(after: $0) } ?? text.startIndex
                 let head = String(text[lineStart..<streetStart])
                 if let match = before.firstMatch(in: head, range: NSRange(head.startIndex..., in: head)),
                    let whole = Range(match.range, in: head) {
-                    let offset = head.distance(from: head.startIndex, to: whole.lowerBound)
+                    var offset = head.distance(from: head.startIndex, to: whole.lowerBound)
+                    // A building part before the number on the same line:
+                    // "Résidence Les Pins, esc. 2, 7 boulevard Victor Hugo".
+                    let building = #"(?:Résidence|Rés\.|Bât\.?|Bâtiment|Immeuble)(?![\p{L}])[^,\n]{0,30}(?:,[ \t]*(?:esc\.?|escalier|bât\.?|appt\.?|porte)[ \t]*[\p{L}\d]{1,4})*,[ \t]*$"#
+                    let beforeNumber = String(head[..<whole.lowerBound])
+                    if let found = beforeNumber.range(of: building, options: [.regularExpression, .caseInsensitive]) {
+                        offset = beforeNumber.distance(from: beforeNumber.startIndex, to: found.lowerBound)
+                    }
                     if let units = trailingUnits.firstMatch(in: rest, range: NSRange(rest.startIndex..., in: rest)),
                        let tail = Range(units.range, in: rest) {
                         streetEnd = text.index(streetEnd, offsetBy: rest.distance(from: rest.startIndex, to: tail.upperBound))
                     }
-                    found.append(text.index(lineStart, offsetBy: offset)..<streetEnd)
+                    found.append(contentsOf: withBuildingLines(text.index(lineStart, offsetBy: offset)..<streetEnd, in: text))
                 }
             }
         }
         return found
     }
+
+    /// A line of building, staircase or flat parts right above or below the
+    /// street line ("Résidence Les Pins, esc. 2", "Bât. C Appt 112") is part
+    /// of the same address.
+    private static func withBuildingLines(_ range: Range<String.Index>, in text: String) -> [Range<String.Index>] {
+        var found = [range]
+        let pattern = #"^[ \t]*(?:Résidence|Rés\.|Bât\.?|Bâtiment|Appt\.?|Appartement|Esc\.?|Escalier|Porte|Étage|Entrée|Immeuble|Bloc)(?![\p{L}])[^\n\d]{0,40}(?:\d{1,4}[^\n\d]{0,20}){0,3}$"#
+        guard let regex = try? NSRegularExpression(pattern: pattern, options: [.caseInsensitive]) else { return found }
+        let lineStart = text[..<range.lowerBound].lastIndex(of: "\n").map { text.index(after: $0) } ?? text.startIndex
+        let lineEnd = text[range.upperBound...].firstIndex(of: "\n") ?? text.endIndex
+        // Below.
+        if lineEnd < text.endIndex {
+            let next = text.index(after: lineEnd)
+            let nextEnd = text[next...].firstIndex(of: "\n") ?? text.endIndex
+            let line = String(text[next..<nextEnd])
+            if regex.firstMatch(in: line, range: NSRange(line.startIndex..., in: line)) != nil, !line.isEmpty {
+                found.append(next..<nextEnd)
+            }
+        }
+        // Above.
+        if lineStart > text.startIndex {
+            let previousEnd = text.index(before: lineStart)
+            let previousStart = text[..<previousEnd].lastIndex(of: "\n").map { text.index(after: $0) } ?? text.startIndex
+            let line = String(text[previousStart..<previousEnd])
+            if regex.firstMatch(in: line, range: NSRange(line.startIndex..., in: line)) != nil, !line.isEmpty {
+                found.append(previousStart..<previousEnd)
+            }
+        }
+        return found
+    }
+
+    /// Places with an official second name, either of which a letter may
+    /// print on the postcode line (owner, 6 Oct 2026: a short fixed list).
+    /// The Frisian municipalities' names are official beside the Dutch ones.
+    static let cityAliases: [[String]] = [
+        ["Den Haag", "'s-Gravenhage"],
+        ["Den Bosch", "'s-Hertogenbosch"],
+        ["Leeuwarden", "Ljouwert"],
+        ["Sneek", "Snits"],
+        ["Harlingen", "Harns"],
+        ["Franeker", "Frjentsjer"],
+        ["Bolsward", "Boalsert"],
+        ["Heerenveen", "It Hearrenfean"],
+        ["Joure", "De Jouwer"],
+        ["Workum", "Warkum"],
+        ["Grou", "Grouw"],
+        ["Burgum", "Bergum"],
+    ]
 
     private static func postcodeMatches(_ postcode: String, city: String?, in text: String) -> [Range<String.Index>] {
         let compact = postcode.filter { !$0.isWhitespace }
@@ -536,7 +649,13 @@ public enum ProfileMatcher {
         }
         pattern += #"(?:-\d{4})?(?![\p{L}\d])"#
         guard let regex = try? NSRegularExpression(pattern: pattern, options: [.caseInsensitive]) else { return [] }
-        let words = city.map { $0.split(whereSeparator: { $0.isWhitespace }).map { fold(String($0)) } } ?? []
+        // The city's words, split on spaces and hyphens ("Beneden-Leeuwen",
+        // "'s-Hertogenbosch"), and the same for each official alias.
+        let split = { (name: String) in name.split(whereSeparator: { $0.isWhitespace || $0 == "-" }).map { fold(String($0)) }.filter { !$0.isEmpty } }
+        let words = city.map(split) ?? []
+        let variants: [[String]] = words.isEmpty ? [] : [words] + (cityAliases.first { group in
+            group.contains { split($0) == words }
+        } ?? []).map(split).filter { $0 != words }
         let digitsOnly = compact.allSatisfy(\.isNumber)
 
         var confirmed: [Range<String.Index>] = []
@@ -549,14 +668,28 @@ public enum ProfileMatcher {
             let lineEnd = text[end...].firstIndex(of: "\n") ?? text.endIndex
             let atLineStart = text[lineStart..<range.lowerBound].allSatisfy { $0 == " " || $0 == "\t" }
             var withCity = false
-            if !words.isEmpty {
-                // The city right after the postcode on the same line.
+            for words in variants where !withCity {
+                // The city right after the postcode on the same line, or
+                // after a district and a slash ("06420 Çankaya/ANKARA").
                 let rest = String(text[end..<lineEnd])
                 let restTokens = Token.all(in: rest)
-                if restTokens.count >= words.count,
-                   rest[..<restTokens[0].range.lowerBound].allSatisfy({ $0 == " " || $0 == "\t" || $0 == "," }),
-                   zip(restTokens, words).allSatisfy({ within($0.folded, $1, maxEdits: tolerance($1.count, strong: false)) }) {
-                    end = text.index(end, offsetBy: rest.distance(from: rest.startIndex, to: restTokens[words.count - 1].range.upperBound))
+                let cityAt: Int? = {
+                    guard let first = restTokens.first,
+                          rest[..<first.range.lowerBound].allSatisfy({ $0 == " " || $0 == "\t" || $0 == "," || $0 == "'" || $0 == "’" })
+                    else { return nil }
+                    if restTokens.count >= words.count,
+                       zip(restTokens, words).allSatisfy({ within($0.folded, $1, maxEdits: tolerance($1.count, strong: false)) }) {
+                        return 0
+                    }
+                    if restTokens.count >= 1 + words.count,
+                       rest[restTokens[0].range.upperBound..<restTokens[1].range.lowerBound] == "/",
+                       zip(restTokens.dropFirst(), words).allSatisfy({ within($0.folded, $1, maxEdits: tolerance($1.count, strong: false)) }) {
+                        return 1
+                    }
+                    return nil
+                }()
+                if let cityAt {
+                    end = text.index(end, offsetBy: rest.distance(from: rest.startIndex, to: restTokens[cityAt + words.count - 1].range.upperBound))
                     withCity = true
                 }
                 // Or right before it, perhaps with a state ("SPRINGFIELD IL
@@ -672,6 +805,17 @@ public enum ProfileMatcher {
 
         /// "A", "A.", or one capital letter: an initial.
         var isInitial: Bool { text.count == 1 && text.first?.isUppercase == true }
+
+        /// The name inside an elided article, "Inès" of "d'Inès" (French
+        /// d', l'). Only those two: "O'Neill" is a surname, not an elision.
+        var elided: Token? {
+            guard text.count > 2, let first = text.first, "dDlL".contains(first),
+                  let apostrophe = text.dropFirst().first, apostrophe == "'" || apostrophe == "’",
+                  let rest = Optional(text.dropFirst(2)), rest.first?.isLetter == true
+            else { return nil }
+            let start = text.index(text.startIndex, offsetBy: 2)
+            return Token(range: start..<range.upperBound, text: rest, folded: ProfileMatcher.fold(String(rest)))
+        }
 
         static func all(in text: String) -> [Token] {
             var tokens: [Token] = []
