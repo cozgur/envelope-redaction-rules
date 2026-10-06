@@ -67,8 +67,17 @@ struct ProfileRecallTests {
         return letter
     }
 
+    /// Failing fixtures made from set 2's in-scope misses, Polish case forms,
+    /// NL street abbreviations and city aliases (owner, 6 Oct 2026).
+    static let fixes2 = load("l1-fixes-2")
+
+    /// Independent set 2 -- retired to regression on 6 Oct 2026. Its
+    /// "Długiej 12/4" without "ul." is outside the owner's Polish street rule
+    /// and counts as a non-NL miss (non-NL is ≥ 95%, not 100%).
+    static let regression2 = load("l1-independent-2")
+
     /// The fresh independent set the step is measured on, once it exists.
-    static let independent = load("l1-independent-2")
+    static let independent = load("l1-independent-3")
 
     // MARK: - Position checks
 
@@ -105,6 +114,33 @@ struct ProfileRecallTests {
         }
     }
 
+    /// Whether the occurrence stands right beside the profile's postcode --
+    /// after it, or before it with at most a state code between -- which is
+    /// what "on the postcode's line" means for a city.
+    private static func onPostcodeLine(_ occurrence: Range<Int>, of letter: Case) -> Bool {
+        guard let postcode = letter.profile.postcode else { return false }
+        var pattern = ""
+        for (index, character) in postcode.filter({ !$0.isWhitespace }).enumerated() {
+            if index > 0 { pattern += #"[ \t]{0,2}"# }
+            switch character {
+            case "0": pattern += "[0Oo]"
+            case "1": pattern += "[1lI]"
+            default: pattern += NSRegularExpression.escapedPattern(for: String(character))
+            }
+        }
+        guard let regex = try? NSRegularExpression(pattern: pattern, options: [.caseInsensitive]) else { return false }
+        let text = letter.text
+        for match in regex.matches(in: text, range: NSRange(text.startIndex..., in: text)) {
+            guard let range = Range(match.range, in: text) else { continue }
+            let lower = text.distance(from: text.startIndex, to: range.lowerBound)
+            let upper = text.distance(from: text.startIndex, to: range.upperBound)
+            let gapAfter = occurrence.lowerBound - upper
+            let gapBefore = lower - occurrence.upperBound
+            if (0...4).contains(gapAfter) || (0...5).contains(gapBefore) { return true }
+        }
+        return false
+    }
+
     private static func covered(_ range: Range<Int>, by spans: [RedactionResult.MaskedSpan]) -> Bool {
         range.allSatisfy { offset in spans.contains { $0.originalRange.contains(offset) } }
     }
@@ -131,8 +167,13 @@ struct ProfileRecallTests {
                 // counted apart (≥ 95% for 1.0).
                 let category = item.category == "name" || letter.country == "NL"
                     ? item.category : "\(item.category) (non-NL)"
-                let occurrences = offsets(of: item.value, in: letter.text)
+                var occurrences = offsets(of: item.value, in: letter.text)
                 if occurrences.isEmpty { tally.missing.append("\(letter.id): “\(item.value)” is not in the text") }
+                // A city alone in a sentence is out of scope (owner, 6 Oct
+                // 2026): only a city on the postcode's line is counted.
+                if item.category == "city" {
+                    occurrences = occurrences.filter { onPostcodeLine($0, of: letter) }
+                }
                 for occurrence in occurrences {
                     var entry = tally.masked[category] ?? (0, 0)
                     entry.total += 1
@@ -225,6 +266,23 @@ struct ProfileRecallTests {
         // by design, and sender addresses are L3's (Gate A, step 6).
     }
 
+    @Test("Set 2's misses, Polish case forms, NL abbreviations and aliases: fixed")
+    func fixesFromSetTwo() {
+        let tally = Self.measure(Self.fixes2)
+        Self.report("fixes-2", tally)
+        #expect(tally.missing.isEmpty, "\(tally.missing)")
+        #expect(tally.leaks.isEmpty, "missed: \(tally.leaks)")
+        #expect(tally.ordinaryOverMasked.isEmpty, "ordinary-word over-masking: \(tally.ordinaryOverMasked)")
+    }
+
+    @Test("Independent set 2, retired: holds Gate A's L1 scope")
+    func regressionSetTwo() {
+        let tally = Self.measure(Self.regression2)
+        Self.report("independent-2 (regression)", tally)
+        #expect(Self.scopeFailures(tally).isEmpty, "\(Self.scopeFailures(tally))")
+        #expect(tally.ordinaryOverMasked.isEmpty, "ordinary-word over-masking: \(tally.ordinaryOverMasked)")
+    }
+
     @Test("Independent set 1, retired: holds Gate A's L1 scope")
     func regressionSetOne() {
         let tally = Self.measure(Self.regression)
@@ -237,7 +295,7 @@ struct ProfileRecallTests {
     func independentSet() {
         guard !Self.independent.isEmpty else { return }
         let tally = Self.measure(Self.independent)
-        Self.report("independent-2", tally)
+        Self.report("independent-3", tally)
         #expect(tally.missing.isEmpty, "\(tally.missing)")
         #expect(Self.scopeFailures(tally).isEmpty, "\(Self.scopeFailures(tally))")
         #expect(tally.ordinaryOverMasked.isEmpty, "ordinary-word over-masking: \(tally.ordinaryOverMasked)")

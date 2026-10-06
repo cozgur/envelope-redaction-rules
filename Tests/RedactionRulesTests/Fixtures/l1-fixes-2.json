@@ -1,0 +1,1158 @@
+[
+  {
+    "id": "set2-nl-vattenfall-jaarnota",
+    "country": "NL",
+    "profile": {
+      "person": {
+        "givenNames": "Johannes",
+        "surname": "in 't Veld"
+      },
+      "household": [],
+      "street": "Rijnstraat",
+      "houseNumber": "3-1",
+      "postcode": "1079 GW",
+      "city": "Amsterdam"
+    },
+    "text": "Vattenfall\nPostbus 41920\n1009 DC Amsterdam\n\nDhr. J.P.M. in 't Veld\nRijnstraat 3-1\n1079GW Amsterdam\n\nJaarnota energie\nPeriode 01-03-2025 t/m 28-02-2026\nKlantnummer 70 3341 902\nLeveringsadres Rijnstraat 3 1, 1079 GW Amsterdam\n\nBeste heer In 't Veld,\n\nHierbij ontvangt u uw jaarnota voor stroom en gas op het adres Rijnstraat 3-1. Over de afgelopen periode heeft u 2.148 kWh stroom en 912 m³ gas gebruikt. U heeft in totaal € 1.932,44 aan termijnbedragen betaald. De werkelijke kosten waren € 1.786,10. U krijgt daarom € 146,34 terug.\n\nWij storten dit bedrag binnen 10 werkdagen op uw rekening. Uw nieuwe termijnbedrag is vanaf 1 april 2026 € 149,00 per maand.\n\nMet vriendelijke groet,\n\nVattenfall Klantenservice",
+    "masked": [
+      {
+        "value": "J.P.M. in 't Veld",
+        "category": "name"
+      },
+      {
+        "value": "In 't Veld",
+        "category": "name"
+      },
+      {
+        "value": "Rijnstraat 3-1",
+        "category": "address"
+      },
+      {
+        "value": "Rijnstraat 3 1",
+        "category": "address"
+      },
+      {
+        "value": "1079GW",
+        "category": "postcode"
+      },
+      {
+        "value": "1079 GW",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Vattenfall Klantenservice",
+      "Postbus 41920",
+      "1009 DC Amsterdam",
+      "€ 146,34",
+      "1 april 2026"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "set2-nl-abp-pensioen-interleaved",
+    "country": "NL",
+    "profile": {
+      "person": {
+        "givenNames": "Robert Jan",
+        "surname": "van Leeuwen"
+      },
+      "household": [
+        {
+          "givenNames": "Saskia",
+          "surname": "van Leeuwen-Kok"
+        }
+      ],
+      "street": "Prinses Irenelaan",
+      "houseNumber": "17",
+      "postcode": "2252 GH",
+      "city": "Voorschoten"
+    },
+    "text": "ABP\nDhr. drs. R.J. van Leeuwen          Postbus 4806\nPr. Irenelaan 17                    6401 JL Heerlen\n2252 GH  VOORSCHOTEN                Telefoon 045 579 60 70\n\nHeerlen, 15 mei 2026\nOnderwerp: uw pensioenoverzicht en nabestaandenpensioen\n\nGeachte heer Van Leeuwen,\n\nU gaat op 1 september 2026 met pensioen. In dit overzicht ziet u hoeveel ouderdomspensioen u bruto per maand krijgt: € 2.418,66.\n\nBent u getrouwd of woont u samen? Dan heeft uw partner recht op nabestaandenpensioen als u overlijdt. Wij hebben als partner geregistreerd: mevrouw S. van Leeuwen-Kok, wonend op hetzelfde adres (Prinses Irenelaan 17, 2252 GH Voorschoten). Klopt dit niet? Laat het ons weten vóór 1 juli 2026.\n\nWilt u een deel van het ouderdomspensioen ruilen voor een hoger nabestaandenpensioen voor Saskia van Leeuwen-Kok? Dat kan tot de ingangsdatum.\n\nMet vriendelijke groet,\n\nABP",
+    "masked": [
+      {
+        "value": "R.J. van Leeuwen",
+        "category": "name"
+      },
+      {
+        "value": "Van Leeuwen",
+        "category": "name"
+      },
+      {
+        "value": "S. van Leeuwen-Kok",
+        "category": "name"
+      },
+      {
+        "value": "Saskia van Leeuwen-Kok",
+        "category": "name"
+      },
+      {
+        "value": "Pr. Irenelaan 17",
+        "category": "address"
+      },
+      {
+        "value": "Prinses Irenelaan 17",
+        "category": "address"
+      },
+      {
+        "value": "2252 GH",
+        "category": "postcode"
+      },
+      {
+        "value": "VOORSCHOTEN",
+        "category": "city"
+      },
+      {
+        "value": "Voorschoten",
+        "category": "city"
+      }
+    ],
+    "kept": [
+      "ABP",
+      "Postbus 4806",
+      "6401 JL Heerlen",
+      "€ 2.418,66",
+      "1 september 2026",
+      "1 juli 2026"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "set2-nl-zilveren-kruis-declaratie",
+    "country": "NL",
+    "profile": {
+      "person": {
+        "givenNames": "Mark",
+        "surname": "Hoekstra"
+      },
+      "household": [],
+      "street": "Van Heemstraweg",
+      "houseNumber": "101",
+      "postcode": "6658 KH",
+      "city": "Beneden-Leeuwen"
+    },
+    "text": "Zilveren Kruis\nPostbus 444\n2300 AK Leiden\n\nM.A. Hoekstra\nVan Heemstraweg 101\n6658 KH  Beneden-Leeuwen\n\nDatum 4 maart 2026\nRelatienummer 188 02 4471\nOnderwerp Uw declaratie fysiotherapie\n\nBeste Mark,\n\nWij hebben uw declaratie van Fysiotherapie Maas en Waal ontvangen voor 12 behandelingen in januari en februari 2026. Uw aanvullende verzekering vergoedt 9 behandelingen per jaar. Wij vergoeden daarom € 324,00 van het totaalbedrag van € 432,00. Het restant van € 108,00 betaalt u zelf aan de fysiotherapeut.\n\nDit bedrag storten wij op de rekening van M.A. Hoekstra. Het adres dat bij ons bekend is: Van Heemstraweg 101, 6658 KH Beneden-Leeuwen.\n\nMet vriendelijke groet,\n\nZilveren Kruis\nafdeling Declaraties",
+    "masked": [
+      {
+        "value": "M.A. Hoekstra",
+        "category": "name"
+      },
+      {
+        "value": "Mark",
+        "category": "name"
+      },
+      {
+        "value": "Van Heemstraweg 101",
+        "category": "address"
+      },
+      {
+        "value": "6658 KH",
+        "category": "postcode"
+      },
+      {
+        "value": "Beneden-Leeuwen",
+        "category": "city"
+      }
+    ],
+    "kept": [
+      "Zilveren Kruis",
+      "Postbus 444",
+      "2300 AK Leiden",
+      "Fysiotherapie Maas en Waal",
+      "€ 324,00",
+      "€ 108,00"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "set2-nl-eneco-overname-interleaved",
+    "country": "NL",
+    "profile": {
+      "person": {
+        "givenNames": "Burak",
+        "surname": "Yıldız"
+      },
+      "household": [],
+      "street": "Laan van Meerdervoort",
+      "houseNumber": "455A",
+      "postcode": "2563 AV",
+      "city": "Den Haag"
+    },
+    "text": "eneco\nHaagse Installatie Partners B.V.      Eneco Klantenservice\nT.a.v. dhr. B. Yildiz                 Postbus 1000\nLaan v. Meerdervoort 455 a            3000 BA Rotterdam\n2563 AV  'S-GRAVENHAGE                Datum 11 augustus 2026\n\nOnderwerp: overname energiecontract\n\nGeachte heer Yildiz,\n\nU heeft ons laten weten dat u per 1 september 2026 het energiecontract voor de bedrijfsruimte aan de Laan van Meerdervoort 455A overneemt van de vorige huurder. Het contract komt op naam van Haagse Installatie Partners B.V., ter attentie van B. Yildiz.\n\nWij hebben de meterstanden van 31 augustus 2026 nodig. Geeft u die door via Mijn Eneco. Wij sturen de bevestiging naar Laan van Meerdervoort 455A, 2563 AV Den Haag.\n\nMet vriendelijke groet,\n\nEneco Klantenservice",
+    "masked": [
+      {
+        "value": "B. Yildiz",
+        "category": "name"
+      },
+      {
+        "value": "Yildiz",
+        "category": "name"
+      },
+      {
+        "value": "Laan v. Meerdervoort 455 a",
+        "category": "address"
+      },
+      {
+        "value": "Laan van Meerdervoort 455A",
+        "category": "address"
+      },
+      {
+        "value": "2563 AV",
+        "category": "postcode"
+      },
+      {
+        "value": "'S-GRAVENHAGE",
+        "category": "city"
+      },
+      {
+        "value": "Den Haag",
+        "category": "city"
+      }
+    ],
+    "kept": [
+      "Eneco Klantenservice",
+      "Postbus 1000",
+      "3000 BA Rotterdam",
+      "Haagse Installatie Partners B.V.",
+      "1 september 2026",
+      "31 augustus 2026"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "set2-de-hausverwaltung-betriebskosten",
+    "country": "DE",
+    "profile": {
+      "person": {
+        "givenNames": "Lukas",
+        "surname": "Brandt"
+      },
+      "household": [
+        {
+          "givenNames": "Mia",
+          "surname": "Brandt"
+        }
+      ],
+      "street": "Karl-Marx-Allee",
+      "houseNumber": "93",
+      "postcode": "10243",
+      "city": "Berlin"
+    },
+    "text": "Hausverwaltung Petersen & Kühn GmbH\nBoxhagener Str. 18 · 10245 Berlin\n\nHerrn Lukas Brandt\nz. Hd. Frau Mia Brandt\nKarl-Marx-Allee 93, 3. OG links\n1O243 Berlin\n\nBerlin, 30.04.2026\n\nBetriebskostenabrechnung für den Zeitraum 01.01.2025 – 31.12.2025\nMietobjekt: Karl-Marx-Allee 93, 3. OG links, 10243 Berlin\n\nSehr geehrter Herr Brandt,\nsehr geehrte Frau Brandt,\n\nanbei erhalten Sie die Betriebskostenabrechnung für das Jahr 2025. Ihre Vorauszahlungen betrugen 2.160,00 €. Die tatsächlichen Kosten für Heizung, Wasser, Müllabfuhr und Hausreinigung betragen 2.388,52 €. Es ergibt sich eine Nachzahlung von 228,52 €.\n\nBitte überweisen Sie den Betrag bis zum 31.05.2026. Die monatliche Vorauszahlung für die Wohnung Karl-Marx-Allee 93, 3. OG links erhöht sich ab 01.06.2026 auf 200,00 €.\n\nMit freundlichen Grüßen\nHausverwaltung Petersen & Kühn GmbH",
+    "masked": [
+      {
+        "value": "Lukas Brandt",
+        "category": "name"
+      },
+      {
+        "value": "Mia Brandt",
+        "category": "name"
+      },
+      {
+        "value": "Brandt",
+        "category": "name"
+      },
+      {
+        "value": "Karl-Marx-Allee 93, 3. OG links",
+        "category": "address"
+      },
+      {
+        "value": "1O243",
+        "category": "postcode"
+      },
+      {
+        "value": "10243",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Hausverwaltung Petersen & Kühn GmbH",
+      "Boxhagener Str. 18",
+      "10245 Berlin",
+      "228,52 €",
+      "31.05.2026"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "set2-fr-caf-prime-activite",
+    "country": "FR",
+    "profile": {
+      "person": {
+        "givenNames": "Amina",
+        "surname": "Benali"
+      },
+      "household": [
+        {
+          "givenNames": "Inès",
+          "surname": "Benali"
+        },
+        {
+          "givenNames": "Karim",
+          "surname": "Haddad"
+        }
+      ],
+      "street": "avenue Jean Jaurès",
+      "houseNumber": "48",
+      "postcode": "93300",
+      "city": "Aubervilliers"
+    },
+    "text": "Caisse d'allocations familiales de la Seine-Saint-Denis\n93024 Bobigny Cedex\n\nMadame BENALI Amina\nBât. C Appt 1l2\n48 avenue Jean Jaurès\n93300 AUBERVILLIERS\n\nBobigny, le 6 mars 2026\nN° allocataire : 4471209\n\nObjet : Prime d'activité\n\nMadame,\n\nNous avons étudié votre situation. Vous vivez avec M. Karim Haddad et votre fille Inès Benali au 48 avenue Jean Jaurès, Bât. C Appt 112, 93300 Aubervilliers.\n\nÀ partir du mois d'avril 2026, votre prime d'activité est de 187,34 € par mois. Elle sera versée le 5 de chaque mois.\n\nMadame Benali, vous devez nous signaler tout changement de situation (déménagement, naissance, reprise d'études d'Inès) dans un délai d'un mois.\n\nVotre conseillère,\nS. Morel",
+    "masked": [
+      {
+        "value": "BENALI Amina",
+        "category": "name"
+      },
+      {
+        "value": "Benali",
+        "category": "name"
+      },
+      {
+        "value": "Karim Haddad",
+        "category": "name"
+      },
+      {
+        "value": "Inès Benali",
+        "category": "name"
+      },
+      {
+        "value": "Inès",
+        "category": "name"
+      },
+      {
+        "value": "Bât. C Appt 1l2",
+        "category": "address"
+      },
+      {
+        "value": "Bât. C Appt 112",
+        "category": "address"
+      },
+      {
+        "value": "48 avenue Jean Jaurès",
+        "category": "address"
+      },
+      {
+        "value": "93300",
+        "category": "postcode"
+      },
+      {
+        "value": "AUBERVILLIERS",
+        "category": "city"
+      },
+      {
+        "value": "Aubervilliers",
+        "category": "city"
+      }
+    ],
+    "kept": [
+      "Caisse d'allocations familiales de la Seine-Saint-Denis",
+      "93024 Bobigny Cedex",
+      "187,34 €",
+      "6 mars 2026",
+      "S. Morel"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "set2-fr-antai-avis-contravention",
+    "country": "FR",
+    "profile": {
+      "person": {
+        "givenNames": "Marie-Claire",
+        "surname": "Dubois"
+      },
+      "household": [],
+      "street": "boulevard Victor Hugo",
+      "houseNumber": "7",
+      "postcode": "06000",
+      "city": "Nice"
+    },
+    "text": "AGENCE NATIONALE DE TRAITEMENT AUTOMATISÉ DES INFRACTIONS\nCS 41101\n35911 RENNES CEDEX 9\n\nMME DUBOIS MARIE-CLAIRE\nRESIDENCE LES PINS ESC 2\n7 BD VICTOR HUGO\n06000 NICE\n\nAVIS DE CONTRAVENTION\nDate d'envoi : 11/09/2026\nNuméro de l'avis : 7 412 559 018\n\nLe véhicule dont vous êtes titulaire du certificat d'immatriculation a fait l'objet d'un contrôle le 02/09/2026 à 17h46, Promenade des Anglais.\nNature de l'infraction : excès de vitesse inférieur à 20 km/h, la vitesse maximale autorisée étant inférieure ou égale à 50 km/h.\n\nMontant de l'amende forfaitaire : 68 €\nMontant minoré (paiement sous 15 jours) : 45 €\n\nTitulaire : Mme Marie-Claire Dubois, Résidence Les Pins, esc. 2, 7 boulevard Victor Hugo, 06000 Nice\n\nSi vous n'étiez pas le conducteur, désignez-le sur www.antai.gouv.fr dans un délai de 45 jours.",
+    "masked": [
+      {
+        "value": "DUBOIS MARIE-CLAIRE",
+        "category": "name"
+      },
+      {
+        "value": "Marie-Claire Dubois",
+        "category": "name"
+      },
+      {
+        "value": "RESIDENCE LES PINS ESC 2",
+        "category": "address"
+      },
+      {
+        "value": "Résidence Les Pins, esc. 2",
+        "category": "address"
+      },
+      {
+        "value": "7 BD VICTOR HUGO",
+        "category": "address"
+      },
+      {
+        "value": "7 boulevard Victor Hugo",
+        "category": "address"
+      },
+      {
+        "value": "06000",
+        "category": "postcode"
+      },
+      {
+        "value": "NICE",
+        "category": "city"
+      }
+    ],
+    "kept": [
+      "CS 41101",
+      "35911 RENNES CEDEX 9",
+      "68 €",
+      "45 €",
+      "Promenade des Anglais",
+      "11/09/2026"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "set2-pl-urzad-skarbowy-wezwanie",
+    "country": "PL",
+    "profile": {
+      "person": {
+        "givenNames": "Jan",
+        "surname": "Kowalski"
+      },
+      "household": [],
+      "street": "Długa",
+      "houseNumber": "12/4",
+      "postcode": "00-238",
+      "city": "Warszawa"
+    },
+    "text": "NACZELNIK\nDRUGIEGO URZĘDU SKARBOWEGO\nWARSZAWA-ŚRÓDMIEŚCIE\nul. Lindleya 14\n02-013 Warszawa\n\nPan\nJan Kowalski\nul. Długa 12 m. 4\n00-238 Warszawa\n\nWarszawa, 15 kwietnia 2026 r.\nZnak sprawy: 1435-SPV.4012.188.2026\n\nWEZWANIE\n\nNa podstawie art. 155 § 1 ustawy z dnia 29 sierpnia 1997 r. – Ordynacja podatkowa wzywam Pana Jana Kowalskiego, zamieszkałego w Warszawie przy ul. Długiej 12/4, do złożenia wyjaśnień w sprawie zeznania PIT-37 za rok 2025 w terminie 14 dni od dnia doręczenia wezwania.\n\nWyjaśnienia należy złożyć osobiście w siedzibie urzędu przy ul. Lindleya 14 lub przesłać na adres urzędu. Korespondencję do Pana kierujemy na adres: ul. Długa 12 m. 4, 00-238 Warszawa.\n\nZ poważaniem\nz up. Naczelnika\nMarta Zielińska",
+    "masked": [
+      {
+        "value": "Jan Kowalski",
+        "category": "name"
+      },
+      {
+        "value": "Jana Kowalskiego",
+        "category": "name"
+      },
+      {
+        "value": "ul. Długa 12 m. 4",
+        "category": "address"
+      },
+      {
+        "value": "00-238",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "DRUGIEGO URZĘDU SKARBOWEGO",
+      "ul. Lindleya 14",
+      "02-013 Warszawa",
+      "15 kwietnia 2026 r.",
+      "Marta Zielińska"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "set2-tr-afad-kaya-dusmesi",
+    "country": "TR",
+    "profile": {
+      "person": {
+        "givenNames": "Zeynep",
+        "surname": "Kaya"
+      },
+      "household": [
+        {
+          "givenNames": "Emre",
+          "surname": "Kaya"
+        }
+      ],
+      "street": "Cumhuriyet Mah. 1203. Sokak",
+      "houseNumber": "14/3",
+      "postcode": "07070",
+      "city": "Antalya"
+    },
+    "text": "T.C.\nANTALYA VALİLİĞİ\nİl Afet ve Acil Durum Müdürlüğü\nYeşilbayır Mah. Akdeniz Bulvarı No: 104\n07090 Döşemealtı/ANTALYA\n\nSayın Zeynep KAYA\nCumhuriyet Mah. 1203. Sok. No: 14 D: 3\n07070 Konyaaltı/ANTALYA\n\nTarih: 03.02.2026\nKonu: Kaya düşmesi riski hakkında bilgilendirme\n\nSayın Zeynep Kaya,\n\nKonyaaltı ilçesinde yamaçta yapılan jeolojik incelemede, 1203. Sokak boyunca kaya düşmesi riski bulunduğu tespit edilmiştir. Cumhuriyet Mah. 1203. Sok. No: 14 D: 3 adresinde bulunan binanın arka cephesi risk alanı içinde kalmaktadır.\n\nHanenizde kayıtlı Emre Kaya ve Zeynep Kaya için geçici barınma yardımı başvurusu 20.02.2026 tarihine kadar yapılabilir. Tebligat adresiniz: Cumhuriyet Mah. 1203. Sok. No: 14 D: 3, 07070 Konyaaltı.\n\nBilgilerinize sunarım.\n\nİl Müdürü",
+    "masked": [
+      {
+        "value": "Zeynep KAYA",
+        "category": "name"
+      },
+      {
+        "value": "Zeynep Kaya",
+        "category": "name"
+      },
+      {
+        "value": "Emre Kaya",
+        "category": "name"
+      },
+      {
+        "value": "Cumhuriyet Mah. 1203. Sok. No: 14 D: 3",
+        "category": "address"
+      },
+      {
+        "value": "07070",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "ANTALYA VALİLİĞİ",
+      "Yeşilbayır Mah. Akdeniz Bulvarı No: 104",
+      "07090 Döşemealtı/ANTALYA",
+      "03.02.2026",
+      "20.02.2026"
+    ],
+    "keptOrdinary": [
+      "Kaya düşmesi riski hakkında",
+      "kaya düşmesi riski bulunduğu"
+    ]
+  },
+  {
+    "id": "set2-tr-banka-konut-kredisi-deniz",
+    "country": "TR",
+    "profile": {
+      "person": {
+        "givenNames": "Deniz",
+        "surname": "Aydın"
+      },
+      "household": [],
+      "street": "Cemal Gürsel Caddesi",
+      "houseNumber": "212/7",
+      "postcode": "35540",
+      "city": "İzmir"
+    },
+    "text": "Körfez Katılım Bankası A.Ş.\nAlsancak Şubesi\nKıbrıs Şehitleri Cad. No: 41\n35220 Konak/İZMİR\n\nDENİZ AYDIN\nCemal Gürsel Cad. No: 2l2 D: 7\n35540 Karşıyaka/İZMİR\n\nTarih: 21.09.2026\nMüşteri No: 77104418\n\nKonu: Konut finansmanı başvurunuz hk.\n\nSayın Deniz,\n\nKarşıyaka'da satın almak istediğiniz deniz manzaralı konut için yaptığınız 1.850.000,00 TL tutarındaki konut finansmanı başvurunuz kredi komitemiz tarafından onaylanmıştır. Vade 120 ay, aylık taksit 31.240,00 TL'dir.\n\nSözleşmenin imzalanması için Deniz Aydın adına kayıtlı kimlik belgesi ile 05.10.2026 tarihine kadar şubemize başvurmanızı rica ederiz. Sözleşme ve ödeme planı Cemal Gürsel Cad. No: 212 D: 7, 35540 Karşıyaka/İzmir adresinize de gönderilecektir.\n\nSaygılarımızla,\nKörfez Katılım Bankası A.Ş.",
+    "masked": [
+      {
+        "value": "DENİZ AYDIN",
+        "category": "name"
+      },
+      {
+        "value": "Deniz",
+        "category": "name"
+      },
+      {
+        "value": "Deniz Aydın",
+        "category": "name"
+      },
+      {
+        "value": "Cemal Gürsel Cad. No: 2l2 D: 7",
+        "category": "address"
+      },
+      {
+        "value": "Cemal Gürsel Cad. No: 212 D: 7",
+        "category": "address"
+      },
+      {
+        "value": "35540",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Körfez Katılım Bankası A.Ş.",
+      "Kıbrıs Şehitleri Cad. No: 41",
+      "35220 Konak/İZMİR",
+      "1.850.000,00 TL",
+      "Alsancak Şubesi",
+      "05.10.2026"
+    ],
+    "keptOrdinary": [
+      "deniz manzaralı konut"
+    ]
+  },
+  {
+    "id": "pl-genitive-masculine",
+    "country": "PL",
+    "profile": {
+      "person": {
+        "givenNames": "Jan",
+        "surname": "Kowalski"
+      },
+      "household": [],
+      "street": "Długa",
+      "houseNumber": "12/4",
+      "postcode": "00-238",
+      "city": "Warszawa"
+    },
+    "text": "Urząd Skarbowy Warszawa-Śródmieście\nul. Lindleya 14, 02-013 Warszawa\n\nWzywam Pana Jana Kowalskiego do złożenia wyjaśnień.",
+    "masked": [
+      {
+        "value": "Jana Kowalskiego",
+        "category": "name"
+      }
+    ],
+    "kept": [
+      "Urząd Skarbowy Warszawa-Śródmieście"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "pl-dative-masculine",
+    "country": "PL",
+    "profile": {
+      "person": {
+        "givenNames": "Jan",
+        "surname": "Kowalski"
+      },
+      "household": [],
+      "street": "Długa",
+      "houseNumber": "12/4",
+      "postcode": "00-238",
+      "city": "Warszawa"
+    },
+    "text": "Urząd Skarbowy Warszawa-Śródmieście\nul. Lindleya 14, 02-013 Warszawa\n\nPrzekazujemy Panu Janowi Kowalskiemu decyzję.",
+    "masked": [
+      {
+        "value": "Janowi Kowalskiemu",
+        "category": "name"
+      }
+    ],
+    "kept": [
+      "Urząd Skarbowy Warszawa-Śródmieście"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "pl-instrumental-masculine",
+    "country": "PL",
+    "profile": {
+      "person": {
+        "givenNames": "Jan",
+        "surname": "Kowalski"
+      },
+      "household": [],
+      "street": "Długa",
+      "houseNumber": "12/4",
+      "postcode": "00-238",
+      "city": "Warszawa"
+    },
+    "text": "Urząd Skarbowy Warszawa-Śródmieście\nul. Lindleya 14, 02-013 Warszawa\n\nRozmawialiśmy z Panem Janem Kowalskim w dniu 3 maja.",
+    "masked": [
+      {
+        "value": "Janem Kowalskim",
+        "category": "name"
+      }
+    ],
+    "kept": [
+      "Urząd Skarbowy Warszawa-Śródmieście"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "pl-vocative-masculine",
+    "country": "PL",
+    "profile": {
+      "person": {
+        "givenNames": "Jan",
+        "surname": "Kowalski"
+      },
+      "household": [],
+      "street": "Długa",
+      "houseNumber": "12/4",
+      "postcode": "00-238",
+      "city": "Warszawa"
+    },
+    "text": "Urząd Skarbowy Warszawa-Śródmieście\nul. Lindleya 14, 02-013 Warszawa\n\nSzanowny Panie Janie,\n\nuprzejmie informujemy o terminie.",
+    "masked": [
+      {
+        "value": "Janie",
+        "category": "name"
+      }
+    ],
+    "kept": [
+      "Urząd Skarbowy Warszawa-Śródmieście"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "pl-genitive-feminine",
+    "country": "PL",
+    "profile": {
+      "person": {
+        "givenNames": "Anna",
+        "surname": "Kowalska"
+      },
+      "household": []
+    },
+    "text": "Urząd Skarbowy Warszawa-Śródmieście\nul. Lindleya 14, 02-013 Warszawa\n\nNa wniosek Pani Anny Kowalskiej wszczęto postępowanie.",
+    "masked": [
+      {
+        "value": "Anny Kowalskiej",
+        "category": "name"
+      }
+    ],
+    "kept": [
+      "Urząd Skarbowy Warszawa-Śródmieście"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "pl-dative-feminine",
+    "country": "PL",
+    "profile": {
+      "person": {
+        "givenNames": "Anna",
+        "surname": "Kowalska"
+      },
+      "household": []
+    },
+    "text": "Urząd Skarbowy Warszawa-Śródmieście\nul. Lindleya 14, 02-013 Warszawa\n\nDoręczamy Pani Annie Kowalskiej postanowienie.",
+    "masked": [
+      {
+        "value": "Annie Kowalskiej",
+        "category": "name"
+      }
+    ],
+    "kept": [
+      "Urząd Skarbowy Warszawa-Śródmieście"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "pl-accusative-feminine",
+    "country": "PL",
+    "profile": {
+      "person": {
+        "givenNames": "Anna",
+        "surname": "Kowalska"
+      },
+      "household": []
+    },
+    "text": "Urząd Skarbowy Warszawa-Śródmieście\nul. Lindleya 14, 02-013 Warszawa\n\nProsimy Panią Annę Kowalską o kontakt.",
+    "masked": [
+      {
+        "value": "Annę Kowalską",
+        "category": "name"
+      }
+    ],
+    "kept": [
+      "Urząd Skarbowy Warszawa-Śródmieście"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "pl-instrumental-feminine",
+    "country": "PL",
+    "profile": {
+      "person": {
+        "givenNames": "Anna",
+        "surname": "Kowalska"
+      },
+      "household": []
+    },
+    "text": "Urząd Skarbowy Warszawa-Śródmieście\nul. Lindleya 14, 02-013 Warszawa\n\nSpotkanie z Panią Anną Kowalską odbędzie się w urzędzie.",
+    "masked": [
+      {
+        "value": "Anną Kowalską",
+        "category": "name"
+      }
+    ],
+    "kept": [
+      "Urząd Skarbowy Warszawa-Śródmieście"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "pl-vocative-feminine",
+    "country": "PL",
+    "profile": {
+      "person": {
+        "givenNames": "Anna",
+        "surname": "Kowalska"
+      },
+      "household": []
+    },
+    "text": "Urząd Skarbowy Warszawa-Śródmieście\nul. Lindleya 14, 02-013 Warszawa\n\nSzanowna Pani Anno,\n\nprzesyłamy informację.",
+    "masked": [
+      {
+        "value": "Anno",
+        "category": "name"
+      }
+    ],
+    "kept": [
+      "Urząd Skarbowy Warszawa-Śródmieście"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "pl-consonant-stem-cases",
+    "country": "PL",
+    "profile": {
+      "person": {
+        "givenNames": "Tomasz",
+        "surname": "Wójcik"
+      },
+      "household": []
+    },
+    "text": "Urząd Skarbowy Warszawa-Śródmieście\nul. Lindleya 14, 02-013 Warszawa\n\nWezwanie dla Pana Tomasza Wójcika. Decyzję przekazano Panu Tomaszowi Wójcikowi; rozmowa z Panem Tomaszem Wójcikiem; mowa o Panu Tomaszu Wójciku.",
+    "masked": [
+      {
+        "value": "Tomasza Wójcika",
+        "category": "name"
+      },
+      {
+        "value": "Tomaszowi Wójcikowi",
+        "category": "name"
+      },
+      {
+        "value": "Tomaszem Wójcikiem",
+        "category": "name"
+      },
+      {
+        "value": "Tomaszu Wójciku",
+        "category": "name"
+      }
+    ],
+    "kept": [
+      "Urząd Skarbowy Warszawa-Śródmieście"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "pl-street-inflected-after-ul",
+    "country": "PL",
+    "profile": {
+      "person": {
+        "givenNames": "Jan",
+        "surname": "Kowalski"
+      },
+      "household": [],
+      "street": "Długa",
+      "houseNumber": "12/4",
+      "postcode": "00-238",
+      "city": "Warszawa"
+    },
+    "text": "Urząd Skarbowy Warszawa-Śródmieście\nul. Lindleya 14, 02-013 Warszawa\n\nPan Jan Kowalski\nul. Długa 12/4\n00-238 Warszawa\n\nlokal przy ul. Długiej 12/4 wymaga przeglądu.",
+    "masked": [
+      {
+        "value": "Jan Kowalski",
+        "category": "name"
+      },
+      {
+        "value": "ul. Długa 12/4",
+        "category": "address"
+      },
+      {
+        "value": "ul. Długiej 12/4",
+        "category": "address"
+      },
+      {
+        "value": "00-238 Warszawa",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Urząd Skarbowy Warszawa-Śródmieście"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "pl-declension-not-outside-pl",
+    "country": "NL",
+    "profile": {
+      "person": {
+        "givenNames": "Jan",
+        "surname": "Smit"
+      },
+      "household": []
+    },
+    "text": "Gemeente Utrecht\nPostbus 16200\n3500 CE Utrecht\n\nDhr. J. Smit\n\nGeachte heer Smit,\n\nUw collega Jana heeft het formulier al ingeleverd.",
+    "masked": [
+      {
+        "value": "J. Smit",
+        "category": "name"
+      },
+      {
+        "value": "heer Smit",
+        "category": "name"
+      }
+    ],
+    "kept": [
+      "Gemeente Utrecht",
+      "Uw collega Jana"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "nl-street-word-initial-abbreviations",
+    "country": "NL",
+    "profile": {
+      "person": {
+        "givenNames": "Robert",
+        "surname": "van Leeuwen"
+      },
+      "household": [],
+      "street": "Prinses Irenelaan",
+      "houseNumber": "17",
+      "postcode": "2252 GH",
+      "city": "Voorschoten"
+    },
+    "text": "ABP\nPostbus 4806\n6401 JL Heerlen\n\nDhr. R. van Leeuwen\nPr. Irenelaan 17\n2252 GH  VOORSCHOTEN\n\nUw adres Prinses Irenelaan 17 is bij ons bekend; post gaat naar Pr. Irenelaan 17.",
+    "masked": [
+      {
+        "value": "R. van Leeuwen",
+        "category": "name"
+      },
+      {
+        "value": "Pr. Irenelaan 17",
+        "category": "address"
+      },
+      {
+        "value": "Prinses Irenelaan 17",
+        "category": "address"
+      },
+      {
+        "value": "2252 GH",
+        "category": "postcode"
+      },
+      {
+        "value": "VOORSCHOTEN",
+        "category": "city"
+      }
+    ],
+    "kept": [
+      "ABP",
+      "Postbus 4806"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "nl-van-abbreviated-and-letter-suffix",
+    "country": "NL",
+    "profile": {
+      "person": {
+        "givenNames": "Burak",
+        "surname": "Yıldız"
+      },
+      "household": [],
+      "street": "Laan van Meerdervoort",
+      "houseNumber": "455A",
+      "postcode": "2563 AV",
+      "city": "Den Haag"
+    },
+    "text": "Eneco\nPostbus 1004\n3000 BA Rotterdam\n\nDhr. B. Yildiz\nLaan v. Meerdervoort 455 a\n2563 AV  DEN HAAG\n\nDe meter op Laan van Meerdervoort 455A is opgenomen.",
+    "masked": [
+      {
+        "value": "B. Yildiz",
+        "category": "name"
+      },
+      {
+        "value": "Laan v. Meerdervoort 455 a",
+        "category": "address"
+      },
+      {
+        "value": "Laan van Meerdervoort 455A",
+        "category": "address"
+      },
+      {
+        "value": "2563 AV",
+        "category": "postcode"
+      },
+      {
+        "value": "DEN HAAG",
+        "category": "city"
+      }
+    ],
+    "kept": [
+      "Eneco",
+      "Postbus 1004"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "nl-city-alias-den-bosch",
+    "country": "NL",
+    "profile": {
+      "person": {
+        "givenNames": "Sanne",
+        "surname": "Verhoeven"
+      },
+      "household": [],
+      "street": "Orthenseweg",
+      "houseNumber": "8",
+      "postcode": "5212 XB",
+      "city": "'s-Hertogenbosch"
+    },
+    "text": "Waterschap Aa en Maas\nPostbus 5049\n5201 GA 's-Hertogenbosch\n\nMw. S. Verhoeven\nOrthenseweg 8\n5212 XB  DEN BOSCH\n\nUw aanslag is verstuurd.",
+    "masked": [
+      {
+        "value": "S. Verhoeven",
+        "category": "name"
+      },
+      {
+        "value": "Orthenseweg 8",
+        "category": "address"
+      },
+      {
+        "value": "5212 XB",
+        "category": "postcode"
+      },
+      {
+        "value": "DEN BOSCH",
+        "category": "city"
+      }
+    ],
+    "kept": [
+      "Waterschap Aa en Maas",
+      "5201 GA 's-Hertogenbosch"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "nl-city-alias-frisian",
+    "country": "NL",
+    "profile": {
+      "person": {
+        "givenNames": "Sjoerd",
+        "surname": "Hoekstra"
+      },
+      "household": [],
+      "street": "Tweebaksmarkt",
+      "houseNumber": "20",
+      "postcode": "8911 KZ",
+      "city": "Leeuwarden"
+    },
+    "text": "Gemeente Leeuwarden\nPostbus 21000\n8900 JA Leeuwarden\n\nDhr. S. Hoekstra\nTweebaksmarkt 20\n8911 KZ  LJOUWERT\n\nUw vergunning is verleend.",
+    "masked": [
+      {
+        "value": "S. Hoekstra",
+        "category": "name"
+      },
+      {
+        "value": "Tweebaksmarkt 20",
+        "category": "address"
+      },
+      {
+        "value": "8911 KZ",
+        "category": "postcode"
+      },
+      {
+        "value": "LJOUWERT",
+        "category": "city"
+      }
+    ],
+    "kept": [
+      "Gemeente Leeuwarden",
+      "Postbus 21000"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "de-floor-unit",
+    "country": "DE",
+    "profile": {
+      "person": {
+        "givenNames": "Lena",
+        "surname": "Hartmann"
+      },
+      "household": [],
+      "street": "Karl-Marx-Allee",
+      "houseNumber": "93",
+      "postcode": "10243",
+      "city": "Berlin"
+    },
+    "text": "Hausverwaltung Mitte GmbH\nFriedrichstraße 10\n10117 Berlin\n\nFrau L. Hartmann\nKarl-Marx-Allee 93, 2. OG rechts\n10243 Berlin\n\nDie Wohnung Karl-Marx-Allee 93, 2. OG rechts wird am Montag abgelesen.",
+    "masked": [
+      {
+        "value": "L. Hartmann",
+        "category": "name"
+      },
+      {
+        "value": "Karl-Marx-Allee 93, 2. OG rechts",
+        "category": "address"
+      },
+      {
+        "value": "10243 Berlin",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Hausverwaltung Mitte GmbH",
+      "Friedrichstraße 10"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "fr-building-lines",
+    "country": "FR",
+    "profile": {
+      "person": {
+        "givenNames": "Claire",
+        "surname": "Moreau"
+      },
+      "household": [],
+      "street": "rue des Lilas",
+      "houseNumber": "7",
+      "postcode": "69003",
+      "city": "Lyon"
+    },
+    "text": "CAF du Rhône\n69849 Lyon Cedex 20\n\nMme Claire Moreau\nRésidence Les Tilleuls, esc. B\n7 rue des Lilas\nBât. 2 Appt 31\n69003 LYON\n\nVotre adresse : 7 rue des Lilas, Bât. 2 Appt 31, 69003 Lyon.",
+    "masked": [
+      {
+        "value": "Claire Moreau",
+        "category": "name"
+      },
+      {
+        "value": "Résidence Les Tilleuls, esc. B",
+        "category": "address"
+      },
+      {
+        "value": "7 rue des Lilas",
+        "category": "address"
+      },
+      {
+        "value": "Bât. 2 Appt 31",
+        "category": "address"
+      },
+      {
+        "value": "69003 LYON",
+        "category": "postcode"
+      },
+      {
+        "value": "69003 Lyon",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "CAF du Rhône",
+      "69849 Lyon Cedex 20"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "tr-district-city-after-postcode",
+    "country": "TR",
+    "profile": {
+      "person": {
+        "givenNames": "Emre",
+        "surname": "Aydın"
+      },
+      "household": [],
+      "street": "Atatürk Bulvarı",
+      "houseNumber": "45/3",
+      "postcode": "06420",
+      "city": "Ankara"
+    },
+    "text": "Çankaya Belediyesi\nZiya Gökalp Cad. No: 11 Kızılay\n06420 Çankaya/ANKARA\n\nSayın Emre AYDIN\nAtatürk Bulvarı No: 45/3\n06420 Çankaya/ANKARA\n\nAdresiniz Atatürk Bulvarı No: 45/3, posta kodu 06420 olarak kayıtlıdır.",
+    "masked": [
+      {
+        "value": "Emre AYDIN",
+        "category": "name"
+      },
+      {
+        "value": "Atatürk Bulvarı No: 45/3",
+        "category": "address"
+      },
+      {
+        "value": "06420",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Çankaya Belediyesi",
+      "Ziya Gökalp Cad. No: 11 Kızılay"
+    ],
+    "keptOrdinary": []
+  }
+]
