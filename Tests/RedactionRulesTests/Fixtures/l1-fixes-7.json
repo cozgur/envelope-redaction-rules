@@ -225,5 +225,45 @@
       "4,1%"
     ],
     "keptOrdinary": []
+  },
+  {
+    "id": "fix7-nl-number-apartment",
+    "country": "NL",
+    "profile": {
+      "person": {
+        "givenNames": "Ömer",
+        "surname": "Yılmaz"
+      },
+      "household": [],
+      "street": "Van Vollenhovenstraat",
+      "houseNumber": "3-401",
+      "postcode": "3016 BE",
+      "city": "Rotterdam"
+    },
+    "text": "Rijksdienst voor het Wegverkeer\nPostbus 30000\n9640 RA Veendam\n\nÖ Yılmaz\nVan Vollenhovenstraat 3 401\n3016 BE  ROTTERDAM\n\nGeachte heer Yılmaz,\nHet voertuig staat sinds 1 oktober 2026 op uw naam, op het adres Van Vollenhovenstraat 3 401.\n",
+    "masked": [
+      {
+        "value": "Ö Yılmaz",
+        "category": "name"
+      },
+      {
+        "value": "Yılmaz",
+        "category": "name"
+      },
+      {
+        "value": "Van Vollenhovenstraat 3 401",
+        "category": "address"
+      },
+      {
+        "value": "3016 BE",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Rijksdienst voor het Wegverkeer",
+      "Postbus 30000",
+      "1 oktober 2026"
+    ],
+    "keptOrdinary": []
   }
 ]

@@ -92,7 +92,9 @@ struct ProfileRecallTests {
                 lines.append(LayoutLine(text: line.text, box: box, characterOffset: offset))
                 offset += line.text.count + 1
             }
-            let page = LayoutPage(lines: lines, widthMM: page?.widthMM, heightMM: page?.heightMM, rectified: rectified)
+            // A set's layout is the page itself: tight bounds when rectified.
+            let page = LayoutPage(lines: lines, widthMM: page?.widthMM, heightMM: page?.heightMM, rectified: rectified,
+                                  pageBounds: rectified ? LayoutBox(x: 0, y: 0, width: 1, height: 1) : nil)
             return (self.lines.map(\.text).joined(separator: "\n"), LetterLayout(pages: [page]))
         }
     }

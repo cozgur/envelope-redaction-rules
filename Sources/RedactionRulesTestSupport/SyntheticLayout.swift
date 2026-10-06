@@ -97,7 +97,9 @@ public enum SyntheticLayout {
             offset += one.text.count + 1
         }
         let text = placed.map(\.text).joined(separator: "\n")
-        let page = LayoutPage(lines: lines, widthMM: width, heightMM: height, rectified: kind != .photoSkewed)
+        // The synthetic image is the page itself: tight bounds when rectified.
+        let page = LayoutPage(lines: lines, widthMM: width, heightMM: height, rectified: kind != .photoSkewed,
+                              pageBounds: kind != .photoSkewed ? LayoutBox(x: 0, y: 0, width: 1, height: 1) : nil)
         return (text, LetterLayout(pages: [page]))
     }
 

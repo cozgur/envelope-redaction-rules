@@ -27,12 +27,19 @@ public struct LayoutPage: Sendable, Hashable, Codable {
     /// or perspective-corrected. Only then do the fixed window rectangles
     /// mean anything; a photo from the library is not rectified.
     public var rectified: Bool
+    /// Where the paper is inside the image, normalised like a line's box
+    /// (owner, 6 Oct 2026: a document-camera crop is not always tight -- a
+    /// hand, the table, a fold). The window rectangles are measured on the
+    /// paper, so a rectified page with no known bounds is treated as a photo.
+    /// The page's size fields are the image's.
+    public var pageBounds: LayoutBox?
 
-    public init(lines: [LayoutLine], widthMM: Double? = nil, heightMM: Double? = nil, rectified: Bool) {
+    public init(lines: [LayoutLine], widthMM: Double? = nil, heightMM: Double? = nil, rectified: Bool, pageBounds: LayoutBox? = nil) {
         self.lines = lines
         self.widthMM = widthMM
         self.heightMM = heightMM
         self.rectified = rectified
+        self.pageBounds = pageBounds
     }
 }
 

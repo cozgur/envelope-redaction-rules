@@ -145,4 +145,71 @@ struct AddressWindowTests {
         #expect(RedactionEngine.redact(text, countryHint: "NL", layout: nil, profile: profile)
             == RedactionEngine.redact(text, countryHint: "NL", profile: profile))
     }
+
+    // MARK: - A real-device miss (owner, 6 Oct 2026: an RDW letter, scanned)
+
+    /// The scan's shape: a standard three-line block in the A4 left window,
+    /// a dotless non-ASCII initial, a house number with an apartment, and no
+    /// letterhead text above the block (a logo).
+    static let rdw = SyntheticLayout.Letter(
+        sender: [],
+        recipient: ["Ö Yılmaz", "Van Vollenhovenstraat 3 401", "3016 BE Rotterdam"],
+        body: ["Datum 1 oktober 2026", "Onderwerp: tenaamstelling", "Geachte heer Yılmaz,", "Uw voertuig staat op uw naam."]
+    )
+
+    @Test("A person line with a dotless initial in any script: \"Ö Yılmaz\", \"Ş Kaya\", \"Ł Nowak\", \"É Martin\"", arguments: ["Ö Yılmaz", "Ş Kaya", "Ł Nowak", "É Martin", "J Jansen"])
+    func dotlessInitial(line: String) {
+        #expect(AddressWindow.looksLikeRecipient(line))
+    }
+
+    @Test("The RDW block is found when it is the topmost text on the page")
+    func rdwTopmostBlock() {
+        let (text, layout) = SyntheticLayout.make(Self.rdw, kind: .a4LeftWindow)
+        let found = AddressWindow.detect(in: text, layout: layout, countryHint: "NL")
+        #expect(found?.kind == .a4Left)
+        #expect(found?.boxes.count == 3)
+    }
+
+    /// The page inside a larger image: background above and below (about 5%
+    /// each), a hand at the left edge. The image is wider than A4's ratio,
+    /// which read as US Letter.
+    static func loose(_ layout: LetterLayout, bounds: Bool) -> LetterLayout {
+        let page = LayoutBox(x: 0.1, y: 0.05, width: 1 / 1.12, height: 0.9)
+        var moved = layout
+        moved.pages[0].widthMM = 210 * 1.12
+        moved.pages[0].heightMM = 297 / 0.9
+        moved.pages[0].pageBounds = bounds ? page : nil
+        moved.pages[0].lines = layout.pages[0].lines.map { line in
+            var line = line
+            line.box = LayoutBox(
+                x: page.x + line.box.x * page.width, y: page.y + line.box.y * page.height,
+                width: line.box.width * page.width, height: line.box.height * page.height
+            )
+            return line
+        }
+        return moved
+    }
+
+    @Test("A loose crop: the rectangles are measured on the detected page, not the image")
+    func looseCropWithBounds() {
+        let (text, layout) = SyntheticLayout.make(Self.nl, kind: .a4LeftWindow)
+        let found = AddressWindow.detect(in: text, layout: Self.loose(layout, bounds: true), countryHint: "NL")
+        #expect(found?.kind == .a4Left)
+        #expect(found?.boxes.count == 3)
+    }
+
+    @Test("A loose crop with no known page bounds is read as a photo: the shape rule alone")
+    func looseCropWithoutBounds() {
+        let (text, layout) = SyntheticLayout.make(Self.nl, kind: .a4LeftWindow)
+        let found = AddressWindow.detect(in: text, layout: Self.loose(layout, bounds: false), countryHint: "NL")
+        #expect(found?.kind == .shape)
+    }
+
+    @Test("The RDW scan as it was: loose crop, dotless initial, no letterhead text")
+    func rdwAsScanned() {
+        let (text, layout) = SyntheticLayout.make(Self.rdw, kind: .a4LeftWindow)
+        let found = AddressWindow.detect(in: text, layout: Self.loose(layout, bounds: true), countryHint: "NL")
+        #expect(found?.kind == .a4Left)
+        #expect(found?.boxes.count == 3)
+    }
 }
