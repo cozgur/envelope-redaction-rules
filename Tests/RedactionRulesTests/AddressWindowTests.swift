@@ -101,6 +101,43 @@ struct AddressWindowTests {
         #expect(result.redactedText.contains("Postbus 16200"))
     }
 
+    /// nl-pension of the layout variants: the sender's name printed on the
+    /// row right above the window, in the same column, and again in the
+    /// letter's body. It is the sender's, not the reader's (owner, 6 Oct
+    /// 2026: counts toward Gate A's sender over-masking).
+    private func senderNameAboveWindow(company: String, repeated: Bool) -> (String, LetterLayout) {
+        let letter = SyntheticLayout.Letter(
+            sender: [company, "Postbus 1100", "1180 BH Amstelveen"],
+            recipient: ["De heer C.W.M. van den Heuvel", "Stationsweg 3a", "6811 GD  ARNHEM"],
+            body: ["Geachte heer Van den Heuvel,", repeated ? "Met vriendelijke groet, \(company)" : "Met vriendelijke groet"]
+        )
+        let (text, layout) = SyntheticLayout.make(letter, kind: .a4LeftWindow)
+        var moved = layout
+        let first = layout.pages[0].lines.first { $0.text == letter.recipient[0] }!
+        moved.pages[0].lines = layout.pages[0].lines.map { line in
+            guard line.text == company else { return line }
+            var line = line
+            line.box.y = first.box.maxY + first.box.height * 0.3
+            line.box.x = first.box.x
+            return line
+        }
+        return (text, moved)
+    }
+
+    @Test("The sender's name right above the window, repeated in the letter, is not part of it")
+    func senderNameAboveWindowIsLeftOut() {
+        let (text, layout) = senderNameAboveWindow(company: "Sociale Verzekeringsbank", repeated: true)
+        let claim = AddressWindow.find(in: text, layout: layout, countryHint: "NL")
+        #expect(claim.map { $0.ranges.map { String(text[$0]) } } == ["De heer C.W.M. van den Heuvel", "Stationsweg 3a", "6811 GD  ARNHEM"])
+    }
+
+    @Test("A recipient company's name, printed once, stays in the window")
+    func recipientCompanyStays() {
+        let (text, layout) = senderNameAboveWindow(company: "Northgate Joinery Ltd", repeated: false)
+        let claim = AddressWindow.find(in: text, layout: layout, countryHint: "NL")
+        #expect(claim.map { $0.ranges.map { String(text[$0]) } }?.first == "Northgate Joinery Ltd")
+    }
+
     @Test("No layout is exactly the engine without one")
     func noLayout() {
         let (text, _) = SyntheticLayout.make(Self.nl, kind: .a4LeftWindow)
