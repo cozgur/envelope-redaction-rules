@@ -1,0 +1,1522 @@
+[
+  {
+    "id": "set3-nl-verhuurder-loodgieter",
+    "country": "NL",
+    "profile": {
+      "person": {
+        "givenNames": "Roos",
+        "surname": "Meijer"
+      },
+      "household": [],
+      "street": "Spoorstraat",
+      "houseNumber": "14 boven",
+      "postcode": "6821AN",
+      "city": "Arnhem"
+    },
+    "text": "H. Brouwer\nRijnkade 3\n6811 HA Arnhem\n\nR. Meijer\nSpoorstraat 14bv\n6821 AN Arnhem\n\nArnhem, 2 oktober 2026\n\nBeste Roos,\n\nZoals besproken komt de loodgieter op dinsdag 13 oktober tussen 9.00 en 12.00 uur de lekkage in de badkamer van Spoorstraat 14-boven repareren. Wil je zorgen dat hij erin kan? Als je niet thuis bent, kan hij de sleutel ophalen bij de benedenburen.\n\nDe kosten van de reparatie (€ 285,00) zijn voor mijn rekening. De huur blijft € 925,00 per maand.\n\nGroet,\n\nHenk Brouwer",
+    "masked": [
+      {
+        "value": "R. Meijer",
+        "category": "name"
+      },
+      {
+        "value": "Roos",
+        "category": "name"
+      },
+      {
+        "value": "Spoorstraat 14bv",
+        "category": "address"
+      },
+      {
+        "value": "Spoorstraat 14-boven",
+        "category": "address"
+      },
+      {
+        "value": "6821 AN Arnhem",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "H. Brouwer",
+      "Rijnkade 3",
+      "6811 HA Arnhem",
+      "€ 285,00",
+      "€ 925,00",
+      "Henk Brouwer"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "set3-nl-svb-aow-indexering",
+    "country": "NL",
+    "profile": {
+      "person": {
+        "givenNames": "Cornelis Johannes",
+        "surname": "Wouters"
+      },
+      "household": [
+        {
+          "givenNames": "Maria",
+          "surname": "Wouters-van Leeuwen"
+        }
+      ],
+      "street": "Kloosterlaan",
+      "houseNumber": "3",
+      "postcode": "4711 NB",
+      "city": "Sint Willebrord"
+    },
+    "text": "Sociale Verzekeringsbank\nPostbus 1100\n1180 BH  Amstelveen\n\nDe heer C.J. Wouters en mevrouw M. Wouters-van Leeuwen\nWoonzorgcentrum De Linde, app. 12\nKloosterlaan 3\n4711 N8  SINT WILLEBRORD\n\nDatum: 23 september 2026\nOnderwerp: Uw AOW-pensioen per 1 januari 2027\n\nGeachte heer en mevrouw Wouters,\n\nPer 1 januari 2027 verandert de hoogte van de AOW. Dit komt door de wettelijke indexering. U krijgt allebei een AOW-pensioen voor gehuwden.\n\nWouters, C.J.                          € 1.012,46 bruto per maand\nWouters-van Leeuwen, M.                € 1.012,46 bruto per maand\n\nDaarnaast krijgt u in mei 2027 vakantiegeld van € 56,12 bruto per persoon.\n\nMet vriendelijke groet,\n\nSociale Verzekeringsbank",
+    "masked": [
+      {
+        "value": "C.J. Wouters",
+        "category": "name"
+      },
+      {
+        "value": "M. Wouters-van Leeuwen",
+        "category": "name"
+      },
+      {
+        "value": "Wouters",
+        "category": "name"
+      },
+      {
+        "value": "Wouters, C.J.",
+        "category": "name"
+      },
+      {
+        "value": "Wouters-van Leeuwen, M.",
+        "category": "name"
+      },
+      {
+        "value": "Woonzorgcentrum De Linde, app. 12",
+        "category": "address"
+      },
+      {
+        "value": "Kloosterlaan 3",
+        "category": "address"
+      },
+      {
+        "value": "4711 N8  SINT WILLEBRORD",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Sociale Verzekeringsbank",
+      "Postbus 1100",
+      "1180 BH  Amstelveen",
+      "€ 1.012,46",
+      "€ 56,12"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "set3-es-aeat-requerimiento-irpf",
+    "country": "ES",
+    "profile": {
+      "person": {
+        "givenNames": "María",
+        "surname": "García López"
+      },
+      "household": [],
+      "street": "Calle Mayor",
+      "houseNumber": "15",
+      "postcode": "28013",
+      "city": "Madrid"
+    },
+    "text": "AGENCIA TRIBUTARIA\nDelegación Especial de Madrid\nC/ Guzmán el Bueno, 139\n28003 MADRID\n\nGARCÍA LÓPEZ MARÍA\nC/ MAYOR, 15, 3º B\n28013 MADRID\n\nMadrid, 24 de septiembre de 2026\n\nAsunto: Requerimiento de documentación – IRPF 2025\n\nEstimada Sra. García López:\n\nEn relación con la declaración del Impuesto sobre la Renta de las Personas Físicas del ejercicio 2025 presentada por Dña. María García López, con domicilio fiscal en calle Mayor 15, 3.º B, 28013 Madrid, se le requiere para que aporte, en el plazo de diez días hábiles, los justificantes de la deducción por alquiler de vivienda habitual por importe de 1.020,00 euros.\n\nLa documentación podrá presentarse en la sede electrónica o en cualquier oficina de la Agencia Tributaria.\n\nAtentamente,\nLa Jefa de la Unidad de Gestión",
+    "masked": [
+      {
+        "value": "GARCÍA LÓPEZ MARÍA",
+        "category": "name"
+      },
+      {
+        "value": "García López",
+        "category": "name"
+      },
+      {
+        "value": "María García López",
+        "category": "name"
+      },
+      {
+        "value": "C/ MAYOR, 15, 3º B",
+        "category": "address"
+      },
+      {
+        "value": "calle Mayor 15, 3.º B",
+        "category": "address"
+      },
+      {
+        "value": "28013 MADRID",
+        "category": "postcode"
+      },
+      {
+        "value": "28013 Madrid",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "AGENCIA TRIBUTARIA",
+      "C/ Guzmán el Bueno, 139",
+      "28003 MADRID",
+      "1.020,00 euros",
+      "24 de septiembre de 2026"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "set3-es-ayuntamiento-denuncia-estacionamiento",
+    "country": "ES",
+    "profile": {
+      "person": {
+        "givenNames": "Lucía",
+        "surname": "Castillo Navarro"
+      },
+      "household": [],
+      "street": "Avenida de Carlos III",
+      "houseNumber": "22",
+      "postcode": "31002",
+      "city": "Pamplona"
+    },
+    "text": "AYUNTAMIENTO DE PAMPLONA\nPolicía Municipal – Sección de Sanciones\nPlaza Consistorial, s/n\n31001 PAMPLONA\n\nCASTILLO NAVARRO LUCÍA\nAVDA. CARLOS III, 22, ESC. IZQ., 4º 1ª\n31002 PAMPLONA\n\nPamplona, 30 de septiembre de 2026\n\nNOTIFICACIÓN DE DENUNCIA\n\nSra. Castillo Navarro:\n\nSe le notifica que el vehículo de su titularidad fue denunciado el día 12 de septiembre de 2026 a las 18:40 horas por estacionar en zona peatonal en la Plaza del Castillo.\n\nImporte de la sanción: 200,00 euros. Si abona la multa en los 20 días naturales siguientes a esta notificación, el importe se reduce un 50 %, a 100,00 euros.\n\nTitular: Lucía Castillo Navarro\nDomicilio: Avenida de Carlos III, 22, esc. izquierda, 4.º 1.ª, 31002 Pamplona\n\nAtentamente,\nEl Jefe de la Sección de Sanciones",
+    "masked": [
+      {
+        "value": "CASTILLO NAVARRO LUCÍA",
+        "category": "name"
+      },
+      {
+        "value": "Castillo Navarro",
+        "category": "name"
+      },
+      {
+        "value": "Lucía Castillo Navarro",
+        "category": "name"
+      },
+      {
+        "value": "AVDA. CARLOS III, 22, ESC. IZQ., 4º 1ª",
+        "category": "address"
+      },
+      {
+        "value": "Avenida de Carlos III, 22, esc. izquierda, 4.º 1.ª",
+        "category": "address"
+      },
+      {
+        "value": "31002 PAMPLONA",
+        "category": "postcode"
+      },
+      {
+        "value": "31002 Pamplona",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "AYUNTAMIENTO DE PAMPLONA",
+      "Plaza Consistorial, s/n",
+      "31001 PAMPLONA",
+      "200,00 euros",
+      "100,00 euros"
+    ],
+    "keptOrdinary": [
+      "Plaza del Castillo"
+    ]
+  },
+  {
+    "id": "set3-es-universitat-matricula",
+    "country": "ES",
+    "profile": {
+      "person": {
+        "givenNames": "Pau",
+        "surname": "Martí Soler"
+      },
+      "household": [],
+      "street": "Carrer de Sants",
+      "houseNumber": "120",
+      "postcode": "08014",
+      "city": "Barcelona"
+    },
+    "text": "Universitat del Llobregat\nSecretaria Acadèmica\nAv. Diagonal, 690\n08034 Barcelona\n\nSr. Pau Martí i Soler\nC/ de Sants, 120, 2n 3a\n08014 BARCELONA\n\nBarcelona, 1 d'octubre de 2026\n\nAssumpte: Confirmació de matrícula – curs 2026-2027\n\nBenvolgut Pau,\n\nUs confirmem que la matrícula de Martí Soler, Pau al Grau en Enginyeria Informàtica ha quedat formalitzada. L'import total de la matrícula és de 1.684,20 euros, que es carregarà en tres terminis: 15 d'octubre, 15 de desembre i 15 de febrer.\n\nRecordeu que qualsevol canvi de domicili s'ha de comunicar a la Secretaria. Domicili actual: C/ de Sants, l20, 2n 3a, 08O14 Barcelona.\n\nAtentament,\n\nSecretaria Acadèmica",
+    "masked": [
+      {
+        "value": "Pau Martí i Soler",
+        "category": "name"
+      },
+      {
+        "value": "Martí Soler, Pau",
+        "category": "name"
+      },
+      {
+        "value": "Pau",
+        "category": "name"
+      },
+      {
+        "value": "C/ de Sants, 120, 2n 3a",
+        "category": "address"
+      },
+      {
+        "value": "C/ de Sants, l20, 2n 3a",
+        "category": "address"
+      },
+      {
+        "value": "08014 BARCELONA",
+        "category": "postcode"
+      },
+      {
+        "value": "08O14 Barcelona",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Universitat del Llobregat",
+      "Av. Diagonal, 690",
+      "08034 Barcelona",
+      "1.684,20 euros"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "set3-tr-belediye-guclendirme",
+    "country": "TR",
+    "profile": {
+      "person": {
+        "givenNames": "Mehmet",
+        "surname": "Kaya"
+      },
+      "household": [],
+      "street": "Bahariye Sokak",
+      "houseNumber": "12/4",
+      "postcode": "34710",
+      "city": "İstanbul"
+    },
+    "text": "T.C.\nKADIKÖY BELEDİYESİ\nFen İşleri Müdürlüğü\nHasanpaşa Mah. Fahrettin Kerim Gökay Cad. No: 2\n34722 Kadıköy/İSTANBUL\n\nSayın Mehmet KAYA\nCaferağa Mah. Bahariye Sok. No: 12 D: 4\n34710 Kadıköy/İSTANBUL\n\nTarih: 21.09.2026\nKonu: Bina güçlendirme bilgilendirmesi\n\nSayın Mehmet,\n\nBahariye Sok. No: 12 adresindeki binanızda yapılan ön incelemede, arka bahçe duvarının zemin kayması ve kaya düşmesi riskine karşı güçlendirilmesi gerektiği tespit edilmiştir.\n\nMehmet Kaya adına kayıtlı Caferağa Mah. Bahariye Sokak No: 12 Daire: 4 adresindeki bağımsız bölüm için ruhsat harcı 1.850,00 TL olarak hesaplanmıştır. Başvurunuzu 30 gün içinde Fen İşleri Müdürlüğü'ne yapmanız gerekmektedir.\n\nBilgilerinize rica ederim.\n\nFen İşleri Müdürü",
+    "masked": [
+      {
+        "value": "Mehmet KAYA",
+        "category": "name"
+      },
+      {
+        "value": "Mehmet Kaya",
+        "category": "name"
+      },
+      {
+        "value": "Mehmet",
+        "category": "name"
+      },
+      {
+        "value": "Caferağa Mah. Bahariye Sok. No: 12 D: 4",
+        "category": "address"
+      },
+      {
+        "value": "Bahariye Sok. No: 12",
+        "category": "address"
+      },
+      {
+        "value": "Caferağa Mah. Bahariye Sokak No: 12 Daire: 4",
+        "category": "address"
+      },
+      {
+        "value": "34710 Kadıköy/İSTANBUL",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "KADIKÖY BELEDİYESİ",
+      "Hasanpaşa Mah. Fahrettin Kerim Gökay Cad. No: 2",
+      "34722 Kadıköy/İSTANBUL",
+      "1.850,00 TL",
+      "21.09.2026"
+    ],
+    "keptOrdinary": [
+      "kaya düşmesi"
+    ]
+  },
+  {
+    "id": "set3-tr-asm-tahlil-sonucu",
+    "country": "TR",
+    "profile": {
+      "person": {
+        "givenNames": "Elif",
+        "surname": "Demir"
+      },
+      "household": [],
+      "street": "1203. Sokak",
+      "houseNumber": "7/9",
+      "postcode": "06460",
+      "city": "Ankara"
+    },
+    "text": "T.C. SAĞLIK BAKANLIĞI\nAnkara İl Sağlık Müdürlüğü\nÇankaya 14 No'lu Aile Sağlığı Merkezi\nKızılay Mah. Ziya Gökalp Cad. No: 30\n06420 Çankaya/ANKARA\n\nSayın Elif DEMİR\nAtatürk Mah. 1203. Sok. No: 7 D: 9\n06460 Çankaya/ANKARA\n\nTarih: 02.10.2026\nKonu: Tahlil sonucu ve kontrol randevusu\n\nSayın Elif Demir,\n\n15.09.2026 tarihinde verdiğiniz kan tahlilinizin sonuçlarına göre demir eksikliği tespit edilmiştir. Hekiminiz Dr. Selin Arslan sizi 13.10.2026 tarihinde saat 10:30'da kontrol muayenesine davet etmektedir.\n\nKayıtlı adresiniz: Atatürk Mah. 1203. Sokak No: 7 Daire: 9, 06460 Çankaya/Ankara. Adresiniz değiştiyse lütfen e-Devlet üzerinden güncelleyiniz.\n\nSaygılarımızla,\nAile Sağlığı Merkezi",
+    "masked": [
+      {
+        "value": "Elif DEMİR",
+        "category": "name"
+      },
+      {
+        "value": "Elif Demir",
+        "category": "name"
+      },
+      {
+        "value": "Atatürk Mah. 1203. Sok. No: 7 D: 9",
+        "category": "address"
+      },
+      {
+        "value": "Atatürk Mah. 1203. Sokak No: 7 Daire: 9",
+        "category": "address"
+      },
+      {
+        "value": "06460 Çankaya/ANKARA",
+        "category": "postcode"
+      },
+      {
+        "value": "06460 Çankaya/Ankara",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Çankaya 14 No'lu Aile Sağlığı Merkezi",
+      "Kızılay Mah. Ziya Gökalp Cad. No: 30",
+      "06420 Çankaya/ANKARA",
+      "Dr. Selin Arslan",
+      "13.10.2026"
+    ],
+    "keptOrdinary": [
+      "demir eksikliği"
+    ]
+  },
+  {
+    "id": "set3-tr-icra-odeme-emri",
+    "country": "TR",
+    "profile": {
+      "person": {
+        "givenNames": "Hüseyin",
+        "surname": "Çelik"
+      },
+      "household": [
+        {
+          "givenNames": "Zeynep",
+          "surname": "Çelik"
+        }
+      ],
+      "street": "Gazi Bulvarı",
+      "houseNumber": "88/10",
+      "postcode": "35170",
+      "city": "İzmir"
+    },
+    "text": "T.C.\nİZMİR 7. İCRA DAİRESİ\nAdliye Sarayı, Şehit Polis Fethi Sekin Cad. No: 1\n35530 Bayraklı/İZMİR\n\nÖDEME EMRİ\n\nBorçlu: HUSEYIN CELIK\nAdres: Yenişehir Mah. Gazi Bulvarı No: 88 Kat: 5 D: 10\n35170 Konak/İZMİR\n\nAlacaklı: Ege Tüketici Finansman A.Ş.\n\nBorçlu Hüseyin Çelik ve müşterek borçlu Zeynep Çelik'e,\n\nAlacaklıya olan 18.420,50 TL asıl alacak ile 2.115,30 TL işlemiş faizin bu ödeme emrinin tebliğinden itibaren 10 gün içinde ödenmesi; borcun tamamına veya bir kısmına itirazınız varsa 7 gün içinde bildirmeniz gerekmektedir.\n\nTebligat adresi: Yenişehir Mah. Gazi Bulvarı No: 88 Kat: 5 Daire: 1O, 35170 Konak / İzmir\n\nİcra Müdürü",
+    "masked": [
+      {
+        "value": "HUSEYIN CELIK",
+        "category": "name"
+      },
+      {
+        "value": "Hüseyin Çelik",
+        "category": "name"
+      },
+      {
+        "value": "Zeynep Çelik",
+        "category": "name"
+      },
+      {
+        "value": "Yenişehir Mah. Gazi Bulvarı No: 88 Kat: 5 D: 10",
+        "category": "address"
+      },
+      {
+        "value": "Yenişehir Mah. Gazi Bulvarı No: 88 Kat: 5 Daire: 1O",
+        "category": "address"
+      },
+      {
+        "value": "35170 Konak/İZMİR",
+        "category": "postcode"
+      },
+      {
+        "value": "35170 Konak / İzmir",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "İZMİR 7. İCRA DAİRESİ",
+      "35530 Bayraklı/İZMİR",
+      "Ege Tüketici Finansman A.Ş.",
+      "18.420,50 TL",
+      "2.115,30 TL"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "set3-gb-hospital-appointment",
+    "country": "GB",
+    "profile": {
+      "person": {
+        "givenNames": "Siobhan",
+        "surname": "O'Neill-Hughes"
+      },
+      "household": [],
+      "street": "Wharf Street",
+      "houseNumber": "3, Apartment 5",
+      "postcode": "M1 2JQ",
+      "city": "Manchester"
+    },
+    "text": "Irwell Valley Hospitals NHS Trust\nOutpatients Department\nOxford Road\nManchester M13 9WL\n\nMs Siobhan O'Neill-Hughes\nApartment 5, Riverside House\n3 Wharf Street\nManchester M1 2JQ\n\nDate: 29 September 2026\n\nDear Ms O'Neill-Hughes\n\nYour appointment with the Dermatology Clinic\n\nYou have been booked an appointment with Dr R. Patel on Tuesday 20 October 2026 at 14:15 in Clinic 3, Outpatients Department.\n\nIf you cannot attend, please let us know at least 48 hours before your appointment so that we can offer it to another patient.\n\nWe have the following address on our records for Siobhan O'Neill-Hughes: Apartment 5, Riverside House, 3 Wharf Street, M1 2JQ.\n\nYours sincerely\n\nOutpatient Booking Team",
+    "masked": [
+      {
+        "value": "Siobhan O'Neill-Hughes",
+        "category": "name"
+      },
+      {
+        "value": "O'Neill-Hughes",
+        "category": "name"
+      },
+      {
+        "value": "Apartment 5, Riverside House",
+        "category": "address"
+      },
+      {
+        "value": "3 Wharf Street",
+        "category": "address"
+      },
+      {
+        "value": "M1 2JQ",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Irwell Valley Hospitals NHS Trust",
+      "Oxford Road",
+      "Manchester M13 9WL",
+      "Dr R. Patel",
+      "20 October 2026"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "nl-suffix-14-boven",
+    "country": "NL",
+    "profile": {
+      "person": {
+        "givenNames": "Anna",
+        "surname": "Vermeulen"
+      },
+      "household": [],
+      "street": "Spoorstraat",
+      "houseNumber": "14-boven",
+      "postcode": "4001 AB",
+      "city": "Tiel"
+    },
+    "text": "Woonstichting Rivierenland\nPostbus 210\n4000 AE Tiel\n\nMw. A. Vermeulen\nSpoorstraat 14-boven\n4001 AB  TIEL\n\nUw woning aan de Spoorstraat 14-boven wordt geschilderd.",
+    "masked": [
+      {
+        "value": "A. Vermeulen",
+        "category": "name"
+      },
+      {
+        "value": "Spoorstraat 14-boven",
+        "category": "address"
+      },
+      {
+        "value": "4001 AB",
+        "category": "postcode"
+      },
+      {
+        "value": "TIEL",
+        "category": "city"
+      }
+    ],
+    "kept": [
+      "Woonstichting Rivierenland",
+      "Postbus 210"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "nl-suffix-14_boven",
+    "country": "NL",
+    "profile": {
+      "person": {
+        "givenNames": "Anna",
+        "surname": "Vermeulen"
+      },
+      "household": [],
+      "street": "Spoorstraat",
+      "houseNumber": "14 boven",
+      "postcode": "4001 AB",
+      "city": "Tiel"
+    },
+    "text": "Woonstichting Rivierenland\nPostbus 210\n4000 AE Tiel\n\nMw. A. Vermeulen\nSpoorstraat 14 boven\n4001 AB  TIEL\n\nUw woning aan de Spoorstraat 14 boven wordt geschilderd.",
+    "masked": [
+      {
+        "value": "A. Vermeulen",
+        "category": "name"
+      },
+      {
+        "value": "Spoorstraat 14 boven",
+        "category": "address"
+      },
+      {
+        "value": "4001 AB",
+        "category": "postcode"
+      },
+      {
+        "value": "TIEL",
+        "category": "city"
+      }
+    ],
+    "kept": [
+      "Woonstichting Rivierenland",
+      "Postbus 210"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "nl-suffix-14_beneden",
+    "country": "NL",
+    "profile": {
+      "person": {
+        "givenNames": "Anna",
+        "surname": "Vermeulen"
+      },
+      "household": [],
+      "street": "Spoorstraat",
+      "houseNumber": "14 beneden",
+      "postcode": "4001 AB",
+      "city": "Tiel"
+    },
+    "text": "Woonstichting Rivierenland\nPostbus 210\n4000 AE Tiel\n\nMw. A. Vermeulen\nSpoorstraat 14 beneden\n4001 AB  TIEL\n\nUw woning aan de Spoorstraat 14 beneden wordt geschilderd.",
+    "masked": [
+      {
+        "value": "A. Vermeulen",
+        "category": "name"
+      },
+      {
+        "value": "Spoorstraat 14 beneden",
+        "category": "address"
+      },
+      {
+        "value": "4001 AB",
+        "category": "postcode"
+      },
+      {
+        "value": "TIEL",
+        "category": "city"
+      }
+    ],
+    "kept": [
+      "Woonstichting Rivierenland",
+      "Postbus 210"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "nl-suffix-14-beneden",
+    "country": "NL",
+    "profile": {
+      "person": {
+        "givenNames": "Anna",
+        "surname": "Vermeulen"
+      },
+      "household": [],
+      "street": "Spoorstraat",
+      "houseNumber": "14-beneden",
+      "postcode": "4001 AB",
+      "city": "Tiel"
+    },
+    "text": "Woonstichting Rivierenland\nPostbus 210\n4000 AE Tiel\n\nMw. A. Vermeulen\nSpoorstraat 14-beneden\n4001 AB  TIEL\n\nUw woning aan de Spoorstraat 14-beneden wordt geschilderd.",
+    "masked": [
+      {
+        "value": "A. Vermeulen",
+        "category": "name"
+      },
+      {
+        "value": "Spoorstraat 14-beneden",
+        "category": "address"
+      },
+      {
+        "value": "4001 AB",
+        "category": "postcode"
+      },
+      {
+        "value": "TIEL",
+        "category": "city"
+      }
+    ],
+    "kept": [
+      "Woonstichting Rivierenland",
+      "Postbus 210"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "nl-suffix-14_bov",
+    "country": "NL",
+    "profile": {
+      "person": {
+        "givenNames": "Anna",
+        "surname": "Vermeulen"
+      },
+      "household": [],
+      "street": "Spoorstraat",
+      "houseNumber": "14 bov.",
+      "postcode": "4001 AB",
+      "city": "Tiel"
+    },
+    "text": "Woonstichting Rivierenland\nPostbus 210\n4000 AE Tiel\n\nMw. A. Vermeulen\nSpoorstraat 14 bov.\n4001 AB  TIEL\n\nUw woning aan de Spoorstraat 14 bov. wordt geschilderd.",
+    "masked": [
+      {
+        "value": "A. Vermeulen",
+        "category": "name"
+      },
+      {
+        "value": "Spoorstraat 14 bov.",
+        "category": "address"
+      },
+      {
+        "value": "4001 AB",
+        "category": "postcode"
+      },
+      {
+        "value": "TIEL",
+        "category": "city"
+      }
+    ],
+    "kept": [
+      "Woonstichting Rivierenland",
+      "Postbus 210"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "nl-suffix-14-ben",
+    "country": "NL",
+    "profile": {
+      "person": {
+        "givenNames": "Anna",
+        "surname": "Vermeulen"
+      },
+      "household": [],
+      "street": "Spoorstraat",
+      "houseNumber": "14-ben.",
+      "postcode": "4001 AB",
+      "city": "Tiel"
+    },
+    "text": "Woonstichting Rivierenland\nPostbus 210\n4000 AE Tiel\n\nMw. A. Vermeulen\nSpoorstraat 14-ben.\n4001 AB  TIEL\n\nUw woning aan de Spoorstraat 14-ben. wordt geschilderd.",
+    "masked": [
+      {
+        "value": "A. Vermeulen",
+        "category": "name"
+      },
+      {
+        "value": "Spoorstraat 14-ben.",
+        "category": "address"
+      },
+      {
+        "value": "4001 AB",
+        "category": "postcode"
+      },
+      {
+        "value": "TIEL",
+        "category": "city"
+      }
+    ],
+    "kept": [
+      "Woonstichting Rivierenland",
+      "Postbus 210"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "nl-suffix-14bv",
+    "country": "NL",
+    "profile": {
+      "person": {
+        "givenNames": "Anna",
+        "surname": "Vermeulen"
+      },
+      "household": [],
+      "street": "Spoorstraat",
+      "houseNumber": "14bv",
+      "postcode": "4001 AB",
+      "city": "Tiel"
+    },
+    "text": "Woonstichting Rivierenland\nPostbus 210\n4000 AE Tiel\n\nMw. A. Vermeulen\nSpoorstraat 14bv\n4001 AB  TIEL\n\nUw woning aan de Spoorstraat 14bv wordt geschilderd.",
+    "masked": [
+      {
+        "value": "A. Vermeulen",
+        "category": "name"
+      },
+      {
+        "value": "Spoorstraat 14bv",
+        "category": "address"
+      },
+      {
+        "value": "4001 AB",
+        "category": "postcode"
+      },
+      {
+        "value": "TIEL",
+        "category": "city"
+      }
+    ],
+    "kept": [
+      "Woonstichting Rivierenland",
+      "Postbus 210"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "nl-suffix-14_hs",
+    "country": "NL",
+    "profile": {
+      "person": {
+        "givenNames": "Anna",
+        "surname": "Vermeulen"
+      },
+      "household": [],
+      "street": "Spoorstraat",
+      "houseNumber": "14 hs",
+      "postcode": "4001 AB",
+      "city": "Tiel"
+    },
+    "text": "Woonstichting Rivierenland\nPostbus 210\n4000 AE Tiel\n\nMw. A. Vermeulen\nSpoorstraat 14 hs\n4001 AB  TIEL\n\nUw woning aan de Spoorstraat 14 hs wordt geschilderd.",
+    "masked": [
+      {
+        "value": "A. Vermeulen",
+        "category": "name"
+      },
+      {
+        "value": "Spoorstraat 14 hs",
+        "category": "address"
+      },
+      {
+        "value": "4001 AB",
+        "category": "postcode"
+      },
+      {
+        "value": "TIEL",
+        "category": "city"
+      }
+    ],
+    "kept": [
+      "Woonstichting Rivierenland",
+      "Postbus 210"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "nl-suffix-14-huis",
+    "country": "NL",
+    "profile": {
+      "person": {
+        "givenNames": "Anna",
+        "surname": "Vermeulen"
+      },
+      "household": [],
+      "street": "Spoorstraat",
+      "houseNumber": "14-huis",
+      "postcode": "4001 AB",
+      "city": "Tiel"
+    },
+    "text": "Woonstichting Rivierenland\nPostbus 210\n4000 AE Tiel\n\nMw. A. Vermeulen\nSpoorstraat 14-huis\n4001 AB  TIEL\n\nUw woning aan de Spoorstraat 14-huis wordt geschilderd.",
+    "masked": [
+      {
+        "value": "A. Vermeulen",
+        "category": "name"
+      },
+      {
+        "value": "Spoorstraat 14-huis",
+        "category": "address"
+      },
+      {
+        "value": "4001 AB",
+        "category": "postcode"
+      },
+      {
+        "value": "TIEL",
+        "category": "city"
+      }
+    ],
+    "kept": [
+      "Woonstichting Rivierenland",
+      "Postbus 210"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "nl-suffix-14_zw",
+    "country": "NL",
+    "profile": {
+      "person": {
+        "givenNames": "Anna",
+        "surname": "Vermeulen"
+      },
+      "household": [],
+      "street": "Spoorstraat",
+      "houseNumber": "14 zw",
+      "postcode": "4001 AB",
+      "city": "Tiel"
+    },
+    "text": "Woonstichting Rivierenland\nPostbus 210\n4000 AE Tiel\n\nMw. A. Vermeulen\nSpoorstraat 14 zw\n4001 AB  TIEL\n\nUw woning aan de Spoorstraat 14 zw wordt geschilderd.",
+    "masked": [
+      {
+        "value": "A. Vermeulen",
+        "category": "name"
+      },
+      {
+        "value": "Spoorstraat 14 zw",
+        "category": "address"
+      },
+      {
+        "value": "4001 AB",
+        "category": "postcode"
+      },
+      {
+        "value": "TIEL",
+        "category": "city"
+      }
+    ],
+    "kept": [
+      "Woonstichting Rivierenland",
+      "Postbus 210"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "nl-suffix-14-rood",
+    "country": "NL",
+    "profile": {
+      "person": {
+        "givenNames": "Anna",
+        "surname": "Vermeulen"
+      },
+      "household": [],
+      "street": "Spoorstraat",
+      "houseNumber": "14-rood",
+      "postcode": "4001 AB",
+      "city": "Tiel"
+    },
+    "text": "Woonstichting Rivierenland\nPostbus 210\n4000 AE Tiel\n\nMw. A. Vermeulen\nSpoorstraat 14-rood\n4001 AB  TIEL\n\nUw woning aan de Spoorstraat 14-rood wordt geschilderd.",
+    "masked": [
+      {
+        "value": "A. Vermeulen",
+        "category": "name"
+      },
+      {
+        "value": "Spoorstraat 14-rood",
+        "category": "address"
+      },
+      {
+        "value": "4001 AB",
+        "category": "postcode"
+      },
+      {
+        "value": "TIEL",
+        "category": "city"
+      }
+    ],
+    "kept": [
+      "Woonstichting Rivierenland",
+      "Postbus 210"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "nl-suffix-14-III",
+    "country": "NL",
+    "profile": {
+      "person": {
+        "givenNames": "Anna",
+        "surname": "Vermeulen"
+      },
+      "household": [],
+      "street": "Spoorstraat",
+      "houseNumber": "14-III",
+      "postcode": "4001 AB",
+      "city": "Tiel"
+    },
+    "text": "Woonstichting Rivierenland\nPostbus 210\n4000 AE Tiel\n\nMw. A. Vermeulen\nSpoorstraat 14-III\n4001 AB  TIEL\n\nUw woning aan de Spoorstraat 14-III wordt geschilderd.",
+    "masked": [
+      {
+        "value": "A. Vermeulen",
+        "category": "name"
+      },
+      {
+        "value": "Spoorstraat 14-III",
+        "category": "address"
+      },
+      {
+        "value": "4001 AB",
+        "category": "postcode"
+      },
+      {
+        "value": "TIEL",
+        "category": "city"
+      }
+    ],
+    "kept": [
+      "Woonstichting Rivierenland",
+      "Postbus 210"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "nl-suffix-14_II",
+    "country": "NL",
+    "profile": {
+      "person": {
+        "givenNames": "Anna",
+        "surname": "Vermeulen"
+      },
+      "household": [],
+      "street": "Spoorstraat",
+      "houseNumber": "14 II",
+      "postcode": "4001 AB",
+      "city": "Tiel"
+    },
+    "text": "Woonstichting Rivierenland\nPostbus 210\n4000 AE Tiel\n\nMw. A. Vermeulen\nSpoorstraat 14 II\n4001 AB  TIEL\n\nUw woning aan de Spoorstraat 14 II wordt geschilderd.",
+    "masked": [
+      {
+        "value": "A. Vermeulen",
+        "category": "name"
+      },
+      {
+        "value": "Spoorstraat 14 II",
+        "category": "address"
+      },
+      {
+        "value": "4001 AB",
+        "category": "postcode"
+      },
+      {
+        "value": "TIEL",
+        "category": "city"
+      }
+    ],
+    "kept": [
+      "Woonstichting Rivierenland",
+      "Postbus 210"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "nl-care-home-line",
+    "country": "NL",
+    "profile": {
+      "person": {
+        "givenNames": "Johanna",
+        "surname": "Pieters"
+      },
+      "household": [],
+      "street": "Kloosterlaan",
+      "houseNumber": "3",
+      "postcode": "4711 NB",
+      "city": "Sint Willebrord"
+    },
+    "text": "CAK\nPostbus 84030\n2508 AA Den Haag\n\nMw. J. Pieters\nZorgcentrum Het Anker, kamer 214\nKloosterlaan 3\n4711 NB  SINT WILLEBRORD\n\nUw eigen bijdrage wordt aangepast.",
+    "masked": [
+      {
+        "value": "J. Pieters",
+        "category": "name"
+      },
+      {
+        "value": "Zorgcentrum Het Anker, kamer 214",
+        "category": "address"
+      },
+      {
+        "value": "Kloosterlaan 3",
+        "category": "address"
+      },
+      {
+        "value": "4711 NB",
+        "category": "postcode"
+      },
+      {
+        "value": "SINT WILLEBRORD",
+        "category": "city"
+      }
+    ],
+    "kept": [
+      "CAK",
+      "Postbus 84030"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "fr-care-home-line",
+    "country": "FR",
+    "profile": {
+      "person": {
+        "givenNames": "Paul",
+        "surname": "Girard"
+      },
+      "household": [],
+      "street": "rue Pasteur",
+      "houseNumber": "9",
+      "postcode": "69007",
+      "city": "Lyon"
+    },
+    "text": "CPAM du Rhône\n69907 Lyon Cedex 20\n\nM. Paul Girard\nEHPAD Les Glycines, appartement 3\n9 rue Pasteur\n69007 LYON\n\nVotre dossier est complet.",
+    "masked": [
+      {
+        "value": "Paul Girard",
+        "category": "name"
+      },
+      {
+        "value": "EHPAD Les Glycines, appartement 3",
+        "category": "address"
+      },
+      {
+        "value": "9 rue Pasteur",
+        "category": "address"
+      },
+      {
+        "value": "69007 LYON",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "CPAM du Rhône",
+      "69907 Lyon Cedex 20"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "nl-postcode-ocr-letter-B-read-as-8",
+    "country": "NL",
+    "profile": {
+      "person": {
+        "givenNames": "Anna",
+        "surname": "Vermeulen"
+      },
+      "household": [],
+      "postcode": "4711 NB",
+      "city": "Utrecht"
+    },
+    "text": "Gemeente Utrecht\nPostbus 16200\n3500 CE Utrecht\n\nMw. A. Vermeulen\n4711 N8  UTRECHT\n\nUw aanvraag is ontvangen.",
+    "masked": [
+      {
+        "value": "A. Vermeulen",
+        "category": "name"
+      },
+      {
+        "value": "4711 N8",
+        "category": "postcode"
+      },
+      {
+        "value": "UTRECHT",
+        "category": "city"
+      }
+    ],
+    "kept": [
+      "Gemeente Utrecht",
+      "Postbus 16200"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "nl-postcode-ocr-letter-O-read-as-0",
+    "country": "NL",
+    "profile": {
+      "person": {
+        "givenNames": "Anna",
+        "surname": "Vermeulen"
+      },
+      "household": [],
+      "postcode": "1011 OB",
+      "city": "Utrecht"
+    },
+    "text": "Gemeente Utrecht\nPostbus 16200\n3500 CE Utrecht\n\nMw. A. Vermeulen\n1011 0B  UTRECHT\n\nUw aanvraag is ontvangen.",
+    "masked": [
+      {
+        "value": "A. Vermeulen",
+        "category": "name"
+      },
+      {
+        "value": "1011 0B",
+        "category": "postcode"
+      },
+      {
+        "value": "UTRECHT",
+        "category": "city"
+      }
+    ],
+    "kept": [
+      "Gemeente Utrecht",
+      "Postbus 16200"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "nl-postcode-ocr-letter-D-read-as-0",
+    "country": "NL",
+    "profile": {
+      "person": {
+        "givenNames": "Anna",
+        "surname": "Vermeulen"
+      },
+      "household": [],
+      "postcode": "1011 DB",
+      "city": "Utrecht"
+    },
+    "text": "Gemeente Utrecht\nPostbus 16200\n3500 CE Utrecht\n\nMw. A. Vermeulen\n1011 0B  UTRECHT\n\nUw aanvraag is ontvangen.",
+    "masked": [
+      {
+        "value": "A. Vermeulen",
+        "category": "name"
+      },
+      {
+        "value": "1011 0B",
+        "category": "postcode"
+      },
+      {
+        "value": "UTRECHT",
+        "category": "city"
+      }
+    ],
+    "kept": [
+      "Gemeente Utrecht",
+      "Postbus 16200"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "nl-postcode-ocr-letter-S-read-as-5",
+    "country": "NL",
+    "profile": {
+      "person": {
+        "givenNames": "Anna",
+        "surname": "Vermeulen"
+      },
+      "household": [],
+      "postcode": "2511 SB",
+      "city": "Utrecht"
+    },
+    "text": "Gemeente Utrecht\nPostbus 16200\n3500 CE Utrecht\n\nMw. A. Vermeulen\n2511 5B  UTRECHT\n\nUw aanvraag is ontvangen.",
+    "masked": [
+      {
+        "value": "A. Vermeulen",
+        "category": "name"
+      },
+      {
+        "value": "2511 5B",
+        "category": "postcode"
+      },
+      {
+        "value": "UTRECHT",
+        "category": "city"
+      }
+    ],
+    "kept": [
+      "Gemeente Utrecht",
+      "Postbus 16200"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "nl-postcode-ocr-letter-I-read-as-1",
+    "country": "NL",
+    "profile": {
+      "person": {
+        "givenNames": "Anna",
+        "surname": "Vermeulen"
+      },
+      "household": [],
+      "postcode": "2511 IB",
+      "city": "Utrecht"
+    },
+    "text": "Gemeente Utrecht\nPostbus 16200\n3500 CE Utrecht\n\nMw. A. Vermeulen\n2511 1B  UTRECHT\n\nUw aanvraag is ontvangen.",
+    "masked": [
+      {
+        "value": "A. Vermeulen",
+        "category": "name"
+      },
+      {
+        "value": "2511 1B",
+        "category": "postcode"
+      },
+      {
+        "value": "UTRECHT",
+        "category": "city"
+      }
+    ],
+    "kept": [
+      "Gemeente Utrecht",
+      "Postbus 16200"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "nl-postcode-ocr-letter-Z-read-as-2",
+    "country": "NL",
+    "profile": {
+      "person": {
+        "givenNames": "Anna",
+        "surname": "Vermeulen"
+      },
+      "household": [],
+      "postcode": "2511 ZB",
+      "city": "Utrecht"
+    },
+    "text": "Gemeente Utrecht\nPostbus 16200\n3500 CE Utrecht\n\nMw. A. Vermeulen\n2511 2B  UTRECHT\n\nUw aanvraag is ontvangen.",
+    "masked": [
+      {
+        "value": "A. Vermeulen",
+        "category": "name"
+      },
+      {
+        "value": "2511 2B",
+        "category": "postcode"
+      },
+      {
+        "value": "UTRECHT",
+        "category": "city"
+      }
+    ],
+    "kept": [
+      "Gemeente Utrecht",
+      "Postbus 16200"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "nl-postcode-ocr-digit-5-read-as-S",
+    "country": "NL",
+    "profile": {
+      "person": {
+        "givenNames": "Anna",
+        "surname": "Vermeulen"
+      },
+      "household": [],
+      "postcode": "2511 AB",
+      "city": "Utrecht"
+    },
+    "text": "Gemeente Utrecht\nPostbus 16200\n3500 CE Utrecht\n\nMw. A. Vermeulen\n2S11 AB  UTRECHT\n\nUw aanvraag is ontvangen.",
+    "masked": [
+      {
+        "value": "A. Vermeulen",
+        "category": "name"
+      },
+      {
+        "value": "2S11 AB",
+        "category": "postcode"
+      },
+      {
+        "value": "UTRECHT",
+        "category": "city"
+      }
+    ],
+    "kept": [
+      "Gemeente Utrecht",
+      "Postbus 16200"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "nl-postcode-ocr-digit-8-read-as-B",
+    "country": "NL",
+    "profile": {
+      "person": {
+        "givenNames": "Anna",
+        "surname": "Vermeulen"
+      },
+      "household": [],
+      "postcode": "2811 AB",
+      "city": "Utrecht"
+    },
+    "text": "Gemeente Utrecht\nPostbus 16200\n3500 CE Utrecht\n\nMw. A. Vermeulen\n2B11 AB  UTRECHT\n\nUw aanvraag is ontvangen.",
+    "masked": [
+      {
+        "value": "A. Vermeulen",
+        "category": "name"
+      },
+      {
+        "value": "2B11 AB",
+        "category": "postcode"
+      },
+      {
+        "value": "UTRECHT",
+        "category": "city"
+      }
+    ],
+    "kept": [
+      "Gemeente Utrecht",
+      "Postbus 16200"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "nl-postcode-ocr-digit-2-read-as-Z",
+    "country": "NL",
+    "profile": {
+      "person": {
+        "givenNames": "Anna",
+        "surname": "Vermeulen"
+      },
+      "household": [],
+      "postcode": "2811 AB",
+      "city": "Utrecht"
+    },
+    "text": "Gemeente Utrecht\nPostbus 16200\n3500 CE Utrecht\n\nMw. A. Vermeulen\nZ811 AB  UTRECHT\n\nUw aanvraag is ontvangen.",
+    "masked": [
+      {
+        "value": "A. Vermeulen",
+        "category": "name"
+      },
+      {
+        "value": "Z811 AB",
+        "category": "postcode"
+      },
+      {
+        "value": "UTRECHT",
+        "category": "city"
+      }
+    ],
+    "kept": [
+      "Gemeente Utrecht",
+      "Postbus 16200"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "es-floor-door-forms",
+    "country": "ES",
+    "profile": {
+      "person": {
+        "givenNames": "Ana",
+        "surname": "Ruiz Pérez"
+      },
+      "household": [],
+      "street": "Calle de Alcalá",
+      "houseNumber": "40",
+      "postcode": "28014",
+      "city": "Madrid"
+    },
+    "text": "AYUNTAMIENTO DE MADRID\nCalle de Montalbán, 1\n28014 MADRID\n\nRUIZ PÉREZ ANA\nCL ALCALÁ, 40, 3.º B\n28014 MADRID\n\nDomicilio: Calle de Alcalá 40, esc. izquierda, 4.º 1.ª, 28014 Madrid.",
+    "masked": [
+      {
+        "value": "RUIZ PÉREZ ANA",
+        "category": "name"
+      },
+      {
+        "value": "CL ALCALÁ, 40, 3.º B",
+        "category": "address"
+      },
+      {
+        "value": "Calle de Alcalá 40, esc. izquierda, 4.º 1.ª",
+        "category": "address"
+      },
+      {
+        "value": "28014 Madrid",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "AYUNTAMIENTO DE MADRID",
+      "Calle de Montalbán, 1"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "es-catalan-floor-door",
+    "country": "ES",
+    "profile": {
+      "person": {
+        "givenNames": "Jordi",
+        "surname": "Puig i Vidal"
+      },
+      "household": [],
+      "street": "Carrer de Mallorca",
+      "houseNumber": "201",
+      "postcode": "08036",
+      "city": "Barcelona"
+    },
+    "text": "Ajuntament de Barcelona\nPlaça Sant Jaume, 1\n08002 Barcelona\n\nSr. Jordi Puig i Vidal\nC/ de Mallorca, 201, 2n 3a\n08036 BARCELONA\n\nBenvolgut senyor Puig,\n\nus informem del canvi.",
+    "masked": [
+      {
+        "value": "Jordi Puig i Vidal",
+        "category": "name"
+      },
+      {
+        "value": "C/ de Mallorca, 201, 2n 3a",
+        "category": "address"
+      },
+      {
+        "value": "08036 BARCELONA",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Ajuntament de Barcelona",
+      "Plaça Sant Jaume, 1"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "tr-mahalle-kat-daire",
+    "country": "TR",
+    "profile": {
+      "person": {
+        "givenNames": "Ayşe",
+        "surname": "Kaplan"
+      },
+      "household": [],
+      "street": "Gazi Bulvarı",
+      "houseNumber": "88",
+      "postcode": "35170",
+      "city": "İzmir"
+    },
+    "text": "İzmir Büyükşehir Belediyesi\nCumhuriyet Bulvarı No: 1\n35250 Konak/İZMİR\n\nSayın Ayşe KAPLAN\nYenişehir Mah. Gazi Bulvarı No: 88 Kat: 5, Daire: 4\n35170 Konak / İzmir\n\nAdresiniz Yenişehir Mah. Gazi Bulvarı No: 88 Kat: 5, Daire: 4 olarak kayıtlıdır.",
+    "masked": [
+      {
+        "value": "Ayşe KAPLAN",
+        "category": "name"
+      },
+      {
+        "value": "Yenişehir Mah. Gazi Bulvarı No: 88 Kat: 5, Daire: 4",
+        "category": "address"
+      },
+      {
+        "value": "35170 Konak / İzmir",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "İzmir Büyükşehir Belediyesi",
+      "Cumhuriyet Bulvarı No: 1"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "en-apartment-building-before-street",
+    "country": "GB",
+    "profile": {
+      "person": {
+        "givenNames": "Tom",
+        "surname": "Hughes"
+      },
+      "household": [],
+      "street": "Quay Street",
+      "houseNumber": "7",
+      "postcode": "M3 3JZ",
+      "city": "Manchester"
+    },
+    "text": "Manchester City Council\nPO Box 532\nManchester M60 2LA\n\nMr Tom Hughes\nFlat 12, Granary House\n7 Quay Street\nManchester M3 3JZ\n\nWe write to you at Flat 12, Granary House, 7 Quay Street.",
+    "masked": [
+      {
+        "value": "Tom Hughes",
+        "category": "name"
+      },
+      {
+        "value": "Flat 12, Granary House",
+        "category": "address"
+      },
+      {
+        "value": "7 Quay Street",
+        "category": "address"
+      },
+      {
+        "value": "M3 3JZ",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Manchester City Council",
+      "PO Box 532"
+    ],
+    "keptOrdinary": []
+  }
+]

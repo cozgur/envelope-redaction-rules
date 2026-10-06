@@ -90,8 +90,13 @@ struct ProfileRecallTests {
     /// and counts as a non-NL miss (non-NL is ≥ 95%, not 100%).
     static let regression2 = load("l1-independent-2")
 
-    /// The fresh independent set the step is measured on, once it exists.
-    static let independent = load("l1-independent-3")
+    /// Failing fixtures made from set 3's misses and the forms the owner
+    /// listed (6 Oct 2026).
+    static let fixes3 = load("l1-fixes-3")
+
+    /// Independent set 3 -- retired to regression on 6 Oct 2026. The L1-only
+    /// loop ends with it (owner): Gate A is measured on the full engine.
+    static let regression3 = load("l1-independent-3")
 
     // MARK: - Position checks
 
@@ -305,12 +310,19 @@ struct ProfileRecallTests {
         #expect(tally.ordinaryOverMasked.isEmpty, "ordinary-word over-masking: \(tally.ordinaryOverMasked)")
     }
 
-    @Test("The independent set: Gate A's L1 scope")
-    func independentSet() {
-        guard !Self.independent.isEmpty else { return }
-        let tally = Self.measure(Self.independent)
-        Self.report("independent-3", tally)
+    @Test("Set 3's misses and the listed forms: fixed")
+    func fixesFromSetThree() {
+        let tally = Self.measure(Self.fixes3)
+        Self.report("fixes-3", tally)
         #expect(tally.missing.isEmpty, "\(tally.missing)")
+        #expect(tally.leaks.isEmpty, "missed: \(tally.leaks)")
+        #expect(tally.ordinaryOverMasked.isEmpty, "ordinary-word over-masking: \(tally.ordinaryOverMasked)")
+    }
+
+    @Test("Independent set 3, retired: holds Gate A's L1 scope")
+    func regressionSetThree() {
+        let tally = Self.measure(Self.regression3)
+        Self.report("independent-3 (regression)", tally)
         #expect(Self.scopeFailures(tally).isEmpty, "\(Self.scopeFailures(tally))")
         #expect(tally.ordinaryOverMasked.isEmpty, "ordinary-word over-masking: \(tally.ordinaryOverMasked)")
     }
