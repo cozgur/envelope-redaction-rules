@@ -50,8 +50,25 @@ struct ProfileRecallTests {
     static let tolerance = load("l1-tolerance")
     static let ordinary = load("l1-ordinary-words")
 
-    /// The fresh independent set step 2 is measured on, once it exists.
-    static let independent = load("l1-independent-1")
+    /// Failing fixtures made from set 1's in-scope misses, and the given-name
+    /// rule's cases (owner, 6 Oct 2026).
+    static let fixes = load("l1-fixes-1")
+
+    /// Independent set 1 -- retired to regression on 6 Oct 2026, after its
+    /// misses became `l1-fixes-1`. Its two ambiguous given names alone
+    /// outside a salutation ("Noor", "Leon") are out of scope by the
+    /// owner's rule and are not counted.
+    static let regression = load("l1-independent-1").map { letter in
+        var letter = letter
+        letter.masked.removeAll { item in
+            (letter.id == "nl-basisschool-ouders" && item.value == "Noor")
+                || (letter.id == "de-schule-mensa" && item.value == "Leon")
+        }
+        return letter
+    }
+
+    /// The fresh independent set the step is measured on, once it exists.
+    static let independent = load("l1-independent-2")
 
     // MARK: - Position checks
 
@@ -109,18 +126,23 @@ struct ProfileRecallTests {
         for letter in cases {
             let result = RedactionEngine.redact(letter.text, countryHint: letter.country, profile: letter.profile)
             for item in letter.masked {
+                // Gate A's scope (owner, 6 Oct 2026): names everywhere, and
+                // NL-format addresses, are 100%; other address formats are
+                // counted apart (≥ 95% for 1.0).
+                let category = item.category == "name" || letter.country == "NL"
+                    ? item.category : "\(item.category) (non-NL)"
                 let occurrences = offsets(of: item.value, in: letter.text)
                 if occurrences.isEmpty { tally.missing.append("\(letter.id): “\(item.value)” is not in the text") }
                 for occurrence in occurrences {
-                    var entry = tally.masked[item.category] ?? (0, 0)
+                    var entry = tally.masked[category] ?? (0, 0)
                     entry.total += 1
                     let words = wordOffsets(in: item.value, at: occurrence.lowerBound)
                     if words.allSatisfy({ covered($0, by: result.spans) }) {
                         entry.found += 1
                     } else {
-                        tally.leaks.append("\(letter.id): \(item.category) “\(item.value)”")
+                        tally.leaks.append("\(letter.id): \(category) “\(item.value)”")
                     }
-                    tally.masked[item.category] = entry
+                    tally.masked[category] = entry
                 }
             }
             for value in letter.kept {
@@ -144,6 +166,19 @@ struct ProfileRecallTests {
             print("L1 \(name) \(category) \(entry.found)/\(entry.total)")
         }
         print("L1 \(name) sender over-masking \(tally.senderOverMasked.count), ordinary-word over-masking \(tally.ordinaryOverMasked.count)")
+    }
+
+    /// What Gate A's L1 line requires of a tally: no name and no NL-format
+    /// miss, and non-NL address formats at 95% or more.
+    static func scopeFailures(_ tally: Tally) -> [String] {
+        var failures = tally.leaks.filter { !$0.contains("(non-NL)") }
+        let nonNL = tally.masked.filter { $0.key.hasSuffix("(non-NL)") }.values
+        let found = nonNL.reduce(0) { $0 + $1.found }
+        let total = nonNL.reduce(0) { $0 + $1.total }
+        if total > 0, Double(found) / Double(total) < 0.95 {
+            failures.append("non-NL addresses \(found)/\(total) < 95%: \(tally.leaks.filter { $0.contains("(non-NL)") })")
+        }
+        return failures
     }
 
     // MARK: - Tests
@@ -176,16 +211,35 @@ struct ProfileRecallTests {
         #expect(tally.senderOverMasked.isEmpty, "sender over-masking: \(tally.senderOverMasked)")
     }
 
-    @Test("The independent set: L1 = 100% in every category")
+    @Test("Set 1's misses and the given-name rule: fixed")
+    func fixesFromSetOne() {
+        let tally = Self.measure(Self.fixes)
+        Self.report("fixes-1", tally)
+        #expect(Self.fixes.count >= 20)
+        #expect(tally.missing.isEmpty, "\(tally.missing)")
+        #expect(Self.scopeFailures(tally).isEmpty, "\(Self.scopeFailures(tally))")
+        #expect(tally.ordinaryOverMasked.isEmpty, "ordinary-word over-masking: \(tally.ordinaryOverMasked)")
+        // Sender over-masking is reported, not gated here: set 1's "kept"
+        // lists include phone numbers and references, which the rules mask
+        // by design, and sender addresses are L3's (Gate A, step 6).
+    }
+
+    @Test("Independent set 1, retired: holds Gate A's L1 scope")
+    func regressionSetOne() {
+        let tally = Self.measure(Self.regression)
+        Self.report("independent-1 (regression)", tally)
+        #expect(Self.scopeFailures(tally).isEmpty, "\(Self.scopeFailures(tally))")
+        #expect(tally.ordinaryOverMasked.isEmpty, "ordinary-word over-masking: \(tally.ordinaryOverMasked)")
+    }
+
+    @Test("The independent set: Gate A's L1 scope")
     func independentSet() {
         guard !Self.independent.isEmpty else { return }
         let tally = Self.measure(Self.independent)
-        Self.report("independent-1", tally)
+        Self.report("independent-2", tally)
         #expect(tally.missing.isEmpty, "\(tally.missing)")
-        #expect(tally.leaks.isEmpty, "missed: \(tally.leaks)")
+        #expect(Self.scopeFailures(tally).isEmpty, "\(Self.scopeFailures(tally))")
         #expect(tally.ordinaryOverMasked.isEmpty, "ordinary-word over-masking: \(tally.ordinaryOverMasked)")
-        // Sender over-masking is Gate A's ≤ 5% line, measured in step 6; it is
-        // reported here, not gated.
     }
 
     @Test("A digit postcode never takes part of a phone number")
