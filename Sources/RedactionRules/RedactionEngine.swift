@@ -247,7 +247,8 @@ public enum RedactionEngine {
         )
     }
 
-    /// The same, with the reader's own details matched first (L1).
+    /// The full engine: the address window from the page's layout (L2), the
+    /// reader's own details (L1), then the rules (L3).
     ///
     /// The profile's matches join `known` as profile claims; a window claim
     /// in `known` also gives the matcher its strong context (a surname
@@ -256,9 +257,16 @@ public enum RedactionEngine {
     public static func redact(
         _ text: String,
         countryHint: String? = nil,
+        layout: LetterLayout? = nil,
         known: [KnownClaim] = [],
         profile: RedactionProfile?
     ) -> RedactionResult {
+        // L2: the address window, when the page's geometry shows one.
+        var known = known
+        if let layout, !known.contains(where: { $0.source == .window }),
+           let window = AddressWindow.find(in: text, layout: layout, countryHint: countryHint) {
+            known.insert(window, at: 0)
+        }
         guard let profile else { return redact(text, countryHint: countryHint, known: known) }
         let window = known.filter { $0.source == .window }.flatMap(\.ranges)
         let matched = ProfileMatcher.claims(in: text, profile: profile, window: window, countryHint: countryHint)

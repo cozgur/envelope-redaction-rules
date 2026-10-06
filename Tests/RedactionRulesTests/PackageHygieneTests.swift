@@ -19,8 +19,11 @@ struct PackageHygieneTests {
             .deletingLastPathComponent()
             .deletingLastPathComponent()
             .deletingLastPathComponent()
-            .appending(path: "Sources")
+            .appending(path: "Sources/RedactionRules")
     }
+    // The library the app links, and only it: RedactionRulesTestSupport
+    // (synthetic page layouts for tests and audit tools) imports this library
+    // and never ships in the app.
 
     private static func swiftFiles() throws -> [URL] {
         let enumerator = FileManager.default.enumerator(at: sourceRoot, includingPropertiesForKeys: nil)

@@ -32,9 +32,13 @@ struct ProfileRecallTests {
         var masked: [NLRecallTests.Masked]
         var kept: [String]
         var keptOrdinary: [String]
+        /// The letter laid out on page 1 in one or more kinds (from the
+        /// step-6 set on). Each is measured as its own text, with its boxes
+        /// fed to L2.
+        var layouts: [CaseLayout] = []
         var testDescription: String { id }
 
-        enum CodingKeys: String, CodingKey { case id, country, profile, text, masked, kept, keptOrdinary }
+        enum CodingKeys: String, CodingKey { case id, country, profile, text, masked, kept, keptOrdinary, layouts }
 
         /// `keptOrdinary` may be left out where a letter has none.
         init(from decoder: any Decoder) throws {
@@ -46,6 +50,33 @@ struct ProfileRecallTests {
             masked = try container.decode([NLRecallTests.Masked].self, forKey: .masked)
             kept = try container.decodeIfPresent([String].self, forKey: .kept) ?? []
             keptOrdinary = try container.decodeIfPresent([String].self, forKey: .keptOrdinary) ?? []
+            layouts = try container.decodeIfPresent([CaseLayout].self, forKey: .layouts) ?? []
+        }
+    }
+
+    /// An independent set's layout, as the author brief gives it.
+    struct CaseLayout: Decodable, Sendable {
+        struct Page: Decodable, Sendable { var widthMM: Double?; var heightMM: Double? }
+        struct Line: Decodable, Sendable { var text: String; var box: [Double] }
+        var kind: String
+        var rectified: Bool
+        var page: Page?
+        var lines: [Line]
+
+        /// The layout's own text -- its lines joined by newlines -- and the
+        /// engine's layout for it.
+        var letter: (text: String, layout: LetterLayout) {
+            var offset = 0
+            var lines: [LayoutLine] = []
+            for line in self.lines {
+                let box = line.box.count == 4
+                    ? LayoutBox(x: line.box[0], y: line.box[1], width: line.box[2], height: line.box[3])
+                    : LayoutBox(x: 0, y: 0, width: 0, height: 0)
+                lines.append(LayoutLine(text: line.text, box: box, characterOffset: offset))
+                offset += line.text.count + 1
+            }
+            let page = LayoutPage(lines: lines, widthMM: page?.widthMM, heightMM: page?.heightMM, rectified: rectified)
+            return (self.lines.map(\.text).joined(separator: "\n"), LetterLayout(pages: [page]))
         }
     }
 
@@ -177,9 +208,21 @@ struct ProfileRecallTests {
     }
 
     static func measure(_ cases: [Case]) -> Tally {
+        // A letter with layouts is measured once per layout, each its own
+        // text with its boxes given to L2; one without, as plain text.
+        let expanded: [(letter: Case, layout: LetterLayout?)] = cases.flatMap { letter -> [(Case, LetterLayout?)] in
+            guard !letter.layouts.isEmpty else { return [(letter, nil)] }
+            return letter.layouts.map { layout in
+                var one = letter
+                let built = layout.letter
+                one.id = "\(letter.id) [\(layout.kind)]"
+                one.text = built.text
+                return (one, built.layout)
+            }
+        }
         var tally = Tally()
-        for letter in cases {
-            let result = RedactionEngine.redact(letter.text, countryHint: letter.country, profile: letter.profile)
+        for (letter, layout) in expanded {
+            let result = RedactionEngine.redact(letter.text, countryHint: letter.country, layout: layout, profile: letter.profile)
             for item in letter.masked {
                 // Gate A's scope (owner, 6 Oct 2026): names everywhere, and
                 // NL-format addresses, are 100%; other address formats are

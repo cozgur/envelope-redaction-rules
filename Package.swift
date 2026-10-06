@@ -13,15 +13,22 @@ let package = Package(
     ],
     products: [
         .library(name: "RedactionRules", targets: ["RedactionRules"]),
+        // Synthetic page layouts for tests and audit tools; not for the app.
+        .library(name: "RedactionRulesTestSupport", targets: ["RedactionRulesTestSupport"]),
     ],
     targets: [
         .target(
             name: "RedactionRules",
             swiftSettings: [.swiftLanguageMode(.v6)]
         ),
+        .target(
+            name: "RedactionRulesTestSupport",
+            dependencies: ["RedactionRules"],
+            swiftSettings: [.swiftLanguageMode(.v6)]
+        ),
         .testTarget(
             name: "RedactionRulesTests",
-            dependencies: ["RedactionRules"],
+            dependencies: ["RedactionRules", "RedactionRulesTestSupport"],
             resources: [.copy("Fixtures")],
             swiftSettings: [.swiftLanguageMode(.v6)]
         ),
