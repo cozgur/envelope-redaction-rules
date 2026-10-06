@@ -70,9 +70,10 @@ public enum AddressWindow {
                 if value > (best?.score ?? Int.min) { best = (value, block) }
             }
         }
-        // Without rectangles the shape must also look like a recipient: a
-        // sender's letterhead has the same shape.
-        guard let best, page.rectified || best.score > 0 else { return nil }
+        // The block must also read like a recipient, rectangle or not: a
+        // sender's letterhead has the same shape, and a right-hand letterhead
+        // sits in the right window's rectangle.
+        guard let best, best.score > 0 else { return nil }
 
         let ranges: [Range<String.Index>] = best.lines.compactMap { line in
             guard line.characterOffset >= 0, line.characterOffset + line.text.count <= text.count else { return nil }
@@ -112,6 +113,11 @@ public enum AddressWindow {
     /// an address: 2–7 lines, a postcode on the last or second-to-last.
     static func qualified(_ cluster: [LayoutLine], country: String?) -> [LayoutLine]? {
         var lines = cluster
+        // A return-address line anywhere: it and everything above it are the
+        // sender's (a letterhead stacked right above the window).
+        if let index = lines.lastIndex(where: { isReturnAddress($0.text) }) {
+            lines.removeFirst(index + 1)
+        }
         if let first = lines.first, lines.count >= 2 {
             let others = lines.dropFirst().map(\.box.height).sorted()
             let median = others[others.count / 2]
@@ -133,10 +139,13 @@ public enum AddressWindow {
     /// Higher for a block that reads like a person's address; lower for one
     /// that reads like a sender's.
     static func score(_ lines: [LayoutLine], among all: [LayoutLine], rectified: Bool) -> Int {
-        var value = rectified ? 1 : 0
-        let first = lines.first?.text ?? ""
-        if looksLikeRecipient(first) { value += 3 }
+        var value = 0
+        // A person among the first lines: the name, or "FAO Mr …", "z. Hd.
+        // Frau …", "T.a.v. mevrouw …" under a company's name.
+        let opener = lines.prefix(3).contains { looksLikeRecipient($0.text) }
+        if opener { value += 3 }
         if lines.contains(where: { isOfficeAddress($0.text) }) { value -= 3 }
+        if !opener, let first = lines.first?.text, looksLikeOrganisation(first) { value -= 2 }
         // Not the topmost block on the page: the sender's letterhead is.
         let top = all.map(\.box.maxY).max() ?? 1
         if let blockTop = lines.first?.box.maxY, blockTop < top - 0.02 { value += 1 }
@@ -160,6 +169,12 @@ public enum AddressWindow {
         for opener in recipientOpeners where opener.contains(" ") && lower.hasPrefix(opener) { return true }
         // Initials and a surname: "A. Yilmaz", "R.A. van der Meulen".
         return line.range(of: #"^\p{Lu}\.(?:[ ]?\p{Lu}\.)*[ ]+\p{L}"#, options: .regularExpression) != nil
+    }
+
+    /// A first line that names an organisation: a sender's letterhead opens
+    /// so.
+    static func looksLikeOrganisation(_ line: String) -> Bool {
+        line.range(of: #"(?i)\b(?:b\.v\.|n\.v\.|v\.o\.f\.|gmbh|ag|ltd|limited|plc|inc|llc|sarl|sas|s\.a\.|s\.l\.|sp\. z o\.o\.|a\.ş\.|gemeente|belastingdienst|rechtbank|court|council|tribunal|gericht|finanzamt|stadt|ayuntamiento|agencia|urząd|belediye|university|universiteit|universität|bank|verzekering|insurance|versicherung|krankenkasse|caisse|ministerie|ministry|service|department|dienst|office)\b"#, options: .regularExpression) != nil
     }
 
     private static func isReturnAddress(_ line: String) -> Bool {
