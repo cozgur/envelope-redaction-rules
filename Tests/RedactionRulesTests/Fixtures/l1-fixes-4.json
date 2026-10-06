@@ -1,0 +1,868 @@
+[
+  {
+    "id": "fix4-ds",
+    "country": "NL",
+    "profile": {
+      "person": {
+        "givenNames": "Mehmet",
+        "surname": "Öztürk"
+      },
+      "household": [],
+      "street": "Dominee Fockstraat",
+      "houseNumber": "3a",
+      "postcode": "1063 VD",
+      "city": "Amsterdam"
+    },
+    "text": "Gemeente Utrecht\nPostbus 16200\n3500 CE Utrecht\n\nM. Öztürk\nDominee Fockstraat 3a\n1063 VD  AMSTERDAM\n\nDatum 2 oktober 2026\n\nGeachte heer, mevrouw,\n\nOp 14 oktober 2026 worden de bomen voor Ds. Fockstraat 3-A gesnoeid. U hoeft hiervoor niets te doen.\n\nMet vriendelijke groet,\n\nAfdeling Openbare Ruimte",
+    "masked": [
+      {
+        "value": "M. Öztürk",
+        "category": "name"
+      },
+      {
+        "value": "Dominee Fockstraat 3a",
+        "category": "address"
+      },
+      {
+        "value": "1063 VD",
+        "category": "postcode"
+      },
+      {
+        "value": "Ds. Fockstraat 3-A",
+        "category": "address"
+      }
+    ],
+    "kept": [
+      "Gemeente Utrecht",
+      "Postbus 16200",
+      "3500 CE Utrecht",
+      "14 oktober 2026"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "fix4-burg-v",
+    "country": "NL",
+    "profile": {
+      "person": {
+        "givenNames": "Rutger",
+        "surname": "Hoogendoorn"
+      },
+      "household": [],
+      "street": "Burgemeester van Walsumweg",
+      "houseNumber": "112",
+      "postcode": "3011 MZ",
+      "city": "Rotterdam"
+    },
+    "text": "Gemeente Utrecht\nPostbus 16200\n3500 CE Utrecht\n\nR. Hoogendoorn\nBurg. v. Walsumweg 112\n3011 MZ  ROTTERDAM\n\nDatum 2 oktober 2026\n\nGeachte heer, mevrouw,\n\nOp 14 oktober 2026 worden de bomen voor Burg. v. Walsumweg 112 gesnoeid. U hoeft hiervoor niets te doen.\n\nMet vriendelijke groet,\n\nAfdeling Openbare Ruimte",
+    "masked": [
+      {
+        "value": "R. Hoogendoorn",
+        "category": "name"
+      },
+      {
+        "value": "Burg. v. Walsumweg 112",
+        "category": "address"
+      },
+      {
+        "value": "3011 MZ",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Gemeente Utrecht",
+      "Postbus 16200",
+      "3500 CE Utrecht",
+      "14 oktober 2026"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "fix4-past-str",
+    "country": "NL",
+    "profile": {
+      "person": {
+        "givenNames": "Annemiek",
+        "surname": "Wijnands"
+      },
+      "household": [],
+      "street": "Pastoor van Arsstraat",
+      "houseNumber": "7",
+      "postcode": "5921 AN",
+      "city": "Venlo"
+    },
+    "text": "Gemeente Utrecht\nPostbus 16200\n3500 CE Utrecht\n\nA. Wijnands\nPast. van Arsstr. 7\n5921 AN  VENLO\n\nDatum 2 oktober 2026\n\nGeachte heer, mevrouw,\n\nOp 14 oktober 2026 worden de bomen voor Past. van Arsstr. 7 gesnoeid. U hoeft hiervoor niets te doen.\n\nMet vriendelijke groet,\n\nAfdeling Openbare Ruimte",
+    "masked": [
+      {
+        "value": "A. Wijnands",
+        "category": "name"
+      },
+      {
+        "value": "Past. van Arsstr. 7",
+        "category": "address"
+      },
+      {
+        "value": "5921 AN",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Gemeente Utrecht",
+      "Postbus 16200",
+      "3500 CE Utrecht",
+      "14 oktober 2026"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "fix4-prof-ln",
+    "country": "NL",
+    "profile": {
+      "person": {
+        "givenNames": "Joost",
+        "surname": "Verhagen"
+      },
+      "household": [],
+      "street": "Professor Cobbenhagenlaan",
+      "houseNumber": "21",
+      "postcode": "5037 DA",
+      "city": "Tilburg"
+    },
+    "text": "Gemeente Utrecht\nPostbus 16200\n3500 CE Utrecht\n\nJ. Verhagen\nProf. Cobbenhagenln 21\n5037 DA  TILBURG\n\nDatum 2 oktober 2026\n\nGeachte heer, mevrouw,\n\nOp 14 oktober 2026 worden de bomen voor Prof. Cobbenhagenln 21 gesnoeid. U hoeft hiervoor niets te doen.\n\nMet vriendelijke groet,\n\nAfdeling Openbare Ruimte",
+    "masked": [
+      {
+        "value": "J. Verhagen",
+        "category": "name"
+      },
+      {
+        "value": "Prof. Cobbenhagenln 21",
+        "category": "address"
+      },
+      {
+        "value": "5037 DA",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Gemeente Utrecht",
+      "Postbus 16200",
+      "3500 CE Utrecht",
+      "14 oktober 2026"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "fix4-mr-pl",
+    "country": "NL",
+    "profile": {
+      "person": {
+        "givenNames": "Femke",
+        "surname": "Dekkers"
+      },
+      "household": [],
+      "street": "Meester Visserplein",
+      "houseNumber": "4",
+      "postcode": "1011 RD",
+      "city": "Amsterdam"
+    },
+    "text": "Gemeente Utrecht\nPostbus 16200\n3500 CE Utrecht\n\nF. Dekkers\nMr. Visserpl. 4\n1011 RD  AMSTERDAM\n\nDatum 2 oktober 2026\n\nGeachte heer, mevrouw,\n\nOp 14 oktober 2026 worden de bomen voor Mr. Visserpl. 4 gesnoeid. U hoeft hiervoor niets te doen.\n\nMet vriendelijke groet,\n\nAfdeling Openbare Ruimte",
+    "masked": [
+      {
+        "value": "F. Dekkers",
+        "category": "name"
+      },
+      {
+        "value": "Mr. Visserpl. 4",
+        "category": "address"
+      },
+      {
+        "value": "1011 RD",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Gemeente Utrecht",
+      "Postbus 16200",
+      "3500 CE Utrecht",
+      "14 oktober 2026"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "fix4-dr",
+    "country": "NL",
+    "profile": {
+      "person": {
+        "givenNames": "Karin",
+        "surname": "Postma"
+      },
+      "household": [],
+      "street": "Doctor Lelylaan",
+      "houseNumber": "9",
+      "postcode": "8251 AB",
+      "city": "Dronten"
+    },
+    "text": "Gemeente Utrecht\nPostbus 16200\n3500 CE Utrecht\n\nK. Postma\nDr. Lelylaan 9\n8251 AB  DRONTEN\n\nDatum 2 oktober 2026\n\nGeachte heer, mevrouw,\n\nOp 14 oktober 2026 worden de bomen voor Dr. Lelylaan 9 gesnoeid. U hoeft hiervoor niets te doen.\n\nMet vriendelijke groet,\n\nAfdeling Openbare Ruimte",
+    "masked": [
+      {
+        "value": "K. Postma",
+        "category": "name"
+      },
+      {
+        "value": "Dr. Lelylaan 9",
+        "category": "address"
+      },
+      {
+        "value": "8251 AB",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Gemeente Utrecht",
+      "Postbus 16200",
+      "3500 CE Utrecht",
+      "14 oktober 2026"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "fix4-gen",
+    "country": "NL",
+    "profile": {
+      "person": {
+        "givenNames": "Wouter",
+        "surname": "Kramer"
+      },
+      "household": [],
+      "street": "Generaal Foulkesweg",
+      "houseNumber": "30",
+      "postcode": "6703 BS",
+      "city": "Wageningen"
+    },
+    "text": "Gemeente Utrecht\nPostbus 16200\n3500 CE Utrecht\n\nW. Kramer\nGen. Foulkesweg 30\n6703 BS  WAGENINGEN\n\nDatum 2 oktober 2026\n\nGeachte heer, mevrouw,\n\nOp 14 oktober 2026 worden de bomen voor Gen. Foulkesweg 30 gesnoeid. U hoeft hiervoor niets te doen.\n\nMet vriendelijke groet,\n\nAfdeling Openbare Ruimte",
+    "masked": [
+      {
+        "value": "W. Kramer",
+        "category": "name"
+      },
+      {
+        "value": "Gen. Foulkesweg 30",
+        "category": "address"
+      },
+      {
+        "value": "6703 BS",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Gemeente Utrecht",
+      "Postbus 16200",
+      "3500 CE Utrecht",
+      "14 oktober 2026"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "fix4-kon-ln",
+    "country": "NL",
+    "profile": {
+      "person": {
+        "givenNames": "Sanne",
+        "surname": "Mulder"
+      },
+      "household": [],
+      "street": "Koningin Wilhelminalaan",
+      "houseNumber": "5",
+      "postcode": "3818 HN",
+      "city": "Amersfoort"
+    },
+    "text": "Gemeente Utrecht\nPostbus 16200\n3500 CE Utrecht\n\nS. Mulder\nKon. Wilhelminaln 5\n3818 HN  AMERSFOORT\n\nDatum 2 oktober 2026\n\nGeachte heer, mevrouw,\n\nOp 14 oktober 2026 worden de bomen voor Kon. Wilhelminaln 5 gesnoeid. U hoeft hiervoor niets te doen.\n\nMet vriendelijke groet,\n\nAfdeling Openbare Ruimte",
+    "masked": [
+      {
+        "value": "S. Mulder",
+        "category": "name"
+      },
+      {
+        "value": "Kon. Wilhelminaln 5",
+        "category": "address"
+      },
+      {
+        "value": "3818 HN",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Gemeente Utrecht",
+      "Postbus 16200",
+      "3500 CE Utrecht",
+      "14 oktober 2026"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "fix4-pres-ln",
+    "country": "NL",
+    "profile": {
+      "person": {
+        "givenNames": "Ruud",
+        "surname": "Hendriks"
+      },
+      "household": [],
+      "street": "President Kennedylaan",
+      "houseNumber": "101",
+      "postcode": "2343 GT",
+      "city": "Oegstgeest"
+    },
+    "text": "Gemeente Utrecht\nPostbus 16200\n3500 CE Utrecht\n\nR. Hendriks\nPres. Kennedyln 101\n2343 GT  OEGSTGEEST\n\nDatum 2 oktober 2026\n\nGeachte heer, mevrouw,\n\nOp 14 oktober 2026 worden de bomen voor Pres. Kennedyln 101 gesnoeid. U hoeft hiervoor niets te doen.\n\nMet vriendelijke groet,\n\nAfdeling Openbare Ruimte",
+    "masked": [
+      {
+        "value": "R. Hendriks",
+        "category": "name"
+      },
+      {
+        "value": "Pres. Kennedyln 101",
+        "category": "address"
+      },
+      {
+        "value": "2343 GT",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Gemeente Utrecht",
+      "Postbus 16200",
+      "3500 CE Utrecht",
+      "14 oktober 2026"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "fix4-st-str",
+    "country": "NL",
+    "profile": {
+      "person": {
+        "givenNames": "Lotte",
+        "surname": "Bosman"
+      },
+      "household": [],
+      "street": "Sint Annastraat",
+      "houseNumber": "12",
+      "postcode": "6524 EH",
+      "city": "Nijmegen"
+    },
+    "text": "Gemeente Utrecht\nPostbus 16200\n3500 CE Utrecht\n\nL. Bosman\nSt. Annastr. 12\n6524 EH  NIJMEGEN\n\nDatum 2 oktober 2026\n\nGeachte heer, mevrouw,\n\nOp 14 oktober 2026 worden de bomen voor St. Annastr. 12 gesnoeid. U hoeft hiervoor niets te doen.\n\nMet vriendelijke groet,\n\nAfdeling Openbare Ruimte",
+    "masked": [
+      {
+        "value": "L. Bosman",
+        "category": "name"
+      },
+      {
+        "value": "St. Annastr. 12",
+        "category": "address"
+      },
+      {
+        "value": "6524 EH",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Gemeente Utrecht",
+      "Postbus 16200",
+      "3500 CE Utrecht",
+      "14 oktober 2026"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "fix4-wethr-str",
+    "country": "NL",
+    "profile": {
+      "person": {
+        "givenNames": "Daan",
+        "surname": "Peeters"
+      },
+      "household": [],
+      "street": "Wethouder Venhuizenstraat",
+      "houseNumber": "8",
+      "postcode": "5038 PA",
+      "city": "Tilburg"
+    },
+    "text": "Gemeente Utrecht\nPostbus 16200\n3500 CE Utrecht\n\nD. Peeters\nWethr. Venhuizenstr. 8\n5038 PA  TILBURG\n\nDatum 2 oktober 2026\n\nGeachte heer, mevrouw,\n\nOp 14 oktober 2026 worden de bomen voor Wethr. Venhuizenstr. 8 gesnoeid. U hoeft hiervoor niets te doen.\n\nMet vriendelijke groet,\n\nAfdeling Openbare Ruimte",
+    "masked": [
+      {
+        "value": "D. Peeters",
+        "category": "name"
+      },
+      {
+        "value": "Wethr. Venhuizenstr. 8",
+        "category": "address"
+      },
+      {
+        "value": "5038 PA",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Gemeente Utrecht",
+      "Postbus 16200",
+      "3500 CE Utrecht",
+      "14 oktober 2026"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "fix4-1e",
+    "country": "NL",
+    "profile": {
+      "person": {
+        "givenNames": "Thijs",
+        "surname": "Verbeek"
+      },
+      "household": [],
+      "street": "Eerste Jan Steenstraat",
+      "houseNumber": "88-3",
+      "postcode": "1072 NM",
+      "city": "Amsterdam"
+    },
+    "text": "Gemeente Utrecht\nPostbus 16200\n3500 CE Utrecht\n\nT. Verbeek\n1e Jan Steenstraat 88-3\n1072 NM  AMSTERDAM\n\nDatum 2 oktober 2026\n\nGeachte heer, mevrouw,\n\nOp 14 oktober 2026 worden de bomen voor 1e Jan Steenstraat 88-3 gesnoeid. U hoeft hiervoor niets te doen.\n\nMet vriendelijke groet,\n\nAfdeling Openbare Ruimte",
+    "masked": [
+      {
+        "value": "T. Verbeek",
+        "category": "name"
+      },
+      {
+        "value": "1e Jan Steenstraat 88-3",
+        "category": "address"
+      },
+      {
+        "value": "1072 NM",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Gemeente Utrecht",
+      "Postbus 16200",
+      "3500 CE Utrecht",
+      "14 oktober 2026"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "fix4-2e-str",
+    "country": "NL",
+    "profile": {
+      "person": {
+        "givenNames": "Noor",
+        "surname": "Smits"
+      },
+      "household": [],
+      "street": "Tweede Hugo de Grootstraat",
+      "houseNumber": "14",
+      "postcode": "1052 LC",
+      "city": "Amsterdam"
+    },
+    "text": "Gemeente Utrecht\nPostbus 16200\n3500 CE Utrecht\n\nN. Smits\n2e Hugo de Grootstr. 14\n1052 LC  AMSTERDAM\n\nDatum 2 oktober 2026\n\nGeachte heer, mevrouw,\n\nOp 14 oktober 2026 worden de bomen voor 2e Hugo de Grootstr. 14 gesnoeid. U hoeft hiervoor niets te doen.\n\nMet vriendelijke groet,\n\nAfdeling Openbare Ruimte",
+    "masked": [
+      {
+        "value": "N. Smits",
+        "category": "name"
+      },
+      {
+        "value": "2e Hugo de Grootstr. 14",
+        "category": "address"
+      },
+      {
+        "value": "1052 LC",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Gemeente Utrecht",
+      "Postbus 16200",
+      "3500 CE Utrecht",
+      "14 oktober 2026"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "fix4-3e",
+    "country": "NL",
+    "profile": {
+      "person": {
+        "givenNames": "Bram",
+        "surname": "Wouters"
+      },
+      "household": [],
+      "street": "Derde Oosterparkstraat",
+      "houseNumber": "200",
+      "postcode": "1092 EH",
+      "city": "Amsterdam"
+    },
+    "text": "Gemeente Utrecht\nPostbus 16200\n3500 CE Utrecht\n\nB. Wouters\n3e Oosterparkstraat 200\n1092 EH  AMSTERDAM\n\nDatum 2 oktober 2026\n\nGeachte heer, mevrouw,\n\nOp 14 oktober 2026 worden de bomen voor 3e Oosterparkstraat 200 gesnoeid. U hoeft hiervoor niets te doen.\n\nMet vriendelijke groet,\n\nAfdeling Openbare Ruimte",
+    "masked": [
+      {
+        "value": "B. Wouters",
+        "category": "name"
+      },
+      {
+        "value": "3e Oosterparkstraat 200",
+        "category": "address"
+      },
+      {
+        "value": "1092 EH",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Gemeente Utrecht",
+      "Postbus 16200",
+      "3500 CE Utrecht",
+      "14 oktober 2026"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "fix4-vd-pl",
+    "country": "NL",
+    "profile": {
+      "person": {
+        "givenNames": "Ilse",
+        "surname": "Brouwer"
+      },
+      "household": [],
+      "street": "Van der Helstplein",
+      "houseNumber": "3",
+      "postcode": "1072 PH",
+      "city": "Amsterdam"
+    },
+    "text": "Gemeente Utrecht\nPostbus 16200\n3500 CE Utrecht\n\nI. Brouwer\nv.d. Helstpl. 3\n1072 PH  AMSTERDAM\n\nDatum 2 oktober 2026\n\nGeachte heer, mevrouw,\n\nOp 14 oktober 2026 worden de bomen voor v.d. Helstpl. 3 gesnoeid. U hoeft hiervoor niets te doen.\n\nMet vriendelijke groet,\n\nAfdeling Openbare Ruimte",
+    "masked": [
+      {
+        "value": "I. Brouwer",
+        "category": "name"
+      },
+      {
+        "value": "v.d. Helstpl. 3",
+        "category": "address"
+      },
+      {
+        "value": "1072 PH",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Gemeente Utrecht",
+      "Postbus 16200",
+      "3500 CE Utrecht",
+      "14 oktober 2026"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "fix4-vd",
+    "country": "NL",
+    "profile": {
+      "person": {
+        "givenNames": "Koen",
+        "surname": "Jacobs"
+      },
+      "household": [],
+      "street": "Van de Veldestraat",
+      "houseNumber": "6",
+      "postcode": "1071 CW",
+      "city": "Amsterdam"
+    },
+    "text": "Gemeente Utrecht\nPostbus 16200\n3500 CE Utrecht\n\nK. Jacobs\nvd Veldestraat 6\n1071 CW  AMSTERDAM\n\nDatum 2 oktober 2026\n\nGeachte heer, mevrouw,\n\nOp 14 oktober 2026 worden de bomen voor vd Veldestraat 6 gesnoeid. U hoeft hiervoor niets te doen.\n\nMet vriendelijke groet,\n\nAfdeling Openbare Ruimte",
+    "masked": [
+      {
+        "value": "K. Jacobs",
+        "category": "name"
+      },
+      {
+        "value": "vd Veldestraat 6",
+        "category": "address"
+      },
+      {
+        "value": "1071 CW",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Gemeente Utrecht",
+      "Postbus 16200",
+      "3500 CE Utrecht",
+      "14 oktober 2026"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "fix4-gr",
+    "country": "NL",
+    "profile": {
+      "person": {
+        "givenNames": "Eva",
+        "surname": "Visscher"
+      },
+      "household": [],
+      "street": "Prinsengracht",
+      "houseNumber": "263",
+      "postcode": "1016 GV",
+      "city": "Amsterdam"
+    },
+    "text": "Gemeente Utrecht\nPostbus 16200\n3500 CE Utrecht\n\nE. Visscher\nPrinsengr. 263\n1016 GV  AMSTERDAM\n\nDatum 2 oktober 2026\n\nGeachte heer, mevrouw,\n\nOp 14 oktober 2026 worden de bomen voor Prinsengr. 263 gesnoeid. U hoeft hiervoor niets te doen.\n\nMet vriendelijke groet,\n\nAfdeling Openbare Ruimte",
+    "masked": [
+      {
+        "value": "E. Visscher",
+        "category": "name"
+      },
+      {
+        "value": "Prinsengr. 263",
+        "category": "address"
+      },
+      {
+        "value": "1016 GV",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Gemeente Utrecht",
+      "Postbus 16200",
+      "3500 CE Utrecht",
+      "14 oktober 2026"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "fix4-kd",
+    "country": "NL",
+    "profile": {
+      "person": {
+        "givenNames": "Jesse",
+        "surname": "Bakx"
+      },
+      "household": [],
+      "street": "Oosterkade",
+      "houseNumber": "17",
+      "postcode": "9711 RS",
+      "city": "Groningen"
+    },
+    "text": "Gemeente Utrecht\nPostbus 16200\n3500 CE Utrecht\n\nJ. Bakx\nOosterkd. 17\n9711 RS  GRONINGEN\n\nDatum 2 oktober 2026\n\nGeachte heer, mevrouw,\n\nOp 14 oktober 2026 worden de bomen voor Oosterkd. 17 gesnoeid. U hoeft hiervoor niets te doen.\n\nMet vriendelijke groet,\n\nAfdeling Openbare Ruimte",
+    "masked": [
+      {
+        "value": "J. Bakx",
+        "category": "name"
+      },
+      {
+        "value": "Oosterkd. 17",
+        "category": "address"
+      },
+      {
+        "value": "9711 RS",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Gemeente Utrecht",
+      "Postbus 16200",
+      "3500 CE Utrecht",
+      "14 oktober 2026"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "fix4-reverse-ds",
+    "country": "NL",
+    "profile": {
+      "person": {
+        "givenNames": "Mehmet",
+        "surname": "Öztürk"
+      },
+      "household": [],
+      "street": "Ds. Fockstraat",
+      "houseNumber": "3a",
+      "postcode": "1063 VD",
+      "city": "Amsterdam"
+    },
+    "text": "Gemeente Utrecht\nPostbus 16200\n3500 CE Utrecht\n\nM. Öztürk\nDominee Fockstraat 3a\n1063 VD  AMSTERDAM\n\nDatum 2 oktober 2026\n\nGeachte heer, mevrouw,\n\nOp 14 oktober 2026 worden de bomen voor Dominee Fockstraat 3a gesnoeid. U hoeft hiervoor niets te doen.\n\nMet vriendelijke groet,\n\nAfdeling Openbare Ruimte",
+    "masked": [
+      {
+        "value": "M. Öztürk",
+        "category": "name"
+      },
+      {
+        "value": "Dominee Fockstraat 3a",
+        "category": "address"
+      },
+      {
+        "value": "1063 VD",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Gemeente Utrecht",
+      "Postbus 16200",
+      "3500 CE Utrecht",
+      "14 oktober 2026"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "fix4-reverse-1e",
+    "country": "NL",
+    "profile": {
+      "person": {
+        "givenNames": "Thijs",
+        "surname": "Verbeek"
+      },
+      "household": [],
+      "street": "1e Jan Steenstraat",
+      "houseNumber": "88-3",
+      "postcode": "1072 NM",
+      "city": "Amsterdam"
+    },
+    "text": "Gemeente Utrecht\nPostbus 16200\n3500 CE Utrecht\n\nT. Verbeek\nEerste Jan Steenstraat 88-3\n1072 NM  AMSTERDAM\n\nDatum 2 oktober 2026\n\nGeachte heer, mevrouw,\n\nOp 14 oktober 2026 worden de bomen voor Eerste Jan Steenstraat 88-3 gesnoeid. U hoeft hiervoor niets te doen.\n\nMet vriendelijke groet,\n\nAfdeling Openbare Ruimte",
+    "masked": [
+      {
+        "value": "T. Verbeek",
+        "category": "name"
+      },
+      {
+        "value": "Eerste Jan Steenstraat 88-3",
+        "category": "address"
+      },
+      {
+        "value": "1072 NM",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Gemeente Utrecht",
+      "Postbus 16200",
+      "3500 CE Utrecht",
+      "14 oktober 2026"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "fix4-ds-sender-kept",
+    "country": "NL",
+    "profile": {
+      "person": {
+        "givenNames": "Mehmet",
+        "surname": "Öztürk"
+      },
+      "household": [],
+      "street": "Dominee Fockstraat",
+      "houseNumber": "3a",
+      "postcode": "1063 VD",
+      "city": "Amsterdam"
+    },
+    "text": "Kerkelijk Bureau\nDs. Kuyperstraat 5\n3500 CE Utrecht\n\nM. Öztürk\nDominee Fockstraat 3a\n1063 VD  AMSTERDAM\n\nDatum 2 oktober 2026\n\nGeachte heer, mevrouw,\n\nOp 14 oktober 2026 worden de bomen voor Ds. Fockstraat 3-A gesnoeid. U hoeft hiervoor niets te doen.\n\nMet vriendelijke groet,\n\nAfdeling Openbare Ruimte",
+    "masked": [
+      {
+        "value": "M. Öztürk",
+        "category": "name"
+      },
+      {
+        "value": "Dominee Fockstraat 3a",
+        "category": "address"
+      },
+      {
+        "value": "1063 VD",
+        "category": "postcode"
+      },
+      {
+        "value": "Ds. Fockstraat 3-A",
+        "category": "address"
+      }
+    ],
+    "kept": [
+      "Kerkelijk Bureau",
+      "Ds. Kuyperstraat 5",
+      "14 oktober 2026"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "fix4-hyphen-after",
+    "country": "NL",
+    "profile": {
+      "person": {
+        "givenNames": "Ingrid",
+        "surname": "Schouten"
+      },
+      "household": [],
+      "street": "Graaf Florislaan",
+      "houseNumber": "9",
+      "postcode": "1814 GK",
+      "city": "Alkmaar"
+    },
+    "text": "Vonk Energie B.V.\nPostbus 7720\n1117 ZL Schiphol\n\nMevrouw I. Schouten-Brink\nGraaf Florislaan 9\n1814 GK  ALKMAAR\n\nDatum 26 september 2026\n\nBeste mevrouw Schouten-Brink,\n\nHierbij ontvangt u de jaarnota. U krijgt € 274,23 terug.\n\nMet vriendelijke groet,\n\nVonk Energie",
+    "masked": [
+      {
+        "value": "I. Schouten-Brink",
+        "category": "name"
+      },
+      {
+        "value": "Schouten-Brink",
+        "category": "name"
+      },
+      {
+        "value": "Graaf Florislaan 9",
+        "category": "address"
+      },
+      {
+        "value": "1814 GK",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Vonk Energie B.V.",
+      "Postbus 7720",
+      "1117 ZL Schiphol",
+      "€ 274,23"
+    ],
+    "keptOrdinary": []
+  },
+  {
+    "id": "fix4-hyphen-before",
+    "country": "NL",
+    "profile": {
+      "person": {
+        "givenNames": "Pieter",
+        "surname": "Schouten"
+      },
+      "household": [],
+      "street": "Graaf Florislaan",
+      "houseNumber": "9",
+      "postcode": "1814 GK",
+      "city": "Alkmaar"
+    },
+    "text": "Vonk Energie B.V.\nPostbus 7720\n1117 ZL Schiphol\n\nDe heer P. Brink-Schouten\nGraaf Florislaan 9\n1814 GK  ALKMAAR\n\nDatum 26 september 2026\n\nGeachte heer Brink-Schouten,\n\nHierbij ontvangt u de jaarnota. U krijgt € 274,23 terug.\n\nMet vriendelijke groet,\n\nVonk Energie",
+    "masked": [
+      {
+        "value": "P. Brink-Schouten",
+        "category": "name"
+      },
+      {
+        "value": "Brink-Schouten",
+        "category": "name"
+      },
+      {
+        "value": "Graaf Florislaan 9",
+        "category": "address"
+      },
+      {
+        "value": "1814 GK",
+        "category": "postcode"
+      }
+    ],
+    "kept": [
+      "Vonk Energie B.V.",
+      "Postbus 7720",
+      "1117 ZL Schiphol",
+      "€ 274,23"
+    ],
+    "keptOrdinary": []
+  }
+]
