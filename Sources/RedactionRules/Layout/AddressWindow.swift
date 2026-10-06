@@ -75,15 +75,31 @@ public enum AddressWindow {
         // sits in the right window's rectangle.
         guard let best, best.score > 0 else { return nil }
 
-        let ranges: [Range<String.Index>] = best.lines.compactMap { line in
+        // A leading line that is not a person and that the letter prints
+        // again outside the window is the sender's own name (nl-pension of
+        // the layout variants: "Sociale Verzekeringsbank" on the row above
+        // the window, and again in the body). A recipient company is printed
+        // once, on the envelope.
+        var block = best.lines
+        while block.count > 2, let first = block.first, !looksLikeRecipient(first.text),
+              occurrences(of: first.text, in: text) > 1 {
+            block.removeFirst()
+        }
+        let ranges: [Range<String.Index>] = block.compactMap { line in
             guard line.characterOffset >= 0, line.characterOffset + line.text.count <= text.count else { return nil }
             let start = text.index(text.startIndex, offsetBy: line.characterOffset)
             let end = text.index(start, offsetBy: line.text.count)
             guard text[start..<end] == line.text else { return nil }
             return start..<end
         }
-        guard ranges.count == best.lines.count else { return nil }
+        guard ranges.count == block.count else { return nil }
         return KnownClaim(kind: .address, ranges: ranges, source: .window)
+    }
+
+    private static func occurrences(of line: String, in text: String) -> Int {
+        let needle = line.trimmingCharacters(in: .whitespaces)
+        guard !needle.isEmpty else { return 0 }
+        return text.components(separatedBy: needle).count - 1
     }
 
     // MARK: - Clusters
