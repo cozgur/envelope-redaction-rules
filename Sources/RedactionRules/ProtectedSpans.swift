@@ -38,8 +38,9 @@ public enum ProtectedSpans {
     private static var patterns: [String] {
         let months = monthNames.joined(separator: "|")
         return [
-            // ISO and separator dates: 2025-11-03, 03-11-2025, 3.11.2025
-            #"\b\d{4}[-/.]\d{1,2}[-/.]\d{1,2}\b"#,
+            // ISO and separator dates: 2025-11-03, 03-11-2025, 3.11.2025. An ISO
+            // year is 19xx or 20xx, so a reference like 0412-07-02 is not a date.
+            #"\b(?:19|20)\d{2}[-/.]\d{1,2}[-/.]\d{1,2}\b"#,
             #"\b\d{1,2}[-/.]\d{1,2}[-/.]\d{2,4}\b"#,
             // Written dates in either order.
             #"(?i)\b\d{1,2}\.?\s*(?:"# + months + #")\s*\d{4}\b"#,

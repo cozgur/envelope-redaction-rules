@@ -13,7 +13,10 @@ import Testing
 @Suite("Whole values")
 struct WholeValueTests {
 
-    @Test("A policy number is masked whole, as a reference")
+    /// Masked as an identity number since 6 Oct 2026: the owner made
+    /// "Versichertennummer" an identity label (Gate A after set 5). Whole is
+    /// what this test is about, and whole it stays.
+    @Test("A Versichertennummer is masked whole, as an identity number")
     func policyNumberKeepsItsPrefix() throws {
         // The tail of this number, 77341-2026, is a structurally valid SSN if
         // the separator is allowed to appear in one position and not the
@@ -22,9 +25,9 @@ struct WholeValueTests {
         let result = RedactionEngine.redact(text, countryHint: "DE")
 
         let span = try #require(result.spans.first)
-        #expect(span.kind == .reference)
+        #expect(span.kind == .idNumber)
         #expect(result.map[span.placeholder] == "TK-77341-2026")
-        #expect(result.redactedText == "Versichertennummer: [REFERENCE_1]")
+        #expect(result.redactedText == "Versichertennummer: [ID_NUMBER_1]")
     }
 
     @Test("An SSN is recognised however it is written",

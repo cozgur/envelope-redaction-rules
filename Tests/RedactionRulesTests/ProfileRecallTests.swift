@@ -255,8 +255,16 @@ struct ProfileRecallTests {
                 // Gate A's scope (owner, 6 Oct 2026): names everywhere, and
                 // NL-format addresses, are 100%; other address formats are
                 // counted apart (≥ 95% for 1.0).
-                let category = !Self.profileCategories.contains(item.category) || item.category == "name" || letter.country == "NL"
+                var category = !Self.profileCategories.contains(item.category) || item.category == "name" || letter.country == "NL"
                     ? item.category : "\(item.category) (non-NL)"
+                // Gate A after set 5 (owner, 6 Oct 2026): labelled references
+                // gate, unlabelled ones are reported; third parties gate in
+                // the recipient block and the salutation, and are reported in
+                // the body.
+                if item.category == "reference", item.labelled == false { category = "reference (unlabelled)" }
+                if item.category.hasPrefix("other"), let place = item.where {
+                    category = "\(item.category) (\(place == "body" ? "body" : "block/salutation"))"
+                }
                 var occurrences = offsets(of: item.value, in: letter.text)
                 if occurrences.isEmpty { tally.missing.append("\(letter.id): “\(item.value)” is not in the text") }
                 // A city alone in a sentence is out of scope (owner, 6 Oct
@@ -325,7 +333,10 @@ struct ProfileRecallTests {
     /// What Gate A's L1 line requires of a tally: no name and no NL-format
     /// miss, and non-NL address formats at 95% or more.
     static func scopeFailures(_ tally: Tally) -> [String] {
-        var failures = tally.leaks.filter { !$0.contains("(non-NL)") }
+        // The reader's own categories only: the other Gate A lines are
+        // counted by `gateALines`.
+        let reader = [": name “", ": address “", ": postcode “", ": city “"]
+        var failures = tally.leaks.filter { leak in !leak.contains("(non-NL)") && reader.contains { leak.contains($0) } }
         let nonNL = tally.masked.filter { $0.key.hasSuffix("(non-NL)") }.values
         let found = nonNL.reduce(0) { $0 + $1.found }
         let total = nonNL.reduce(0) { $0 + $1.total }
@@ -486,7 +497,8 @@ struct ProfileRecallTests {
     /// every layout as its own page.
     static let setFive = load("l1-independent-5")
 
-    /// Every Gate A line, as "line: result -> pass/fail".
+    /// Every Gate A line (plan §2 as worded after set 5, owner, 6 Oct 2026),
+    /// as "line: result" and pass, fail or reported.
     static func gateALines(_ cases: [Case], _ tally: Tally) -> [(line: String, pass: Bool?)] {
         func share(_ keys: [String]) -> (Int, Int) {
             keys.reduce((0, 0)) { ($0.0 + (tally.masked[$1]?.found ?? 0), $0.1 + (tally.masked[$1]?.total ?? 0)) }
@@ -494,37 +506,73 @@ struct ProfileRecallTests {
         func pct(_ value: (Int, Int)) -> String {
             value.1 == 0 ? "0/0" : String(format: "%d/%d (%.1f%%)", value.0, value.1, 100 * Double(value.0) / Double(value.1))
         }
+        func all(_ value: (Int, Int)) -> Bool { value.1 > 0 && value.0 == value.1 }
+        func most(_ value: (Int, Int)) -> Bool { value.1 > 0 && Double(value.0) >= 0.95 * Double(value.1) }
         var lines: [(String, Bool?)] = []
         let names = share(["name"])
-        lines.append(("reader names, every country, 100%: \(pct(names))", names.1 > 0 && names.0 == names.1))
+        lines.append(("reader names, every country, 100%: \(pct(names))", all(names)))
         for category in ["address", "postcode"] {
             let value = share([category])
-            lines.append(("reader \(category), NL format, 100%: \(pct(value))", value.1 > 0 && value.0 == value.1))
+            lines.append(("reader \(category), NL format, 100%: \(pct(value))", all(value)))
         }
         let nonNL = share(["address (non-NL)", "postcode (non-NL)"])
-        lines.append(("reader address + postcode, non-NL formats, >= 95%: \(pct(nonNL))", nonNL.1 > 0 && Double(nonNL.0) >= 0.95 * Double(nonNL.1)))
-        for category in ["otherName", "otherAddress", "otherPostcode", "reference"] {
-            let value = share([category])
-            lines.append(("\(category) >= 95%: \(pct(value))", value.1 > 0 && Double(value.0) >= 0.95 * Double(value.1)))
-        }
-        for category in ["iban", "id"] {
-            let value = share([category])
-            lines.append(("\(category) 100%: \(pct(value))", value.1 > 0 && value.0 == value.1))
+        lines.append(("reader address + postcode, non-NL formats, >= 95%: \(pct(nonNL))", most(nonNL)))
+        let iban = share(["iban"])
+        lines.append(("IBANs 100%: \(pct(iban))", all(iban)))
+        let id = share(["id"])
+        lines.append(("identity numbers 100%: \(pct(id))", all(id)))
+        let labelled = share(["reference"])
+        lines.append(("labelled references >= 95%: \(pct(labelled))", most(labelled)))
+        let unlabelled = share(["reference (unlabelled)"])
+        lines.append(("unlabelled numbers (reported): \(pct(unlabelled))", nil))
+        let block = share(["otherName (block/salutation)", "otherAddress (block/salutation)", "otherPostcode (block/salutation)"])
+        lines.append(("third parties in the recipient block and salutation >= 95%: \(pct(block))", block.1 == 0 ? nil : most(block)))
+        for category in ["otherName", "otherAddress", "otherPostcode"] {
+            let body = share(["\(category) (body)"])
+            lines.append(("third-party \(category) in the body (reported): \(pct(body))", nil))
+            let unplaced = share([category])
+            if unplaced.1 > 0 { lines.append(("third-party \(category), place not annotated (reported): \(pct(unplaced))", nil)) }
         }
         let senderName = letterShare(tally.senderNameMasked, of: cases)
         lines.append(("sender name/organisation masked <= 5% of letters: \(senderName.count)/\(senderName.total)", Double(senderName.count) <= 0.05 * Double(senderName.total)))
         let senderAddress = letterShare(tally.senderAddressMasked, of: cases)
         lines.append(("sender address masked (reported; 1.0.x <= 20%): \(senderAddress.count)/\(senderAddress.total)", nil))
+        lines.append(("ordinary-word over-masking 0: \(tally.ordinaryOverMasked.count)", tally.ordinaryOverMasked.isEmpty))
         return lines
     }
 
-    @Test("Gate A on independent set 5: every line")
-    func gateASetFive() {
-        guard !Self.setFive.isEmpty else { return }
+    /// Gate A failed on set 5 (6 Oct 2026); the fix round made it a
+    /// regression test (owner): the lines its annotations can measure must
+    /// hold. Its third parties carry no place and its references no label
+    /// flag, so those lines are printed, not asserted.
+    @Test("Independent set 5, retired: the reader, IBANs, identity numbers, references and the sender's name hold")
+    func regressionSetFive() {
+        #expect(Self.setFive.count >= 40)
         let tally = Self.measure(Self.setFive)
         Self.gateAReport("set5", Self.setFive, tally)
-        for (line, pass) in Self.gateALines(Self.setFive, tally) {
+        let lines = Self.gateALines(Self.setFive, tally)
+        for (line, pass) in lines {
             print("GATEA-LINE set5 \(line) -> \(pass.map { $0 ? "pass" : "FAIL" } ?? "reported")")
+        }
+        #expect(tally.missing.isEmpty, "\(tally.missing)")
+        #expect(Self.scopeFailures(tally).isEmpty, "\(Self.scopeFailures(tally))")
+        let failed = lines.filter { $0.pass == false }.map(\.line)
+        #expect(failed.isEmpty, "\(failed)")
+    }
+
+    /// Gate A, owner's decision 5 (6 Oct 2026): independent set gate-a-7,
+    /// every category annotated (references labelled or not, third parties
+    /// by place), written by an agent that saw nothing else and committed
+    /// before this first run.
+    static let gateA7 = load("gate-a-7")
+
+    @Test("Gate A on independent set gate-a-7: every line")
+    func gateASetSeven() {
+        guard !Self.gateA7.isEmpty else { return }
+        let tally = Self.measure(Self.gateA7)
+        Self.gateAReport("gate-a-7", Self.gateA7, tally)
+        for (line, pass) in Self.gateALines(Self.gateA7, tally) {
+            print("GATEA-LINE gate-a-7 \(line) -> \(pass.map { $0 ? "pass" : "FAIL" } ?? "reported")")
         }
         #expect(tally.missing.isEmpty, "\(tally.missing)")
     }

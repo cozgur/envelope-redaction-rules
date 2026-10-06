@@ -54,7 +54,7 @@ public struct ReferenceNumberRule: RedactionRule {
         let stems = labelStems
             .map { NSRegularExpression.escapedPattern(for: $0) }
             .joined(separator: "|")
-        return #"(?im)^[\p{L}][^\n:]{0,38}(?:"# + stems
+        return #"(?im)^(?![^\n:]*(?:telefoon|telefon|phone|fax|mobiel|mobil|gsm|handy|téléphone|teléfono|telefono|tel\.))[\p{L}][^\n:]{0,38}(?:"# + stems
             + #")[ \t]*:[ \t]*([\p{L}\d][\p{L}\d ./-]{2,}[\p{L}\d])[ \t]*$"#
     }
 
@@ -70,7 +70,7 @@ public struct ReferenceNumberRule: RedactionRule {
         let stems = labelStems
             .map { NSRegularExpression.escapedPattern(for: $0) }
             .joined(separator: "|")
-        return #"(?im)^[^\n:]{0,20}\b(?:"# + stems
+        return #"(?im)^(?![^\n:]*(?:telefoon|telefon|phone|fax|mobiel|mobil|gsm|handy|téléphone|teléfono|telefono|tel\.))[^\n:]{0,20}\b(?:"# + stems
             + #")\b[^\n:]{0,24}[ \t]*:[ \t]*([\p{L}\d][\p{L}\d ./-]{2,}[\p{L}\d])[ \t]*$"#
     }
 
@@ -144,5 +144,64 @@ public struct ReferenceNumberRule: RedactionRule {
             }
         }
         return result
+    }
+}
+
+/// The value after a reference label, to the end of its field (owner, 6 Oct
+/// 2026): spaces and slashes included ("Sygn. akt I C 1442/26",
+/// "Zaaknummer: C/13/71128 / HA ZA 26-114", "Dosya No: 2026/18442 E.").
+///
+/// A group is kept while it carries a digit or is a short capital code
+/// ("I", "C", "HA", "WE", "E."); the value ends at the first other word, a
+/// comma, a semicolon or the line's end, so a date or a sentence after it
+/// stays. The value must carry a digit.
+public struct LabelledReferenceRule: RedactionRule {
+    public let kind = PIIKind.reference
+
+    public init() {}
+
+    static let labels = [
+        "kenmerk", "ons kenmerk", "uw kenmerk", "betalingskenmerk", "dossiernummer", "zaaknummer",
+        "klantnummer", "aanslagnummer", "factuurnummer", "contractnummer", "polisnummer",
+        "aktenzeichen", "az.", "geschäftszeichen", "kundennummer", "mieternummer", "vorgangsnummer",
+        "objekt-nr.", "objektnummer", "rechnungsnummer", "vertragsnummer", "kassenzeichen",
+        "réf.", "réf", "référence", "n° de dossier", "numéro de dossier", "n° allocataire",
+        "numéro allocataire", "n° de facture", "expediente", "nº de expediente", "referencia",
+        "nº de referencia", "boletín de denuncia", "sygnatura", "sygn. akt", "sygnaturę akt",
+        "sygnatury akt", "znak sprawy", "l.dz.", "l. dz.", "dosya no", "dosya numarası", "sayı",
+        "our ref", "your ref", "our reference", "your reference", "case no", "case number",
+        "claim no", "claim number", "policy no", "policy number", "account no", "account number",
+        "paye reference", "reference",
+    ]
+
+    private static var pattern: String {
+        "(?i:" + KeywordPattern.alternation(labels) + ")"
+            + #"[ \t]*(?:\.)?[ \t]*:?[ \t]*"#
+            + #"([\p{L}\d\[][\p{L}\d./\[\]-]*(?:[ ](?:/[ ])?[\p{L}\d\[][\p{L}\d./\[\]-]*){0,6})"#
+    }
+
+    public func matches(in text: String) -> [Range<String.Index>] {
+        RegexScanner.ranges(of: Self.pattern, captureGroup: 1, in: text).compactMap { range in
+            var kept: [Substring] = []
+            for token in text[range].split(separator: " ") {
+                let core = token.trimmingCharacters(in: CharacterSet(charactersIn: ".,;:"))
+                let isCode = token == "/" || token.contains(where: \.isNumber)
+                    || (!core.isEmpty && core.count <= 4 && core.allSatisfy(\.isUppercase))
+                guard isCode else { break }
+                kept.append(token)
+                if token.hasSuffix(",") || token.hasSuffix(";") { break }
+            }
+            var value = kept.joined(separator: " ")
+            while value.hasSuffix(",") || value.hasSuffix(";") || value.hasSuffix(":") || value.hasSuffix("/") || value.hasSuffix(" ") {
+                value.removeLast()
+            }
+            // A full stop ends the sentence unless it closes a capital code
+            // ("E.").
+            if value.hasSuffix("."), !(value.count >= 2 && value[value.index(value.endIndex, offsetBy: -2)].isUppercase) {
+                value.removeLast()
+            }
+            guard value.contains(where: \.isNumber) else { return nil }
+            return range.lowerBound..<text.index(range.lowerBound, offsetBy: value.count)
+        }
     }
 }

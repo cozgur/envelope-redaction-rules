@@ -213,10 +213,16 @@ struct RedactionEngineTests {
         #expect(result.redactedText == text)
     }
 
-    @Test("An invalid IBAN is masked only beside an IBAN keyword")
+    /// Since 6 Oct 2026 (owner, Gate A after set 5) an unlabelled IBAN with a
+    /// failing checksum is masked when its country code, check digits and
+    /// the country's length fit: an OCR-damaged account is still an account.
+    /// A shape of the wrong length is still left alone.
+    @Test("An invalid IBAN: masked beside a keyword, and bare when it has the country's length")
     func invalidIBANNeedsAKeyword() {
         let bare = "Het nummer NL92ABNA0417164300 staat in de bijlage."
-        #expect(RedactionEngine.redact(bare, countryHint: "NL").redactedText == bare)
+        #expect(!RedactionEngine.redact(bare, countryHint: "NL").redactedText.contains("NL92ABNA0417164300"))
+        let short = "Het nummer NL92ABNA04171643 staat in de bijlage."
+        #expect(RedactionEngine.redact(short, countryHint: "NL").redactedText == short)
 
         let keyed = "IBAN: NL92ABNA0417164300"
         let result = RedactionEngine.redact(keyed, countryHint: "NL")

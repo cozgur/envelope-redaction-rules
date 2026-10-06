@@ -16,6 +16,12 @@ struct NLRecallTests {
     struct Masked: Decodable, Sendable {
         var value: String
         var category: String
+        /// From gate-a-7 (owner, 6 Oct 2026): a reference printed after a
+        /// reference label, or not. Absent counts as labelled.
+        var labelled: Bool?
+        /// From gate-a-7: where a third party is printed -- "block" (the
+        /// recipient block), "salutation" or "body".
+        var `where`: String?
     }
 
     struct Case: Decodable, Sendable, CustomTestStringConvertible {

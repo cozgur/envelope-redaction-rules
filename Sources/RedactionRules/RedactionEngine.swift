@@ -37,8 +37,12 @@ public enum RedactionEngine {
             identityRules.insert(preferred, at: 0)
         }
 
-        return [EmailRule(), IBANRule()]
+        // The labelled and shape-tolerant IBANs before the identity and card
+        // rules: an IBAN whose checksum fails is still a bank account, and
+        // the card rule's Luhn check would otherwise take its digits.
+        return [EmailRule(), IBANRule(), AccountNumberFallbackRule(), IBANShapeRule()]
             + identityRules.map { NationalIDRule(format: $0) }
+            + [LabelledIdentityRule(), IdentityPatternRule()]
             + [
                 // After the identity formats, not before. Luhn is the whole of
                 // a card number's validation and one random digit string in
@@ -52,7 +56,7 @@ public enum RedactionEngine {
                 // eleven digits, and a fifteen-digit Amex starts with a 3.
                 CardNumberRule(),
                 DigitRunFallbackRule(),
-                AccountNumberFallbackRule(),
+                LabelledReferenceRule(),
                 ReferenceNumberRule(),
                 // The recipient block runs before the salutation, and before
                 // the general address detector. Before the salutation because
@@ -151,8 +155,14 @@ public enum RedactionEngine {
                     }
                     range = pieces[0]
                 }
+                // A labelled reference is the label's whole value: a date- or
+                // postcode-shaped piece inside it ("HA ZA 26-114") is part of
+                // the reference, not a date to keep. Only a protected span
+                // reaching outside it vetoes it.
+                let labelled = rule is LabelledReferenceRule
                 guard !protected.contains(where: {
                     $0.vetoes(rule.kind) && $0.range.overlaps(range)
+                        && !(labelled && range.contains($0.range.lowerBound) && $0.range.upperBound <= range.upperBound)
                 }) else { continue }
                 let overlapping = claims.indices.filter { claims[$0].overlaps(range) }
                 if !overlapping.isEmpty {

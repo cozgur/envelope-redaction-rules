@@ -73,6 +73,7 @@ struct LabelledValueTests {
         ("SSN: 123-45-6789", "123-45-6789", "US"),
         ("NI number: QQ 12 34 56 C", "QQ 12 34 56 C", "GB"),
         ("National Insurance number QQ123456C", "QQ123456C", "GB"),
+        ("Ihre Versicherung (Rentenversicherungsnummer\n49 120378 N 513) bleibt unverändert.", "49 120378 N 513", "DE"),
     ])
     func labelledIdentity(text: String, value: String, country: String) {
         #expect(masked(value, in: text, country: country, as: .idNumber), "\(RedactionEngine.redact(text, countryHint: country).spans.map { "\($0.kind) \($0.originalRange)" })")

@@ -54,6 +54,17 @@ public enum ProfileMatcher {
         // profile's by a hyphen -- "Schouten-Brink", "Brink-Schouten" -- is
         // part of the same name and is masked with it.
         names = names.map { (withHyphenatedSurname($0.range, in: text), $0.strong) }
+        // Spanish names carry two surnames and a reader may type one
+        // ("Castillo" for "Castillo García"; owner, 6 Oct 2026): in a Spanish
+        // letter a match ending on the profile's surname takes the
+        // capitalised surname printed after it, with its particles.
+        if countryHint?.uppercased() == "ES" {
+            let surnames = ([profile.person] + profile.household).compactMap { person -> String? in
+                let parts = person.surname.split(whereSeparator: { $0.isWhitespace })
+                return parts.count == 1 ? fold(String(parts[0])) : nil
+            }
+            names = names.map { (withSecondSurname($0.range, surnames: surnames, in: text), $0.strong) }
+        }
         var addresses: [Range<String.Index>] = []
         if let street = profile.street, let number = profile.houseNumber {
             let dutch = countryHint == nil || countryHint?.uppercased() == "NL"
@@ -281,8 +292,24 @@ public enum ProfileMatcher {
         !given.isEmpty && token.text.first?.isUppercase == true
             && given.contains { word in
                 within(token.folded, word, maxEdits: tolerance(word.count, strong: false))
-                    || (polish && polishForm(token.folded, of: word))
+                    || (polish && (polishForm(token.folded, of: word) || polishGivenForm(token.folded, of: word)))
             }
+    }
+
+    /// A Polish feminine given name in its dative or locative, where the
+    /// stem's last consonant changes (owner, 6 Oct 2026): Agnieszka →
+    /// Agnieszce, Olga → Oldze, Marta → Marcie, Anna → Annie, Maria → Marii.
+    /// Folded, so "ł" is "l".
+    static func polishGivenForm(_ token: String, of word: String) -> Bool {
+        let changes: [(String, String)] = [
+            ("cha", "sze"), ("ka", "ce"), ("ga", "dze"), ("ta", "cie"), ("da", "dzie"), ("ra", "rze"),
+            ("la", "le"), ("na", "nie"), ("ma", "mie"), ("wa", "wie"), ("sa", "sie"), ("za", "zie"),
+            ("ba", "bie"), ("pa", "pie"), ("fa", "fie"), ("ia", "ii"),
+        ]
+        for (ending, form) in changes where word.count > ending.count + 1 && word.hasSuffix(ending) {
+            if token == String(word.dropLast(ending.count)) + form { return true }
+        }
+        return false
     }
 
     /// The name span when the surname `sequence` starts at token `index`, or
@@ -494,6 +521,24 @@ public enum ProfileMatcher {
         return strong ? 2 : 1
     }
 
+    /// A name match that ends on one of `surnames`, widened over the next
+    /// capitalised surname on the same line ("Castillo García", "MORENO DE
+    /// LA FUENTE").
+    private static func withSecondSurname(_ range: Range<String.Index>, surnames: [String], in text: String) -> Range<String.Index> {
+        let matched = String(text[range])
+        guard let last = matched.split(whereSeparator: { !$0.isLetter }).last,
+              surnames.contains(fold(String(last)))
+        else { return range }
+        let rest = String(text[range.upperBound...].prefix(60))
+        let pattern = #"^[ ](?:(?i:de|del|de la|de las|de los|y)[ ])?\p{Lu}[\p{L}'’]{2,}"#
+        guard let found = rest.range(of: pattern, options: .regularExpression) else { return range }
+        let word = rest[found].split(separator: " ").last.map(String.init) ?? ""
+        // Not a word that starts the next field or sentence.
+        let stop: Set<String> = ["dni", "nif", "nie", "calle", "avenida", "avda", "plaza", "expediente", "con", "en", "domicilio"]
+        guard !stop.contains(fold(word)) else { return range }
+        return range.lowerBound..<text.index(range.upperBound, offsetBy: rest.distance(from: rest.startIndex, to: found.upperBound))
+    }
+
     /// A name match widened over capitalised words hyphenated onto it.
     private static func withHyphenatedSurname(_ range: Range<String.Index>, in text: String) -> Range<String.Index> {
         var lower = range.lowerBound
@@ -571,8 +616,10 @@ public enum ProfileMatcher {
         guard !wanted.isEmpty, !digits.isEmpty else { return [] }
         let numberCore = digitPattern(digits) + #"(?![\dOolI])"#
         // NL suffix words after a hyphen, a space or nothing: "14-boven",
-        // "14 bov.", "14bv", "14 hs", "14-III" (owner, 6 Oct 2026).
-        let suffix = #"(?:(?:[ \t]?-[ \t]?|[ \t])?(?:boven|beneden|bov\.|ben\.|bov|ben|bv|bg|hs|huis|zw|rood|bis|ter|[IVX]{1,4}|\d{1,2}|[A-Za-z])(?![\p{L}\d]))"#
+        // "14 bov.", "14bv", "14 hs", "14-III" (owner, 6 Oct 2026). A lone
+        // letter after a space is a suffix only in capitals or before
+        // punctuation -- "os. Słoneczne 4 w Kowalach" is a preposition.
+        let suffix = #"(?:(?:[ \t]?-[ \t]?|[ \t])?(?:boven|beneden|bov\.|ben\.|bov|ben|bv|bg|hs|huis|zw|rood|bis|ter|[IVX]{1,4}|\d{1,2}|[A-Za-z]\d{1,3}|(?<=[\d-])[A-Za-z]|(?<=[ \t])(?:(?-i:[A-Z])|[a-z](?=[ \t]*(?:[,.;)\n]|$)|[ \t]{2,}|\t)))(?![\p{L}\d]))"#
         // Flat, floor and door parts: "12/4", "m. 4", "lok. 7", "D: 2",
         // "3º B", "PISO 3 PTA B", "pta. 9", "APT 4B", "Flat 4".
         let unit = #"(?:[ \t]?/[ \t]?\d+[A-Za-z]?(?![\p{L}\d])|,?[ \t]*\d{1,2}\.[ \t]?(?:OG|Etage|Stock|EG|DG|UG)(?:[ \t]+(?:links|rechts|mitte|li\.|re\.))?(?![\p{L}\d])|,?[ \t]*(?:EG|DG|UG|Hochparterre)(?:[ \t]+(?:links|rechts|mitte))?(?![\p{L}\d])|,?[ \t]*(?:Bât\.?|Bâtiment|Appt\.?|Appart\.?|Escalier|Porte|Étage|Logement)[ \t]*[\p{L}\d]{1,4}(?![\p{L}\d])|,?[ \t]*(?:esc\.?|escalera)[ \t]*(?:izquierda|derecha|izq\.?|dcha\.?|dch\.?|[A-Za-z\d]{1,3})(?![\p{L}\d])|,?[ \t]*(?:m\.|lok\.|mieszk\.|d[ \t]?:|daire|kat|apt\.?|apartment|unit|ste\.?|suite|flat|piso|planta|pta\.?|puerta|bajo)[.:]?[ \t]*\d*[ \t]?[ºª°]?(?:[ \t]?[A-Za-z](?![\p{L}\d:]))?(?![\p{L}\d])|,?[ \t]*\d{1,2}\.?[ \t]?[ºª°][ \t]?[A-Za-z]?(?![\p{L}\d])|,?[ \t]*\d{1,2}(?:r|n|t|er|on|a)(?:[ \t]+\d{1,2}(?:a|ª|n|r))?(?![\p{L}\d]))"#
@@ -748,6 +795,11 @@ public enum ProfileMatcher {
             let line = String(text[previousStart..<previousEnd])
             if regex.firstMatch(in: line, range: NSRange(line.startIndex..., in: line)) != nil, !line.isEmpty {
                 found.append(previousStart..<previousEnd)
+            } else if let tail = line.range(of: #"(?<![\p{L}])(?i:Flat|Apartment|Apt\.?|Unit|Suite)[ \t]+[\p{L}\d]{1,4},?[ \t]*$"#, options: .regularExpression) {
+                // "…for the tenancy at Flat B,\n118 Hyde Park Rd": the flat
+                // ends the line above the street (owner, 6 Oct 2026).
+                let offset = line.distance(from: line.startIndex, to: tail.lowerBound)
+                found.append(text.index(previousStart, offsetBy: offset)..<previousEnd)
             }
         }
         return found
@@ -823,6 +875,13 @@ public enum ProfileMatcher {
                 if let cityAt {
                     end = text.index(end, offsetBy: rest.distance(from: rest.startIndex, to: restTokens[cityAt + words.count - 1].range.upperBound))
                     withCity = true
+                    // A province or il in brackets after the city ("46500
+                    // SAGUNTO (VALENCIA)", "34728 Kadıköy (İstanbul)"; owner,
+                    // 6 Oct 2026).
+                    let after = String(text[end..<lineEnd])
+                    if let bracket = after.range(of: #"^[ \t]*\([^()\n]{1,30}\)"#, options: .regularExpression) {
+                        end = text.index(end, offsetBy: after.distance(from: after.startIndex, to: bracket.upperBound))
+                    }
                 }
                 // Or right before it, perhaps with a state ("SPRINGFIELD IL
                 // 62704-1234", "London SW1A 1AA").
