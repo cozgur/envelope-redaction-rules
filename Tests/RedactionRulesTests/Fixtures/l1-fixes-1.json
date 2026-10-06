@@ -838,7 +838,7 @@
     "text": "Logistiek Oost B.V.\nIndustrieweg 40\n7300 AA Apeldoorn\n\nBeste Ruud,\n\nBijgaand je jaaropgaaf. Ruud van de administratie heeft hem gecontroleerd.",
     "masked": [
       {
-        "value": "Beste Ruud",
+        "value": "Ruud,",
         "category": "name"
       }
     ],
@@ -865,7 +865,7 @@
         "category": "name"
       },
       {
-        "value": "Sanne kan",
+        "value": "Sanne",
         "category": "name"
       }
     ],
@@ -892,7 +892,7 @@
         "category": "name"
       },
       {
-        "value": "Beste Noor",
+        "value": "Noor,",
         "category": "name"
       }
     ],

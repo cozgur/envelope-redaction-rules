@@ -25,7 +25,11 @@ public struct KnownClaim: Sendable {
     /// held back by the letterhead guard, which exists for the sender's
     /// details: when OCR misses the sender's block, the recipient's block is
     /// the first one, and the guard would otherwise keep the reader's own
-    /// name in the clear. Addresses and a surname alone are still held back.
+    /// name in the clear. A surname alone is still held back. An address
+    /// match carries it when the same letter names the reader in a strong
+    /// form: a recipient block in the same rows as the sender's column is
+    /// read into the letterhead, and its street and postcode would otherwise
+    /// stay in the clear (approved deviations 1 and 4, plan §1).
     public var strongContext: Bool
 
     public init(kind: PIIKind, ranges: [Range<String.Index>], source: Source, strongContext: Bool = false) {

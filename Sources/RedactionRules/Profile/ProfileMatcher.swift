@@ -35,8 +35,15 @@ public enum ProfileMatcher {
     ) -> [KnownClaim] {
         let tokens = Token.all(in: text)
         var names: [(range: Range<String.Index>, strong: Bool)] = []
-        for person in [profile.person] + profile.household {
-            names += nameMatches(of: person, in: text, tokens: tokens, window: window)
+        var readerStrong = false
+        for (position, person) in ([profile.person] + profile.household).enumerated() {
+            let matches = nameMatches(of: person, in: text, tokens: tokens, window: window)
+            if position == 0, matches.contains(where: \.strong) { readerStrong = true }
+            names += matches.map { ($0.range, $0.strong) }
+            names += givenNameAlone(
+                of: person, in: text, tokens: tokens,
+                fullNameInLetter: matches.contains(where: \.withGivenName)
+            ).map { ($0, true) }
         }
         var addresses: [Range<String.Index>] = []
         if let street = profile.street, let number = profile.houseNumber {
@@ -49,8 +56,12 @@ public enum ProfileMatcher {
         // Longest first, and no two claims overlap: "A. Yilmaz" before the
         // "Yilmaz" inside it.
         var taken: [Range<String.Index>] = []
+        // An address match passes the letterhead guard when the letter names
+        // the reader in a strong form: it is then this reader's letter, and a
+        // recipient block printed in the same rows as the sender's column is
+        // read into the letterhead (deviation 4, plan §1).
         let all = names.map { (kind: PIIKind.name, range: $0.range, strong: $0.strong) }
-            + addresses.map { (kind: PIIKind.address, range: $0, strong: false) }
+            + addresses.map { (kind: PIIKind.address, range: $0, strong: readerStrong) }
         let length = { (range: Range<String.Index>) in text.distance(from: range.lowerBound, to: range.upperBound) }
         for candidate in all.sorted(by: { length($0.range) > length($1.range) }) {
             guard !taken.contains(where: { $0.overlaps(candidate.range) }) else { continue }
@@ -75,8 +86,20 @@ public enum ProfileMatcher {
         "mr", "mrs", "ms", "miss", "dr", "drs", "prof", "ir", "mr.",
         "sayin", "bay", "bayan", "hanim", "bey",
         "pan", "pani", "panie", "pana", "panu", "panstwo",
-        "sr", "sra", "srta", "don", "dona",
+        "sr", "sra", "srta", "don", "dona", "dna",
     ]
+
+    /// Words that open a salutation, at the start of a line (owner, 6 Oct
+    /// 2026): a given name alone is the reader's there.
+    static let salutations: Set<String> = [
+        "beste", "lieve", "geachte", "hallo", "hoi", "dear", "hello", "hi", "hey",
+        "sehr", "liebe", "lieber", "cher", "chere", "chers", "bonjour",
+        "sayin", "sevgili", "merhaba", "szanowny", "szanowna", "drogi", "droga",
+        "estimado", "estimada", "querido", "querida", "hola",
+    ]
+
+    /// Words a salutation may carry between its opening and the name.
+    private static let salutationFillers: Set<String> = ["geehrte", "geehrter", "geehrt"]
 
     /// Surnames that are also ordinary words or common places, by folded
     /// form. Matched only in strong context. A seed list, grown with the
@@ -87,6 +110,7 @@ public enum ProfileMatcher {
         "koster", "schipper", "smid", "brouwer", "timmer", "timmerman", "dekker", "molenaar",
         "boer", "wit", "zwart", "klein", "lange", "haan", "kuiper", "schaap", "visscher",
         "zwolle", "breda", "delft", "gouda", "hoorn", "assen", "emmen", "venlo", "kampen",
+        "hoek", "dijk",
         // de
         "muller", "mueller", "schmidt", "schneider", "fischer", "weber", "meyer", "wagner",
         "becker", "koch", "richter", "wolf", "schwarz", "braun", "kruger", "lange", "krause",
@@ -112,6 +136,18 @@ public enum ProfileMatcher {
         "kozak", "nowak",
     ]
 
+    /// Given names that are also ordinary words or places: alone, only in a
+    /// salutation (owner, 6 Oct 2026).
+    static let ambiguousGivenNames: Set<String> = [
+        "leon", "noor", "roos", "mark", "fleur", "merel", "jet", "linde", "sterre", "bas",
+        "rose", "may", "june", "iris", "lily", "daisy", "hope", "joy", "grace", "faith",
+        "bill", "pat", "will", "art", "frank", "rob", "sky", "ray", "dawn", "summer",
+        "pierre", "claire", "blanche", "aime", "rosa", "luz", "paz", "dolores", "consuelo",
+        "pilar", "rocio", "soledad", "mercedes", "amparo", "esperanza", "cruz",
+        "deniz", "umut", "baris", "can", "ay", "gunes", "bahar", "yagmur", "ozgur", "erdem",
+        "sevgi", "dogan", "kaya", "aslan", "kartal", "roza",
+    ]
+
     /// Whether `name` is one surname that matches only in strong context:
     /// an ordinary word or place, or under four letters. Particles do not
     /// count ("de Groot" is "groot").
@@ -126,7 +162,6 @@ public enum ProfileMatcher {
     private struct Part {
         /// Folded tokens, particles included, in order.
         var tokens: [String]
-        var core: [String] { tokens.filter { !ProfileMatcher.particles.contains($0) } }
     }
 
     private static func parts(of surname: String) -> [Part] {
@@ -135,31 +170,45 @@ public enum ProfileMatcher {
         }.filter { !$0.tokens.isEmpty }
     }
 
+    struct NameMatch {
+        var range: Range<String.Index>
+        var strong: Bool
+        /// A given name stood with the surname, before or after it.
+        var withGivenName: Bool
+    }
+
+    private static func givenTokens(of person: RedactionProfile.Person) -> [String] {
+        (person.givenNames ?? "").split(whereSeparator: { $0.isWhitespace || $0 == "-" }).map { fold(String($0)) }
+    }
+
     private static func nameMatches(
         of person: RedactionProfile.Person,
         in text: String,
         tokens: [Token],
         window: [Range<String.Index>]
-    ) -> [(range: Range<String.Index>, strong: Bool)] {
+    ) -> [NameMatch] {
         let surnameParts = parts(of: person.surname)
         guard !surnameParts.isEmpty else { return [] }
-        let given = (person.givenNames ?? "").split(whereSeparator: { $0.isWhitespace || $0 == "-" }).map { fold(String($0)) }
-        // The whole surname as one sequence, then each part on its own.
+        let given = givenTokens(of: person)
+        // The whole surname as one sequence, then each part on its own; a
+        // space-separated double surname ("García López") is split too.
         var sequences: [[String]] = [surnameParts.flatMap(\.tokens)]
         if surnameParts.count > 1 { sequences += surnameParts.map(\.tokens) }
+        for part in surnameParts {
+            let cores = part.tokens.filter { !particles.contains($0) }
+            if cores.count > 1 { sequences += cores.map { [$0] } }
+        }
 
-        var found: [(range: Range<String.Index>, strong: Bool)] = []
+        var found: [NameMatch] = []
         for sequence in sequences {
-            let cores = sequence.filter { !particles.contains($0) }
-            guard !cores.isEmpty else { continue }
-            var index = 0
-            while index < tokens.count {
-                defer { index += 1 }
-                guard let match = matchSurname(sequence, at: index, tokens: tokens, text: text, given: given, window: window) else { continue }
-                found.append(match)
+            guard sequence.contains(where: { !particles.contains($0) }) else { continue }
+            for index in tokens.indices {
+                if let match = matchSurname(sequence, at: index, tokens: tokens, text: text, given: given, window: window) {
+                    found.append(match)
+                }
             }
             // The sequence without its leading particles, for a letter that
-            // drops them ("R.A. Meulen") -- a core-only form of the same part.
+            // drops them ("R.A. Meulen").
             let leading = sequence.prefix { particles.contains($0) }.count
             if leading > 0 {
                 let coreOnly = Array(sequence.dropFirst(leading))
@@ -173,9 +222,17 @@ public enum ProfileMatcher {
         return found
     }
 
+    /// Whether a token is one of the person's given names.
+    private static func isGiven(_ token: Token, _ given: [String]) -> Bool {
+        !given.isEmpty && token.text.first?.isUppercase == true
+            && given.contains { within(token.folded, $0, maxEdits: tolerance($0.count, strong: false)) }
+    }
+
     /// The name span when the surname `sequence` starts at token `index`, or
-    /// nil. The span takes in preceding initials and given names, and an
-    /// inverted form's trailing initials and particles; never an honorific.
+    /// nil. The span takes in initials and given names before the surname,
+    /// and after it (the surname-first forms, with or without a comma:
+    /// "OKAFOR Ngozi", "GARCIA LOPEZ JOSE LUIS", "Vries, A. de"); never an
+    /// honorific.
     private static func matchSurname(
         _ sequence: [String],
         at index: Int,
@@ -183,7 +240,7 @@ public enum ProfileMatcher {
         text: String,
         given: [String],
         window: [Range<String.Index>]
-    ) -> (range: Range<String.Index>, strong: Bool)? {
+    ) -> NameMatch? {
         guard index + sequence.count <= tokens.count else { return nil }
         // Tokens must be consecutive words: only spaces between them, or a
         // hyphen inside a double surname.
@@ -191,19 +248,22 @@ public enum ProfileMatcher {
             guard Token.adjacent(tokens[index + offset - 1], tokens[index + offset], in: text, allowing: " -\t") else { return nil }
         }
 
-        // Context before the surname: initials, given names, an honorific.
+        // Before the surname: initials and given names -- "Anna-Lena" is two
+        // given-name tokens joined by a hyphen -- then perhaps an honorific.
         var start = index
         var strong = false
+        var givenBefore = false
         var cursor = index - 1
-        while cursor >= 0, Token.adjacent(tokens[cursor], tokens[cursor + 1], in: text, allowing: " .\t\n") {
+        while cursor >= 0, Token.adjacent(tokens[cursor], tokens[cursor + 1], in: text, allowing: " .\t\n-") {
             let token = tokens[cursor]
-            if token.isInitial || (!given.isEmpty && given.contains { within(token.folded, $0, maxEdits: tolerance($0.count, strong: false)) }) {
-                start = cursor
-                strong = true
-                cursor -= 1
-            } else {
+            if isGiven(token, given) {
+                givenBefore = true
+            } else if !token.isInitial {
                 break
             }
+            start = cursor
+            strong = true
+            cursor -= 1
         }
         if cursor >= 0, honorifics.contains(tokens[cursor].folded),
            Token.adjacent(tokens[cursor], tokens[cursor + 1], in: text, allowing: " .\t\n") {
@@ -212,48 +272,141 @@ public enum ProfileMatcher {
         let first = tokens[index]
         if window.contains(where: { $0.contains(first.range.lowerBound) }) { strong = true }
 
-        // The surname itself.
+        // The surname itself. The tolerance of a strong context is decided
+        // before the trailing forms are read, so a trailing given name cannot
+        // lend two edits to a surname it does not stand next to.
+        let strongBefore = strong
+        var trailingGivenStrong = false
+        // Peek: a surname-first form makes the context strong too.
+        let peekEnd = index + sequence.count
+        if peekEnd < tokens.count {
+            let gap = text[tokens[peekEnd - 1].range.upperBound..<tokens[peekEnd].range.lowerBound]
+            if gap.count <= 3, gap.allSatisfy({ $0 == " " || $0 == "\t" || $0 == "," }),
+               isGiven(tokens[peekEnd], given) {
+                trailingGivenStrong = true
+            }
+        }
         for (offset, wanted) in sequence.enumerated() {
             let token = tokens[index + offset]
             if particles.contains(wanted) {
                 guard token.folded == wanted else { return nil }
             } else {
-                guard within(token.folded, wanted, maxEdits: tolerance(wanted.count, strong: strong)) else { return nil }
+                guard within(token.folded, wanted, maxEdits: tolerance(wanted.count, strong: strongBefore || trailingGivenStrong)) else { return nil }
             }
         }
         let cores = sequence.filter { !particles.contains($0) }
         let ambiguous = cores.count == 1 && (ambiguousSurnames.contains(cores[0]) || cores[0].count < 4)
-        // The inverted form: "Vries, A. de".
+
+        // After the surname: given names and initials, with or without a
+        // comma. An initial after a surname counts only when it is one of the
+        // reader's own initials (when the profile has given names), so a
+        // company's "Visser B.V." is not read as a person.
         var end = tokens[index + sequence.count - 1].range.upperBound
+        var givenAfter = false
         var after = index + sequence.count
-        if after < tokens.count, text[end..<tokens[after].range.lowerBound].trimmingCharacters(in: .whitespaces) == "," {
-            var cursor = after
-            var sawInitial = false
-            while cursor < tokens.count, tokens[cursor].isInitial || (!given.isEmpty && given.contains(tokens[cursor].folded)) {
-                guard Token.adjacent(tokens[cursor - 1], tokens[cursor], in: text, allowing: " .,\t") else { break }
-                sawInitial = true
-                cursor += 1
-            }
-            if sawInitial {
-                strong = true
-                while cursor < tokens.count, particles.contains(tokens[cursor].folded),
-                      Token.adjacent(tokens[cursor - 1], tokens[cursor], in: text, allowing: " .\t") {
+        if after < tokens.count {
+            let gap = text[end..<tokens[after].range.lowerBound]
+            let comma = gap.trimmingCharacters(in: .whitespaces) == ","
+            if gap.count <= 3, comma || gap.allSatisfy({ $0 == " " || $0 == "\t" }) {
+                let initials = Set(given.compactMap(\.first))
+                var cursor = after
+                while cursor < tokens.count {
+                    if cursor > after, !Token.adjacent(tokens[cursor - 1], tokens[cursor], in: text, allowing: " .\t-") { break }
+                    let token = tokens[cursor]
+                    if isGiven(token, given) {
+                        givenAfter = true
+                    } else if token.isInitial, initials.isEmpty || initials.contains(token.folded.first ?? " ") {
+                        // an initial
+                    } else {
+                        break
+                    }
                     cursor += 1
                 }
-                after = cursor
-                end = tokens[cursor - 1].range.upperBound
-                if text[end...].first == "." , tokens[cursor - 1].isInitial { end = text.index(after: end) }
+                if cursor > after {
+                    strong = true
+                    if comma {
+                        while cursor < tokens.count, particles.contains(tokens[cursor].folded),
+                              Token.adjacent(tokens[cursor - 1], tokens[cursor], in: text, allowing: " .\t") {
+                            cursor += 1
+                        }
+                    }
+                    after = cursor
+                    end = tokens[cursor - 1].range.upperBound
+                    if end < text.endIndex, text[end] == ".", tokens[cursor - 1].isInitial { end = text.index(after: end) }
+                }
             }
         }
+
+        // A second surname the reader did not enter, printed after a given
+        // name and the first surname at the end of a name line ("Sr. Pablo
+        // Ortega Sanz"): Spanish, and other two-surname naming.
+        if givenBefore, !givenAfter {
+            let lineEnd = text[end...].firstIndex(of: "\n") ?? text.endIndex
+            let rest = text[end..<lineEnd]
+            let word = rest.trimmingCharacters(in: .whitespaces)
+            if rest.first == " ", word.range(of: #"^\p{Lu}[\p{L}'’-]{2,}$"#, options: .regularExpression) != nil,
+               !honorifics.contains(fold(word)), let found = text.range(of: word, range: end..<lineEnd) {
+                end = found.upperBound
+            }
+        }
+
         if ambiguous && !strong { return nil }
         if !strong {
-            // Out of context the surname must still be a word on its own and
-            // look like a name: capitalised.
+            // Out of context the surname must still look like a name:
+            // capitalised.
             guard first.text.first?.isUppercase == true else { return nil }
         }
-        // A strong-context match with more than one edit is accepted only
-        // in strong context, which `tolerance` already enforced.
-        return (tokens[start].range.lowerBound..<end, strong)
+        return NameMatch(range: tokens[start].range.lowerBound..<end, strong: strong, withGivenName: givenBefore || givenAfter)
+    }
+
+    /// A given name standing alone (owner, 6 Oct 2026): (a) in a salutation
+    /// at the start of a line, or (b) anywhere when the letter also names the
+    /// person in full -- unless the given name is an ordinary word or place
+    /// (Leon, Noor), which only (a) allows. Never inside a longer word: a
+    /// token is a whole word, so "Noordwijk" is not "Noor".
+    private static func givenNameAlone(
+        of person: RedactionProfile.Person,
+        in text: String,
+        tokens: [Token],
+        fullNameInLetter: Bool
+    ) -> [Range<String.Index>] {
+        let names = (person.givenNames ?? "").split(whereSeparator: { $0.isWhitespace })
+            .map { $0.split(separator: "-").map { fold(String($0)) } }
+        var found: [Range<String.Index>] = []
+        for parts in names where !parts.isEmpty {
+            let ambiguous = parts.count == 1 && ambiguousGivenNames.contains(parts[0])
+            for index in tokens.indices where index + parts.count <= tokens.count {
+                var ok = tokens[index].text.first?.isUppercase == true
+                for (offset, part) in parts.enumerated() where ok {
+                    let token = tokens[index + offset]
+                    if offset > 0, !Token.adjacent(tokens[index + offset - 1], token, in: text, allowing: "-") { ok = false }
+                    if !within(token.folded, part, maxEdits: tolerance(part.count, strong: false)) { ok = false }
+                }
+                guard ok else { continue }
+                let range = tokens[index].range.lowerBound..<tokens[index + parts.count - 1].range.upperBound
+                if inSalutation(tokenAt: index, tokens: tokens, text: text)
+                    || (fullNameInLetter && !ambiguous) {
+                    found.append(range)
+                }
+            }
+        }
+        return found
+    }
+
+    /// Whether the token opens no line of its own but follows a salutation
+    /// that does: "Beste Ruud", "Sehr geehrte Frau Anna-Lena", "Szanowna Pani
+    /// Agnieszko".
+    private static func inSalutation(tokenAt index: Int, tokens: [Token], text: String) -> Bool {
+        var cursor = index - 1
+        while cursor >= 0, Token.adjacent(tokens[cursor], tokens[cursor + 1], in: text, allowing: " .\t"),
+              honorifics.contains(tokens[cursor].folded) || salutationFillers.contains(tokens[cursor].folded) {
+            cursor -= 1
+        }
+        guard cursor >= 0, salutations.contains(tokens[cursor].folded),
+              Token.adjacent(tokens[cursor], tokens[cursor + 1], in: text, allowing: " .\t") || cursor + 1 == index
+        else { return false }
+        let lineStart = text[..<tokens[cursor].range.lowerBound].lastIndex(of: "\n").map { text.index(after: $0) } ?? text.startIndex
+        return text[lineStart..<tokens[cursor].range.lowerBound].allSatisfy { $0 == " " || $0 == "\t" }
     }
 
     private static func tolerance(_ length: Int, strong: Bool) -> Int {
@@ -263,47 +416,111 @@ public enum ProfileMatcher {
 
     // MARK: - Addresses
 
+    /// Street-type words and their abbreviations, folded, to one spelling.
+    static let streetTypes: [String: String] = [
+        "calle": "calle", "cl": "calle", "c": "calle", "carrer": "calle", "cr": "calle",
+        "avenida": "avenue", "avda": "avenue", "av": "avenue", "avenue": "avenue", "ave": "avenue",
+        "ulica": "ulica", "ul": "ulica", "osiedle": "osiedle", "os": "osiedle",
+        "aleja": "aleja", "al": "aleja", "aleje": "aleja", "plac": "plac", "pl": "plac",
+        "cadde": "cadde", "caddesi": "cadde", "cad": "cadde", "cd": "cadde",
+        "sokak": "sokak", "sokagi": "sokak", "sok": "sokak", "sk": "sokak",
+        "mahalle": "mahalle", "mahallesi": "mahalle", "mah": "mahalle", "mh": "mahalle",
+        "bulvar": "bulvar", "bulvari": "bulvar", "blv": "bulvar",
+        "street": "street", "st": "street", "road": "road", "rd": "road",
+        "lane": "lane", "ln": "lane", "drive": "drive", "dr": "drive",
+        "boulevard": "boulevard", "blvd": "boulevard", "bd": "boulevard",
+        "rue": "rue", "allee": "allee", "place": "place", "chemin": "chemin", "ch": "chemin",
+        "strasse": "str", "str": "str", "straat": "str",
+    ]
+
+    /// Street types that may stand in front of a street the reader typed
+    /// without them ("ul. Długa" for "Długa"), and are masked with it.
+    private static let prefixTypes: Set<String> = [
+        "ulica", "osiedle", "aleja", "plac", "calle", "avenue", "rue", "allee", "chemin", "boulevard",
+    ]
+
+    /// One spelling for comparing street words: types to their class, and a
+    /// compound's "-straße"/"-straat" to "str" ("Bahnhofstr." is
+    /// "Bahnhofstraße").
+    private static func canonicalStreet(_ token: String) -> String {
+        if let type = streetTypes[token] { return type }
+        for suffix in ["strasse", "straat"] where token.count > suffix.count && token.hasSuffix(suffix) {
+            return String(token.dropLast(suffix.count)) + "str"
+        }
+        return token
+    }
+
+    private static func streetWordMatches(_ found: String, _ wanted: String) -> Bool {
+        let a = canonicalStreet(found)
+        let b = canonicalStreet(wanted)
+        if within(a, b, maxEdits: tolerance(b.count, strong: false)) { return true }
+        // An inflected street name ("Piotrkowskiej" for "Piotrkowska"): long
+        // words sharing all but their last three letters.
+        let common = zip(a, b).prefix { $0 == $1 }.count
+        return common >= 6 && common >= max(a.count, b.count) - 3
+    }
+
     private static func streetMatches(street: String, number: String, in text: String, tokens: [Token]) -> [Range<String.Index>] {
-        let wanted = street.split(whereSeparator: { $0.isWhitespace }).map { fold(String($0)) }
+        let wanted = street.split(whereSeparator: { $0.isWhitespace || $0 == "." || $0 == "/" }).map { fold(String($0)) }.filter { !$0.isEmpty }
         let digits = String(number.prefix { $0.isNumber })
         guard !wanted.isEmpty, !digits.isEmpty else { return [] }
         let numberCore = digitPattern(digits) + #"(?![\dOolI])"#
-        let suffix = #"(?:(?:[ \t]?-[ \t]?|[ \t])?(?:[IVX]{1,4}|\d{1,2}|hs|bis|zw|bg|[A-Za-z])(?![\p{L}\d]))?"#
-        // "Hoofdstraat 12-II", "Atatürk Caddesi No: 12", "Hauptstraße Nr. 12".
+        let suffix = #"(?:(?:[ \t]?-[ \t]?|[ \t])?(?:[IVX]{1,4}|\d{1,2}|hs|bis|zw|bg|[A-Za-z])(?![\p{L}\d]))"#
+        // Flat, floor and door parts: "12/4", "m. 4", "lok. 7", "D: 2",
+        // "3º B", "PISO 3 PTA B", "pta. 9", "APT 4B", "Flat 4".
+        let unit = #"(?:[ \t]?/[ \t]?\d+[A-Za-z]?(?![\p{L}\d])|,?[ \t]*(?:m\.|lok\.|mieszk\.|d[ \t]?:|daire|apt\.?|apartment|unit|ste\.?|suite|flat|piso|planta|pta\.?|puerta|esc\.?|bajo)[ \t]*\d*[ \t]?[ºª°]?[ \t]?[A-Za-z]?(?![\p{L}\d])|,?[ \t]*\d{1,2}[ \t]?[ºª°][ \t]?[A-Za-z]?(?![\p{L}\d]))"#
         guard let after = try? NSRegularExpression(
-            pattern: #"^[ \t,]{1,3}(?:(?:No|Nr|Nº|n°)[.:]?[ \t]*)?"# + numberCore + suffix,
+            // A unit is tried before a one-letter suffix, so the "m" of
+            // "5 m. 2" and the "D" of "No: 5 D: 2" open their unit rather
+            // than end the number.
+            pattern: #"^\.?[ \t,]{1,3}(?:(?:No|Nr|Nº|n°)[.:]?[ \t]*)?"# + numberCore + "(?:" + unit + "|" + suffix + "){0,4}",
             options: [.caseInsensitive]
         ),
-        // "12 High Street", "12 rue de la Paix", "12, Main Street".
         let before = try? NSRegularExpression(
             pattern: #"(?<![\p{L}\d])"# + numberCore.replacingOccurrences(of: #"(?![\dOolI])"#, with: "") + #"[A-Za-z]?,?[ \t]{1,3}$"#
-        )
+        ),
+        let trailingUnits = try? NSRegularExpression(pattern: "^(?:" + unit + "){1,3}", options: [.caseInsensitive])
         else { return [] }
 
         var found: [Range<String.Index>] = []
-        for index in tokens.indices where index + wanted.count <= tokens.count {
-            var ok = true
-            for (offset, word) in wanted.enumerated() {
-                let token = tokens[index + offset]
-                if offset > 0, !Token.adjacent(tokens[index + offset - 1], token, in: text, allowing: " \t") { ok = false; break }
-                if !within(token.folded, word, maxEdits: tolerance(word.count, strong: false)) { ok = false; break }
-            }
-            guard ok else { continue }
-            let streetStart = tokens[index].range.lowerBound
-            let streetEnd = tokens[index + wanted.count - 1].range.upperBound
+        // The whole street, or -- after a street type -- its last words
+        // ("ul. Chrobrego" for "Bolesława Chrobrego").
+        for skip in 0..<wanted.count {
+            let sub = Array(wanted[skip...])
+            if skip > 0, sub[0].count < 5 { break }
+            for index in tokens.indices where index + sub.count <= tokens.count {
+                var ok = true
+                for (offset, word) in sub.enumerated() {
+                    let token = tokens[index + offset]
+                    if offset > 0, !Token.adjacent(tokens[index + offset - 1], token, in: text, allowing: " \t./") { ok = false; break }
+                    if !streetWordMatches(token.folded, word) { ok = false; break }
+                }
+                guard ok else { continue }
+                var streetStart = tokens[index].range.lowerBound
+                let previousIsType = index > 0
+                    && prefixTypes.contains(canonicalStreet(tokens[index - 1].folded))
+                    && Token.adjacent(tokens[index - 1], tokens[index], in: text, allowing: " ./\t")
+                if skip > 0, !previousIsType { continue }
+                if previousIsType { streetStart = tokens[index - 1].range.lowerBound }
+                var streetEnd = tokens[index + sub.count - 1].range.upperBound
 
-            let rest = String(text[streetEnd...].prefix(40))
-            if let match = after.firstMatch(in: rest, range: NSRange(rest.startIndex..., in: rest)),
-               let whole = Range(match.range, in: rest) {
-                found.append(streetStart..<text.index(streetEnd, offsetBy: rest.distance(from: rest.startIndex, to: whole.upperBound)))
-                continue
-            }
-            let lineStart = text[..<streetStart].lastIndex(of: "\n").map { text.index(after: $0) } ?? text.startIndex
-            let head = String(text[lineStart..<streetStart])
-            if let match = before.firstMatch(in: head, range: NSRange(head.startIndex..., in: head)),
-               let whole = Range(match.range, in: head) {
-                let offset = head.distance(from: head.startIndex, to: whole.lowerBound)
-                found.append(text.index(lineStart, offsetBy: offset)..<streetEnd)
+                let rest = String(text[streetEnd...].prefix(60))
+                if let match = after.firstMatch(in: rest, range: NSRange(rest.startIndex..., in: rest)),
+                   let whole = Range(match.range, in: rest) {
+                    found.append(streetStart..<text.index(streetEnd, offsetBy: rest.distance(from: rest.startIndex, to: whole.upperBound)))
+                    continue
+                }
+                let lineStart = text[..<streetStart].lastIndex(of: "\n").map { text.index(after: $0) } ?? text.startIndex
+                let head = String(text[lineStart..<streetStart])
+                if let match = before.firstMatch(in: head, range: NSRange(head.startIndex..., in: head)),
+                   let whole = Range(match.range, in: head) {
+                    let offset = head.distance(from: head.startIndex, to: whole.lowerBound)
+                    if let units = trailingUnits.firstMatch(in: rest, range: NSRange(rest.startIndex..., in: rest)),
+                       let tail = Range(units.range, in: rest) {
+                        streetEnd = text.index(streetEnd, offsetBy: rest.distance(from: rest.startIndex, to: tail.upperBound))
+                    }
+                    found.append(text.index(lineStart, offsetBy: offset)..<streetEnd)
+                }
             }
         }
         return found
@@ -317,39 +534,83 @@ public enum ProfileMatcher {
             if position > 0 { pattern += #"[ \t]{0,2}"# }
             pattern += character.isNumber ? digitPattern(String(character)) : NSRegularExpression.escapedPattern(for: String(character))
         }
-        pattern += #"(?![\p{L}\d])"#
+        pattern += #"(?:-\d{4})?(?![\p{L}\d])"#
         guard let regex = try? NSRegularExpression(pattern: pattern, options: [.caseInsensitive]) else { return [] }
-        var found: [Range<String.Index>] = []
+        let words = city.map { $0.split(whereSeparator: { $0.isWhitespace }).map { fold(String($0)) } } ?? []
         let digitsOnly = compact.allSatisfy(\.isNumber)
+
+        var confirmed: [Range<String.Index>] = []
+        var pending: [Range<String.Index>] = []
         for match in regex.matches(in: text, range: NSRange(text.startIndex..., in: text)) {
             guard let range = Range(match.range, in: text) else { continue }
+            var start = range.lowerBound
             var end = range.upperBound
             let lineStart = text[..<range.lowerBound].lastIndex(of: "\n").map { text.index(after: $0) } ?? text.startIndex
+            let lineEnd = text[end...].firstIndex(of: "\n") ?? text.endIndex
             let atLineStart = text[lineStart..<range.lowerBound].allSatisfy { $0 == " " || $0 == "\t" }
-            if let city {
+            var withCity = false
+            if !words.isEmpty {
                 // The city right after the postcode on the same line.
-                let lineEnd = text[end...].firstIndex(of: "\n") ?? text.endIndex
-                let rest = text[end..<lineEnd]
-                let words = city.split(whereSeparator: { $0.isWhitespace }).map { fold(String($0)) }
-                let restTokens = Token.all(in: String(rest))
+                let rest = String(text[end..<lineEnd])
+                let restTokens = Token.all(in: rest)
                 if restTokens.count >= words.count,
-                   String(rest).prefix(through: restTokens[0].range.lowerBound).dropLast().allSatisfy({ $0 == " " || $0 == "\t" || $0 == "," }),
+                   rest[..<restTokens[0].range.lowerBound].allSatisfy({ $0 == " " || $0 == "\t" || $0 == "," }),
                    zip(restTokens, words).allSatisfy({ within($0.folded, $1, maxEdits: tolerance($1.count, strong: false)) }) {
-                    let last = restTokens[words.count - 1].range.upperBound
-                    end = text.index(end, offsetBy: String(rest).distance(from: String(rest).startIndex, to: last))
+                    end = text.index(end, offsetBy: rest.distance(from: rest.startIndex, to: restTokens[words.count - 1].range.upperBound))
+                    withCity = true
+                }
+                // Or right before it, perhaps with a state ("SPRINGFIELD IL
+                // 62704-1234", "London SW1A 1AA").
+                let head = String(text[lineStart..<range.lowerBound])
+                var headTokens = Token.all(in: head)
+                if let last = headTokens.last, last.text.count == 2, last.text.allSatisfy(\.isUppercase), words.count > 0,
+                   fold(String(last.text)) != words.last {
+                    headTokens.removeLast()
+                }
+                if headTokens.count >= words.count {
+                    let tail = Array(headTokens.suffix(words.count))
+                    let between = head[tail.last!.range.upperBound...]
+                    if zip(tail, words).allSatisfy({ within($0.folded, $1, maxEdits: tolerance($1.count, strong: false)) }),
+                       between.allSatisfy({ $0 == " " || $0 == "\t" || $0 == "," || $0.isUppercase }) {
+                        start = text.index(lineStart, offsetBy: head.distance(from: head.startIndex, to: tail[0].range.lowerBound))
+                        withCity = true
+                    }
                 }
             }
             // A postcode of digits alone is also a piece of a phone number,
-            // an amount or a reference. It counts only with the city right
-            // after it, or, with no city in the profile, at the start of a
-            // line as an address prints it.
-            if digitsOnly {
-                let withCity = end != range.upperBound
-                guard withCity || (city == nil && atLineStart) else { continue }
+            // an amount or a reference. It counts with the city beside it,
+            // or, with no city in the profile, at the start of a line; and
+            // elsewhere only once the letter has shown it with its city, and
+            // never between other digit groups.
+            if digitsOnly, !(withCity || (words.isEmpty && atLineStart)) {
+                pending.append(range)
+                continue
             }
-            found.append(range.lowerBound..<end)
+            confirmed.append(start..<end)
         }
-        return found
+        if digitsOnly, !confirmed.isEmpty {
+            for range in pending where !beside(digitsAround: range, in: text) {
+                confirmed.append(range)
+            }
+        }
+        return confirmed
+    }
+
+    /// Whether another digit stands within one space of either end.
+    private static func beside(digitsAround range: Range<String.Index>, in text: String) -> Bool {
+        var before = range.lowerBound
+        for _ in 0..<2 where before > text.startIndex {
+            before = text.index(before: before)
+            if text[before].isNumber { return true }
+            if text[before] != " " { break }
+        }
+        var after = range.upperBound
+        for _ in 0..<2 where after < text.endIndex {
+            if text[after].isNumber { return true }
+            if text[after] != " " { break }
+            after = text.index(after: after)
+        }
+        return false
     }
 
     /// A digit, or the letters OCR reads for it.

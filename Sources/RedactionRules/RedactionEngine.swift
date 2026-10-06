@@ -122,7 +122,7 @@ public enum RedactionEngine {
             claims.append(Claim(kind: claim.kind, ranges: claim.ranges, rank: Claim.windowRank))
         }
         for claim in known where claim.source == .profile {
-            let guarded = !(claim.kind == .name && claim.strongContext)
+            let guarded = !claim.strongContext
             for range in claim.ranges {
                 guard !guarded || !protected.contains(where: { $0.vetoes(claim.kind) && $0.range.overlaps(range) }),
                       !claims.contains(where: { $0.overlaps(range) })

@@ -166,6 +166,7 @@ struct ProfileRecallTests {
             print("L1 \(name) \(category) \(entry.found)/\(entry.total)")
         }
         print("L1 \(name) sender over-masking \(tally.senderOverMasked.count), ordinary-word over-masking \(tally.ordinaryOverMasked.count)")
+        for leak in tally.leaks { print("L1 \(name) missed \(leak)") }
     }
 
     /// What Gate A's L1 line requires of a tally: no name and no NL-format
