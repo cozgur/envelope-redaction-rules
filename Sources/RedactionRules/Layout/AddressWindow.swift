@@ -184,7 +184,9 @@ public enum AddressWindow {
                     poBox: cluster.contains { isOfficeAddress($0.text) },
                     organisation: cluster.first.map { looksLikeOrganisation($0.text) } ?? false,
                     notTopmost: (cluster.first?.box.maxY ?? top) < top - 0.02,
-                    score: nil, rejection: .accepted
+                    score: nil, rejection: .accepted,
+                    lineSignatures: cluster.map { signature(of: $0.text) },
+                    linePostcode: cluster.map { hasPostcode($0.text, country: country) }
                 )
                 guard let kind else {
                     candidate.rejection = .outsideRectangles
@@ -345,7 +347,13 @@ public enum AddressWindow {
         // Initials without dots, in any script, then a capitalised surname:
         // "Ö Yılmaz", "J Jansen", "AB de Vries" (owner, 6 Oct 2026: an RDW
         // letter printed the reader's dotless initial).
-        return line.range(of: #"^\p{Lu}{1,3}[ ]+(?:(?:van|de|der|den|von|la|le|du|da|di|del)[ ]+)*\p{Lu}\p{Ll}[\p{L}'’-]+[ ]*$"#, options: .regularExpression) != nil
+        if line.range(of: #"^\p{Lu}{1,3}[ ]+(?:(?:van|de|der|den|von|la|le|du|da|di|del)[ ]+)*\p{Lu}\p{Ll}[\p{L}'’-]+[ ]*$"#, options: .regularExpression) != nil {
+            return true
+        }
+        // One capital in any script, with or without a dot (OCR drops dots
+        // and diacritics: "Ö" read as "O"), then one or more capitalised
+        // words in any case: "Ö Çelik", "Ş ÖZDEMİR", "Ł Żółkiewski".
+        return line.range(of: #"^[ ]*\p{Lu}[.,]?[ ]+\p{Lu}[\p{L}'’]*(?:[ -]+\p{Lu}[\p{L}'’]*)*[ ]*$"#, options: .regularExpression) != nil
     }
 
     /// A first line that names an organisation: a sender's letterhead opens
@@ -370,7 +378,36 @@ public enum AddressWindow {
     /// upper-case letter, a a lower-case one -- diacritics included -- _ a
     /// space, punctuation as itself. What a DEBUG screen may show of a line.
     public static func signature(of line: String) -> String {
-        ""
+        String(line.map { character -> Character in
+            if character.isNumber { return "D" }
+            if character.isLetter { return character.isUppercase ? "A" : "a" }
+            if character.isWhitespace { return "_" }
+            return character
+        })
+    }
+
+    /// The line as the postcode test reads it: every kind of space one space,
+    /// and in a group with digits the letters OCR reads for them (O, I, l)
+    /// read back as digits.
+    static func postcodeForm(_ line: String) -> String {
+        let spaced = line.map { $0.isWhitespace ? " " : String($0) }.joined()
+            .replacingOccurrences(of: #" {2,}"#, with: " ", options: .regularExpression)
+        return spaced.split(separator: " ", omittingEmptySubsequences: false).map { token -> String in
+            guard token.filter(\.isNumber).count >= 2 else { return String(token) }
+            // Only the leading run of digit-like characters: "3O16BE" keeps
+            // its letters BE.
+            var result = ""
+            var inDigits = true
+            for character in token {
+                if inDigits, "OoIl".contains(character) {
+                    result.append(character == "O" || character == "o" ? "0" : "1")
+                } else {
+                    if !character.isNumber { inDigits = false }
+                    result.append(character)
+                }
+            }
+            return result
+        }.joined(separator: " ")
     }
 
     static func hasPostcode(_ line: String, country: String?) -> Bool {
@@ -381,7 +418,11 @@ public enum AddressWindow {
             "GB": #"\b[A-Z]{1,2}\d[A-Z\d]?[ ]?\d[A-Z]{2}\b"#,
             "US": #"\b\d{5}(?:-\d{4})?\b"#,
         ]
-        let chosen = country.flatMap { patterns[$0] }.map { [$0] } ?? Array(Set(patterns.values))
-        return chosen.contains { line.range(of: $0, options: [.regularExpression, .caseInsensitive]) != nil }
+        // The hinted country's shape first, then any other: the hint is the
+        // phone's region, and a letter from another country prints its own
+        // postcode (owner, 6 Oct 2026: an NL letter read on a phone set to TR).
+        let form = postcodeForm(line)
+        let ordered = (country.flatMap { patterns[$0] }.map { [$0] } ?? []) + Array(Set(patterns.values)).sorted()
+        return ordered.contains { form.range(of: $0, options: [.regularExpression, .caseInsensitive]) != nil }
     }
 }
