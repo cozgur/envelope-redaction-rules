@@ -81,8 +81,12 @@ public enum ProfileMatcher {
     /// Particles kept with the surname and compared exactly (folded).
     static let particles: Set<String> = [
         "van", "de", "der", "den", "het", "ten", "ter", "te", "t", "in", "von", "zu", "du",
-        "la", "le", "el", "al", "da", "di", "del", "dos", "des", "y",
+        "la", "le", "el", "al", "da", "di", "del", "dos", "des",
     ]
+
+    /// Words that join two surnames and may be printed or left out: Catalan
+    /// "Martí i Soler", Spanish "García y López", Portuguese "Silva e Costa".
+    static let connectors: Set<String> = ["i", "y", "e"]
 
     /// Words that, right before a surname, make it a name and nothing else.
     static let honorifics: Set<String> = [
@@ -276,13 +280,25 @@ public enum ProfileMatcher {
         window: [Range<String.Index>],
         polish: Bool
     ) -> NameMatch? {
-        guard index + sequence.count <= tokens.count else { return nil }
-        // Tokens must be consecutive words: only spaces between them, or a
-        // hyphen inside a double surname.
-        for offset in 1..<max(1, sequence.count) {
-            // "In 't Veld": the apostrophe of "'t" stands between particles.
-            guard Token.adjacent(tokens[index + offset - 1], tokens[index + offset], in: text, allowing: " -\t'’") else { return nil }
+        // The surname's words without connectors; in the text a connector may
+        // stand between two of them ("Martí i Soler" for "Martí Soler").
+        let sequence = sequence.filter { !connectors.contains($0) }
+        guard !sequence.isEmpty, index < tokens.count else { return nil }
+        var positions = [index]
+        for _ in 1..<max(1, sequence.count) {
+            let previous = positions[positions.count - 1]
+            var next = previous + 1
+            if next + 1 < tokens.count, connectors.contains(tokens[next].folded),
+               Token.adjacent(tokens[previous], tokens[next], in: text, allowing: " \t") {
+                next += 1
+            }
+            guard next < tokens.count,
+                  // "In 't Veld": the apostrophe of "'t" stands between particles.
+                  Token.adjacent(tokens[next - 1], tokens[next], in: text, allowing: " -\t'’")
+            else { return nil }
+            positions.append(next)
         }
+        let last = positions[positions.count - 1]
 
         // Before the surname: initials and given names -- "Anna-Lena" is two
         // given-name tokens joined by a hyphen -- then perhaps an honorific.
@@ -314,7 +330,7 @@ public enum ProfileMatcher {
         let strongBefore = strong
         var trailingGivenStrong = false
         // Peek: a surname-first form makes the context strong too.
-        let peekEnd = index + sequence.count
+        let peekEnd = last + 1
         if peekEnd < tokens.count {
             let gap = text[tokens[peekEnd - 1].range.upperBound..<tokens[peekEnd].range.lowerBound]
             if gap.count <= 3, gap.allSatisfy({ $0 == " " || $0 == "\t" || $0 == "," }),
@@ -323,7 +339,7 @@ public enum ProfileMatcher {
             }
         }
         for (offset, wanted) in sequence.enumerated() {
-            let token = tokens[index + offset]
+            let token = tokens[positions[offset]]
             // An honorific or a salutation word is never the surname, however
             // close it is: "Sayın" is two edits from "Aydın".
             if honorifics.contains(token.folded) || salutations.contains(token.folded) { return nil }
@@ -342,9 +358,9 @@ public enum ProfileMatcher {
         // comma. An initial after a surname counts only when it is one of the
         // reader's own initials (when the profile has given names), so a
         // company's "Visser B.V." is not read as a person.
-        var end = tokens[index + sequence.count - 1].range.upperBound
+        var end = tokens[last].range.upperBound
         var givenAfter = false
-        var after = index + sequence.count
+        var after = last + 1
         if after < tokens.count {
             let gap = text[end..<tokens[after].range.lowerBound]
             let comma = gap.trimmingCharacters(in: .whitespaces) == ","
@@ -512,10 +528,12 @@ public enum ProfileMatcher {
         let digits = String(number.prefix { $0.isNumber })
         guard !wanted.isEmpty, !digits.isEmpty else { return [] }
         let numberCore = digitPattern(digits) + #"(?![\dOolI])"#
-        let suffix = #"(?:(?:[ \t]?-[ \t]?|[ \t])?(?:[IVX]{1,4}|\d{1,2}|hs|bis|zw|bg|[A-Za-z])(?![\p{L}\d]))"#
+        // NL suffix words after a hyphen, a space or nothing: "14-boven",
+        // "14 bov.", "14bv", "14 hs", "14-III" (owner, 6 Oct 2026).
+        let suffix = #"(?:(?:[ \t]?-[ \t]?|[ \t])?(?:boven|beneden|bov\.|ben\.|bov|ben|bv|bg|hs|huis|zw|rood|bis|ter|[IVX]{1,4}|\d{1,2}|[A-Za-z])(?![\p{L}\d]))"#
         // Flat, floor and door parts: "12/4", "m. 4", "lok. 7", "D: 2",
         // "3º B", "PISO 3 PTA B", "pta. 9", "APT 4B", "Flat 4".
-        let unit = #"(?:[ \t]?/[ \t]?\d+[A-Za-z]?(?![\p{L}\d])|,?[ \t]*\d{1,2}\.[ \t]?(?:OG|Etage|Stock|EG|DG|UG)(?:[ \t]+(?:links|rechts|mitte|li\.|re\.))?(?![\p{L}\d])|,?[ \t]*(?:EG|DG|UG|Hochparterre)(?:[ \t]+(?:links|rechts|mitte))?(?![\p{L}\d])|,?[ \t]*(?:Bât\.?|Bâtiment|Appt\.?|Appart\.?|Escalier|Porte|Étage|Logement)[ \t]*[\p{L}\d]{1,4}(?![\p{L}\d])|,?[ \t]*(?:m\.|lok\.|mieszk\.|d[ \t]?:|daire|apt\.?|apartment|unit|ste\.?|suite|flat|piso|planta|pta\.?|puerta|esc\.?|bajo)[ \t]*\d*[ \t]?[ºª°]?[ \t]?[A-Za-z]?(?![\p{L}\d])|,?[ \t]*\d{1,2}[ \t]?[ºª°][ \t]?[A-Za-z]?(?![\p{L}\d]))"#
+        let unit = #"(?:[ \t]?/[ \t]?\d+[A-Za-z]?(?![\p{L}\d])|,?[ \t]*\d{1,2}\.[ \t]?(?:OG|Etage|Stock|EG|DG|UG)(?:[ \t]+(?:links|rechts|mitte|li\.|re\.))?(?![\p{L}\d])|,?[ \t]*(?:EG|DG|UG|Hochparterre)(?:[ \t]+(?:links|rechts|mitte))?(?![\p{L}\d])|,?[ \t]*(?:Bât\.?|Bâtiment|Appt\.?|Appart\.?|Escalier|Porte|Étage|Logement)[ \t]*[\p{L}\d]{1,4}(?![\p{L}\d])|,?[ \t]*(?:esc\.?|escalera)[ \t]*(?:izquierda|derecha|izq\.?|dcha\.?|dch\.?|[A-Za-z\d]{1,3})(?![\p{L}\d])|,?[ \t]*(?:m\.|lok\.|mieszk\.|d[ \t]?:|daire|kat|apt\.?|apartment|unit|ste\.?|suite|flat|piso|planta|pta\.?|puerta|bajo)[.:]?[ \t]*\d*[ \t]?[ºª°]?(?:[ \t]?[A-Za-z](?![\p{L}\d:]))?(?![\p{L}\d])|,?[ \t]*\d{1,2}\.?[ \t]?[ºª°][ \t]?[A-Za-z]?(?![\p{L}\d])|,?[ \t]*\d{1,2}(?:r|n|t|er|on|a)(?:[ \t]+\d{1,2}(?:a|ª|n|r))?(?![\p{L}\d]))"#
         guard let after = try? NSRegularExpression(
             // A unit is tried before a one-letter suffix, so the "m" of
             // "5 m. 2" and the "D" of "No: 5 D: 2" open their unit rather
@@ -532,6 +550,11 @@ public enum ProfileMatcher {
         var found: [Range<String.Index>] = []
         // The whole street, or -- after a street type -- its last words
         // ("ul. Chrobrego" for "Bolesława Chrobrego").
+        // "Avenida de Carlos III" printed "AVDA. CARLOS III": the street's
+        // particles may be left out, so the words are also tried without them.
+        let withoutParticles = wanted.filter { !particles.contains($0) }
+        let forms = withoutParticles.count < wanted.count && !withoutParticles.isEmpty ? [wanted, withoutParticles] : [wanted]
+        for wanted in forms {
         for skip in 0..<wanted.count {
             let sub = Array(wanted[skip...])
             if skip > 0, sub[0].count < 5 { break }
@@ -575,7 +598,7 @@ public enum ProfileMatcher {
                     var offset = head.distance(from: head.startIndex, to: whole.lowerBound)
                     // A building part before the number on the same line:
                     // "Résidence Les Pins, esc. 2, 7 boulevard Victor Hugo".
-                    let building = #"(?:Résidence|Rés\.|Bât\.?|Bâtiment|Immeuble)(?![\p{L}])[^,\n]{0,30}(?:,[ \t]*(?:esc\.?|escalier|bât\.?|appt\.?|porte)[ \t]*[\p{L}\d]{1,4})*,[ \t]*$"#
+                    let building = #"(?:(?:Résidence|Rés\.|Bât\.?|Bâtiment|Immeuble)(?![\p{L}])[^,\n]{0,30}(?:,[ \t]*(?:esc\.?|escalier|bât\.?|appt\.?|porte)[ \t]*[\p{L}\d]{1,4})*|(?:Apartment|Flat|Apt\.?|Unit|Suite)[ \t]*[\p{L}\d]{1,4}(?:,[ \t]*[\p{L}][\p{L} '’-]{1,40})?),[ \t]*$"#
                     let beforeNumber = String(head[..<whole.lowerBound])
                     if let found = beforeNumber.range(of: building, options: [.regularExpression, .caseInsensitive]) {
                         offset = beforeNumber.distance(from: beforeNumber.startIndex, to: found.lowerBound)
@@ -588,7 +611,18 @@ public enum ProfileMatcher {
                 }
             }
         }
-        return found
+        }
+        // A Turkish neighbourhood printed before the street ("Caferağa Mah.
+        // Bahariye Sok. No: 12") belongs to the same address.
+        return found.map { withNeighbourhood($0, in: text) }
+    }
+
+    private static func withNeighbourhood(_ range: Range<String.Index>, in text: String) -> Range<String.Index> {
+        let lineStart = text[..<range.lowerBound].lastIndex(of: "\n").map { text.index(after: $0) } ?? text.startIndex
+        let head = String(text[lineStart..<range.lowerBound])
+        guard let found = head.range(of: #"(?:\p{L}[\p{L}'’-]*[ \t]){1,2}(?:Mah\.|Mahallesi|Mh\.)[ \t]*$"#, options: .regularExpression)
+        else { return range }
+        return text.index(lineStart, offsetBy: head.distance(from: head.startIndex, to: found.lowerBound))..<range.upperBound
     }
 
     /// A line of building, staircase or flat parts right above or below the
@@ -596,7 +630,10 @@ public enum ProfileMatcher {
     /// of the same address.
     private static func withBuildingLines(_ range: Range<String.Index>, in text: String) -> [Range<String.Index>] {
         var found = [range]
-        let pattern = #"^[ \t]*(?:Résidence|Rés\.|Bât\.?|Bâtiment|Appt\.?|Appartement|Esc\.?|Escalier|Porte|Étage|Entrée|Immeuble|Bloc)(?![\p{L}])[^\n\d]{0,40}(?:\d{1,4}[^\n\d]{0,20}){0,3}$"#
+        // A line that opens with a building word, or one that ends with a
+        // flat or room number ("Woonzorgcentrum De Linde, app. 12", "EHPAD
+        // Les Glycines, appartement 3", "Flat 12, Granary House").
+        let pattern = #"^[ \t]*(?:(?:Résidence|Rés\.|Bât\.?|Bâtiment|Appt\.?|Appartement|Esc\.?|Escalier|Porte|Étage|Entrée|Immeuble|Bloc|Apartment|Flat|Apt\.?|Unit|Suite)(?![\p{L}])[^\n\d]{0,40}(?:\d{1,4}[^\n\d]{0,30}){0,3}|[^\n\d]{2,50}(?:app\.?|appartement|kamer|apt\.?|appt\.?|flat|unit|apartment)[ \t]*\d{1,4}[A-Za-z]?[ \t]*)$"#
         guard let regex = try? NSRegularExpression(pattern: pattern, options: [.caseInsensitive]) else { return found }
         let lineStart = text[..<range.lowerBound].lastIndex(of: "\n").map { text.index(after: $0) } ?? text.startIndex
         let lineEnd = text[range.upperBound...].firstIndex(of: "\n") ?? text.endIndex
@@ -645,7 +682,7 @@ public enum ProfileMatcher {
         var pattern = #"(?<![\p{L}\d])"#
         for (position, character) in compact.enumerated() {
             if position > 0 { pattern += #"[ \t]{0,2}"# }
-            pattern += character.isNumber ? digitPattern(String(character)) : NSRegularExpression.escapedPattern(for: String(character))
+            pattern += postcodeCharacter(character)
         }
         pattern += #"(?:-\d{4})?(?![\p{L}\d])"#
         guard let regex = try? NSRegularExpression(pattern: pattern, options: [.caseInsensitive]) else { return [] }
@@ -682,7 +719,7 @@ public enum ProfileMatcher {
                         return 0
                     }
                     if restTokens.count >= 1 + words.count,
-                       rest[restTokens[0].range.upperBound..<restTokens[1].range.lowerBound] == "/",
+                       rest[restTokens[0].range.upperBound..<restTokens[1].range.lowerBound].trimmingCharacters(in: .whitespaces) == "/",
                        zip(restTokens.dropFirst(), words).allSatisfy({ within($0.folded, $1, maxEdits: tolerance($1.count, strong: false)) }) {
                         return 1
                     }
@@ -744,6 +781,25 @@ public enum ProfileMatcher {
             after = text.index(after: after)
         }
         return false
+    }
+
+    /// A postcode character, or what OCR reads for it -- both ways (owner, 6
+    /// Oct 2026): 8↔B, 0↔O/D, 5↔S, 1↔I/l, 2↔Z. Only on the postcode pattern.
+    private static func postcodeCharacter(_ character: Character) -> String {
+        switch character.uppercased().first ?? character {
+        case "0": "[0OoD]"
+        case "1": "[1lI]"
+        case "2": "[2Z]"
+        case "5": "[5S]"
+        case "8": "[8B]"
+        case "B": "[B8]"
+        case "O": "[O0]"
+        case "D": "[D0]"
+        case "S": "[S5]"
+        case "I": "[I1l]"
+        case "Z": "[Z2]"
+        default: NSRegularExpression.escapedPattern(for: String(character))
+        }
     }
 
     /// A digit, or the letters OCR reads for it.
