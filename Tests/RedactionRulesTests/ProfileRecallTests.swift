@@ -467,6 +467,55 @@ struct ProfileRecallTests {
         #expect(Self.scopeFailures(tally).isEmpty, "\(Self.scopeFailures(tally))")
     }
 
+    /// Gate A, owner's decision 4 (6 Oct 2026): independent set 5, every
+    /// category annotated, written by an agent that saw nothing else and
+    /// committed before this first run. Full engine, the letter's profile,
+    /// every layout as its own page.
+    static let setFive = load("l1-independent-5")
+
+    /// Every Gate A line, as "line: result -> pass/fail".
+    static func gateALines(_ cases: [Case], _ tally: Tally) -> [(line: String, pass: Bool?)] {
+        func share(_ keys: [String]) -> (Int, Int) {
+            keys.reduce((0, 0)) { ($0.0 + (tally.masked[$1]?.found ?? 0), $0.1 + (tally.masked[$1]?.total ?? 0)) }
+        }
+        func pct(_ value: (Int, Int)) -> String {
+            value.1 == 0 ? "0/0" : String(format: "%d/%d (%.1f%%)", value.0, value.1, 100 * Double(value.0) / Double(value.1))
+        }
+        var lines: [(String, Bool?)] = []
+        let names = share(["name"])
+        lines.append(("reader names, every country, 100%: \(pct(names))", names.1 > 0 && names.0 == names.1))
+        for category in ["address", "postcode"] {
+            let value = share([category])
+            lines.append(("reader \(category), NL format, 100%: \(pct(value))", value.1 > 0 && value.0 == value.1))
+        }
+        let nonNL = share(["address (non-NL)", "postcode (non-NL)"])
+        lines.append(("reader address + postcode, non-NL formats, >= 95%: \(pct(nonNL))", nonNL.1 > 0 && Double(nonNL.0) >= 0.95 * Double(nonNL.1)))
+        for category in ["otherName", "otherAddress", "otherPostcode", "reference"] {
+            let value = share([category])
+            lines.append(("\(category) >= 95%: \(pct(value))", value.1 > 0 && Double(value.0) >= 0.95 * Double(value.1)))
+        }
+        for category in ["iban", "id"] {
+            let value = share([category])
+            lines.append(("\(category) 100%: \(pct(value))", value.1 > 0 && value.0 == value.1))
+        }
+        let senderName = letterShare(tally.senderNameMasked, of: cases)
+        lines.append(("sender name/organisation masked <= 5% of letters: \(senderName.count)/\(senderName.total)", Double(senderName.count) <= 0.05 * Double(senderName.total)))
+        let senderAddress = letterShare(tally.senderAddressMasked, of: cases)
+        lines.append(("sender address masked (reported; 1.0.x <= 20%): \(senderAddress.count)/\(senderAddress.total)", nil))
+        return lines
+    }
+
+    @Test("Gate A on independent set 5: every line")
+    func gateASetFive() {
+        guard !Self.setFive.isEmpty else { return }
+        let tally = Self.measure(Self.setFive)
+        Self.gateAReport("set5", Self.setFive, tally)
+        for (line, pass) in Self.gateALines(Self.setFive, tally) {
+            print("GATEA-LINE set5 \(line) -> \(pass.map { $0 ? "pass" : "FAIL" } ?? "reported")")
+        }
+        #expect(tally.missing.isEmpty, "\(tally.missing)")
+    }
+
     @Test("A digit postcode never takes part of a phone number")
     func digitPostcodeAndPhone() {
         let profile = RedactionProfile(person: .init(surname: "Yilmaz"), postcode: "34100", city: "İstanbul")
