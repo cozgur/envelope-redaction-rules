@@ -436,6 +436,11 @@ public enum RedactionEngine {
             var searchStart = text.startIndex
             while let range = text.range(of: key.value, range: searchStart..<text.endIndex) {
                 searchStart = range.upperBound
+                // A name as a word, never inside one: "Voorbeeld" the reader is
+                // not the start of "Voorbeeldhaven" (owner, 9 Oct 2026; a PDF's
+                // text layer found the surname, this pass spread it as a
+                // substring).
+                if key.kind == .name, !isWholeWord(range, in: text) { continue }
                 guard !protected.contains(where: {
                     $0.vetoes(key.kind) && $0.range.overlaps(range)
                 }) else { continue }
@@ -460,6 +465,13 @@ public enum RedactionEngine {
             }
         }
         return result
+    }
+
+    /// No letter directly before or after: a word, not part of one.
+    static func isWholeWord(_ range: Range<String.Index>, in text: String) -> Bool {
+        if range.lowerBound > text.startIndex, text[text.index(before: range.lowerBound)].isLetter { return false }
+        if range.upperBound < text.endIndex, text[range.upperBound].isLetter { return false }
+        return true
     }
 
     /// One value, one kind: the kind its most certain claim gave it.
