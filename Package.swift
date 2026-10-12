@@ -8,7 +8,7 @@ let package = Package(
         // macOS is listed so `swift test` runs on a developer's machine
         // without a simulator. Nothing here is iOS-only: the rules are
         // patterns, checksums and Foundation.
-        .iOS("26.0"),
+        .iOS("18.0"),
         .macOS("15.0"),
     ],
     products: [
