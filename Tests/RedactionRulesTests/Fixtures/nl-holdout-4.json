@@ -189,16 +189,13 @@
       {
         "value": "3009-4471-12",
         "category": "reference"
-      },
-      {
-        "value": "NL36 INGB 0007 6543 21",
-        "category": "iban"
       }
     ],
     "kept": [
       "CAK",
       "Postbus 84006",
-      "€ 17,80"
+      "€ 17,80",
+      "NL36 INGB 0007 6543 21"
     ],
     "oneToken": []
   },
@@ -287,16 +284,13 @@
       {
         "value": "262978210",
         "category": "bsn"
-      },
-      {
-        "value": "NL30 ABNA 0512 3456 78",
-        "category": "iban"
       }
     ],
     "kept": [
       "UWV",
       "Postbus 1000",
-      "€ 96,21"
+      "€ 96,21",
+      "NL30 ABNA 0512 3456 78"
     ],
     "oneToken": []
   },

@@ -63,17 +63,14 @@
       {
         "value": "TSL/2026/0048811",
         "category": "reference"
-      },
-      {
-        "value": "NL41 RABO 0318 2746 50",
-        "category": "iban"
       }
     ],
     "kept": [
       "Belastingdienst/Toeslagen",
       "Postbus 8024",
       "6710 KB Ede",
-      "€ 287 per maand"
+      "€ 287 per maand",
+      "NL41 RABO 0318 2746 50"
     ],
     "oneToken": []
   },
@@ -231,17 +228,14 @@
       {
         "value": "2026-0917-5521",
         "category": "reference"
-      },
-      {
-        "value": "NL86INGB0007462913",
-        "category": "iban"
       }
     ],
     "kept": [
       "CAK",
       "Postbus 84006",
       "€ 892,15",
-      "15 september 2026"
+      "15 september 2026",
+      "NL86INGB0007462913"
     ],
     "oneToken": []
   },
@@ -324,17 +318,14 @@
       {
         "value": "DUO-SF-2026-331870",
         "category": "reference"
-      },
-      {
-        "value": "NL39ABNA0529183746",
-        "category": "iban"
       }
     ],
     "kept": [
       "Dienst Uitvoering Onderwijs",
       "Postbus 50061, 9702 AB Groningen",
       "€ 312,47",
-      "1 september 2026"
+      "1 september 2026",
+      "NL39ABNA0529183746"
     ],
     "oneToken": []
   },
@@ -361,17 +352,14 @@
       {
         "value": "8812-004-55-1",
         "category": "reference"
-      },
-      {
-        "value": "NL97 TRIO 0212 4873 65",
-        "category": "iban"
       }
     ],
     "kept": [
       "Dienst Uitvoering Onderwijs",
       "Postbus 50061 | 9702 AB Groningen",
       "€ 64,19",
-      "9 september 2026"
+      "9 september 2026",
+      "NL97 TRIO 0212 4873 65"
     ],
     "oneToken": []
   },
@@ -439,17 +427,14 @@
       {
         "value": "1926 50 385",
         "category": "bsn"
-      },
-      {
-        "value": "NL54 SNSB 0918 2736 45",
-        "category": "iban"
       }
     ],
     "kept": [
       "UWV",
       "Postbus 58285",
       "1040 HG Amsterdam",
-      "€ 1.877,03"
+      "€ 1.877,03",
+      "NL54 SNSB 0918 2736 45"
     ],
     "oneToken": []
   },
@@ -484,16 +469,13 @@
       {
         "value": "LB-2026-0719884",
         "category": "reference"
-      },
-      {
-        "value": "NL15 ASNB 0706 1529 38",
-        "category": "iban"
       }
     ],
     "kept": [
       "Lindeborg Zorgverzekeringen",
       "Postbus 7210, 3430 JE Nieuwegein",
-      "€ 148,95"
+      "€ 148,95",
+      "NL15 ASNB 0706 1529 38"
     ],
     "oneToken": []
   },
@@ -692,16 +674,13 @@
       {
         "value": "3271.64.050",
         "category": "bsn"
-      },
-      {
-        "value": "NL18 BUNQ 2093 8475 61",
-        "category": "iban"
       }
     ],
     "kept": [
       "CJIB Postbus 1794 8901 CB Leeuwarden",
       "€ 50,00",
-      "24 augustus 2026"
+      "24 augustus 2026",
+      "NL18 BUNQ 2093 8475 61"
     ],
     "oneToken": []
   },
@@ -806,17 +785,14 @@
       {
         "value": "2483 01 706",
         "category": "bsn"
-      },
-      {
-        "value": "NL71KNAB0419283746",
-        "category": "iban"
       }
     ],
     "kept": [
       "Gemeente Den Haag",
       "Postbus 12600, 2500 DJ Den Haag",
       "€ 1.401,80",
-      "15 september 2026"
+      "15 september 2026",
+      "NL71KNAB0419283746"
     ],
     "oneToken": []
   }

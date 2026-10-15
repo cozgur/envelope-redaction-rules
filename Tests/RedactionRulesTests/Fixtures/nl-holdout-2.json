@@ -258,16 +258,13 @@
       {
         "value": "3080 1147 66",
         "category": "reference"
-      },
-      {
-        "value": "NL54 SNSB 0918 2736 45",
-        "category": "iban"
       }
     ],
     "kept": [
       "DUO",
       "Postbus 50061",
-      "€ 250,00"
+      "€ 250,00",
+      "NL54 SNSB 0918 2736 45"
     ],
     "oneToken": [
       "3080 1147 66"
@@ -296,16 +293,13 @@
       {
         "value": "UWV-2231-8876",
         "category": "reference"
-      },
-      {
-        "value": "NL85 TRIO 0212 3456 70",
-        "category": "iban"
       }
     ],
     "kept": [
       "UWV",
       "Postbus 58285",
-      "31 oktober 2026"
+      "31 oktober 2026",
+      "NL85 TRIO 0212 3456 70"
     ],
     "oneToken": []
   },
@@ -388,16 +382,13 @@
       {
         "value": "0044-7781-230",
         "category": "reference"
-      },
-      {
-        "value": "NL94 ASNB 0707 1234 56",
-        "category": "iban"
       }
     ],
     "kept": [
       "Zorgverzekeraar Noorderlicht",
       "Postbus 5000, 9700 GA Groningen",
-      "€ 411,60"
+      "€ 411,60",
+      "NL94 ASNB 0707 1234 56"
     ],
     "oneToken": []
   },

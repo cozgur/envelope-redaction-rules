@@ -83,7 +83,9 @@ struct NLRecallTests {
     func fixturesLoad() {
         #expect(Self.cases.count >= 21)
         let categories = Set(Self.cases.flatMap { $0.masked.map(\.category) })
-        #expect(categories == ["name", "address", "postcode", "bsn", "iban", "reference"])
+        // No "iban": every IBAN in this set is the sender's account, left in
+        // the clear since 15 Oct 2026 (owner) and listed under kept.
+        #expect(categories == ["name", "address", "postcode", "bsn", "reference"])
     }
 
     @Test("Nothing that should be masked is left in the clear", arguments: cases)

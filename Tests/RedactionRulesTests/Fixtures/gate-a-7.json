@@ -41,10 +41,6 @@
     "category": "name"
    },
    {
-    "value": "NL49 INGB 0007 7214 05",
-    "category": "iban"
-   },
-   {
     "value": "7022 1938 4471 0068",
     "category": "reference",
     "labelled": false
@@ -83,7 +79,8 @@
    "14 september 2026",
    "€ 1.284,00",
    "€ 116,72",
-   "1 maart 2026"
+   "1 maart 2026",
+   "NL49 INGB 0007 7214 05"
   ],
   "keptOrdinary": [],
   "layouts": [
@@ -986,17 +983,9 @@
     "category": "postcode"
    },
    {
-    "value": "NL12 BNGH 0285 0044 71",
-    "category": "iban"
-   },
-   {
     "value": "5100 2026 0731 4482",
     "category": "reference",
     "labelled": false
-   },
-   {
-    "value": "NL12BNGH0285004471",
-    "category": "iban"
    }
   ],
   "sender": {
@@ -1015,7 +1004,9 @@
    "3 september 2026",
    "€ 72,40",
    "€ 3,40",
-   "€ 69,00"
+   "€ 69,00",
+   "NL12 BNGH 0285 0044 71",
+   "NL12BNGH0285004471"
   ],
   "keptOrdinary": [],
   "layouts": [
@@ -1621,10 +1612,6 @@
     "where": "body"
    },
    {
-    "value": "NL54ASNB0708812946",
-    "category": "iban"
-   },
-   {
     "value": "Daan Bakker",
     "category": "name"
    }
@@ -1645,7 +1632,8 @@
    "1 november 2026",
    "€ 341,29",
    "€ 298,12",
-   "€ 86,34"
+   "€ 86,34",
+   "NL54ASNB0708812946"
   ],
   "keptOrdinary": [
    "bij de bakker"
@@ -2178,14 +2166,6 @@
     "value": "9712 CB Groningen",
     "category": "otherPostcode",
     "where": "body"
-   },
-   {
-    "value": "NL91 INGB 0006 6904 12",
-    "category": "iban"
-   },
-   {
-    "value": "NL45SNSB0912447308",
-    "category": "iban"
    }
   ],
   "sender": {
@@ -2201,7 +2181,9 @@
    "28 september 2026",
    "€ 412,35",
    "1 juli 2026",
-   "CAK"
+   "CAK",
+   "NL91 INGB 0006 6904 12",
+   "NL45SNSB0912447308"
   ],
   "keptOrdinary": [
    "jong en oud"
@@ -2779,10 +2761,6 @@
    {
     "value": "FK493017",
     "category": "id"
-   },
-   {
-    "value": "NL54BUNQ2045517730",
-    "category": "iban"
    }
   ],
   "sender": {
@@ -2802,7 +2780,8 @@
    "1 oktober 2026",
    "1 oktober 2031",
    "€ 380,00",
-   "14 juni 2026"
+   "14 juni 2026",
+   "NL54BUNQ2045517730"
   ],
   "keptOrdinary": [],
   "layouts": [
@@ -3740,14 +3719,6 @@
     "value": "5612 CR Eindhoven",
     "category": "otherPostcode",
     "where": "body"
-   },
-   {
-    "value": "NL27INGB0004417302",
-    "category": "iban"
-   },
-   {
-    "value": "NL02 RABO 0147 7209 31",
-    "category": "iban"
    }
   ],
   "sender": {
@@ -3765,7 +3736,9 @@
    "1 januari 2027",
    "€ 742,18",
    "€ 772,61",
-   "1 mei 2021"
+   "1 mei 2021",
+   "NL27INGB0004417302",
+   "NL02 RABO 0147 7209 31"
   ],
   "keptOrdinary": [],
   "layouts": [
@@ -4303,10 +4276,6 @@
     "category": "name"
    },
    {
-    "value": "NL62RABO0388104475",
-    "category": "iban"
-   },
-   {
     "value": "R. Hoekstra",
     "category": "otherName",
     "where": "body"
@@ -4340,7 +4309,8 @@
    "10 november 2026",
    "12 november 2026",
    "6 november 2026",
-   "€ 45,00"
+   "€ 45,00",
+   "NL62RABO0388104475"
   ],
   "keptOrdinary": [
    "het bos"
@@ -4667,14 +4637,6 @@
     "category": "postcode"
    },
    {
-    "value": "NL91RABO0127705513",
-    "category": "iban"
-   },
-   {
-    "value": "NL06 INGB 0001 2770 14",
-    "category": "iban"
-   },
-   {
     "value": "3100 5518 3020 1126",
     "category": "reference",
     "labelled": false
@@ -4694,7 +4656,9 @@
    "21 september 2026",
    "3 augustus 2026",
    "Zorgcentrum De Akkers",
-   "€ 289,40"
+   "€ 289,40",
+   "NL91RABO0127705513",
+   "NL06 INGB 0001 2770 14"
   ],
   "keptOrdinary": [],
   "layouts": [
@@ -5260,10 +5224,6 @@
     "where": "body"
    },
    {
-    "value": "NL76TRIO0390441712",
-    "category": "iban"
-   },
-   {
     "value": "Havenkade 3",
     "category": "address"
    },
@@ -5287,7 +5247,8 @@
    "7 september 2026",
    "Rederij Texelstroom B.V.",
    "6 juni 2027",
-   "€ 128,06"
+   "€ 128,06",
+   "NL76TRIO0390441712"
   ],
   "keptOrdinary": [
    "als visser"
@@ -5826,10 +5787,6 @@
     "value": "4001 LK Tiel",
     "category": "otherPostcode",
     "where": "body"
-   },
-   {
-    "value": "NL88 ABNA 0518 8304 42",
-    "category": "iban"
    }
   ],
   "sender": {
@@ -5849,7 +5806,8 @@
    "€ 1.046,77",
    "€ 911,30",
    "€ 22,47",
-   "€ 113,00"
+   "€ 113,00",
+   "NL88 ABNA 0518 8304 42"
   ],
   "keptOrdinary": [],
   "layouts": [
@@ -6386,14 +6344,6 @@
     "value": "8355 CL Giethoorn",
     "category": "otherPostcode",
     "where": "body"
-   },
-   {
-    "value": "NL46RABO0352910447",
-    "category": "iban"
-   },
-   {
-    "value": "NL93 BNGH 0285 1330 90",
-    "category": "iban"
    }
   ],
   "sender": {
@@ -6408,7 +6358,9 @@
   "kept": [
    "15 september 2026",
    "€ 186,20",
-   "15 november 2026"
+   "15 november 2026",
+   "NL46RABO0352910447",
+   "NL93 BNGH 0285 1330 90"
   ],
   "keptOrdinary": [
    "door de boer"
@@ -6858,10 +6810,6 @@
     "where": "body"
    },
    {
-    "value": "NL39INGB0008833011",
-    "category": "iban"
-   },
-   {
     "value": "2271 CT Voorburg",
     "category": "postcode"
    }
@@ -6879,7 +6827,8 @@
   "kept": [
    "17 september 2026",
    "30 april 2026",
-   "€ 2.315,64"
+   "€ 2.315,64",
+   "NL39INGB0008833011"
   ],
   "keptOrdinary": [],
   "layouts": [
@@ -7843,10 +7792,6 @@
     "where": "salutation"
    },
    {
-    "value": "NL87 NRDB 0412 5588 70",
-    "category": "iban"
-   },
-   {
     "value": "Derya Arslan",
     "category": "otherName",
     "where": "body"
@@ -7860,10 +7805,6 @@
     "value": "2011 GT Haarlem",
     "category": "otherPostcode",
     "where": "body"
-   },
-   {
-    "value": "NL87NRDB0412558870",
-    "category": "iban"
    },
    {
     "value": "2011 VL Haarlem",
@@ -7891,7 +7832,9 @@
   "kept": [
    "18 september 2026",
    "9 september 2026",
-   "€ 3.402,16"
+   "€ 3.402,16",
+   "NL87 NRDB 0412 5588 70",
+   "NL87NRDB0412558870"
   ],
   "keptOrdinary": [],
   "layouts": [
@@ -8442,10 +8385,6 @@
     "where": "body"
    },
    {
-    "value": "NL42INGB0006120934",
-    "category": "iban"
-   },
-   {
     "value": "3521 GJ Utrecht",
     "category": "postcode"
    }
@@ -8462,7 +8401,8 @@
   "kept": [
    "16 september 2026",
    "1 juli 2026",
-   "€ 559,64"
+   "€ 559,64",
+   "NL42INGB0006120934"
   ],
   "keptOrdinary": [],
   "layouts": [
@@ -8947,10 +8887,6 @@
     "where": "body"
    },
    {
-    "value": "NL23 INGB 0006 6104 47",
-    "category": "iban"
-   },
-   {
     "value": "271830049",
     "category": "id"
    }
@@ -8969,7 +8905,8 @@
    "23 september 2026",
    "12 november 2026",
    "€ 4.860,00",
-   "€ 92,00"
+   "€ 92,00",
+   "NL23 INGB 0006 6104 47"
   ],
   "keptOrdinary": [],
   "layouts": [
@@ -9516,10 +9453,6 @@
     "where": "salutation"
    },
    {
-    "value": "NL85KNAB0255773019",
-    "category": "iban"
-   },
-   {
     "value": "M. Veenstra",
     "category": "otherName",
     "where": "body"
@@ -9533,10 +9466,6 @@
     "value": "5622 AC Eindhoven",
     "category": "otherPostcode",
     "where": "body"
-   },
-   {
-    "value": "NL39 ABNA 0811 9022 74",
-    "category": "iban"
    }
   ],
   "sender": {
@@ -9558,7 +9487,9 @@
    "€ 1.688,15",
    "€ 224,25",
    "1 november 2026",
-   "€ 141,00"
+   "€ 141,00",
+   "NL85KNAB0255773019",
+   "NL39 ABNA 0811 9022 74"
   ],
   "keptOrdinary": [],
   "layouts": [
@@ -10090,10 +10021,6 @@
     "value": "9101 GK Dokkum",
     "category": "otherPostcode",
     "where": "body"
-   },
-   {
-    "value": "NL06 INGB 0000 0044 71",
-    "category": "iban"
    }
   ],
   "sender": {
@@ -10113,7 +10040,8 @@
    "€ 129,00",
    "€ 9,00",
    "€ 138,00",
-   "10 november 2026"
+   "10 november 2026",
+   "NL06 INGB 0000 0044 71"
   ],
   "keptOrdinary": [],
   "layouts": [
@@ -10613,14 +10541,6 @@
     "value": "Ercan Demirel",
     "category": "otherName",
     "where": "body"
-   },
-   {
-    "value": "NL32 BNGH 0285 0881 13",
-    "category": "iban"
-   },
-   {
-    "value": "NL13ABNA0623304187",
-    "category": "iban"
    }
   ],
   "sender": {
@@ -10638,7 +10558,9 @@
    "1 oktober 2026",
    "€ 214,00",
    "1 augustus 2026",
-   "€ 428,00"
+   "€ 428,00",
+   "NL32 BNGH 0285 0881 13",
+   "NL13ABNA0623304187"
   ],
   "keptOrdinary": [],
   "layouts": [
@@ -11157,10 +11079,6 @@
     "where": "salutation"
    },
    {
-    "value": "NL67BUNQ2069913384",
-    "category": "iban"
-   },
-   {
     "value": "I. Brandsma",
     "category": "otherName",
     "where": "body"
@@ -11184,10 +11102,6 @@
     "value": "OKJ56A-10",
     "category": "reference",
     "labelled": true
-   },
-   {
-    "value": "NL91 TRIO 0212 3004 57",
-    "category": "iban"
    }
   ],
   "sender": {
@@ -11204,7 +11118,9 @@
    "20 september 2026",
    "31 oktober 2026",
    "€ 950,00",
-   "2 november 2026"
+   "2 november 2026",
+   "NL67BUNQ2069913384",
+   "NL91 TRIO 0212 3004 57"
   ],
   "keptOrdinary": [
    "in de kleur wit"
@@ -11708,14 +11624,6 @@
     "where": "body"
    },
    {
-    "value": "NL67RABO0118844607",
-    "category": "iban"
-   },
-   {
-    "value": "NL65 ABNA 0459 1022 33",
-    "category": "iban"
-   },
-   {
     "value": "77120 4410 0326",
     "category": "reference",
     "labelled": false
@@ -11740,7 +11648,9 @@
    "€ 260,10",
    "1 oktober 2026",
    "15 oktober 2026",
-   "1 december 2026"
+   "1 december 2026",
+   "NL67RABO0118844607",
+   "NL65 ABNA 0459 1022 33"
   ],
   "keptOrdinary": [],
   "layouts": [
@@ -12540,10 +12450,6 @@
     "category": "id"
    },
    {
-    "value": "NL28 SNSB 0866 0127 44",
-    "category": "iban"
-   },
-   {
     "value": "F. van Gool",
     "category": "otherName",
     "where": "body"
@@ -12581,7 +12487,8 @@
    "24 september 2026",
    "2 augustus 2026",
    "€ 18.640,22",
-   "1 december 2026"
+   "1 december 2026",
+   "NL28 SNSB 0866 0127 44"
   ],
   "keptOrdinary": [],
   "layouts": [
@@ -13857,18 +13764,6 @@
     "where": "body"
    },
    {
-    "value": "NL32 NRDB 0377 1044 20",
-    "category": "iban"
-   },
-   {
-    "value": "NL04 NRDB 0377 1044 39",
-    "category": "iban"
-   },
-   {
-    "value": "NL30 NRDB 0911 6602 04",
-    "category": "iban"
-   },
-   {
     "value": "R. Timmermans",
     "category": "otherName",
     "where": "body"
@@ -13896,7 +13791,10 @@
   "kept": [
    "27 september 2026",
    "28 augustus 2026",
-   "€ 24.418,90"
+   "€ 24.418,90",
+   "NL32 NRDB 0377 1044 20",
+   "NL04 NRDB 0377 1044 39",
+   "NL30 NRDB 0911 6602 04"
   ],
   "keptOrdinary": [],
   "layouts": [
@@ -14375,10 +14273,6 @@
     "where": "body"
    },
    {
-    "value": "NL75INGB0007731219",
-    "category": "iban"
-   },
-   {
     "value": "P. Verkerk",
     "category": "otherName",
     "where": "body"
@@ -14406,7 +14300,8 @@
   },
   "kept": [
    "10 september 2026",
-   "€ 486,72"
+   "€ 486,72",
+   "NL75INGB0007731219"
   ],
   "keptOrdinary": [],
   "layouts": [
@@ -15455,16 +15350,8 @@
     "category": "id"
    },
    {
-    "value": "DE36 6005 0101 0004 4713 02",
-    "category": "iban"
-   },
-   {
     "value": "Schillerstraße 12",
     "category": "address"
-   },
-   {
-    "value": "DE87 6000 0000 0060 0015 02",
-    "category": "iban"
    }
   ],
   "sender": {
@@ -15482,7 +15369,9 @@
    "18.09.2026",
    "14.05.2026",
    "01.03.2026",
-   "1.284,00 €"
+   "1.284,00 €",
+   "DE36 6005 0101 0004 4713 02",
+   "DE87 6000 0000 0060 0015 02"
   ],
   "keptOrdinary": [
    "als Koch"
@@ -16062,10 +15951,6 @@
     "where": "body"
    },
    {
-    "value": "DE25 1005 0000 0990 0076 00",
-    "category": "iban"
-   },
-   {
     "value": "0640 4471 2609",
     "category": "reference",
     "labelled": true
@@ -16086,7 +15971,8 @@
    "31.12.2026",
    "03.09.2026",
    "Kranich Logistik GmbH",
-   "93,00 €"
+   "93,00 €",
+   "DE25 1005 0000 0990 0076 00"
   ],
   "keptOrdinary": [],
   "layouts": [
@@ -16871,10 +16757,6 @@
     "where": "salutation"
    },
    {
-    "value": "DE19 1203 0000 1020 4488 12",
-    "category": "iban"
-   },
-   {
     "value": "NK25-GN7-3L",
     "category": "reference",
     "labelled": true
@@ -16911,7 +16793,8 @@
    "2.146,80 €",
    "1.980,00 €",
    "166,80 €",
-   "31.10.2026"
+   "31.10.2026",
+   "DE19 1203 0000 1020 4488 12"
   ],
   "keptOrdinary": [],
   "layouts": [
@@ -17379,10 +17262,6 @@
    {
     "value": "DE89 3704 0044 0532 0130 00",
     "category": "iban"
-   },
-   {
-    "value": "DE83 3705 0198 0019 4471 30",
-    "category": "iban"
    }
   ],
   "sender": {
@@ -17397,7 +17276,8 @@
   "kept": [
    "28.09.2026",
    "01.10.2026",
-   "121,40 €"
+   "121,40 €",
+   "DE83 3705 0198 0019 4471 30"
   ],
   "keptOrdinary": [],
   "layouts": [
@@ -17916,10 +17796,6 @@
     "value": "Bergheimer Str. 9",
     "category": "otherAddress",
     "where": "body"
-   },
-   {
-    "value": "DE97672500200009447130",
-    "category": "iban"
    }
   ],
   "sender": {
@@ -17936,7 +17812,8 @@
    "01.02.2025",
    "3.500,00 €",
    "15.06.2026",
-   "122,50 €"
+   "122,50 €",
+   "DE97672500200009447130"
   ],
   "keptOrdinary": [],
   "layouts": [
@@ -18427,10 +18304,6 @@
     "labelled": true
    },
    {
-    "value": "FR42 3000 4019 2000 0104 4713 082",
-    "category": "iban"
-   },
-   {
     "value": "Camille Petit",
     "category": "name"
    },
@@ -18482,7 +18355,8 @@
    "1 874 €",
    "312 €",
    "25 septembre 2026",
-   "14 juin 2024"
+   "14 juin 2024",
+   "FR42 3000 4019 2000 0104 4713 082"
   ],
   "keptOrdinary": [
    "un petit écart"
@@ -19723,10 +19597,6 @@
     "where": "body"
    },
    {
-    "value": "FR31 1558 9335 0007 7441 3021 861",
-    "category": "iban"
-   },
-   {
     "value": "BOUL-SC18-2025",
     "category": "reference",
     "labelled": true
@@ -19746,7 +19616,8 @@
    "1 146,30 €",
    "1 080,00 €",
    "66,30 €",
-   "30 juin 2026"
+   "30 juin 2026",
+   "FR31 1558 9335 0007 7441 3021 861"
   ],
   "keptOrdinary": [
    "loué au boulanger"
@@ -20233,10 +20104,6 @@
     "value": "75020 PARIS",
     "category": "otherPostcode",
     "where": "body"
-   },
-   {
-    "value": "FR48 1007 1350 0000 0010 0447 130",
-    "category": "iban"
    }
   ],
   "sender": {
@@ -20253,7 +20120,8 @@
    "24/09/2026",
    "12/09/2026",
    "135 €",
-   "90 €"
+   "90 €",
+   "FR48 1007 1350 0000 0010 0447 130"
   ],
   "keptOrdinary": [],
   "layouts": [
@@ -20919,14 +20787,6 @@
     "value": "28005 Madrid",
     "category": "otherPostcode",
     "where": "body"
-   },
-   {
-    "value": "ES18 9000 0001 2002 5000 4471",
-    "category": "iban"
-   },
-   {
-    "value": "ES4621001834570200447130",
-    "category": "iban"
    }
   ],
   "sender": {
@@ -20941,7 +20801,9 @@
   "kept": [
    "15 de septiembre de 2026",
    "642,18 euros",
-   "1.105,40 euros"
+   "1.105,40 euros",
+   "ES18 9000 0001 2002 5000 4471",
+   "ES4621001834570200447130"
   ],
   "keptOrdinary": [],
   "layouts": [
@@ -21638,10 +21500,6 @@
     "where": "body"
    },
    {
-    "value": "ES88 0049 5103 7125 1604 4713",
-    "category": "iban"
-   },
-   {
     "value": "71520448Q",
     "category": "id"
    }
@@ -21659,7 +21517,8 @@
    "8 de septiembre de 2026",
    "386,52 euros",
    "31 de diciembre de 2025",
-   "5 de noviembre de 2026"
+   "5 de noviembre de 2026",
+   "ES88 0049 5103 7125 1604 4713"
   ],
   "keptOrdinary": [
    "junto al castillo"
@@ -22132,14 +21991,6 @@
     "category": "id"
    },
    {
-    "value": "ES81 2038 6281 4460 0044 7130",
-    "category": "iban"
-   },
-   {
-    "value": "ES93 0182 4572 4802 0150 4471",
-    "category": "iban"
-   },
-   {
     "value": "20811447N",
     "category": "id"
    },
@@ -22165,7 +22016,9 @@
   "kept": [
    "29 de septiembre de 2026",
    "412,30 euros",
-   "20 de octubre de 2026"
+   "20 de octubre de 2026",
+   "ES81 2038 6281 4460 0044 7130",
+   "ES93 0182 4572 4802 0150 4471"
   ],
   "keptOrdinary": [],
   "layouts": [
@@ -22663,10 +22516,6 @@
     "where": "body"
    },
    {
-    "value": "ES72 0081 0216 7300 0144 7130",
-    "category": "iban"
-   },
-   {
     "value": "Ioana Popescu",
     "category": "name"
    },
@@ -22698,7 +22547,8 @@
    "25/09/2027",
    "48,62 euros",
    "Hoteles Costa Azul S.L.",
-   "30/09/2026"
+   "30/09/2026",
+   "ES72 0081 0216 7300 0144 7130"
   ],
   "keptOrdinary": [],
   "layouts": [
@@ -23432,10 +23282,6 @@
     "category": "address"
    },
    {
-    "value": "PL61 1090 1014 0000 0712 1981 2874",
-    "category": "iban"
-   },
-   {
     "value": "Zofię Kowalską",
     "category": "otherName",
     "where": "body"
@@ -23468,7 +23314,8 @@
   },
   "kept": [
    "16 września 2026 r.",
-   "1 246,00 zł"
+   "1 246,00 zł",
+   "PL61 1090 1014 0000 0712 1981 2874"
   ],
   "keptOrdinary": [],
   "layouts": [
@@ -23936,10 +23783,6 @@
     "category": "id"
    },
    {
-    "value": "PL54 1140 2004 0000 3002 4471 3028",
-    "category": "iban"
-   },
-   {
     "value": "Tadeusz Wrona",
     "category": "otherName",
     "where": "body"
@@ -23981,7 +23824,8 @@
    "22.09.2026",
    "15.09.2026",
    "1 662,00 zł",
-   "20.10.2026"
+   "20.10.2026",
+   "PL54 1140 2004 0000 3002 4471 3028"
   ],
   "keptOrdinary": [
    "zawód wyuczony: kowal"
@@ -24484,10 +24328,6 @@
     "category": "id"
    },
    {
-    "value": "PL71 2411 6022 0200 0000 0447 1302",
-    "category": "iban"
-   },
-   {
     "value": "Magdalena Lewandowska",
     "category": "otherName",
     "where": "body"
@@ -24517,7 +24357,8 @@
    "15 września 2026 r.",
    "6 400,00 zł",
    "1 lipca 2026 r.",
-   "417,00 zł"
+   "417,00 zł",
+   "PL71 2411 6022 0200 0000 0447 1302"
   ],
   "keptOrdinary": [],
   "layouts": [
@@ -25032,10 +24873,6 @@
     "where": "body"
    },
    {
-    "value": "TR47 0001 0000 0004 4713 0200 01",
-    "category": "iban"
-   },
-   {
     "value": "4471302-2025-GV",
     "category": "reference",
     "labelled": false
@@ -25053,7 +24890,8 @@
   },
   "kept": [
    "21.09.2026",
-   "18.420,00 TL"
+   "18.420,00 TL",
+   "TR47 0001 0000 0004 4713 0200 01"
   ],
   "keptOrdinary": [
    "demir doğrama"
@@ -25559,10 +25397,6 @@
     "value": "06420 Çankaya/ANKARA",
     "category": "otherPostcode",
     "where": "body"
-   },
-   {
-    "value": "TR36 0001 2000 9900 0447 1302 60",
-    "category": "iban"
    }
   ],
   "sender": {
@@ -25579,7 +25413,8 @@
    "19.09.2026",
    "42.500,00 TL",
    "3.180,00 TL",
-   "15.03.2025"
+   "15.03.2025",
+   "TR36 0001 2000 9900 0447 1302 60"
   ],
   "keptOrdinary": [],
   "layouts": [
@@ -26724,10 +26559,6 @@
     "where": "body"
    },
    {
-    "value": "GB62 BARC 2018 1583 9410 49",
-    "category": "iban"
-   },
-   {
     "value": "4471302958K",
     "category": "reference",
     "labelled": true
@@ -26746,7 +26577,8 @@
    "22 September 2026",
    "£2,146.80",
    "31 January 2027",
-   "£780.40"
+   "£780.40",
+   "GB62 BARC 2018 1583 9410 49"
   ],
   "keptOrdinary": [],
   "layouts": [
@@ -27301,10 +27133,6 @@
     "value": "Cambridge CB1 7AS",
     "category": "otherPostcode",
     "where": "body"
-   },
-   {
-    "value": "GB29 NWBK 6016 1331 9268 19",
-    "category": "iban"
    }
   ],
   "sender": {
@@ -27323,7 +27151,8 @@
    "1 September 2026",
    "£1,672.53",
    "£167.25",
-   "£55.00"
+   "£55.00",
+   "GB29 NWBK 6016 1331 9268 19"
   ],
   "keptOrdinary": [
    "green waste collection"
@@ -27844,10 +27673,6 @@
     "value": "Samuel Achebe",
     "category": "otherName",
     "where": "body"
-   },
-   {
-    "value": "GB51 LOYD 3096 3401 4471 30",
-    "category": "iban"
    }
   ],
   "sender": {
@@ -27866,7 +27691,8 @@
    "£180.00",
    "£45.00",
    "1 October 2026",
-   "£825.00"
+   "£825.00",
+   "GB51 LOYD 3096 3401 4471 30"
   ],
   "keptOrdinary": [
    "wood flooring"
@@ -28578,10 +28404,6 @@
     "where": "body"
    },
    {
-    "value": "GB77 NWBK 0100 6144 7130 20",
-    "category": "iban"
-   },
-   {
     "value": "Altrincham WA14 4AB",
     "category": "postcode"
    }
@@ -28599,7 +28421,8 @@
    "20 September 2026",
    "2 September 2026",
    "£70.00",
-   "£35.00"
+   "£35.00",
+   "GB77 NWBK 0100 6144 7130 20"
   ],
   "keptOrdinary": [],
   "layouts": [
@@ -29101,10 +28924,6 @@
     "category": "id"
    },
    {
-    "value": "GB76 MIDL 4005 1571 2044 71",
-    "category": "iban"
-   },
-   {
     "value": "Owen Pritchard",
     "category": "otherName",
     "where": "body"
@@ -29132,7 +28951,8 @@
   "kept": [
    "29 September 2026",
    "4 September 2026",
-   "£11,402.37"
+   "£11,402.37",
+   "GB76 MIDL 4005 1571 2044 71"
   ],
   "keptOrdinary": [],
   "layouts": [

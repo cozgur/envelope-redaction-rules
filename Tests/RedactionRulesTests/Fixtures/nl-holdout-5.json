@@ -157,16 +157,13 @@
       {
         "value": "55-0012-9911",
         "category": "reference"
-      },
-      {
-        "value": "NL64RABO0344556677",
-        "category": "iban"
       }
     ],
     "kept": [
       "CAK",
       "Postbus 84030",
-      "€ 22,10"
+      "€ 22,10",
+      "NL64RABO0344556677"
     ],
     "oneToken": []
   },
@@ -311,16 +308,13 @@
       {
         "value": "2026/WW/55012",
         "category": "reference"
-      },
-      {
-        "value": "NL60 INGB 0009 9887 76",
-        "category": "iban"
       }
     ],
     "kept": [
       "UWV",
       "Postbus 1000",
-      "€ 1.140,55"
+      "€ 1.140,55",
+      "NL60 INGB 0009 9887 76"
     ],
     "oneToken": []
   },

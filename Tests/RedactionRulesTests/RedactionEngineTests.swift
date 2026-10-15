@@ -59,8 +59,8 @@ struct RedactionEngineTests {
     func typedPlaceholders() {
         let text = """
         Burgerservicenummer: 123456782
-        IBAN: NL91ABNA0417164300
-        E-mail: jan.devries@example.nl
+        Uw IBAN: NL91ABNA0417164300
+        Uw e-mail: jan.devries@example.nl
         Kenmerk: 1234.56.789
         """
         let result = RedactionEngine.redact(text, countryHint: "NL")
@@ -99,8 +99,8 @@ struct RedactionEngineTests {
     @Test("Distinct values get distinct indices")
     func indexedPlaceholders() {
         let text = """
-        IBAN begunstigde: NL91ABNA0417164300
-        IBAN afzender: DE89370400440532013000
+        Uw IBAN: NL91ABNA0417164300
+        Uw tweede IBAN: DE89370400440532013000
         """
         let result = RedactionEngine.redact(text, countryHint: "NL")
 
@@ -197,7 +197,7 @@ struct RedactionEngineTests {
 
     @Test("A nine-digit phone number is not labelled an identity number")
     func phoneIsNotAnIdentityNumber() {
-        let text = "Bel ons op +31 20 123 4567 of 020 1234567."
+        let text = "Wij bellen u op uw nummer +31 20 123 4567 of 020 1234567."
         let result = RedactionEngine.redact(text, countryHint: "NL")
 
         #expect(!result.redactedText.contains("[ID_NUMBER"))
@@ -219,12 +219,12 @@ struct RedactionEngineTests {
     /// A shape of the wrong length is still left alone.
     @Test("An invalid IBAN: masked beside a keyword, and bare when it has the country's length")
     func invalidIBANNeedsAKeyword() {
-        let bare = "Het nummer NL92ABNA0417164300 staat in de bijlage."
+        let bare = "Uw nummer NL92ABNA0417164300 staat in de bijlage."
         #expect(!RedactionEngine.redact(bare, countryHint: "NL").redactedText.contains("NL92ABNA0417164300"))
         let short = "Het nummer NL92ABNA04171643 staat in de bijlage."
         #expect(RedactionEngine.redact(short, countryHint: "NL").redactedText == short)
 
-        let keyed = "IBAN: NL92ABNA0417164300"
+        let keyed = "Uw IBAN: NL92ABNA0417164300"
         let result = RedactionEngine.redact(keyed, countryHint: "NL")
         #expect(result.redactedText.contains("[IBAN_1]"))
         #expect(!result.redactedText.contains("NL92ABNA0417164300"))
