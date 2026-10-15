@@ -83,11 +83,14 @@ struct LabelConsistencyTests {
         #expect(result.map["[REFERENCE_1]"] == "INC-2026-04471")
     }
 
-    @Test("A real phone number is left a phone number")
-    func phoneStaysPhone() {
+    @Test("A sender's phone number is left in the clear, and never turned into a reference")
+    func sendersPhoneStays() {
+        // Since 15 Oct 2026 (owner) only the reader's phone is masked.
         let text = "Bel 020 525 8080 of mail ons."
         let result = RedactionEngine.redact(text, countryHint: "NL")
-        #expect(result.counts[.phone] == 1)
-        #expect(result.counts[.reference] == nil)
+        #expect(result.redactedText == text)
+        let readers = RedactionEngine.redact("Wij bellen u op uw nummer 06 1234 5678.", countryHint: "NL")
+        #expect(readers.counts[.phone] == 1)
+        #expect(readers.counts[.reference] == nil)
     }
 }

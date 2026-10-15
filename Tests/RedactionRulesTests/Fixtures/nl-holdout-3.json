@@ -288,17 +288,14 @@
       {
         "value": "WW-2026-771034",
         "category": "reference"
-      },
-      {
-        "value": "NL15 BUNQ 2044 5566 77",
-        "category": "iban"
       }
     ],
     "kept": [
       "UWV",
       "Postbus 58285",
       "€ 1.622,18",
-      "30 september 2026"
+      "30 september 2026",
+      "NL15 BUNQ 2044 5566 77"
     ],
     "oneToken": []
   },

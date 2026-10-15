@@ -205,15 +205,12 @@
       {
         "value": "111222333",
         "category": "bsn"
-      },
-      {
-        "value": "NL91 ABNA 0417 1643 00",
-        "category": "iban"
       }
     ],
     "kept": [
       "Gemeente Utrecht",
-      "2 oktober 2026"
+      "2 oktober 2026",
+      "NL91 ABNA 0417 1643 00"
     ],
     "oneToken": []
   },

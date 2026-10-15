@@ -54,10 +54,6 @@
    {
     "value": "5123 4567 8901 2345",
     "category": "reference"
-   },
-   {
-    "value": "NL40 INGB 8880 1031 14",
-    "category": "iban"
    }
   ],
   "sender": {
@@ -72,7 +68,8 @@
   "kept": [
    "€ 1.284,00",
    "31 oktober 2026",
-   "14 september 2026"
+   "14 september 2026",
+   "NL40 INGB 8880 1031 14"
   ],
   "keptOrdinary": [],
   "layouts": [
@@ -929,14 +926,6 @@
     "category": "postcode"
    },
    {
-    "value": "NL20RABO3227001612",
-    "category": "iban"
-   },
-   {
-    "value": "NL92 BNGH 4167 3253 08",
-    "category": "iban"
-   },
-   {
     "value": "2026.0418.3307",
     "category": "reference"
    },
@@ -959,7 +948,9 @@
   "kept": [
    "€ 412.000",
    "€ 1.046,30",
-   "28 februari 2026"
+   "28 februari 2026",
+   "NL20RABO3227001612",
+   "NL92 BNGH 4167 3253 08"
   ],
   "keptOrdinary": [
    "in het wit"
@@ -1534,10 +1525,6 @@
     "category": "iban"
    },
    {
-    "value": "NL15 ABNA 0695 1859 04",
-    "category": "iban"
-   },
-   {
     "value": "HV/2026/08841",
     "category": "reference"
    },
@@ -1559,7 +1546,8 @@
   "kept": [
    "€ 812,47",
    "1 november 2026",
-   "2 oktober 2026"
+   "2 oktober 2026",
+   "NL15 ABNA 0695 1859 04"
   ],
   "keptOrdinary": [],
   "layouts": [
@@ -2098,14 +2086,6 @@
     "category": "reference"
    },
    {
-    "value": "NL38 INGB 7428 1117 99",
-    "category": "iban"
-   },
-   {
-    "value": "NL04 RABO 1723 9419 89",
-    "category": "iban"
-   },
-   {
     "value": "Daan Kuipers",
     "category": "otherName"
    },
@@ -2135,7 +2115,9 @@
   "kept": [
    "€ 148,25",
    "12 november 2026",
-   "1 november 2026"
+   "1 november 2026",
+   "NL38 INGB 7428 1117 99",
+   "NL04 RABO 1723 9419 89"
   ],
   "keptOrdinary": [],
   "layouts": [
@@ -2856,14 +2838,6 @@
     "category": "postcode"
    },
    {
-    "value": "NL67 BNGH 1620 6071 51",
-    "category": "iban"
-   },
-   {
-    "value": "NL02INGB7916257381",
-    "category": "iban"
-   },
-   {
     "value": "7712 0934 5521",
     "category": "reference"
    }
@@ -2881,7 +2855,9 @@
   "kept": [
    "€ 76,90",
    "16 september 2026",
-   "Witte de Withstraat"
+   "Witte de Withstraat",
+   "NL67 BNGH 1620 6071 51",
+   "NL02INGB7916257381"
   ],
   "keptOrdinary": [],
   "layouts": [
@@ -3348,10 +3324,6 @@
     "category": "reference"
    },
    {
-    "value": "NL97 RABO 4613 7198 89",
-    "category": "iban"
-   },
-   {
     "value": "R.P. Smeets",
     "category": "otherName"
    },
@@ -3374,7 +3346,8 @@
   "kept": [
    "Kwekerij Westfriesland B.V.",
    "8 september 2026",
-   "14 oktober 2026"
+   "14 oktober 2026",
+   "NL97 RABO 4613 7198 89"
   ],
   "keptOrdinary": [],
   "layouts": [
@@ -4231,14 +4204,6 @@
     "category": "otherPostcode"
    },
    {
-    "value": "NL43 ABNA 2707 0728 76",
-    "category": "iban"
-   },
-   {
-    "value": "NL90 TRIO 5124 0608 60",
-    "category": "iban"
-   },
-   {
     "value": "164976176",
     "category": "id"
    },
@@ -4260,7 +4225,9 @@
   "kept": [
    "€ 25.000,00",
    "1 december 2026",
-   "Centraal Testamentenregister"
+   "Centraal Testamentenregister",
+   "NL43 ABNA 2707 0728 76",
+   "NL90 TRIO 5124 0608 60"
   ],
   "keptOrdinary": [],
   "layouts": [
@@ -4857,10 +4824,6 @@
     "category": "otherPostcode"
    },
    {
-    "value": "NL12 INGB 4488 7883 91",
-    "category": "iban"
-   },
-   {
     "value": "10928374 CV EXPL 26-4471",
     "category": "reference"
    }
@@ -4878,7 +4841,8 @@
   "kept": [
    "€ 90,00",
    "3 november 2026",
-   "18 september 2026"
+   "18 september 2026",
+   "NL12 INGB 4488 7883 91"
   ],
   "keptOrdinary": [],
   "layouts": [
@@ -5556,10 +5520,6 @@
     "category": "otherPostcode"
    },
    {
-    "value": "NL98 RABO 8261 265O 94",
-    "category": "iban"
-   },
-   {
     "value": "20193344",
     "category": "reference"
    }
@@ -5577,7 +5537,8 @@
   "kept": [
    "€ 45,00",
    "12 tot en met 16 oktober 2026",
-   "gemeente Velsen"
+   "gemeente Velsen",
+   "NL98 RABO 8261 265O 94"
   ],
   "keptOrdinary": [],
   "layouts": [
@@ -6082,10 +6043,6 @@
     "category": "otherName"
    },
    {
-    "value": "NL31 ABNA 7361 8526 38",
-    "category": "iban"
-   },
-   {
     "value": "5011ZB Tilburg",
     "category": "postcode"
    }
@@ -6103,7 +6060,8 @@
   "kept": [
    "14 augustus 2026",
    "Fontys Hogescholen",
-   "5 oktober 2026"
+   "5 oktober 2026",
+   "NL31 ABNA 7361 8526 38"
   ],
   "keptOrdinary": [],
   "layouts": [
@@ -7526,10 +7484,6 @@
     "category": "postcode"
    },
    {
-    "value": "NL14 ABNA 3825 7226 00",
-    "category": "iban"
-   },
-   {
     "value": "D. Smit",
     "category": "otherName"
    },
@@ -7544,10 +7498,6 @@
    {
     "value": "8925 AK",
     "category": "otherPostcode"
-   },
-   {
-    "value": "NL30ASNB1568003391",
-    "category": "iban"
    },
    {
     "value": "2003 7781 54",
@@ -7571,7 +7521,9 @@
   "kept": [
    "€ 164,00",
    "1 september 2026",
-   "48211 kWh"
+   "48211 kWh",
+   "NL14 ABNA 3825 7226 00",
+   "NL30ASNB1568003391"
   ],
   "keptOrdinary": [],
   "layouts": [
@@ -8092,10 +8044,6 @@
     "category": "iban"
    },
    {
-    "value": "NL15 INGB 9330 1609 63",
-    "category": "iban"
-   },
-   {
     "value": "Sophie Bos",
     "category": "otherName"
    },
@@ -8127,7 +8075,8 @@
   },
   "kept": [
    "20 september 2026",
-   "17 september 2026"
+   "17 september 2026",
+   "NL15 INGB 9330 1609 63"
   ],
   "keptOrdinary": [],
   "layouts": [
@@ -8810,14 +8759,6 @@
     "category": "otherPostcode"
    },
    {
-    "value": "NL50 RABO 5362 8356 33",
-    "category": "iban"
-   },
-   {
-    "value": "NL50RABO5362835633",
-    "category": "iban"
-   },
-   {
     "value": "26-03318",
     "category": "reference"
    }
@@ -8836,7 +8777,9 @@
   "kept": [
    "€ 2.030,84",
    "€ 1.750,00",
-   "21 september 2026"
+   "21 september 2026",
+   "NL50 RABO 5362 8356 33",
+   "NL50RABO5362835633"
   ],
   "keptOrdinary": [],
   "layouts": [
@@ -9405,10 +9348,6 @@
     "category": "otherPostcode"
    },
    {
-    "value": "NL38 SNSB 1717 4284 15",
-    "category": "iban"
-   },
-   {
     "value": "103.884.271",
     "category": "reference"
    }
@@ -9426,7 +9365,8 @@
   "kept": [
    "€ 4.212,00",
    "3 juni 2025",
-   "Basisregistratie Personen"
+   "Basisregistratie Personen",
+   "NL38 SNSB 1717 4284 15"
   ],
   "keptOrdinary": [],
   "layouts": [
@@ -9939,14 +9879,6 @@
     "category": "city"
    },
    {
-    "value": "NL47 INGB 9120 7016 91",
-    "category": "iban"
-   },
-   {
-    "value": "NL79INGB4928179143",
-    "category": "iban"
-   },
-   {
     "value": "6026 1588 9013 4471",
     "category": "reference"
    },
@@ -9968,7 +9900,9 @@
   "kept": [
    "€ 90,00",
    "7 november 2026",
-   "CVOM, Postbus 50500, 9702 SN Groningen"
+   "CVOM, Postbus 50500, 9702 SN Groningen",
+   "NL47 INGB 9120 7016 91",
+   "NL79INGB4928179143"
   ],
   "keptOrdinary": [],
   "layouts": [
@@ -10432,14 +10366,6 @@
     "category": "postcode"
    },
    {
-    "value": "NL22 ABNA 6158 0286 74",
-    "category": "iban"
-   },
-   {
-    "value": "NL51 BNGH 5421 4891 95",
-    "category": "iban"
-   },
-   {
     "value": "PV-2026-118734",
     "category": "reference"
    },
@@ -10460,7 +10386,9 @@
   "kept": [
    "€ 54,60",
    "1 oktober 2026",
-   "Segbroek"
+   "Segbroek",
+   "NL22 ABNA 6158 0286 74",
+   "NL51 BNGH 5421 4891 95"
   ],
   "keptOrdinary": [],
   "layouts": [
@@ -11105,14 +11033,6 @@
     "category": "postcode"
    },
    {
-    "value": "NL02 BNGH 0318 3127 05",
-    "category": "iban"
-   },
-   {
-    "value": "NL65 RABO 5136 5535 69",
-    "category": "iban"
-   },
-   {
     "value": "Z/26/044918",
     "category": "reference"
    },
@@ -11134,7 +11054,9 @@
   "kept": [
    "€ 312,00",
    "1 november 2026",
-   "Voorstraat"
+   "Voorstraat",
+   "NL02 BNGH 0318 3127 05",
+   "NL65 RABO 5136 5535 69"
   ],
   "keptOrdinary": [
    "als visser"
@@ -11661,10 +11583,6 @@
     "category": "otherPostcode"
    },
    {
-    "value": "NL31 BNGH 4280 8598 62",
-    "category": "iban"
-   },
-   {
     "value": "2026-08871",
     "category": "reference"
    }
@@ -11681,7 +11599,8 @@
   "kept": [
    "€ 187,50",
    "8.00 uur",
-   "20 augustus 2026"
+   "20 augustus 2026",
+   "NL31 BNGH 4280 8598 62"
   ],
   "keptOrdinary": [
    "van een bakker"
@@ -12202,10 +12121,6 @@
    {
     "value": "Oude Ebbingestr. 47-b",
     "category": "otherAddress"
-   },
-   {
-    "value": "NL19 TRIO 9107 6729 79",
-    "category": "iban"
    }
   ],
   "sender": {
@@ -12220,7 +12135,8 @@
   "kept": [
    "€ 571,00",
    "1 januari 2027",
-   "Huurcommissie"
+   "Huurcommissie",
+   "NL19 TRIO 9107 6729 79"
   ],
   "keptOrdinary": [],
   "layouts": [
@@ -12846,10 +12762,6 @@
     "category": "id"
    },
    {
-    "value": "NL83 RABO 5112 8348 05",
-    "category": "iban"
-   },
-   {
     "value": "2201.448.912",
     "category": "reference"
    }
@@ -12866,7 +12778,8 @@
   "kept": [
    "€ 646,22",
    "1 juli 2026",
-   "Basisregistratie Personen"
+   "Basisregistratie Personen",
+   "NL83 RABO 5112 8348 05"
   ],
   "keptOrdinary": [
    "de jongste"
@@ -14160,14 +14073,6 @@
    {
     "value": "214/5021/3378",
     "category": "id"
-   },
-   {
-    "value": "DE17 5085 3402 2233 2913 91",
-    "category": "iban"
-   },
-   {
-    "value": "DE09 8677 0860 4240 7584 75",
-    "category": "iban"
    }
   ],
   "sender": {
@@ -14182,7 +14087,9 @@
   "kept": [
    "7.412,00 €",
    "1.208,46 €",
-   "18.09.2026"
+   "18.09.2026",
+   "DE17 5085 3402 2233 2913 91",
+   "DE09 8677 0860 4240 7584 75"
   ],
   "keptOrdinary": [
    "als Koch tätig"
@@ -14971,14 +14878,6 @@
     "category": "otherPostcode"
    },
    {
-    "value": "DE11 3175 7973 3397 3654 66",
-    "category": "iban"
-   },
-   {
-    "value": "DE11317579733397365466",
-    "category": "iban"
-   },
-   {
     "value": "0412-07-02",
     "category": "reference"
    },
@@ -15000,7 +14899,9 @@
   "kept": [
    "238,17 €",
    "31.10.2026",
-   "200,00 €"
+   "200,00 €",
+   "DE11 3175 7973 3397 3654 66",
+   "DE11317579733397365466"
   ],
   "keptOrdinary": [],
   "layouts": [
@@ -15547,14 +15448,6 @@
     "category": "otherPostcode"
    },
    {
-    "value": "DE95751964601070187656",
-    "category": "iban"
-   },
-   {
-    "value": "DE48 4544 2048 7702 6824 49",
-    "category": "iban"
-   },
-   {
     "value": "26-4471823-0-5",
     "category": "reference"
    }
@@ -15571,7 +15464,9 @@
   "kept": [
    "2.100,00 €",
    "36,00 €",
-   "03.02.2025"
+   "03.02.2025",
+   "DE95751964601070187656",
+   "DE48 4544 2048 7702 6824 49"
   ],
   "keptOrdinary": [],
   "layouts": [
@@ -16120,14 +16015,6 @@
    {
     "value": "N284117936",
     "category": "reference"
-   },
-   {
-    "value": "DE86 1735 0742 0399 0644 90",
-    "category": "iban"
-   },
-   {
-    "value": "DE45 5220 2180 3204 5667 80",
-    "category": "iban"
    }
   ],
   "sender": {
@@ -16141,7 +16028,9 @@
   },
   "kept": [
    "01.09.2026",
-   "Bodensee Werft GmbH"
+   "Bodensee Werft GmbH",
+   "DE86 1735 0742 0399 0644 90",
+   "DE45 5220 2180 3204 5667 80"
   ],
   "keptOrdinary": [],
   "layouts": [
@@ -16939,14 +16828,6 @@
     "category": "postcode"
    },
    {
-    "value": "DE12 5839 4552 2258 7594 22",
-    "category": "iban"
-   },
-   {
-    "value": "DE12 6928 1311 7309 6603 11",
-    "category": "iban"
-   },
-   {
     "value": "54.2026.118473.1",
     "category": "reference"
    }
@@ -16964,7 +16845,9 @@
   "kept": [
    "150,00 €",
    "12.09.2026",
-   "28,50 €"
+   "28,50 €",
+   "DE12 5839 4552 2258 7594 22",
+   "DE12 6928 1311 7309 6603 11"
   ],
   "keptOrdinary": [
    "Wolfsburg-Fallersleben"
@@ -17539,10 +17422,6 @@
    {
     "value": "26 69 3184772 41",
     "category": "reference"
-   },
-   {
-    "value": "FR91 5638 9499 8256 7948 5171 603",
-    "category": "iban"
    }
   ],
   "sender": {
@@ -17558,7 +17437,8 @@
   "kept": [
    "642 €",
    "25/09/2026",
-   "Rhône Logistique SAS"
+   "Rhône Logistique SAS",
+   "FR91 5638 9499 8256 7948 5171 603"
   ],
   "keptOrdinary": [
    "Un petit écart"
@@ -18280,10 +18160,6 @@
    {
     "value": "4471023 R",
     "category": "reference"
-   },
-   {
-    "value": "FR02 1839 2380 4511 7215 4920 402",
-    "category": "iban"
    }
   ],
   "sender": {
@@ -18298,7 +18174,8 @@
   "kept": [
    "199,19 €",
    "4 mars 2024",
-   "Aripa"
+   "Aripa",
+   "FR02 1839 2380 4511 7215 4920 402"
   ],
   "keptOrdinary": [],
   "layouts": [
@@ -18885,10 +18762,6 @@
     "category": "otherPostcode"
    },
    {
-    "value": "FR29 2742 3945 7878 1433 8933 425",
-    "category": "iban"
-   },
-   {
     "value": "BAIL-2026-0388",
     "category": "reference"
    }
@@ -18906,7 +18779,8 @@
   "kept": [
    "780,00 €",
    "15 octobre 2026",
-   "60,00 €"
+   "60,00 €",
+   "FR29 2742 3945 7878 1433 8933 425"
   ],
   "keptOrdinary": [],
   "layouts": [
@@ -20134,10 +20008,6 @@
     "category": "otherPostcode"
    },
    {
-    "value": "ES40 8362 7005 0373 0995 5858",
-    "category": "iban"
-   },
-   {
     "value": "2026GRC4417038Q",
     "category": "reference"
    },
@@ -20159,7 +20029,8 @@
   "kept": [
    "1.230,00 €",
    "418,37 €",
-   "diez días hábiles"
+   "diez días hábiles",
+   "ES40 8362 7005 0373 0995 5858"
   ],
   "keptOrdinary": [],
   "layouts": [
@@ -20654,14 +20525,6 @@
     "category": "id"
    },
    {
-    "value": "ES85 7891 1934 2235 3462 4098",
-    "category": "iban"
-   },
-   {
-    "value": "ES4773687215317608361968",
-    "category": "iban"
-   },
-   {
     "value": "2026/SAN/007731",
     "category": "reference"
    },
@@ -20682,7 +20545,9 @@
   "kept": [
    "200,00 €",
    "13/09/2026",
-   "100,00 €"
+   "100,00 €",
+   "ES85 7891 1934 2235 3462 4098",
+   "ES4773687215317608361968"
   ],
   "keptOrdinary": [
    "aparcamiento del castillo"
@@ -21390,14 +21255,6 @@
     "category": "otherPostcode"
    },
    {
-    "value": "ES52 6840 0636 1420 6882 6447",
-    "category": "iban"
-   },
-   {
-    "value": "ES03 8359 3960 4664 5068 9472",
-    "category": "iban"
-   },
-   {
     "value": "83824534E",
     "category": "id"
    },
@@ -21420,7 +21277,9 @@
   "kept": [
    "642,80 €",
    "31 de octubre de 2026",
-   "Ley de Propiedad Horizontal"
+   "Ley de Propiedad Horizontal",
+   "ES52 6840 0636 1420 6882 6447",
+   "ES03 8359 3960 4664 5068 9472"
   ],
   "keptOrdinary": [],
   "layouts": [
@@ -21967,10 +21826,6 @@
     "category": "id"
    },
    {
-    "value": "ES9841622241968895979623",
-    "category": "iban"
-   },
-   {
     "value": "41/2026/118402",
     "category": "reference"
    }
@@ -21988,7 +21843,8 @@
   "kept": [
    "1.105,26 €",
    "02/08/2026",
-   "1.842,10 €"
+   "1.842,10 €",
+   "ES9841622241968895979623"
   ],
   "keptOrdinary": [],
   "layouts": [
@@ -22727,14 +22583,6 @@
    {
     "value": "2205-SPV.4011.1874.2026",
     "category": "reference"
-   },
-   {
-    "value": "PL22 9407 2673 1042 8529 3134 9370",
-    "category": "iban"
-   },
-   {
-    "value": "PL17381313094046644229611516",
-    "category": "iban"
    }
   ],
   "sender": {
@@ -22750,7 +22598,9 @@
   "kept": [
    "1 112,04 zł",
    "14 dni",
-   "PIT-37"
+   "PIT-37",
+   "PL22 9407 2673 1042 8529 3134 9370",
+   "PL17381313094046644229611516"
   ],
   "keptOrdinary": [],
   "layouts": [
@@ -23297,14 +23147,6 @@
     "category": "otherPostcode"
    },
    {
-    "value": "PL50 5063 6128 1053 9803 1112 2942",
-    "category": "iban"
-   },
-   {
-    "value": "PL58 4828 9697 6210 6743 0406 8148",
-    "category": "iban"
-   },
-   {
     "value": "SM/CZ/1442/2026",
     "category": "reference"
    }
@@ -23322,7 +23164,9 @@
   "kept": [
    "684,30 zł",
    "1 stycznia 2027",
-   "512,00 zł"
+   "512,00 zł",
+   "PL50 5063 6128 1053 9803 1112 2942",
+   "PL58 4828 9697 6210 6743 0406 8148"
   ],
   "keptOrdinary": [
    "w Kowalach"
@@ -24017,10 +23861,6 @@
    {
     "value": "I C 1442/26",
     "category": "reference"
-   },
-   {
-    "value": "PL02 0468 4181 4084 0823 5525 6086",
-    "category": "iban"
    }
   ],
   "sender": {
@@ -24035,7 +23875,8 @@
   },
   "kept": [
    "4 800,00 zł",
-   "10 marca 2025"
+   "10 marca 2025",
+   "PL02 0468 4181 4084 0823 5525 6086"
   ],
   "keptOrdinary": [],
   "layouts": [
@@ -24546,10 +24387,6 @@
     "category": "otherPostcode"
    },
    {
-    "value": "TR30 9032 4074 1261 6547 7249 49",
-    "category": "iban"
-   },
-   {
     "value": "84212345-105[VUK]-2026/18442",
     "category": "reference"
    }
@@ -24568,7 +24405,8 @@
   "kept": [
    "3.418,00 TL",
    "21.09.2026",
-   "12.000,00 TL"
+   "12.000,00 TL",
+   "TR30 9032 4074 1261 6547 7249 49"
   ],
   "keptOrdinary": [
    "demir doğrama atölyesi"
@@ -25945,10 +25783,6 @@
     "category": "id"
    },
    {
-    "value": "TR05 3295 7066 8709 5467 2410 07",
-    "category": "iban"
-   },
-   {
     "value": "E-38915432-10.06-118442",
     "category": "reference"
    },
@@ -25972,7 +25806,8 @@
   "kept": [
    "450,00 TL",
    "16.10.2026",
-   "9.10.2026"
+   "9.10.2026",
+   "TR05 3295 7066 8709 5467 2410 07"
   ],
   "keptOrdinary": [
    "deniz kenarında"

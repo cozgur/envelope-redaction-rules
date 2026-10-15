@@ -54,9 +54,9 @@ struct WholeValueTests {
         let text = "Een afspraak maakt u telefonisch via 14 020 of per e-mail."
         let result = RedactionEngine.redact(text, countryHint: "NL")
 
-        let span = try #require(result.spans.first)
-        #expect(span.kind == .phone)
-        #expect(result.map[span.placeholder] == "14 020")
+        // The municipality's own number: in the clear since 15 Oct 2026
+        // (owner), and whole -- neither half masked.
+        #expect(result.redactedText == text)
     }
 
     @Test("Opening hours after a phone word are not a phone number")

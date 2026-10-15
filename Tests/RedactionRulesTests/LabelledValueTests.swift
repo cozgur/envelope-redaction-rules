@@ -30,20 +30,31 @@ struct LabelledValueTests {
     // MARK: - IBAN
 
     @Test("After an IBAN label, an IBAN-shaped value is masked whatever its checksum", arguments: [
-        ("IBAN: NL98 RABO 8261 265O 94", "NL98 RABO 8261 265O 94", "NL"),
-        ("Bitte überweisen Sie auf IBAN DE89 3704 0044 0532 0130 01 (Prüfziffer falsch).", "DE89 3704 0044 0532 0130 01", "DE"),
+        // In the reader's own context: only the reader's IBAN is masked
+        // since 15 Oct 2026 (owner); these test the detection.
+        ("Uw IBAN: NL98 RABO 8261 265O 94", "NL98 RABO 8261 265O 94", "NL"),
+        ("Wir überweisen auf Ihre IBAN DE89 3704 0044 0532 0130 01 (Prüfziffer falsch).", "DE89 3704 0044 0532 0130 01", "DE"),
     ])
     func labelledIBAN(text: String, value: String, country: String) {
         #expect(masked(value, in: text, country: country, as: .iban), "\(RedactionEngine.redact(text, countryHint: country).redactedText)")
     }
 
     @Test("Unlabelled: a country code, check digits and the country's length make it an IBAN, OCR misreads and all", arguments: [
+        ("Wij storten het bedrag op uw rekening NL98 RABO 8261 265O 94 o.v.v. leerlingnummer 20193344.", "NL98 RABO 8261 265O 94", "NL"),
+        ("Die Erstattung geht an Ihr Konto DE12 5001 0517 0648 4898 9O bis zum 1. November 2026.", "DE12 5001 0517 0648 4898 9O", "DE"),
+        ("We will pay your account GB30 NWBK 1794 42O3 8123 74 within five working days.", "GB30 NWBK 1794 42O3 8123 74", "GB"),
+    ])
+    func unlabelledIBANShape(text: String, value: String, country: String) {
+        #expect(masked(value, in: text, country: country, as: .iban), "\(RedactionEngine.redact(text, countryHint: country).redactedText)")
+    }
+
+    @Test("The sender's account is left in the clear: where to pay is not the reader's", arguments: [
         ("Maak het bedrag over naar NL98 RABO 8261 265O 94 o.v.v. leerlingnummer 20193344.", "NL98 RABO 8261 265O 94", "NL"),
         ("Zahlbar an DE12 5001 0517 0648 4898 9O bis zum 1. November 2026.", "DE12 5001 0517 0648 4898 9O", "DE"),
         ("Payable to GB30 NWBK 1794 42O3 8123 74 within five working days.", "GB30 NWBK 1794 42O3 8123 74", "GB"),
     ])
-    func unlabelledIBANShape(text: String, value: String, country: String) {
-        #expect(masked(value, in: text, country: country, as: .iban), "\(RedactionEngine.redact(text, countryHint: country).redactedText)")
+    func sendersIBANStays(text: String, value: String, country: String) {
+        #expect(untouched(value, in: text, country: country), "\(RedactionEngine.redact(text, countryHint: country).redactedText)")
     }
 
     @Test("Precision: not every two letters and two digits are an IBAN", arguments: [

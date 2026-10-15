@@ -180,7 +180,18 @@ public enum RedactionEngine {
                         return claim.rank == Claim.profileRank
                             && claim.ranges.allSatisfy { range.contains($0.lowerBound) && $0.upperBound <= range.upperBound }
                     }
-                    guard absorbs else { continue }
+                    // A phone, email or IBAN claim that is not the reader's
+                    // will be dropped at the end; an identity number or a
+                    // reference found on the same digits takes its place
+                    // rather than losing to it now (owner, 15 Oct 2026).
+                    let yields = !ReaderOwnership.kinds.contains(rule.kind) && overlapping.allSatisfy { index in
+                        let claim = claims[index]
+                        return claim.rank >= Claim.firstRuleRank
+                            && ReaderOwnership.kinds.contains(claim.kind)
+                            && !claim.ranges.contains { ReaderOwnership.isReaders($0, in: text) }
+                            && (claim.kind != .phone || claim.ranges.contains { ReaderOwnership.saysPhone($0, in: text) })
+                    }
+                    guard absorbs || yields else { continue }
                     for index in overlapping.sorted(by: >) { claims.remove(at: index) }
                 }
                 claims.append(Claim(kind: rule.kind, ranges: [range], rank: Claim.firstRuleRank + index))
@@ -208,6 +219,39 @@ public enum RedactionEngine {
             of: seeds, in: text, taken: claims.flatMap(\.ranges), avoiding: protected
         )
         claims = oneLabelPerValue(claims, in: text)
+
+        // Only the reader's own (owner, 15 Oct 2026). A phone number, an
+        // email address or an IBAN in a letter is almost always the sender's
+        // -- "call us on", "pay into", "write to" -- and masking it hid the
+        // institution, not the reader. A rule's claim that is still one of
+        // these once every label has been read is dropped unless its sentence
+        // says it is the reader's ("your account", "uw rekening",
+        // "hesabınız"). Decided here, last, because a phone-shaped run the
+        // rules first took for a phone is often an identity number or a
+        // reference its label makes it, and those stay masked. The window
+        // (L2) and the profile (L1) are never second-guessed.
+        // A "phone" with nothing around it saying it is one -- no "tel",
+        // "call us", "+31" -- was the phone rule catching a reference or a
+        // case number, and stays masked as a reference.
+        // Decided per value: a value the letter calls the reader's anywhere
+        // is the reader's everywhere it appears ("op je rekening NL85…",
+        // then "Is NL85… niet meer je rekeningnummer?").
+        let readersValues = Set(claims.filter { claim in
+            ReaderOwnership.kinds.contains(claim.kind)
+                && claim.ranges.contains { ReaderOwnership.isReaders($0, in: text) }
+        }.map { Self.compact($0.value(in: text)) })
+        claims = claims.compactMap { claim in
+            guard claim.rank >= Claim.firstRuleRank, claim.rank != Claim.seedRank,
+                  ReaderOwnership.kinds.contains(claim.kind),
+                  !readersValues.contains(Self.compact(claim.value(in: text)))
+            else { return claim }
+            if claim.kind == .phone, !claim.ranges.contains(where: { ReaderOwnership.saysPhone($0, in: text) }) {
+                var reference = claim
+                reference.kind = .reference
+                return reference
+            }
+            return nil
+        }
 
         // Every range in text order, each knowing its claim, so placeholders
         // are numbered in the order a reader meets them.
@@ -321,6 +365,12 @@ public enum RedactionEngine {
     }
 
     // MARK: - Internals
+
+    /// A value without its spacing, case folded: "NL85 BUNQ…" and
+    /// "nl85bunq…" are one account.
+    private static func compact(_ value: String) -> String {
+        value.filter { !$0.isWhitespace }.lowercased()
+    }
 
     /// The whole token, for a number the phone or reference rule caught part
     /// of.

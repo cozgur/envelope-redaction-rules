@@ -181,17 +181,14 @@
       {
         "value": "F2026-118834",
         "category": "reference"
-      },
-      {
-        "value": "NL81 RABO 0312 3456 78",
-        "category": "iban"
       }
     ],
     "kept": [
       "CAK",
       "Postbus 84030",
       "€ 21,20",
-      "september 2026"
+      "september 2026",
+      "NL81 RABO 0312 3456 78"
     ],
     "oneToken": [
       "7710 4402 19"
@@ -312,16 +309,13 @@
       {
         "value": "587654302",
         "category": "bsn"
-      },
-      {
-        "value": "NL20 INGB 0001 2345 67",
-        "category": "iban"
       }
     ],
     "kept": [
       "UWV",
       "Postbus 58285",
-      "1 oktober 2026"
+      "1 oktober 2026",
+      "NL20 INGB 0001 2345 67"
     ],
     "oneToken": []
   },
@@ -376,16 +370,13 @@
       {
         "value": "3312 7765 04",
         "category": "reference"
-      },
-      {
-        "value": "NL75 ABNA 0602 9144 47",
-        "category": "iban"
       }
     ],
     "kept": [
       "ZorgZeker Verzekeringen",
       "Postbus 4400",
-      "€ 152,95"
+      "€ 152,95",
+      "NL75 ABNA 0602 9144 47"
     ],
     "oneToken": [
       "3312 7765 04"

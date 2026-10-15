@@ -72,7 +72,9 @@ struct NLHoldoutTests {
     func fixturesLoad() {
         #expect(Self.cases.count == 20)
         let categories = Set(Self.cases.flatMap { $0.masked.map(\.category) })
-        #expect(categories == ["name", "address", "postcode", "bsn", "iban", "reference"])
+        // No "iban": the set's IBANs are all the senders' accounts, kept in
+        // the clear since 15 Oct 2026 (owner).
+        #expect(categories == ["name", "address", "postcode", "bsn", "reference"])
     }
 
     @Test("Recall is 100% in every category")
